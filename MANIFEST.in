@@ -1,0 +1,4 @@
+graft cve_data
+global-exclude *cache
+include README.md
+include LICENSE
