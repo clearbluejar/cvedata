@@ -2,7 +2,7 @@ from  .update import update_all_data
 
 def main():
     """
-    cve_data module main function
+    cvedata module main function
     """
     update_all_data()
 

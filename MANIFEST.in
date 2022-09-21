@@ -1,4 +1,4 @@
-graft cve_data
-exclude cve_data/data/.cache/**
+graft cvedata
+exclude cvedata/data/.cache/**
 include README.md
 include LICENSE
