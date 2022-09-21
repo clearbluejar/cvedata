@@ -6,6 +6,8 @@ import requests
 import zipfile
 from io import BytesIO
 from datetime import datetime
+import pathlib
+import time
 
 from .config import DATA_DIR,CACHE_PATH
 from .metadata import update_metadata
@@ -17,9 +19,9 @@ WINBINDEX_GITHUB_URL = "https://github.com/m417z/winbindex/archive/refs/heads/gh
 WINBINDEX_ZIP_PATH = os.path.join(CACHE_PATH,WINBINDEX_GITHUB_URL.split('/')[-1])
 
 
-WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH = os.path.join(DATA_DIR,"win-desc-to-bins-map.json")
-WINDOWS_KBS_TO_BINS_PATH = os.path.join(DATA_DIR,"win-kb-to-bins-map.json.gz")
-WINDOWS_VERSION_TO_BINS_PATH = os.path.join(DATA_DIR,"win-versions-to-bins-map.json.gz")
+WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH = os.path.join(DATA_DIR,"winbindex-desc-to-bins-map.json")
+WINDOWS_KBS_TO_BINS_PATH = os.path.join(DATA_DIR,"winbindex-kb-to-bins-map.json.gz")
+WINDOWS_VERSION_TO_BINS_PATH = os.path.join(DATA_DIR,"winbindex-versions-to-bins-map.json.gz")
 
 def open_gz_json(path):    
     
@@ -61,10 +63,10 @@ def download_and_extract_from_url(url,extract_path):
         # extracting the zip file contents
         unzip_path(WINBINDEX_ZIP_PATH,extract_path,WINBINDEX_ZIP_FILES_DATA_PATH)
 
-def create_win_bin_maps():
+def create_winbindex_maps():
 
     if not os.path.exists(CACHE_PATH):
-        os.mkdir(CACHE_PATH)
+        os.makedirs(CACHE_PATH,exist_ok=True)
 
     # uses WinBinDiff data to map fileinfo description tags to binary names to build 
     download_and_extract_from_url(WINBINDEX_GITHUB_URL,WINBINDEX_ZIP_EXTRACT_PATH)
@@ -75,12 +77,18 @@ def create_win_bin_maps():
 
     total = len(os.listdir(WINBINDEX_FILES_DATA_PATH))
     count = 0
+    failed_load = []
 
     print(f"Processing {total} files..")
     for i,file in enumerate(os.listdir(WINBINDEX_FILES_DATA_PATH)):
         
         if re.search('exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv',file):
-            file_json = open_gz_json(os.path.join(WINBINDEX_FILES_DATA_PATH,file))
+            try: 
+                file_json = open_gz_json(os.path.join(WINBINDEX_FILES_DATA_PATH,file))
+            except json.JSONDecodeError as e:
+                failed_load.append(file)
+                continue
+            
             count += 1
             for bin in file_json:
 
@@ -106,7 +114,7 @@ def create_win_bin_maps():
                                         chopped_assem_ver = '.'.join(assem_ver.split('.')[-2:])
                                         #print(kb_ver)
                                         if chopped_assem_ver == kb_ver:
-                                            kb_to_bins[update].add(filename + '-' + assem_ver)
+                                            kb_to_bins[update].add(filename + '-' + assem_ver + '-' + ver)
                                 #assert len(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo']) == 2
                             else:
                                 #print(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo'])
@@ -121,6 +129,8 @@ def create_win_bin_maps():
                     ver_to_bins.setdefault(ver,set())
                     ver_to_bins[ver].add(filename)
 
+    for file in failed_load:
+        print(f"failed to load {file}")
 
     print(f"Processed {count} files of {total}")
 
@@ -142,7 +152,7 @@ def create_win_bin_maps():
     with gzip.open(WINDOWS_VERSION_TO_BINS_PATH, "w") as f:
         f.write(json.dumps(ver_to_bins).encode("utf-8"))
 
-def get_win_desc_to_bin_map():
+def get_winbindex_desc_to_bin_map():
         try:
             with open(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH) as f:
                 return json.load(f)
@@ -150,7 +160,7 @@ def get_win_desc_to_bin_map():
             raise Exception("Missing {}. Please run {}".format(
                 WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH, __file__)) from e
 
-def get_win_kbs_to_bin_map():
+def get_winbindex_kbs_to_bin_map():
         try:
             with gzip.open(WINDOWS_KBS_TO_BINS_PATH) as f:
                 return json.load(f)
@@ -158,7 +168,7 @@ def get_win_kbs_to_bin_map():
             raise Exception("Missing {}. Please run {}".format(
                 WINDOWS_KBS_TO_BINS_PATH, __file__)) from e
 
-def get_win_ver_to_bin_map():
+def get_winbindex_ver_to_bin_map():
         try:
             with gzip.open(WINDOWS_VERSION_TO_BINS_PATH) as f:
                 return json.load(f)
@@ -166,20 +176,29 @@ def get_win_ver_to_bin_map():
             raise Exception("Missing {}. Please run {}".format(
                 WINDOWS_VERSION_TO_BINS_PATH, __file__)) from e
 
-def main():
-    create_win_bin_maps()
+def update():
 
-    get_win_desc_to_bin_map()
+    print(f"Updating {pathlib.Path(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH).name}...")
+    print(f"Updating {pathlib.Path(WINDOWS_KBS_TO_BINS_PATH).name}...")
+    print(f"Updating {pathlib.Path(WINDOWS_VERSION_TO_BINS_PATH).name}...")
+    
+    start = time.time()
+    create_winbindex_maps()
+    elapsed = time.time() - start
+    
+    count = len(get_winbindex_desc_to_bin_map())
+    update_metadata(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL], 'generation_time': elapsed, 'count': count})
 
-    get_win_kbs_to_bin_map()
+    count = len(get_winbindex_kbs_to_bin_map())
+    update_metadata(WINDOWS_KBS_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL], 'generation_time': elapsed, 'count': count})
+    
+    count = len(get_winbindex_ver_to_bin_map())
+    update_metadata(WINDOWS_VERSION_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL], 'generation_time': elapsed, 'count': count})
 
-    update_metadata(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH,WINBINDEX_GITHUB_URL)
-
-    update_metadata(WINDOWS_KBS_TO_BINS_PATH,WINBINDEX_GITHUB_URL)
 
 
 if __name__ == "__main__":
-    main()
+    update()
 
 
 

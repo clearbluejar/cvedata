@@ -2,6 +2,8 @@ import json
 import gzip
 import xmltodict
 import os
+import time
+import pathlib
 
 from .config import DATA_DIR
 from .metadata import update_metadata
@@ -27,7 +29,7 @@ def download_extract_zip(url):
                 yield zipinfo.filename, thefile
 
 
-def build_cwe_json():
+def create_cwe_json():
     cwes_d = {}
 
     cwe_file = None
@@ -71,14 +73,19 @@ def get_cwe_json():
         raise Exception("Missing {}. Please run {}".format(
             CWE_JSON_PATH, __file__)) from e
 
-def main():
-    build_cwe_json()
+def update():
 
-    cwe = get_cwe_json()
+    print(f"Updating {pathlib.Path(CWE_JSON_PATH).name}...")
+    
+    start = time.time()
+    create_cwe_json()
+    elapsed = time.time() - start
+    count = len(get_cwe_json())
+    update_metadata(CWE_JSON_PATH,{'sources': [CWE_XML_DOWNLOAD_URL], 'generation_time': elapsed, 'count': count})
 
-    print("Loaded {} with length {}".format(CWE_JSON_PATH, len(cwe)))
+    print("Loaded {} with length {}".format(CWE_JSON_PATH, count))
 
-    update_metadata(CWE_JSON_PATH,{"source": CWE_XML_DOWNLOAD_URL})
+    
 
 if __name__ == "__main__":
-    main()
+    update()

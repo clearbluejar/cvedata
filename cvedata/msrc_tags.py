@@ -1,11 +1,13 @@
 import os
 import json
+import time
+import pathlib
 
 from .config import DATA_DIR
 from .cvrf import get_msrc_merged_cvrf_json,MSRC_API_URL
 from .metadata import update_metadata
 
-MSRC_TAGS_PATH = os.path.join(DATA_DIR,"msrc-merged-all-tags.json")
+MSRC_TAGS_PATH = os.path.join(DATA_DIR,"msrc-tags-merged.json")
 
 def create_msrc_tags():
     msrc_cvrf_json = get_msrc_merged_cvrf_json()
@@ -19,8 +21,7 @@ def create_msrc_tags():
 
     tag_set = sorted(tag_set)
 
-    for tag in tag_set:
-        print(tag)
+    print(f"Found {len(tag_set)} tags")
 
     with open(MSRC_TAGS_PATH, 'w') as f:
         json.dump(tag_set,f,indent=4)
@@ -33,14 +34,18 @@ def get_msrc_tags():
         raise Exception("Missing {}. Please run {}".format(
             MSRC_TAGS_PATH, __file__)) from e
 
-def main():
+def update():
 
+    print(f"Updating {pathlib.Path(MSRC_TAGS_PATH).name}...")
+    
+    start = time.time()   
     create_msrc_tags()
+    elapsed = time.time() - start
 
-    get_msrc_tags()
+    count = len(get_msrc_tags())
 
-    update_metadata(MSRC_TAGS_PATH,MSRC_API_URL)
+    update_metadata(MSRC_TAGS_PATH,{'sources': [MSRC_API_URL], 'generation_time': elapsed,  'count': count})
 
 
 if __name__ == "__main__":
-    main()
+    update()

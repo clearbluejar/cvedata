@@ -8,7 +8,7 @@
             "name": "Python: Module",
             "type": "python",
             "request": "launch",
-            "module": "cvedata",
+            "module": "cvedata.${fileBasenameNoExtension}",
             "justMyCode": true
         },
         {

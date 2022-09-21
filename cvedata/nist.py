@@ -3,11 +3,14 @@ import json
 import gzip
 import requests
 import os
+import pathlib
+import time
 
 import io
 from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
+from .metadata import update_metadata
 
 NIST_CVE_MERGED_PATH = os.path.join(DATA_DIR, 'nist_merged_cve.json.gz')
 NIST_DATA_FEEDS_URL = "https://nvd.nist.gov/feeds/json/cve/1.1/"
@@ -25,12 +28,11 @@ def download_extract_gz(url):
     with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as f:
         return f.read()
 
-def get_all_nist_cve_urls() -> list:
+def get_all_nist_cve_urls(oldest) -> list:
     urls = [] 
    
 
-    current = datetime.now().year
-    oldest = 2002
+    current = datetime.now().year    
 
     for year in range(oldest, current+1):
         url = f"{NIST_DATA_FEEDS_URL}nvdcve-1.1-{year}.json.gz"
@@ -46,8 +48,8 @@ def create_nist_merged_cve_json():
     result = []
 
     # go ahead and download all the MSRC security updates fresh
-    for url in get_all_nist_cve_urls():
-
+    for url in get_all_nist_cve_urls(2016):
+        print(f"Downloading {url}")
         cve_data_json = json.loads(download_extract_gz(url))
 
         result.append(cve_data_json)
@@ -69,17 +71,21 @@ def get_nist_merged_cve_json():
             NIST_CVE_MERGED_PATH, __file__)) from e
 
 
-def main():
+def update():
 
+    print(f"Updating {pathlib.Path(NIST_CVE_MERGED_PATH).name}...")
+    
+    start = time.time()
     # create the merged nist json file    
     create_nist_merged_cve_json()
+    elapsed = time.time() - start
+    
+    count = len(get_nist_merged_cve_json())
+    
+    update_metadata(NIST_CVE_MERGED_PATH,{'sources': [NIST_DATA_FEEDS_URL], 'generation_time': elapsed, 'count': count})
 
-    # open it
-    nist_json = get_nist_merged_cve_json()
-
-    print("Loaded {} with length {}".format(
-        NIST_CVE_MERGED_PATH, len(nist_json)))
+    print("Loaded {} with length {}".format(NIST_CVE_MERGED_PATH, count))
 
 
 if __name__ == "__main__":
-    main()
+    update()

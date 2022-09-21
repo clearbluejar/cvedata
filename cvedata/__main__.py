@@ -1,10 +1,12 @@
-from  .update import update_all_data
+from  .metadata import print_stats
 
 def main():
     """
     cvedata module main function
     """
-    update_all_data()
+    print_stats()
+
+    print("To update data run: python -m cvedata.update")
 
 
 if __name__ == "__main__":

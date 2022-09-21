@@ -3,11 +3,14 @@ import json
 import gzip
 import requests
 import os
+import time
+import pathlib
 from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
+from .metadata import update_metadata
 
-MSRC_CVRF_MERGED_PATH = os.path.join(DATA_DIR, 'msrc_merged.json.gz')
+MSRC_CVRF_MERGED_PATH = os.path.join(DATA_DIR, 'msrc_cvrf_merged.json.gz')
 MSRC_API_URL = "https://api.msrc.microsoft.com/"
 
 def get_all_knowledge_base_cvrf():
@@ -39,7 +42,7 @@ def get_knowledge_base_cvrf_json(cvrf_id):
     cvrf_json = None
 
     if not os.path.exists(CACHE_PATH):
-        os.mkdir(CACHE_PATH)
+        os.makedirs(CACHE_PATH,exist_ok=True)
 
     # if file exists locally, load it
     cvrf_file = os.path.join(CACHE_PATH, cvrf_id + ".json")
@@ -91,7 +94,7 @@ def create_msrc_merged_cvrf_json():
     with gzip.open(MSRC_CVRF_MERGED_PATH, "w") as f:
         f.write(json.dumps(result).encode("utf-8"))
 
-    print("Created {} with len {}".format(MSRC_CVRF_MERGED_PATH,len(result)))
+    print("Created {} with len {}".format(pathlib.Path(MSRC_CVRF_MERGED_PATH).name,len(result)))
 
 @lru_cache(None)
 def get_msrc_merged_cvrf_json():
@@ -104,17 +107,23 @@ def get_msrc_merged_cvrf_json():
             MSRC_CVRF_MERGED_PATH, __file__)) from e
 
 
-def build_msrc_merged_cvrf():
-
+def update():
+    print(f"Updating {pathlib.Path(MSRC_CVRF_MERGED_PATH).name}...")
     # create the merged cvrf json file
+    start = time.time()
     create_msrc_merged_cvrf_json()
+    elapsed = time.time() - start
 
     # open it
     cvrf_json = get_msrc_merged_cvrf_json()
 
-    print("Loaded {} with length {}".format(
-        MSRC_CVRF_MERGED_PATH, len(cvrf_json)))
+    print("Loaded {} with len {}".format(
+        pathlib.Path(MSRC_CVRF_MERGED_PATH).name, len(cvrf_json)))
+
+    count = len(cvrf_json)
+
+    update_metadata(MSRC_CVRF_MERGED_PATH,{'sources': [MSRC_API_URL], 'generation_time': elapsed, 'count': count})
 
 
 if __name__ == "__main__":
-    build_msrc_merged_cvrf()
+    update()

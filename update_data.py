@@ -1,7 +1,7 @@
 import cvedata.cvrf as cvrf
 from cvedata.cwe import main as cwe_update
 from cvedata.msrc_tags import main as msrc_tags_update
-from cvedata.win_bin_map import main as win_bin_map_update
+from cvedata.winbindex import main as win_bin_map_update
 
 from cvedata.tags_to_bins import main as tags_to_bins_update
 from cvedata.nist import main as nist_update

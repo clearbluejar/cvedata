@@ -1,6 +1,7 @@
 import json
 import pathlib
 import datetime
+import json
 
 from . config import METADATA_PATH
 
@@ -13,6 +14,9 @@ def get_metadata_json() -> dict:
             data_file_json = json.load(f)
 
     return data_file_json
+
+def print_stats():
+    print(json.dumps(get_metadata_json(), indent=4))
 
 def update_metadata(path,meta):
     """

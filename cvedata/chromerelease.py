@@ -3,11 +3,13 @@ import requests
 from datetime import datetime
 import json
 import os
+import time
+import pathlib
 
 from .config import DATA_DIR
 from .metadata import update_metadata
 
-chrome_release_url = "https://chromereleases.googleblog.com"
+CHROME_RELEASE_URL = "https://chromereleases.googleblog.com"
 RAW_SCRAPE_CHROME_JSON_PATH = os.path.join(
     DATA_DIR, 'chromerelease_raw_cve.json')
 PARSED_CHROME_JSON_PATH = os.path.join(
@@ -43,7 +45,7 @@ def scrape_chromerelease_cves():
             if year == current_year and month > current_month:
                 continue
 
-            urls.append("{}/{}/{:02d}".format(chrome_release_url, year, month))
+            urls.append("{}/{}/{:02d}".format(CHROME_RELEASE_URL, year, month))
 
     # Scrape the CVEs (sorry)
     for url in urls:
@@ -149,6 +151,14 @@ def parse_chrome_release_list(raw_cves):
         cve_id = re.search(r'CVE-\d+-\d+', raw_cve[2])
         description = re.search(r'CVE-\d+-\d+(: *)(.*)\. ', raw_cve[2])
         date = re.search(r'\d\d\d\d-\d\d-\d\d', raw_cve[2])
+        twitter = re.search(r'^.*?\btwitter\.com/@?(\w{1,15})(?:[?/,\"].*)?$',raw_cve[2])
+
+        if not twitter:
+            twitter = re.search(r'(?<![\w.-])@([A-Za-z][\w-]+)',raw_cve[2])
+
+     
+        cve['twitter'] = twitter[1] if twitter else twitter
+
 
         cve['reward'] = reward[1] if reward else reward
         cve['bug_id'] = bug_id[1] if bug_id else bug_id
@@ -180,6 +190,10 @@ def parse_chrome_release_list(raw_cves):
         if cve['acknowledgment']:
             cve['acknowledgment'] = cve['acknowledgment'].strip().strip(
                 '.').lower().replace('\n', '')
+
+        # set twitter handle
+
+
 
         if cve['description']:
             search = re.search(
@@ -215,14 +229,27 @@ def get_chromerelease_cve_json():
             PARSED_CHROME_JSON_PATH, __file__)) from e
 
 
-def build_chromerelease_json():
+def update():
+    
+    print(f"Updating {pathlib.Path(RAW_SCRAPE_CHROME_JSON_PATH).name}...")
+    start = time.time()
+    
     # Scrape Chrome Release acknowledgments
     raw_cves = scrape_chromerelease_cves()
+    elapsed = time.time() - start
 
+    update_metadata(RAW_SCRAPE_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL], 'generation_time': elapsed})
+
+    # Parse
+    print(f"Updating {pathlib.Path(PARSED_CHROME_JSON_PATH).name}...")
+    start = time.time()
     parse_chrome_release_list(raw_cves)
+    elapsed = time.time() - start
 
-    update_metadata(PARSED_CHROME_JSON_PATH,{ 'source': chrome_release_url})
+    count = len(get_chromerelease_cve_json())
+    
+    update_metadata(PARSED_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL], 'generation_time': elapsed, 'count': count})
 
 
 if __name__ == "__main__":
-    build_chromerelease_json()
+    update()
