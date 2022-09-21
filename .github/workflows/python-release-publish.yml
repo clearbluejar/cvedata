@@ -40,7 +40,12 @@ jobs:
     - name: Update CVE data
       run: |
         pip install -r requirements-dev.txt
-        python -m cvedata.update 
+        python -m cvedata.update
+        ls -rotah cvedata/data/*.json cvedata/data/*.gz
+    - name: Print Stats
+      run: |        
+        python -m cvedata
+        ls -rotah cvedata/data/*.json cvedata/data/*.gz
     # - name: Publish package
     #   uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
     #   with:
@@ -52,5 +57,6 @@ jobs:
         files: |
           cvedata/data/*.json
           cvedata/data/*.gz
+        tag_name: "v0.1.0"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
