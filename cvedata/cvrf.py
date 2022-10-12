@@ -23,7 +23,11 @@ def get_all_knowledge_base_cvrf():
         data = json.loads(response.content)
 
         for cvrf in data['value']:
-            get_knowledge_base_cvrf_json(cvrf['ID'])
+            if len(cvrf['ID']) > 0:                
+                if "Early" in cvrf['DocumentTitle']:
+                    print(f"Skipping early update {cvrf['DocumentTitle']}")
+                    continue
+                get_knowledge_base_cvrf_json(cvrf['ID'])
 
     return
 
