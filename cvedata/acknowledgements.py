@@ -198,11 +198,12 @@ def create_researcher_twitter_map_json():
     chrome_name_to_twitter_map = {}
     for cve in chrome_release_json:
         if cve.get('acknowledgment') and cve['twitter']:
-            chrome_name_to_twitter_map.setdefault(cve['acknowledgment'],set()).add(cve['twitter'])
+            #chrome_name_to_twitter_map.setdefault(cve['acknowledgment'],set()).add(cve['twitter'])
+            chrome_name_to_twitter_map[cve['acknowledgment']] = cve['twitter']
 
     #convert set
-    for key in chrome_name_to_twitter_map.keys():
-        chrome_name_to_twitter_map[key] = str(chrome_name_to_twitter_map[key])
+    # for key in chrome_name_to_twitter_map.keys():
+    #     chrome_name_to_twitter_map[key] = chrome_name_to_twitter_map[key]
 
     handle_map = {}
 
@@ -235,6 +236,8 @@ def create_researcher_twitter_map_json():
             hardcoded_count += 1
 
         handle_map.setdefault(researcher,[]).append(match)
+
+    handle_map = {k: handle_map[k] for k in sorted(handle_map,key=lambda x: x, reverse=True) }
 
     with open(RESEARCHER_TWITTER_MAP_JSON_PATH, 'w') as f:
         json.dump(handle_map, f,indent=4)
