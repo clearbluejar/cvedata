@@ -4,13 +4,13 @@ import gzip
 import requests
 import os
 import time
-import pathlib
+from pathlib import Path
 from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
 from .metadata import update_metadata
 
-MSRC_CVRF_MERGED_PATH = os.path.join(DATA_DIR, 'msrc_cvrf_merged.json.gz')
+MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc_cvrf_merged.json.gz')
 MSRC_API_URL = "https://api.msrc.microsoft.com/"
 
 def get_all_knowledge_base_cvrf():
@@ -49,7 +49,7 @@ def get_knowledge_base_cvrf_json(cvrf_id):
         os.makedirs(CACHE_PATH,exist_ok=True)
 
     # if file exists locally, load it
-    cvrf_file = os.path.join(CACHE_PATH, cvrf_id + ".json")
+    cvrf_file = Path(CACHE_PATH, cvrf_id + ".json")
 
     if not os.path.exists(cvrf_file):        
         url = "{}cvrf/v2.0/cvrf/{}".format(
@@ -92,13 +92,17 @@ def create_msrc_merged_cvrf_json():
         
     for f in glob.glob(os.path.join(CACHE_PATH, "*.json")):
         with open(f, "r") as infile:
-            result.append(json.load(infile))
+            cvrf = json.load(infile)
+            if cvrf.get('Vulnerability'):
+                result.append(cvrf)
+            else:
+                print(f"skipping cvrf {cvrf['DocumentTitle']} lacking Vulnerability info")
 
     
     with gzip.open(MSRC_CVRF_MERGED_PATH, "w") as f:
         f.write(json.dumps(result).encode("utf-8"))
 
-    print("Created {} with len {}".format(pathlib.Path(MSRC_CVRF_MERGED_PATH).name,len(result)))
+    print("Created {} with len {}".format(MSRC_CVRF_MERGED_PATH,len(result)))
 
 @lru_cache(None)
 def get_msrc_merged_cvrf_json():
@@ -110,19 +114,25 @@ def get_msrc_merged_cvrf_json():
         raise Exception("Missing {}. Please run {}".format(
             MSRC_CVRF_MERGED_PATH, __file__)) from e
 
+def get_msrc_merged_cvrf_json_keyed() -> dict:
+
+    def _get_cvrf_id(cvrf):
+        return cvrf['DocumentTracking']['Identification']['ID']['Value']
+
+
+    msrc_merged_json = get_msrc_merged_cvrf_json()
+
+    return {_get_cvrf_id(cvrf): cvrf for cvrf in msrc_merged_json}
 
 def update():
-    print(f"Updating {pathlib.Path(MSRC_CVRF_MERGED_PATH).name}...")
-    # create the merged cvrf json file
+    print(f"Updating {MSRC_CVRF_MERGED_PATH}...")
+    
     start = time.time()
     create_msrc_merged_cvrf_json()
     elapsed = time.time() - start
 
     # open it
     cvrf_json = get_msrc_merged_cvrf_json()
-
-    print("Loaded {} with len {}".format(
-        pathlib.Path(MSRC_CVRF_MERGED_PATH).name, len(cvrf_json)))
 
     count = len(cvrf_json)
 

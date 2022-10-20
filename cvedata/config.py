@@ -1,5 +1,10 @@
-import os
+from pathlib import Path
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
-METADATA_PATH = os.path.join(DATA_DIR, 'metadata.json')
-CACHE_PATH = os.path.join(DATA_DIR, '.cache')
+DATA_DIR = Path(__file__).parent / 'data'
+PANDAS_DIR = Path(DATA_DIR, 'pandas')
+METADATA_PATH = Path(DATA_DIR, 'metadata.json')
+CACHE_PATH = Path(DATA_DIR, '.cache')
+
+DATA_DIR.mkdir(exist_ok=True,parents=True)
+PANDAS_DIR.mkdir(exist_ok=True,parents=True)
+CACHE_PATH.mkdir(exist_ok=True,parents=True)

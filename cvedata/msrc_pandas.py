@@ -1,93 +1,178 @@
+from curses.ascii import isdigit
 import os
 import json
 import time
-import pathlib
 import pandas as pd
-from pandas.io.json import json_normalize
+from datetime import datetime
+from pathlib import Path
 
-from .config import DATA_DIR
-from .cvrf import get_msrc_merged_cvrf_json,MSRC_API_URL
+
+from .config import DATA_DIR, PANDAS_DIR
+from .msrc_cvrf import get_msrc_merged_cvrf_json,get_msrc_merged_cvrf_json_keyed,MSRC_API_URL
 from .metadata import update_metadata
+from .msrc_tags import get_tags_desc_to_bins
+from .util import get_file_json
 
-MSRC_TAG_BIN_MAP = os.path.join(DATA_DIR,"msrc-tags-to-bins.json")
+MSRC_TAG_BIN_MAP = Path(DATA_DIR,"msrc-cvrf-pandas-merged.json.gz")
 
 def get_tag(notes):
+    """
+    The MSRC tag points to the affected software component
+    """
+
+    tag = None
 
     for note in notes:
+
         if note['Type'] == 7:
-            print(note['Value'])
-            return note['Value']
+            # expect there to only be 1 tag
+            assert tag is None 
+            tag = note['Value']
 
-    return None
+    return tag
 
-def get_faq(notes):
+def get_faqs(notes):
+    """
+    MSRC FAQ provides information related to the CVE context
+    """
 
+    faqs = []
+    
     for note in notes:
-        if note['Type'] == 7:
-            print(note['Value'])
-            return note['Value']
+        if note['Type'] == 4:
+            faqs.append(note['Value'])            
 
-    return None
+    return faqs
+
+def get_kbs(rems):
+    """
+    MSRC List of KBs related to CVE
+    """
+
+    kbs = set()
+    
+    for rem in rems:
+        if rem['Description'].get('Value'):
+            kb = rem['Description']['Value']
+            if str(kb).isdigit():
+                # if rem.get('URL'):
+                #     kb = f"[KB{kb}]({rem['URL']})"
+                kbs.add(f"KB{kb}")
+            else:
+                print(f"Error: KB non numeric {rem}")
+
+    return ' '.join(sorted(list(kbs)))
+
+def get_versions(rems):
+    """
+    MSRC List of KBs related to CVE
+    """
+
+    versions = set()
+    
+    for rem in rems:
+        # FixedBuild isn't always there
+        version = rem.get('FixedBuild')
+        if version:
+            if "http" not in version:
+                versions.add(version)
+            else:
+                print(f"Error: Fixedbuild non standard error {rem}")
+
+    return ' '.join(sorted(list(versions)))
+
+
+def get_bins(row):
+   
+    bins = []
+
+    td_to_bin_map = get_tags_desc_to_bins()
+
+    # TODO user version and KBs to sharpen bins list
+
+    if row['Tags']:
+        tag = row['Tags'].lower()
+
+        if td_to_bin_map.get(tag):
+            for bin in td_to_bin_map[tag]:
+                bins.append(bin)
+
+
+    return ' '.join(bins)
+
+def get_acks(acks):
+    """
+    MSRC List of researchers for CVE
+    """
+
+    researchers = []
+    
+    
+    for ack in acks:
+        if ack.get('Name'):
+            for name in ack['Name']:
+                if name.get('Value'):
+                    researchers.append(name['Value'])
+
+        assert len(ack.get('URL')) == 1
+
+    return ' '.join(sorted(list(researchers)))
+    
 
 
 def create_msrc_tag_bin_map():
-    #msrc_cvrf_json = get_msrc_merged_cvrf_json()
 
-    #df = pd.DataFrame()
-    #for cvrf in 
-    #df.append()
-    oct_path = pathlib.Path('cvedata/data/.cache/2022-Oct.json')
-    oct = json.loads(oct_path.read_text())
-    df = json_normalize(oct['Vulnerability'])
+    msrc_merged_json = get_msrc_merged_cvrf_json_keyed()
 
-    df.to_json('df.json')
+    cvrf_dfs = []
     
-    FIELDS = ["CVE", "tags"]
+    for cvrf_id in msrc_merged_json:
+        
+        print(f"Processing {cvrf_id}")
+        
+        df_update = pd.json_normalize(msrc_merged_json[cvrf_id])
+        df_vulns = pd.json_normalize(msrc_merged_json[cvrf_id]['Vulnerability'])
 
-    df['tags'] = df["Notes"].apply(lambda x: get_tag(x))
+        FIELDS = ["Initial Release", "Tags", "KBs", "Versions", "Bins", "Acks"]
 
-    print(df.head())
-    # for d in df["Notes"][0]:
-    #     print(d)
-    # #print(df["Title.Value"])
-    print(df[FIELDS])
-    #print(df.head())
+        df_vulns['Tags'] = df_vulns["Notes"].apply(get_tag)
+        df_vulns['FAQs'] = df_vulns["Notes"].apply(get_faqs)
+        df_vulns['KBs'] = df_vulns["Remediations"].apply(get_kbs)
+        df_vulns['Versions'] = df_vulns["Remediations"].apply(get_versions)
+        df_vulns['CVRF ID'] = df_update['DocumentTracking.Identification.ID.Value'].values[0]    
+        df_vulns['Initial Release'] = datetime.strftime(datetime.fromisoformat(df_update['DocumentTracking.InitialReleaseDate'].values[0].replace('Z','')),'%Y-%m-%d')
+        df_vulns['Current Release'] = datetime.strftime(datetime.fromisoformat(df_update['DocumentTracking.CurrentReleaseDate'].values[0].replace('Z','')),'%Y-%m-%d')
+        df_vulns['Acks'] = df_vulns['Acknowledgments'].apply(get_acks)
+        df_vulns['Bins'] = df_vulns[['Tags','KBs','Versions']].apply(get_bins,axis=1)
 
-    notes_df = pd.DataFrame(df['Notes'].values.tolist())
-    print(notes_df)
+        df_vulns.to_json(PANDAS_DIR / f"{cvrf_id}-pandas.json" )
+        df_vulns.set_index('CVE',inplace=True,verify_integrity=True)
+        print(df_vulns[FIELDS].head())
+
+        df_vulns[FIELDS].to_markdown(PANDAS_DIR / f"{cvrf_id}-pandas.md",tablefmt="github")
+
+        print(df_vulns.head())
+        cvrf_dfs.append(df_vulns)
+
+    all_cvrf_df = pd.concat(cvrf_dfs)
+
+    all_cvrf_df.to_json(MSRC_TAG_BIN_MAP)
+    print(all_cvrf_df.head())
     
-    print("stop")
-    # tag_set = set()
 
-    # for cvrf_json in msrc_cvrf_json:
-    #     if cvrf_json.get("Vulnerability"):
-    #         [tag_set.add(note.get('Value').lower()) for vuln in cvrf_json["Vulnerability"] for note in vuln['Notes']
-    #                     if note['Type'] == 7 and note.get('Value')]
-
-    # tag_set = sorted(tag_set)
-
-    # print(f"Found {len(tag_set)} tags")
-
-    # with open(MSRC_TAG_BIN_MAP, 'w') as f:
-    #     json.dump(tag_set,f,indent=4)
 
 def get_msrc_tag_bin_json():
-    try:
-        with open(MSRC_TAG_BIN_MAP) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            MSRC_TAG_BIN_MAP, __file__)) from e
+    return get_file_json(MSRC_TAG_BIN_MAP,__file__)
 
 def update():
 
-    print(f"Updating {pathlib.Path(MSRC_TAG_BIN_MAP).name}...")
+    print(f"Updating {MSRC_TAG_BIN_MAP}...")
     
     start = time.time()   
     create_msrc_tag_bin_map()
     elapsed = time.time() - start
 
-    count = len(get_msrc_tags())
+    count = len(get_msrc_tag_bin_json())
 
     update_metadata(MSRC_TAG_BIN_MAP,{'sources': [MSRC_API_URL], 'generation_time': elapsed,  'count': count})
 

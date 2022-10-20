@@ -11,6 +11,7 @@ from .msrc_cvrf import get_msrc_merged_cvrf_json, MSRC_API_URL
 from .chromerelease import get_chromerelease_cve_json, CHROME_RELEASE_URL
 from .metadata import update_metadata, should_update
 from .known_ack_to_twitter import KNOWN_ACK_TWITTER_HANDLES
+from .util import get_file_json
 
 # list of all names available
 RESEARCHER_NAMES_JSON_PATH = Path(DATA_DIR, 'researcher_names.json')
@@ -223,17 +224,6 @@ def create_researcher_twitter_map_json():
 
     total = chrome_found + found_count + hardcoded_count
     print(f"Found {total} researchers with twitter handles out of {len(researcher_json)} written to {RESEARCHER_TWITTER_MAP_JSON_PATH}")
-
-
-def get_file_json(path: Path, base: str) -> dict:
-    """
-    Open path and return json
-    """
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception(f"Missing {path}. Please run {base}") from e
 
 
 def get_researcher_names_json():

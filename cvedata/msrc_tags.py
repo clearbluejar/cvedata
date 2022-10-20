@@ -1,18 +1,23 @@
 import os
 import json
 import time
-import pathlib
+from pathlib import Path
 import difflib
 
 from .config import DATA_DIR
 from .msrc_cvrf import get_msrc_merged_cvrf_json,MSRC_API_URL
 from .metadata import update_metadata
 from .winbindex import get_winbindex_desc_to_bin_map, WINBINDEX_GITHUB_URL
+from .known_tag_to_bin import KNOWN_TAG_TO_BIN_MAP
+from .util import get_file_json
 
-MSRC_TAGS_PATH = os.path.join(DATA_DIR,"msrc-tags-merged.json")
-MSRC_TAGS_FREQ_PATH = os.path.join(DATA_DIR,"msrc-tags-merged-frequency.json")
-MSRC_TAGS_AND_DESC_TO_BINS_PATH = os.path.join(DATA_DIR,"msrc-tags-and-desc-to-bins.json")
-MIN_SIMILARITY = 0.41
+MSRC_TAGS_PATH = Path(DATA_DIR,"msrc-tags-merged.json")
+MSRC_TAGS_FREQ_PATH = Path(DATA_DIR,"msrc-tags-merged-frequency.json")
+MSRC_TAGS_AND_DESC_TO_BINS_PATH = Path(DATA_DIR,"msrc-tags-to-bins.json")
+
+# controls the relationship of file description to tags
+MIN_SIMILARITY = 0.45
+MAX_BINS_PER_TAG = 10
 
 def clean_tag(tag):
     import re
@@ -20,8 +25,7 @@ def clean_tag(tag):
     if len(tag.split()) > 2:
         tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
 
-    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)        
-
+    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
 
     return tag.strip()
 
@@ -29,7 +33,7 @@ def get_tag_similarity(tag1,tag2):
     ctag1 = clean_tag(tag1).split()
     ctag2 = clean_tag(tag2).split()
     sim = difflib.SequenceMatcher(None,ctag1,ctag2).ratio()
-    if "remote procedure" in tag1 and "remote procedure" in tag2:
+    if "remote procedure" in ctag1 or "remote procedure" in ctag2:
         print(f"{ctag1}:{ctag2}: {sim}")
     return sim
 
@@ -38,52 +42,40 @@ def create_tags_desc_to_bins():
     tags_json = get_msrc_tags()
 
     wb_desc_to_bin_json : dict = get_winbindex_desc_to_bin_map()
-    # filtered_wb_desc_to_bin_json = {}
-
-
-    # #filter out any description below threshold
-    # for bin_desc in wb_desc_to_bin_json:
-    #     keep = False
-    #     for tag in tags_json:
-    #         if get_tag_similarity(tag,bin_desc) > MIN_SIMILARITY:
-    #             keep = True
-    #             break
-            
-    #     if keep:
-    #         filtered_wb_desc_to_bin_json[bin_desc] = wb_desc_to_bin_json[bin_desc]
-
-
-    print(len(tags_json))
-    print(len(wb_desc_to_bin_json))
 
     tags_desc_to_bins = {}
 
     for tag in tags_json:
 
-        tags_desc_to_bins.setdefault(tag,[])
+        tags_desc_to_bins.setdefault(tag,set())
 
+        if tag in KNOWN_TAG_TO_BIN_MAP:
+            for bin in KNOWN_TAG_TO_BIN_MAP[tag]:
+                [tags_desc_to_bins[tag].add(bin_name) for bin_name in KNOWN_TAG_TO_BIN_MAP[tag]]
+
+            # get to next tag
+            continue
+
+        # troll through file descriptions attempting to find a match (slow!)
         for bin_desc in wb_desc_to_bin_json:
-            sim = get_tag_similarity(tag,bin_desc)
+            sim = get_tag_similarity(tag,bin_desc)            
+                
             if sim > MIN_SIMILARITY:
-                #print(f"{sim} - {clean_tag(tag)} - {clean_tag(wb_tag)}")
-                [tags_desc_to_bins[tag].append(bin_name) for bin_name in wb_desc_to_bin_json[bin_desc] if bin_name not in tags_desc_to_bins[tag]]
+                print(f"{sim} - {clean_tag(tag)} - {clean_tag(bin_desc)}")
+                [tags_desc_to_bins[tag].add(bin_name) for bin_name in wb_desc_to_bin_json[bin_desc]]
 
-    tags_desc_to_bins = {k: tags_desc_to_bins[k] for k in sorted(tags_desc_to_bins,key=lambda x: x, reverse=True)}
+    tags_desc_to_bins = {k: list(tags_desc_to_bins[k]) for k in sorted(tags_desc_to_bins,key=lambda x: x, reverse=True)}
 
+    # if more than MAX_BINS was found it is suspicious. rank by similarity and drop some    
     for tag in tags_desc_to_bins:
-        if len(tags_desc_to_bins[tag]) > 10:
-            print(tag)
+        if len(tags_desc_to_bins[tag]) > MAX_BINS_PER_TAG:            
+            tags_desc_to_bins[tag].append('Warning: Tag has more matches than likely')
 
     with open(MSRC_TAGS_AND_DESC_TO_BINS_PATH, 'w') as f:
         json.dump(tags_desc_to_bins,f,indent=4)
 
 def get_tags_desc_to_bins() -> dict:
-    try:
-        with open(MSRC_TAGS_AND_DESC_TO_BINS_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            MSRC_TAGS_AND_DESC_TO_BINS_PATH, __file__)) from e
+    return get_file_json(MSRC_TAGS_AND_DESC_TO_BINS_PATH,__file__)
 
 def create_msrc_tags():
     msrc_cvrf_json = get_msrc_merged_cvrf_json()
@@ -123,9 +115,6 @@ def create_msrc_tags():
     #                     tag = note.get('Value')
     #             tags_faqs.setdefault(tag,[]).append([ desc, faq])
 
-
-
-
     tag_set = sorted(tag_set)
 
     print(f"Found {len(tag_set)} tags")
@@ -147,16 +136,11 @@ def create_msrc_tags():
         
 
 def get_msrc_tags():
-    try:
-        with open(MSRC_TAGS_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            MSRC_TAGS_PATH, __file__)) from e
+    return get_file_json(MSRC_TAGS_PATH, __file__)
 
 def update():
 
-    print(f"Updating {pathlib.Path(MSRC_TAGS_PATH).name} and {pathlib.Path(MSRC_TAGS_FREQ_PATH).name}...")
+    print(f"Updating {MSRC_TAGS_PATH} and {MSRC_TAGS_FREQ_PATH}...")
     
     start = time.time()   
     create_msrc_tags()
@@ -166,7 +150,7 @@ def update():
 
     update_metadata(MSRC_TAGS_PATH,{'sources': [MSRC_API_URL], 'generation_time': elapsed,  'count': count})
 
-    print(f"Updating {pathlib.Path(MSRC_TAGS_AND_DESC_TO_BINS_PATH).name}...")
+    print(f"Updating {MSRC_TAGS_AND_DESC_TO_BINS_PATH}...")
     
     start = time.time()
     create_tags_desc_to_bins()
