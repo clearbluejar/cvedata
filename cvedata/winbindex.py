@@ -75,12 +75,13 @@ def create_winbindex_maps():
     kb_to_bins = {}
     ver_to_bins = {}
 
-    total = len(os.listdir(WINBINDEX_FILES_DATA_PATH))
+    files = os.listdir(WINBINDEX_FILES_DATA_PATH)
+    total = len(files)
     count = 0
     failed_load = []
 
     print(f"Processing {total} files..")
-    for i,file in enumerate(os.listdir(WINBINDEX_FILES_DATA_PATH)):
+    for i,file in enumerate(files):
         
         if re.search('exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv',file):
             try: 
@@ -93,7 +94,8 @@ def create_winbindex_maps():
             for bin in file_json:
 
                 filename = file.replace('.json.gz','')
-
+                if "rpcrt4" in filename:
+                    print("ASDf")
                 if file_json[bin].get('fileInfo'):
                     if file_json[bin]['fileInfo'].get('description'):
                         desc_to_bins.setdefault(file_json[bin]['fileInfo']['description'],[])                        

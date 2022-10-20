@@ -1,6 +1,6 @@
 import time 
 
-from .cvrf import update as cvrf_update
+from .msrc_cvrf import update as cvrf_update
 from .msrc_tags import update as msrc_tags_update
 from .chromerelease import update as chromerelease_update
 from .acknowledgements import update as ack_update

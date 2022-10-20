@@ -1,4 +1,4 @@
-import cvedata.cvrf as cvrf
+import cvedata.msrc_cvrf as msrc_cvrf
 from cvedata.cwe import main as cwe_update
 from cvedata.msrc_tags import main as msrc_tags_update
 from cvedata.winbindex import main as win_bin_map_update
