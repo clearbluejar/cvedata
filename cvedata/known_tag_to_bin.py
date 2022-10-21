@@ -18,9 +18,6 @@ KNOWN_TAG_TO_BIN_MAP = {
     "microsoft local security authority server (lsasrv)": [
         "lsasrv.dll"
     ],
-    "microsoft windows": [
-        "http.sys"
-    ],
     "microsoft windows alpc": [
         "ntoskrnl.exe"
     ],
