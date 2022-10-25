@@ -9,13 +9,13 @@ def get_metadata_json() -> dict:
 
     data_file_json = {}
 
-    if pathlib.Path(METADATA_PATH).exists():
+    if Path(METADATA_PATH).exists():
         with open(METADATA_PATH) as f:
             data_file_json = json.load(f)
 
     return data_file_json
 
-def print_stats():
+def print_stats():    
     print(json.dumps(get_metadata_json(), indent=4))
 
 def update_metadata(path,meta: dict,count: int,gen_time: datetime,key_index=None,swap_axes=None,normalize=None):

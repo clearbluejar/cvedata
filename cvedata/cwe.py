@@ -3,13 +3,14 @@ import gzip
 import xmltodict
 import os
 import time
-import pathlib
+from pathlib import Path
 
 from .config import DATA_DIR
 from .metadata import update_metadata
+from .util import get_file_json
 
 # download https://cwe.mitre.org/data/xml/cwec_latest.xml.zip and unzip for CI
-CWE_JSON_PATH = os.path.join(DATA_DIR,'cwe.json.gz')
+CWE_JSON_PATH = Path(DATA_DIR,'cwe.json.gz')
 CWE_XML_DOWNLOAD_URL = "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip"
 
 # from https://techoverflow.net/2018/01/16/downloading-reading-a-zip-file-in-memory-using-python/
@@ -65,17 +66,11 @@ def create_cwe_json():
     print("Created {} with len {}".format(CWE_JSON_PATH,len(cwes_d)))
 
 def get_cwe_json():
-
-    try:
-        with gzip.open(CWE_JSON_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            CWE_JSON_PATH, __file__)) from e
+    return get_file_json(CWE_JSON_PATH,__file__)
 
 def update():
 
-    print(f"Updating {pathlib.Path(CWE_JSON_PATH).name}...")
+    print(f"Updating {CWE_JSON_PATH}...")
     
     start = time.time()
     create_cwe_json()

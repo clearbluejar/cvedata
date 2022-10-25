@@ -1,0 +1,70 @@
+name: deploy-book-from-release
+
+# Only run this when the master branch changes
+on:
+  push:
+    branches:
+    - master
+    # If your git repository has the Jupyter Book within some-subfolder next to
+    # unrelated files, you can make this run only if a file within that specific
+    # folder has been modified.
+    #
+    # paths:
+    # - some-subfolder/**
+  release:
+    types: [published]    
+  workflow_dispatch:
+
+# This job installs dependencies, builds the book, and pushes it to `gh-pages`
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Download latest release data
+      uses: robinraju/release-downloader@v1.5
+      with:
+        repository: "clearbluejar/cvedata"
+        latest: true
+        fileName: "*"
+        out-file-path: "cvedata/data"
+
+    - name: Install dependencies
+      run: |
+        pip install -r docs/requirements.txt
+
+    - name: Generate Notebooks from Data
+      run: |        
+        python docs/create_books.py
+
+    - name: Check generated files
+      run: |
+        find .
+
+    # Build the book
+    - name: Build the book
+      run: |
+        jupyter-book build docs
+
+    # Upload Artifacts if failure
+    - name: Upload Build Dir
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: jupyter-book-build
+        path: docs/_build/        
+        retention-days: 3
+
+    # Push the book's HTML to github-pages
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html
