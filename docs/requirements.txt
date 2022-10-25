@@ -5,3 +5,4 @@ nbformat
 requests
 pandas
 tabulate
+itables
