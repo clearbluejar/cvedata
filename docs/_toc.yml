@@ -6,7 +6,7 @@ root: intro
 parts:
 - caption: Tutorial
   chapters:
-  - file: using_generated_data.ipynb
+  - file: using_generated_data
 - caption: Charts
   chapters:
   - glob: charts/*
@@ -16,8 +16,8 @@ parts:
   - file: book/generated/index
     sections: 
     - glob: book/generated/*
-- caption: MSRC Monthly Update Tables
-  chapters:
-  - file: book/msrc_pandas/index
-    sections:
-    - glob: book/msrc_pandas/*
+# - caption: MSRC Monthly Update Tables
+#   chapters:
+#   - file: book/msrc_pandas/index
+#     sections:
+#     - glob: book/msrc_pandas/*
