@@ -53,6 +53,15 @@ jobs:
       run: |
         jupyter-book build docs
 
+    # Upload Artifacts if failure
+    - name: Upload Build Dir
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: error-report
+        path: docs/_build/        
+        retention-days: 3
+
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
