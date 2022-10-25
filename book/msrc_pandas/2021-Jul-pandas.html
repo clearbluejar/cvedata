@@ -1,0 +1,2352 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2021-Jul &#8212; cvedata</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2021-Jun" href="2021-Jun-pandas.html" />
+    <link rel="prev" title="2021-Jan" href="2021-Jan-pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chart.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">cvedata</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    CVEDATA
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../using_generated_data.html">
+   Using Release Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Charts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../charts/GOAT_researcher_cve_quantity.html">
+   GOAT Researcher CVE Quantity
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generated Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../metadata.html">
+   Generated Metadata
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/index.html">
+   Generated Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_cve.json.html">
+     chromerelease_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_raw_cve.json.html">
+     chromerelease_raw_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/cwe.json.gz.html">
+     cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-cvrf-pandas-merged.json.gz.html">
+     msrc-cvrf-pandas-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged-frequency.json.html">
+     msrc-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged.json.html">
+     msrc-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-to-bins.json.html">
+     msrc-tags-to-bins.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc_cvrf_merged.json.gz.html">
+     msrc_cvrf_merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/nist_merged_cve.json.gz.html">
+     nist_merged_cve.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_cve_map.json.html">
+     researcher_cve_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names.json.html">
+     researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names_grouped.json.html">
+     researcher_names_grouped.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_twitter_map.json.html">
+     researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-desc-to-bins-map.json.html">
+     winbindex-desc-to-bins-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-kb-to-bins-map.json.gz.html">
+     winbindex-kb-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-versions-to-bins-map.json.gz.html">
+     winbindex-versions-to-bins-map.json.gz
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MSRC Monthly Update Tables
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   MSRC Updates Markdown
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Apr-pandas.html">
+     2016-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Aug-pandas.html">
+     2016-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Dec-pandas.html">
+     2016-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jul-pandas.html">
+     2016-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jun-pandas.html">
+     2016-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-May-pandas.html">
+     2016-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Nov-pandas.html">
+     2016-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Oct-pandas.html">
+     2016-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Sep-pandas.html">
+     2016-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Apr-pandas.html">
+     2017-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Aug-pandas.html">
+     2017-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Dec-pandas.html">
+     2017-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Feb-pandas.html">
+     2017-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jan-pandas.html">
+     2017-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jul-pandas.html">
+     2017-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jun-pandas.html">
+     2017-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Mar-pandas.html">
+     2017-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-May-pandas.html">
+     2017-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Nov-pandas.html">
+     2017-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Oct-pandas.html">
+     2017-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Sep-pandas.html">
+     2017-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Apr-pandas.html">
+     2018-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Aug-pandas.html">
+     2018-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Dec-pandas.html">
+     2018-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-FEB-pandas.html">
+     2018-FEB
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jan-pandas.html">
+     2018-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jul-pandas.html">
+     2018-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jun-pandas.html">
+     2018-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Mar-pandas.html">
+     2018-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-May-pandas.html">
+     2018-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Nov-pandas.html">
+     2018-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Oct-pandas.html">
+     2018-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Sep-pandas.html">
+     2018-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Apr-pandas.html">
+     2019-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Aug-pandas.html">
+     2019-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Dec-pandas.html">
+     2019-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Feb-pandas.html">
+     2019-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jan-pandas.html">
+     2019-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jul-pandas.html">
+     2019-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jun-pandas.html">
+     2019-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Mar-pandas.html">
+     2019-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-May-pandas.html">
+     2019-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Nov-pandas.html">
+     2019-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Oct-pandas.html">
+     2019-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Sep-pandas.html">
+     2019-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Apr-pandas.html">
+     2020-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Aug-pandas.html">
+     2020-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Dec-pandas.html">
+     2020-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Feb-pandas.html">
+     2020-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jan-pandas.html">
+     2020-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jul-pandas.html">
+     2020-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jun-pandas.html">
+     2020-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Mar-pandas.html">
+     2020-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-May-pandas.html">
+     2020-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Nov-pandas.html">
+     2020-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Oct-pandas.html">
+     2020-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Sep-pandas.html">
+     2020-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Apr-pandas.html">
+     2021-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Aug-pandas.html">
+     2021-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Dec-pandas.html">
+     2021-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Feb-pandas.html">
+     2021-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jan-pandas.html">
+     2021-Jan
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jun-pandas.html">
+     2021-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Mar-pandas.html">
+     2021-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-May-pandas.html">
+     2021-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Nov-pandas.html">
+     2021-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Oct-pandas.html">
+     2021-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Sep-pandas.html">
+     2021-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Apr-pandas.html">
+     2022-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Aug-pandas.html">
+     2022-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Feb-pandas.html">
+     2022-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jan-pandas.html">
+     2022-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jul-pandas.html">
+     2022-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jun-pandas.html">
+     2022-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Mar-pandas.html">
+     2022-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-May-pandas.html">
+     2022-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Oct-pandas.html">
+     2022-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Sep-pandas.html">
+     2022-Sep
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/issues/new?title=Issue%20on%20page%20%2Fbook/msrc_pandas/2021-Jul-pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/edit/master/docs/book/msrc_pandas/2021-Jul-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/msrc_pandas/2021-Jul-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2021-Jul</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="jul">
+<h1>2021-Jul<a class="headerlink" href="#jul" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CVE</p></th>
+<th class="head"><p>Initial Release</p></th>
+<th class="head"><p>Tags</p></th>
+<th class="head"><p>Impact</p></th>
+<th class="head"><p>Max CVSS</p></th>
+<th class="head"><p>KBs</p></th>
+<th class="head"><p>Versions</p></th>
+<th class="head"><p>Acks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CVE-2021-31183</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows TCP/IP</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-31196</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.2</p></td>
+<td><p>KB5004778 KB5004779 KB5004780</p></td>
+<td><p>15.00.1497.023 15.01.2242.012 15.01.2308.014 15.02.0858.015 15.02.0922.013</p></td>
+<td><p><a href="https://twitter.com/orange_8361">Orange Tsai (&#64;orange_8361)</a> with <a href="https://devco.re/">DEVCORE</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-31206</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.6</p></td>
+<td><p>KB5004778 KB5004779 KB5004780</p></td>
+<td><p>15.00.1497.023 15.01.2242.012 15.01.2308.014 15.02.0858.015 15.02.0922.013</p></td>
+<td><p>Steven Seeley (mr_me) of Source Incite working with Trend Micro Zero Day Initiative</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-31947</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Le Huu Quang Linh (<a href="https://twitter.com/linhlhq">&#64;linhlhq</a>) of <a href="https://starlabs.sg/">STARLabs</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-31961</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Installer</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.1</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>JeongOh Kyea (&#64;kkokkokye) of THEORI working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-31984</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Power BI</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.6</p></td>
+<td><p></p></td>
+<td><p>&gt; 2.94.781.0</p></td>
+<td><p>Carlos Alberca Daniel Gonzalez</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33740</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004249</p></td>
+<td><p>10.0.10240.19003 10.0.17763.2061 10.0.19041.1107</p></td>
+<td><p>HAO LI of VenusTech ADLab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33743</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Projected File System</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>k0shl</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33744</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Secure Kernel Mode</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33753</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Bing</p></td>
+<td><p>Spoofing</p></td>
+<td><p>4.7</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/imnarendrabhati">Narendra Bhati</a> with <a href="https://www.sumasoft.com/">Lead Penetration Tester at Suma Soft Pvt. Ltd. India</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33755</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: Windows Hyper-V</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>6.3</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Microsoft Platform Security Assurance &amp; Vulnerability Research</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33757</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Security Account Manager</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33758</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: Windows Hyper-V</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.7</p></td>
+<td><p>KB5004238</p></td>
+<td><p>10.0.14393.4530</p></td>
+<td><p>Huichen Lin and Dong Seong Kim of <a href="https://www.itee.uq.edu.au/">School of Information Technology and Electrical Engineering - The University of Queensland</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33759</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Desktop Bridge</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Tao Yan (<a href="https://twitter.com/Ga1ois">&#64;Ga1ois</a>) from Palo Alto Networks</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33760</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004245</p></td>
+<td><p>10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Phan Thanh Duy, Brandon Chong, Cao YiTian of STAR Labs &amp; Hồng Phi Phạm jackery</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33761</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004298</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33763</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004294 KB5004298 KB5004302</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33765</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Installer</p></td>
+<td><p>Spoofing</p></td>
+<td><p>6.2</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Asaf Rubinfeld of Fortinet’s <a href="https://www.fortiguard.com/">FortiGuard Labs</a> Ron Waisberg (&#64;epsilan) of <a href="http://okta.com">Okta</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33767</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>OpenEnclave</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8.2</p></td>
+<td><p></p></td>
+<td><p>v0.17.1</p></td>
+<td><p><a href="https://twitter.com/corankyu">Zhijingcheng Yu</a> of <a href="https://www.comp.nus.edu.sg/~yuz1996/">National University of Singapore</a> <a href="https://twitter.com/jhcui24">Jinhua Cui</a> of <a href="https://cimcs.github.io/">National University of Defense Technology and National</p></td>
+</tr>
+<tr class="row-odd"><td><p>University of Singapore</a> <a href="https://twitter.com/prateekatcs">Prateek Saxena</a> of <a href="https://www.comp.nus.edu.sg/~prateeks/">National University of Singapore</a> <a href="https://twitter.com/shw3ta_shinde">Shweta Shinde</a> of <a href="https://shwetashinde.org">ETH Zurich</a></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33771</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004298</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.3.9600.20069</p></td>
+<td><p>Microsoft Threat Intelligence Center (MSTIC)<br></p></td>
+</tr>
+<tr class="row-odd"><td><p>Microsoft Security Response Center (MSRC)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33773</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004298</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33774</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Event Tracing</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>He YiSheng, Zhang WangJunJie, and Li WenYue of Hillstone Network Security Research Institute</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33780</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34441</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Media Foundation</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>HAO LI of VenusTech ADLab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34442</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> ZhiyiZhang from Codesafe Team of Legendsec at Qi’anxin Group</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34491</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Win32K</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004298</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.3.9600.20069</p></td>
+<td><p>RanchoIce of Singular Security Lab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34492</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows PFX Encryption</p></td>
+<td><p>Spoofing</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34493</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Partition Management Driver</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.7</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34444</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> Ting Yu from CERT Team of Legendsec at Qi’anxin Group Zhiyi Zhang And Liubenjin from Codesafe Team of Legendsec at Qi’anxin Group</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34494</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34445</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34446</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows HTML Platform</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004289 KB5004294 KB5004298 KB5004305 KB5005563</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069 v1.001</p></td>
+<td><p><a href="https://twitter.com/khangkito">khangkito - Trần Văn Khang</a> with <a href="https://vincss.net/">VinCSS</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34496</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Zhangjie and willJ</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34447</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows MSHTML Platform</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>6.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004289 KB5004294 KB5004298 KB5004305 KB5005563</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069 v1.001</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> <a href="https://twitter.com/guhe120">Yuki Chen</a> <a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34497</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows MSHTML Platform</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>6.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004289 KB5004294 KB5004298 KB5004305 KB5005563</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069 v1.001</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34448</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>6.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004289 KB5004294 KB5004298 KB5005563</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069 v1.001</p></td>
+<td><p>yangkang(&#64;dnpushme)&amp;bianliang&amp;wanggang&amp;lihongfei&amp;liujialei of 360 ATA</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34498</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Marcin Wiązowski working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34449</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Win32K</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>晏子霜在线征婚 (<a href="https://twitter.com/yanzishuang">&#64;YanZiShuang</a>) of Big CJTeam</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34499</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows DNS</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34450</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: Windows Hyper-V</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.5</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Microsoft Platform Security Assurance &amp; Vulnerability Research</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34500</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>6.3</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34501</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office Excel</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5001973 KB5001977 KB5001993</p></td>
+<td><p>15.0.5363.1000 16.0.10376.20001 16.0.5188.100 16.0.5188.1000 16.51.210711.01</p></td>
+<td><p>14 working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34452</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5001949</p></td>
+<td><p>16.0.5188.1000</p></td>
+<td><p>Le Huu Quang Linh (<a href="https://twitter.com/linhlhq">&#64;linhlhq</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34467</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.1</p></td>
+<td><p>KB5001975 KB5001976 KB5001992</p></td>
+<td><p>15.0.5363.1000 16.0.10376.20001 16.0.5188.1000</p></td>
+<td><p>Thomas Moore, Signal Hill Technologies, <a class="reference external" href="https://www.signalhill.tech">https://www.signalhill.tech</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34518</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office Excel</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5001977 KB5001986 KB5001993</p></td>
+<td><p>15.0.5363.1000 16.0.5188.100 16.0.5188.1000</p></td>
+<td><p>Jinquan(&#64;jq0904) of DBAPPSecurity Lieying Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34468</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.1</p></td>
+<td><p>KB5001975 KB5001976 KB5001992</p></td>
+<td><p>15.0.5363.1000 16.0.10376.20001 16.0.5188.1000</p></td>
+<td><p>Steven Seeley (mr_me) of Source Incite working with Trend Micro Zero Day Initiative</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34519</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.3</p></td>
+<td><p>KB5001976 KB5001981 KB5001984 KB5001992 KB5001996</p></td>
+<td><p>15.0.5363.1000 16.0.5188.1000</p></td>
+<td><p>mr_me working with Trend Micro Zero Day Initiative</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34469</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>8.2</p></td>
+<td><p>KB5001979 KB5001983</p></td>
+<td><p>15.0.5363.1000 16.0.5188.1000</p></td>
+<td><p>Ben Faull of Microsoft Corporation</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34520</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5001975 KB5001976 KB5001992</p></td>
+<td><p>15.0.5363.1000 16.0.10376.20001 16.0.5188.1000</p></td>
+<td><p>Anonymous working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34521</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004245</p></td>
+<td><p>10.0.18363.1679 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>This vulnerability was discovered by Wayne Low of Fortinet’s FortiGuard Lab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34523</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>9</p></td>
+<td><p>KB5001779</p></td>
+<td><p>15.00.1497.015 15.01.2176.012 15.01.2242.008 15.02.0792.013 15.02.0858.010</p></td>
+<td><p>Orange Tsai(&#64;orange_8361) from DEVCORE Research Team working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34473</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>9.1</p></td>
+<td><p>KB5001779</p></td>
+<td><p>15.00.1497.015 15.01.2176.012 15.01.2242.008 15.02.0792.013 15.02.0858.010</p></td>
+<td><p>Orange Tsai(&#64;orange_8361) from DEVCORE Research Team working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34474</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Dynamics Business Central Control</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8</p></td>
+<td><p>KB5004715 KB5004716 KB5004717</p></td>
+<td><p>Application: 16.14.27266, Platform: 16.0.27253 Application: 17.8.27267, Platform: 17.0.27235 Application: 18.3.27480, Platform: 18.0.27469</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34476</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Common Internet File System</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Laurent Gaffie</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34528</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Visual Studio Code</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://daviddworken.com">David Dworken</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34479</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Visual Studio Code</p></td>
+<td><p>Spoofing</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://www.linkedin.com/in/shivambathla/">Shivam Bathla</a> (<a href="https://twitter.com/_shivambathla">&#64;_shivambathla</a>) Daniel Santos (<a class="reference external" href="https://twitter.com/bananabr">https://twitter.com/bananabr</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-36934</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5005030 KB5005031 KB5005033</p></td>
+<td><p>10.0.17763.2114 10.0.18363.1734 10.0.19041.1165 10.0.19042.1165 10.0.19043.1165</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ADV210003</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows NTLM</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-31979</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Microsoft Threat Intelligence Center (MSTIC)<br></p></td>
+</tr>
+<tr class="row-odd"><td><p>Microsoft Security Response Center (MSRC)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33745</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> Ting Yu from CERT Team of Legendsec at Qi’anxin Group ZhiyiZhang from Codesafe Team of Legendsec at Qi’anxin Group</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33746</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows DNS</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33749</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33750</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33751</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Fabien Perigaud (&#64;0xf4b) from Synacktiv (&#64;Synacktiv) working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a> vbty</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33752</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33754</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows DNS</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33756</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33764</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Key Distribution Center</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.9</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Windows Authentication Dev Team</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33766</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>7.3</p></td>
+<td><p>KB5001779</p></td>
+<td><p>15.00.1497.015 15.01.2176.012 15.01.2242.008 15.02.0792.013 15.02.0858.010</p></td>
+<td><p>LE XUAN TUYEN - VNPT ISC working with Trend Micro Zero Day Initiative</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33768</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8</p></td>
+<td><p>KB5004779 KB5004780</p></td>
+<td><p>15.01.2242.012 15.01.2308.014 15.02.0858.015 15.02.0922.013</p></td>
+<td><p><a href="https://twitter.com/D1iv3">Dlive(&#64;D1iv3)</a> of Tencent Security Xuanwu Lab <a href="https://twitter.com/orange_8361">Orange Tsai (&#64;orange_8361)</a> with <a href="https://devco.re/">DEVCORE</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33772</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows TCP/IP</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237</p></td>
+<td><p>10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Polar Bear at Microsoft</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33775</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Dhanesh Kizhakkinan of FireEye Inc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33776</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Le Huu Quang Linh (<a href="https://twitter.com/linhlhq">&#64;linhlhq</a>) of <a href="https://starlabs.sg/">STARLabs</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33777</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Dhanesh Kizhakkinan of FireEye Inc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33778</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Codecs Library</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Dhanesh Kizhakkinan of FireEye Inc. crashman of codemize security research lab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33779</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Active Directory Federation Services</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5004237 KB5004238 KB5004244</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33781</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Active Directory</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5004237 KB5004244 KB5004245 KB5006669 KB5006674</p></td>
+<td><p>10.0.14393.4704 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 10.0.22000.258</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33782</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Authenticode</p></td>
+<td><p>Spoofing</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33783</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows SMB</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33784</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Cloud Files Mini Filter Driver</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33785</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows AF_UNIX Socket Provider</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-33786</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Local Security Authority Subsystem Service</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-33788</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Local Security Authority Subsystem Service</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34438</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p><a href="https://twitter.com/yilmazcanyigit">Yiğit Can YILMAZ (&#64;yilmazanyigit)</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34439</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Media Foundation</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004238 KB5004249</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530</p></td>
+<td><p>HAO LI of VenusTech ADLab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34488</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Console Driver</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Vbty</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34489</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>HAO LI of VenusTech ADLab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34440</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Andy Keqi Hu</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34490</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows TCP/IP</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34451</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Spoofing</p></td>
+<td><p>5.3</p></td>
+<td><p>KB5001973</p></td>
+<td><p>16.0.10376.20001</p></td>
+<td><p>Pio</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34503</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Windows Media Foundation</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679</p></td>
+<td><p>Phan Thanh Duy (PTDuy) of STAR Labs &amp; Phạm Hồng Phi (4nhdaden)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34454</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Shell</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004298</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34504</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Address Book</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>BOXER (<a href="https://twitter.com/SecBoxer">&#64;SecBoxer</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34455</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows File History Service</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004294 KB5004298 KB5004302</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Tao Yan (<a href="https://twitter.com/Ga1ois">&#64;Ga1ois</a>) from Palo Alto Networks</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34456</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004302 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34457</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Access Connection Manager</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>ziming zhang of Ant Security Light-Year Lab</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34507</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Remote Assistance</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Chris Alladoum of SophosLabs, Sophos Ltd Tomer Bar &#64; SafeBreach and Eran Segal &#64; SafeBreach</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34458</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>9.9</p></td>
+<td><p>KB5004237 KB5004238 KB5004244</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107</p></td>
+<td><p>Cody Hartwig of Microsoft</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34508</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34459</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows AppContainer</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004294 KB5004298 KB5004302</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Alex Ionescu, <a href="https://www.crowdstrike.com">CrowdStrike Inc.</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34509</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Vbty k0shl</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34460</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004294 KB5004298 KB5004302</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>k0shl vbty</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34510</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p><a href="https://twitter.com/linhlhq">Le Huu Quang Linh </a> of  <a href="https://starlabs.sg/">STARlabs</a> z3r09 from Viettel Cyber Security working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34511</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Installer</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Polar Bear at Microsoft</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34461</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237</p></td>
+<td><p>10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>k0shl</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34512</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p><a href="https://twitter.com/linhlhq">Le Huu Quang Linh </a> of  <a href="https://starlabs.sg/">STARlabs</a> nghiadt12 and huyna of Viettel Cyber Security working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34462</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows AppX Deployment Extensions</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Tao Yan (<a href="https://twitter.com/Ga1ois">&#64;Ga1ois</a>) working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34513</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Storage Spaces Controller</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004245</p></td>
+<td><p>10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Le Huu Quang Linh <a href="https://twitter.com/linhlhq">(&#64;linhlhq)</a> from Vietnam National Cyber ​​Security Center (NCSC Vietnam) nghiadt12 from Viettel Cyber Security working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34514</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/hexnomad">Erik Egsgard</a> with <a href="https://fieldeffect.com/">Field Effect Software</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34464</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Defender</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34516</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Win32K</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249 KB5004285 KB5004289 KB5004294 KB5004298 KB5004299 KB5004302 KB5004305 KB5004307</p></td>
+<td><p>10.0.10240.19003 10.0.14393.4530 10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107 6.0.6003.21167 6.1.7601.25661 6.2.9200.23409 6.3.9600.20069</p></td>
+<td><p>Marcin Wiazowski working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34466</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Hello</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.7</p></td>
+<td><p>KB5004237 KB5004244 KB5004245</p></td>
+<td><p>10.0.17763.2061 10.0.18363.1679 10.0.19041.1107 10.0.19042.1107 10.0.19043.1107</p></td>
+<td><p>Omer Tsarfati, CyberArk Labs, <a class="reference external" href="https://labs.cyberark.com">https://labs.cyberark.com</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34517</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>5.3</p></td>
+<td><p>KB5001975 KB5001976 KB5001984 KB5001992</p></td>
+<td><p>15.0.5363.1000 16.0.10376.20001 16.0.5188.1000</p></td>
+<td><p><a href="https://twitter.com/mwulftange">Markus Wulftange</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34470</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8</p></td>
+<td><p>KB5003611 KB5003612 KB5004778</p></td>
+<td><p>15.00.1497.023 15.01.2308.008 15.02.0922.007</p></td>
+<td><p>James Forshaw of Google Project Zero with</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34522</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Defender</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34525</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Defense in Depth Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004237 KB5004238 KB5004244 KB5004285 KB5004298</p></td>
+<td><p>10.0.14393.4530 10.0.17763.2061 10.0.19041.1107 10.0.19042.1107 6.3.9600.20069</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34527</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5004945 KB5004946 KB5004947 KB5004948 KB5004950 KB5004951 KB5004953 KB5004954 KB5004955 KB5004956 KB5004958 KB5004959 KB5004960</p></td>
+<td><p>10.0.10240.18969 10.0.17763.2029 10.0.18363.1646 10.0.19041.1083 10.0.19042.1083 10.0.19043.1083 6.0.6003.21138 6.1.7601.25633 6.3.9600.20046</p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng/">&#64;edwardzpeng</a>) and Xuefeng Li (<a href="https://twitter.com/lxf02942370/">&#64;lxf02942370</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34477</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Visual Studio Code - .NET Runtime</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p>0.7.0 1.2.0</p></td>
+<td><p><a href="https://twitter.com/cji">Craig Ingram</a> with <a href="https://www.stripe.com">Stripe</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-34529</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Visual Studio Code</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p>1.57.1</p></td>
+<td><p><a href="https://daviddworken.com/">David Dworken</a> <a href="https://twitter.com/sven_to">Sven Nobis</a> of <a href="https://www.ernw.de">ERNW GmbH</a> <a href="https://www.linkedin.com/in/timofte-daniel/">Timofte Daniel</a> (<a href="https://twitter.com/tim17d">&#64;tim17d</a>) Ash Fox, Google Security Team Kc Udonsi (&#64;glitchnsec) of Trend Micro Security Research working with Trend Micro Zero Day Initiative Ron Masas, <a href="https://hackk.io?cve=CVE-2021-34529">Hackk.io</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-34481</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5005030 KB5005031 KB5005033 KB5005040 KB5005043 KB5005076 KB5005088 KB5005089 KB5005090 KB5005094 KB5005095 KB5005099 KB5005106</p></td>
+<td><p>10.0.10240.19022 10.0.14393.4583 10.0.17763.2114 10.0.18363.1734 10.0.19041.1165 10.0.19042.1165 10.0.19043.1165 6.0.6003.21192 6.1.7601.25685 6.2.9200.23435 6.3.9600.20094</p></td>
+<td><p><a href="https://twitter.com/Junior_Baines">Jacob Baines</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-36928</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p>Abdelhamid Naceri working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-36929</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>6.3</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p><a href="https://www.daviderceg.com/">David Erceg</a> with <a href=""></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-36931</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.4</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p><a href="https://www.daviderceg.com/">David Erceg</a> with <a href=""></a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30559</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30541</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30560</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30561</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30562</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30563</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30564</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>91.0.864.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30565</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30566</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30567</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30568</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30569</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30571</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30572</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30573</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30574</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30575</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30576</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30577</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30578</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30579</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30580</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30581</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30582</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30583</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30584</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30585</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30586</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30587</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2021-30588</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2021-30589</p></td>
+<td><p>2021-07-13</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>92.0.902.55</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/msrc_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2021-Jan-pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2021-Jan</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2021-Jun-pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2021-Jun</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By clearbluejar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

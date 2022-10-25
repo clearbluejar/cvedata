@@ -1,0 +1,1776 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2022-Jul &#8212; cvedata</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2022-Jun" href="2022-Jun-pandas.html" />
+    <link rel="prev" title="2022-Jan" href="2022-Jan-pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chart.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">cvedata</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    CVEDATA
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../using_generated_data.html">
+   Using Release Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Charts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../charts/GOAT_researcher_cve_quantity.html">
+   GOAT Researcher CVE Quantity
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generated Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../metadata.html">
+   Generated Metadata
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/index.html">
+   Generated Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_cve.json.html">
+     chromerelease_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_raw_cve.json.html">
+     chromerelease_raw_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/cwe.json.gz.html">
+     cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-cvrf-pandas-merged.json.gz.html">
+     msrc-cvrf-pandas-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged-frequency.json.html">
+     msrc-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged.json.html">
+     msrc-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-to-bins.json.html">
+     msrc-tags-to-bins.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc_cvrf_merged.json.gz.html">
+     msrc_cvrf_merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/nist_merged_cve.json.gz.html">
+     nist_merged_cve.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_cve_map.json.html">
+     researcher_cve_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names.json.html">
+     researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names_grouped.json.html">
+     researcher_names_grouped.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_twitter_map.json.html">
+     researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-desc-to-bins-map.json.html">
+     winbindex-desc-to-bins-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-kb-to-bins-map.json.gz.html">
+     winbindex-kb-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-versions-to-bins-map.json.gz.html">
+     winbindex-versions-to-bins-map.json.gz
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MSRC Monthly Update Tables
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   MSRC Updates Markdown
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Apr-pandas.html">
+     2016-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Aug-pandas.html">
+     2016-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Dec-pandas.html">
+     2016-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jul-pandas.html">
+     2016-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jun-pandas.html">
+     2016-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-May-pandas.html">
+     2016-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Nov-pandas.html">
+     2016-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Oct-pandas.html">
+     2016-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Sep-pandas.html">
+     2016-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Apr-pandas.html">
+     2017-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Aug-pandas.html">
+     2017-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Dec-pandas.html">
+     2017-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Feb-pandas.html">
+     2017-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jan-pandas.html">
+     2017-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jul-pandas.html">
+     2017-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jun-pandas.html">
+     2017-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Mar-pandas.html">
+     2017-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-May-pandas.html">
+     2017-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Nov-pandas.html">
+     2017-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Oct-pandas.html">
+     2017-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Sep-pandas.html">
+     2017-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Apr-pandas.html">
+     2018-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Aug-pandas.html">
+     2018-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Dec-pandas.html">
+     2018-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-FEB-pandas.html">
+     2018-FEB
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jan-pandas.html">
+     2018-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jul-pandas.html">
+     2018-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jun-pandas.html">
+     2018-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Mar-pandas.html">
+     2018-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-May-pandas.html">
+     2018-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Nov-pandas.html">
+     2018-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Oct-pandas.html">
+     2018-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Sep-pandas.html">
+     2018-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Apr-pandas.html">
+     2019-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Aug-pandas.html">
+     2019-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Dec-pandas.html">
+     2019-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Feb-pandas.html">
+     2019-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jan-pandas.html">
+     2019-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jul-pandas.html">
+     2019-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jun-pandas.html">
+     2019-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Mar-pandas.html">
+     2019-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-May-pandas.html">
+     2019-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Nov-pandas.html">
+     2019-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Oct-pandas.html">
+     2019-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Sep-pandas.html">
+     2019-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Apr-pandas.html">
+     2020-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Aug-pandas.html">
+     2020-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Dec-pandas.html">
+     2020-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Feb-pandas.html">
+     2020-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jan-pandas.html">
+     2020-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jul-pandas.html">
+     2020-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jun-pandas.html">
+     2020-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Mar-pandas.html">
+     2020-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-May-pandas.html">
+     2020-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Nov-pandas.html">
+     2020-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Oct-pandas.html">
+     2020-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Sep-pandas.html">
+     2020-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Apr-pandas.html">
+     2021-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Aug-pandas.html">
+     2021-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Dec-pandas.html">
+     2021-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Feb-pandas.html">
+     2021-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jan-pandas.html">
+     2021-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jul-pandas.html">
+     2021-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jun-pandas.html">
+     2021-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Mar-pandas.html">
+     2021-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-May-pandas.html">
+     2021-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Nov-pandas.html">
+     2021-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Oct-pandas.html">
+     2021-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Sep-pandas.html">
+     2021-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Apr-pandas.html">
+     2022-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Aug-pandas.html">
+     2022-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Feb-pandas.html">
+     2022-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jan-pandas.html">
+     2022-Jan
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2022-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jun-pandas.html">
+     2022-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Mar-pandas.html">
+     2022-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-May-pandas.html">
+     2022-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Oct-pandas.html">
+     2022-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Sep-pandas.html">
+     2022-Sep
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/issues/new?title=Issue%20on%20page%20%2Fbook/msrc_pandas/2022-Jul-pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/edit/master/docs/book/msrc_pandas/2022-Jul-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/msrc_pandas/2022-Jul-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2022-Jul</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="jul">
+<h1>2022-Jul<a class="headerlink" href="#jul" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CVE</p></th>
+<th class="head"><p>Initial Release</p></th>
+<th class="head"><p>Tags</p></th>
+<th class="head"><p>Impact</p></th>
+<th class="head"><p>Max CVSS</p></th>
+<th class="head"><p>KBs</p></th>
+<th class="head"><p>Versions</p></th>
+<th class="head"><p>Acks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CVE-2022-21845</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22711</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows BitLocker</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30181</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>21 <a href="https://twitter.com/kwsecu">William Söderberg with WithSecure </a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33637</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Defender for Endpoint</p></td>
+<td><p>Tampering</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>101.68.80</p></td>
+<td><p>James Sharpe with <a href="https://www.zenotech.com/">Zenotech Ltd</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33641</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p><a href="https://twitter.com/kwsecu">William Söderberg</a> with <a href="https://labs.f-secure.com/">WithSecure</a> Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33642</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33643</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-35798</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Arc Jumpstart</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>3.3</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://https/">Jimi Sebree</a> with <a href="https://tenable.com/">Tenable</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30187</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Storage Library</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.7</p></td>
+<td><p></p></td>
+<td><p>12.13.0 12.18.0 12.4.0</p></td>
+<td><p><a href="https://twitter.com/schmiegsophie">Sophie Schmieg</a> with <a href="https://google.com/">Google</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30202</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Advanced Local Procedure Call</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Jarvis_1oop</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30203</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Boot Manager</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>7.4</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Zammis Clark</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30205</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Group Policy</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.6</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Matthieu Buffet</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30206</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/offenseindepth">Victor Mata</a> with <a href="https://www.accenture.com/">FusionX, Accenture Security</a> <a href="https://twitter.com/uuulucky">luckyu</a> with <a href="https://www.nsfocus.com.cn/">NSFOCUS TIANYUAN LAB</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30208</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Security Account Manager</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>bee13oy with <a href="https://www.cyberkl.com/">Cyber Kunlun Lab</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30209</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows IIS</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.4</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/orange_8361">Orange Tsai (&#64;orange_8361)</a> with <a href="https://devco.re/">DEVCORE</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30211</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Point-to-Point Tunneling Protocol</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/i4mchr00t">Alex Nichols</a> with <a href="https://labs.nettitude.com/">Nettitude</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30212</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Connected Devices Platform Service</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.7</p></td>
+<td><p>KB5015807 KB5015811 KB5015814 KB5015827</p></td>
+<td><p>10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p>JIWO Technology Co., Ltd</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30213</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>willJ of vulnerability research institute</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30214</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Role: DNS Server</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>6.6</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015827</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.20348.825</p></td>
+<td><p><a href="https://twitter.com/ecthr0s">George Hughey</a> with MSRC Vulnerabilities and Mitigations</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30215</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Active Directory</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015827</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.20348.825</p></td>
+<td><p>National Security Agency</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30216</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Server Service</p></td>
+<td><p>Tampering</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5015807 KB5015814 KB5015827</p></td>
+<td><p>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p><a href="https://twitter.com/nachoskrnl">Ben Barnea</a> with <a href="https://akamai.com/">Akamai Technologies</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30220</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Storage</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/secboxer">Boxer</a> with Vulnerability Research Institute <a href="https://twitter.com/thunderj17">Thunder_J</a> and <a href="https://twitter.com/secboxer">Boxer</a> with Vulnerability Research Institute</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30221</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015874 KB5015877</p></td>
+<td><p>1.2.3317.0 10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.1.7601.26022 6.3.9600.20478</p></td>
+<td><p>Colas Le Guernic, Jeremy Rubert, and Anonymous with <a href="https://thalium.re/">Thalium</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30222</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Shell</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.4</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p>Krzysztof Andrusiak</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30223</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Role: Windows Hyper-V</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>luoquan</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30224</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Advanced Local Procedure Call</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Jarvis_1oop</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-30225</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Media</p></td>
+<td><p>Denial of Service Elevation of Privilege</p></td>
+<td><p>7.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>JIWO Technology Co., Ltd</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-30226</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/edwardzpeng">Zhiniang Peng</a> with <a href="https://www.sangfor.com/">Sangfor</a> <a href="https://twitter.com/lxf02942370">Xuefeng Li</a> with <a href="https://www.sangfor.com/">Sangfor</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22022</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/edwardzpeng">Zhiniang Peng</a> with <a href="https://www.sangfor.com/">Sangfor</a> <a href="https://twitter.com/lxf02942370">Xuefeng Li</a> with <a href="https://www.sangfor.com/">Sangfor</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22023</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Portable Device Enumerator Service</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>6.6</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22024</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Role: Windows Fax Service</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/lxf02942370">Xuefeng Li</a> with <a href="https://www.sangfor.com/">Sangfor</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22025</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows IIS</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/orange_8361">Orange Tsai (&#64;orange_8361)</a> with <a href="https://devco.re/">DEVCORE</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22026</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Client/Server Runtime Subsystem</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Sergei Glazunov with Google Project Zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22027</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Role: Windows Fax Service</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>TJ with FuzzWorks</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22028</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Network File System</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.9</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015827 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.20348.825 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> with <a href="https://www.cyberkl.com/">Cyber KunLun</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22029</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Network File System</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015827 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.20348.825 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> with <a href="https://www.cyberkl.com/">Cyber KunLun</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22031</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Credential Guard</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p>James Forshaw with Google Project Zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22034</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Marcin Wiazowski working with <a href="https://www.zerodayinitiative.com/">Trend Micro Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22036</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Performance Counters</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/b2ahex">RyeLv (&#64;b2ahex)</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22037</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Advanced Local Procedure Call</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Jarvis_1oop</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22038</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Remote Procedure Call Runtime</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015863 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> with <a href="https://www.cyberkl.com/">Cyber KunLun</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22039</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Network File System</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015827 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.20348.825 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/guhe120">Yuki Chen</a> with <a href="https://www.cyberkl.com/">Cyber KunLun</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22040</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows IIS</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.3</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/orange_8361">Orange Tsai (&#64;orange_8361)</a> with <a href="https://devco.re/">DEVCORE</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22041</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Print Spooler Components</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015863 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/kkokkokye">JeongOh Kyea</a> with <a href="https://theori.io/">THEORI</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22042</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Role: Windows Hyper-V</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>6.5</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Luoquan</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22043</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Fast FAT Driver</p></td>
+<td><p>Denial of Service Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/thunderj17">Thunder_J</a> and <a href="https://twitter.com/secboxer">Boxer</a> with Vulnerability Research Institute</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22045</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Media</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22047</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Client/Server Runtime Subsystem</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Microsoft Threat Intelligence Center (MSTIC)</p></td>
+</tr>
+<tr class="row-even"><td><p>Microsoft Security Response Center (MSRC)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22048</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows BitLocker</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>6.1</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Zammis Clark</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-22049</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Client/Server Runtime Subsystem</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p>Sergei Glazunov with Google Project Zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-22050</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Windows Fax and Scan Service</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB5015807 KB5015808 KB5015811 KB5015814 KB5015827 KB5015832 KB5015861 KB5015862 KB5015863 KB5015866 KB5015870 KB5015874 KB5015875 KB5015877</p></td>
+<td><p>10.0.10240.19360 10.0.14393.5246 10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795 6.0.6003.21569 6.1.7601.26022 6.2.9200.23771 6.3.9600.20478</p></td>
+<td><p><a href="https://twitter.com/lxf02942370">Xuefeng Li</a> and <a href="https://twitter.com/edwardzpeng">Zhiniang Peng</a> with <a href="https://www.sangfor.com/">Sangfor</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33632</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>4.7</p></td>
+<td><p>KB5002112 KB5002121</p></td>
+<td><p>15.0.5467.1000 16.0.5344.1000</p></td>
+<td><p>Nathan Shomber of Microsoft</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33633</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Skype for Business and Microsoft Lync</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.2</p></td>
+<td><p>KB5016714</p></td>
+<td><p>2046.404 8308.1198 9319.634</p></td>
+<td><p>Yiming Xiang with <a href="https://www.nsfocus.cn/">NSFOCUS TIANJI LAB</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-27776</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Open Source Software</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB5015807 KB5015811 KB5015814 KB5015827</p></td>
+<td><p>10.0.17763.3165 10.0.19042.1826 10.0.19043.1826 10.0.19044.1826 10.0.20348.825 10.0.22000.795</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33644</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>XBox</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB5015807</p></td>
+<td><p>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826</p></td>
+<td><p>Jarvis_1oop</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33650</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-23816</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>AMD CPU Branch</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB5015827</p></td>
+<td><p>10.0.20348.825</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33651</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33652</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33653</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33654</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33655</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33656</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33657</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>21 <a href="https://twitter.com/kwsecu">William Söderberg</a> with WithSecure</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33658</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p><a href="https://twitter.com/kwsecu">William Söderberg</a> with WithSecure</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33659</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>21 <a href="https://twitter.com/kwsecu">William Söderberg</a> with WithSecure</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33660</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p><a href="https://twitter.com/kwsecu">William Söderberg</a> with WithSecure</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33661</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33662</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33663</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33664</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33665</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33666</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33667</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33668</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33669</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33671</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>4.9</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33672</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-23825</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>AMD CPU Branch</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB5015827</p></td>
+<td><p>10.0.20348.825</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33673</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.5</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33674</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8.3</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Anonymous</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33675</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>Jimi Sebree with <a href="https://tenable.com/">Tenable</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33676</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.2</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p>William Söderberg with WithSecure </a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-33677</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.2</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p><a href="https://twitter.com/kwsecu">William Söderberg</a> with WithSecure</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-33678</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Azure Site Recovery</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.2</p></td>
+<td><p></p></td>
+<td><p>9.49</p></td>
+<td><p><a href="https://twitter.com/kwsecu">William Söderberg</a> with <a href="https://labs.f-secure.com/">WithSecure</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-2294</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.49</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-2295</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.49</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-2477</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-2478</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-2479</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2022-2480</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.71</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2022-2481</p></td>
+<td><p>2022-07-12</p></td>
+<td><p>Microsoft Edge (Chromium-based)</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p>103.0.1264.71</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/msrc_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-Jan-pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2022-Jan</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2022-Jun-pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2022-Jun</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By clearbluejar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

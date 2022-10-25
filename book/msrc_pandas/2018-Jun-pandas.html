@@ -1,0 +1,1488 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2018-Jun &#8212; cvedata</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2018-Mar" href="2018-Mar-pandas.html" />
+    <link rel="prev" title="2018-Jul" href="2018-Jul-pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chart.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">cvedata</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    CVEDATA
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../using_generated_data.html">
+   Using Release Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Charts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../charts/GOAT_researcher_cve_quantity.html">
+   GOAT Researcher CVE Quantity
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generated Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../metadata.html">
+   Generated Metadata
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/index.html">
+   Generated Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_cve.json.html">
+     chromerelease_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_raw_cve.json.html">
+     chromerelease_raw_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/cwe.json.gz.html">
+     cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-cvrf-pandas-merged.json.gz.html">
+     msrc-cvrf-pandas-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged-frequency.json.html">
+     msrc-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged.json.html">
+     msrc-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-to-bins.json.html">
+     msrc-tags-to-bins.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc_cvrf_merged.json.gz.html">
+     msrc_cvrf_merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/nist_merged_cve.json.gz.html">
+     nist_merged_cve.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_cve_map.json.html">
+     researcher_cve_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names.json.html">
+     researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names_grouped.json.html">
+     researcher_names_grouped.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_twitter_map.json.html">
+     researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-desc-to-bins-map.json.html">
+     winbindex-desc-to-bins-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-kb-to-bins-map.json.gz.html">
+     winbindex-kb-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-versions-to-bins-map.json.gz.html">
+     winbindex-versions-to-bins-map.json.gz
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MSRC Monthly Update Tables
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   MSRC Updates Markdown
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Apr-pandas.html">
+     2016-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Aug-pandas.html">
+     2016-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Dec-pandas.html">
+     2016-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jul-pandas.html">
+     2016-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jun-pandas.html">
+     2016-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-May-pandas.html">
+     2016-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Nov-pandas.html">
+     2016-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Oct-pandas.html">
+     2016-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Sep-pandas.html">
+     2016-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Apr-pandas.html">
+     2017-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Aug-pandas.html">
+     2017-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Dec-pandas.html">
+     2017-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Feb-pandas.html">
+     2017-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jan-pandas.html">
+     2017-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jul-pandas.html">
+     2017-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jun-pandas.html">
+     2017-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Mar-pandas.html">
+     2017-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-May-pandas.html">
+     2017-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Nov-pandas.html">
+     2017-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Oct-pandas.html">
+     2017-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Sep-pandas.html">
+     2017-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Apr-pandas.html">
+     2018-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Aug-pandas.html">
+     2018-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Dec-pandas.html">
+     2018-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-FEB-pandas.html">
+     2018-FEB
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jan-pandas.html">
+     2018-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jul-pandas.html">
+     2018-Jul
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2018-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Mar-pandas.html">
+     2018-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-May-pandas.html">
+     2018-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Nov-pandas.html">
+     2018-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Oct-pandas.html">
+     2018-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Sep-pandas.html">
+     2018-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Apr-pandas.html">
+     2019-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Aug-pandas.html">
+     2019-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Dec-pandas.html">
+     2019-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Feb-pandas.html">
+     2019-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jan-pandas.html">
+     2019-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jul-pandas.html">
+     2019-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jun-pandas.html">
+     2019-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Mar-pandas.html">
+     2019-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-May-pandas.html">
+     2019-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Nov-pandas.html">
+     2019-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Oct-pandas.html">
+     2019-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Sep-pandas.html">
+     2019-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Apr-pandas.html">
+     2020-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Aug-pandas.html">
+     2020-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Dec-pandas.html">
+     2020-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Feb-pandas.html">
+     2020-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jan-pandas.html">
+     2020-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jul-pandas.html">
+     2020-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jun-pandas.html">
+     2020-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Mar-pandas.html">
+     2020-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-May-pandas.html">
+     2020-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Nov-pandas.html">
+     2020-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Oct-pandas.html">
+     2020-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Sep-pandas.html">
+     2020-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Apr-pandas.html">
+     2021-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Aug-pandas.html">
+     2021-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Dec-pandas.html">
+     2021-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Feb-pandas.html">
+     2021-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jan-pandas.html">
+     2021-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jul-pandas.html">
+     2021-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jun-pandas.html">
+     2021-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Mar-pandas.html">
+     2021-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-May-pandas.html">
+     2021-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Nov-pandas.html">
+     2021-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Oct-pandas.html">
+     2021-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Sep-pandas.html">
+     2021-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Apr-pandas.html">
+     2022-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Aug-pandas.html">
+     2022-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Feb-pandas.html">
+     2022-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jan-pandas.html">
+     2022-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jul-pandas.html">
+     2022-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jun-pandas.html">
+     2022-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Mar-pandas.html">
+     2022-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-May-pandas.html">
+     2022-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Oct-pandas.html">
+     2022-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Sep-pandas.html">
+     2022-Sep
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/issues/new?title=Issue%20on%20page%20%2Fbook/msrc_pandas/2018-Jun-pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/edit/master/docs/book/msrc_pandas/2018-Jun-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/msrc_pandas/2018-Jun-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2018-Jun</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="jun">
+<h1>2018-Jun<a class="headerlink" href="#jun" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CVE</p></th>
+<th class="head"><p>Initial Release</p></th>
+<th class="head"><p>Tags</p></th>
+<th class="head"><p>Impact</p></th>
+<th class="head"><p>Max CVSS</p></th>
+<th class="head"><p>KBs</p></th>
+<th class="head"><p>Versions</p></th>
+<th class="head"><p>Acks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ADV180010</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Exchange Server</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p>KB4099852 KB4099855 KB4295699</p></td>
+<td><p></p></td>
+<td><p>Mateusz Krzwicki of MSRC Vulnerabilities &amp; Mitigations</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8175</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>5.9</p></td>
+<td><p>KB4284819 KB4284835</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/kinugawamasato">Masato Kinugawa</a> of <a href="https://cure53.de/">Cure53</a>​</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8140</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Shell</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.8</p></td>
+<td><p>KB4284819 KB4284835</p></td>
+<td><p></p></td>
+<td><p><a href="https://www.linkedin.com/in/ronmarcovich/">Ron Marcovich</a><br></p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://www.linkedin.com/in/ronyuval/">Yuval Ron</a><br></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a href="https://www.linkedin.com/in/amichaishulman/">Amichai Shulman</a><br></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://www.linkedin.com/in/talbeery/">Tal Be’ery</a><br></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Cedric Cochin of McAfee’s Advanced Threat Research (ATR) Team</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8201</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>4.5</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8205</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Honggang Ren of Fortinet’s FortiGuard Labs</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8207</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.7</p></td>
+<td><p>KB4234459 KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Anonymous working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Lucas Leong (<a href="https://twitter.com/wmliang">&#64;wmliang</a>) working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8208</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>James Forshaw of <a href="http://www.google.com/" >Google Project Zero</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8209</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4284819 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8210</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.3</p></td>
+<td><p>KB4284815 KB4284819 KB4284835 KB4284846 KB4284855 KB4284860 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Marcin ‘Icewall’ Noga of <a href="https://talosintelligence.com/vulnerability_reports">Cisco Talos</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8211</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Matt Graeber of <a href="https://specterops.io/">SpecterOps</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8212</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Matt Nelson (<a href="https://twitter.com/@enigma0x3">&#64;enigma0x3</a>) of <a href="https://www.specterops.io/">SpecterOps</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8213</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Jean-Yves Avenard, Mozilla</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8214</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>James Forshaw of <a href="http://www.google.com/" >Google Project Zero</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8215</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Microsoft PowerShell Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8216</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Microsoft PowerShell Team</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8217</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Microsoft PowerShell Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8218</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Hyper-V</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.7</p></td>
+<td><p>KB4284819</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8219</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Hyper-V</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.6</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Joe Bialek, MSRC Vulnerabilities and Mitigations Team Microsoft Hyper-V Development Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8221</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Device Guard</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Matt Graeber of <a href="https://specterops.io/">SpecterOps</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8224</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4230467 KB4284826 KB4284867</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8225</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.1</p></td>
+<td><p>KB4230467 KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Nick Freeman</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8226</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8227</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284819 KB4284835 KB4284874</p></td>
+<td><p></p></td>
+<td><p>Michael Holman, Microsoft Chakra Core Team</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8229</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Lokihardt of <a href="https://www.google.com">Google Project Zero</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8231</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.1</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8233</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4284835</p></td>
+<td><p></p></td>
+<td><p>Georgios Baltas of MSRC Vulnerabilities &amp; Mitigations Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8239</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.4</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Anonymous working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> willJ of Tencent PC Manager working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8243</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>exp-sky (Kai Song) of <a href="http://xlab.tencent.com/">Tencent Security Xuanwu Lab</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8244</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>0</p></td>
+<td><p>KB4022160 KB4022169 KB4022205</p></td>
+<td><p></p></td>
+<td><p>Jonathan Birch of <a href="https://www.linkedin.com/in/jonathan-birch-ab27681/">Microsoft Corporation</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8245</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4011186</p></td>
+<td><p></p></td>
+<td><p>Eduardo Braun Prado working with iDefense Labs</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8246</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB4022151 KB4022174 KB4022191 KB4022196 KB4022199 KB4022209</p></td>
+<td><p></p></td>
+<td><p>Pengsu Cheng of Trend Micro Security Research working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Ying Xinlei of IceSword Lab, Qihoo 360</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8247</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>0</p></td>
+<td><p>KB4011026 KB4022183</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/soaj1664ashar">Ashar Javed</a> of <a href="https://www.hyundai-autoever.eu/">Hyundai AutoEver Europe GmbH</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8248</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4022177 KB4022182 KB4022199</p></td>
+<td><p></p></td>
+<td><p>Ying Xinlei of IceSword Lab, Qihoo 360</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8252</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>0</p></td>
+<td><p>KB4022173 KB4022190</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/soaj1664ashar">Ashar Javed</a> of <a href="https://www.hyundai-autoever.eu/">Hyundai AutoEver Europe GmbH</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8254</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>0</p></td>
+<td><p>KB4022173 KB4022190 KB4022210</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/soaj1664ashar">Ashar Javed</a> of <a href="https://www.hyundai-autoever.eu/">Hyundai AutoEver Europe GmbH</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ADV180014</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Adobe Flash Player</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4287903</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ADV180016</p></td>
+<td><p>2018-06-12</p></td>
+<td><p></p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB4338815 KB4338816 KB4338818 KB4338820 KB4338821 KB4338823 KB4338824 KB4338829 KB4338830 KB4338831 KB4341832 KB4343899 KB4343900 KB4345424 KB4345425 KB4345455 KB4345459</p></td>
+<td><p></p></td>
+<td><p>Microsoft would like to thank Julian Stecklina from Amazon Germany, Thomas Prescher from <a href="https://www.cyberus-technology.de/">Cyberus Technology GmbH</a>, Zdenek Sojka from <a href="http://sysgo.com">SYSGO AG</a>, and Colin Percival for reporting this issue and working with us on coordinated disclosure.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-0871</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284874</p></td>
+<td><p></p></td>
+<td><p><a href="https://www.linkedin.com/in/ziyahanalbeniz">Ziyahan Albeniz</a> of <a href="https://www.netsparker.com">Netsparker</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-0978</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4230450 KB4284815 KB4284819 KB4284826 KB4284835 KB4284855 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p><a href="https://www.linkedin.com/in/mateusz-garncarek-509241140/">Mateusz Garncarek</a> of <a href="https://ingtechpoland.com/">ING Tech Poland</a>​<br></p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://www.linkedin.com/in/piotr-madej-18b0bb38/">Piotr Madej</a> of <a href="https://ingtechpoland.com/">ING Tech Poland</a>​ Mateusz Jurczyk of <a href="http://www.google.com/" data-linktype="external">Google Project Zero</a></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-0982</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4284819 KB4284835 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>James Forshaw of <a href="http://www.google.com/" >Google Project Zero</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-1036</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft NTFS</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4230467 KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>René Freingruber (&#64;ReneFreingruber), SEC Consult (&#64;sec_consult)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-1040</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4230467 KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Honggang Ren of <a href="http://www.fortiguard.com/">Fortinet’s FortiGuard Labs</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8110</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284835</p></td>
+<td><p></p></td>
+<td><p>Marcin Towalski (<a href="https://twitter.com/mtowalski1">&#64;mtowalski1</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8111</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284819</p></td>
+<td><p></p></td>
+<td><p>Yunhai Zhang of <a href="http://www.nsfocus.com/">NSFOCUS</a>​</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8113</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>4.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284874</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/ericlaw" >Eric Lawrence</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8121</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.7</p></td>
+<td><p>KB4284819 KB4284835 KB4284874</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/zhanlulab/">RanchoIce</a> of Tencent ZhanluLab<br></p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="http://slab.qq.com/zhanlu.html">Chen Nan</a> of Tencent ZhanluLab</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8169</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>HID Parser Library</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880 KB4294413</p></td>
+<td><p></p></td>
+<td><p><a href="http://c00c.cc/" >ZhangSen</a> of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a>​ Georgios Baltas of MSRC Vulnerabilities &amp; Mitigations Team</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shawn Denbow of Windows Security Team</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8234</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>4.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Zhenhuan Li(&#64;zenhumany) of <a href="http://www.tencent.com/">Tencent Zhanlu Lab</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8235</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>4.3</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Jake Archibald - Google - <a href="https://jakearchibald.com">https://jakearchibald.com</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8236</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Edge</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284819 KB4284835 KB4284860 KB4284874 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Chakra working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Yuki Chen of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8249</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4230450 KB4284815 KB4284826</p></td>
+<td><p></p></td>
+<td><p>Scott Bell of <a href="https://www.pulsesecurity.co.nz/">Pulse Security</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2018-8251</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4284815 KB4284819 KB4284826 KB4284835 KB4284846 KB4284855 KB4284860 KB4284867 KB4284874 KB4284878 KB4284880</p></td>
+<td><p></p></td>
+<td><p>Anonymous working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Jonathan Downing (<a href="https://twitter.com/0xkondara">&#64;0xKondara</a>) akayn working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2018-8267</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4230450 KB4284815 KB4284819 KB4284826 KB4284835 KB4284855 KB4284860 KB4284874 KB4284880 KB4532691 KB4532693</p></td>
+<td><p></p></td>
+<td><p>Anonymous working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Dmitri Kaslov of Telspace Systems working with <a href="http://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ADV180015</p></td>
+<td><p>2018-06-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Defense in Depth</p></td>
+<td><p>0</p></td>
+<td><p>KB3115197 KB3115248 KB4018387 KB4018391 KB4022179 KB4022183 KB4022197 KB4022203</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/msrc_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2018-Jul-pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2018-Jul</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2018-Mar-pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2018-Mar</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By clearbluejar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

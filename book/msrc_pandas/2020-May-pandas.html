@@ -1,0 +1,1965 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2020-May &#8212; cvedata</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2020-Nov" href="2020-Nov-pandas.html" />
+    <link rel="prev" title="2020-Mar" href="2020-Mar-pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chart.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">cvedata</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    CVEDATA
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../using_generated_data.html">
+   Using Release Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Charts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../charts/GOAT_researcher_cve_quantity.html">
+   GOAT Researcher CVE Quantity
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generated Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../metadata.html">
+   Generated Metadata
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/index.html">
+   Generated Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_cve.json.html">
+     chromerelease_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/chromerelease_raw_cve.json.html">
+     chromerelease_raw_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/cwe.json.gz.html">
+     cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-cvrf-pandas-merged.json.gz.html">
+     msrc-cvrf-pandas-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged-frequency.json.html">
+     msrc-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-merged.json.html">
+     msrc-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc-tags-to-bins.json.html">
+     msrc-tags-to-bins.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/msrc_cvrf_merged.json.gz.html">
+     msrc_cvrf_merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/nist_merged_cve.json.gz.html">
+     nist_merged_cve.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_cve_map.json.html">
+     researcher_cve_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names.json.html">
+     researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_names_grouped.json.html">
+     researcher_names_grouped.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/researcher_twitter_map.json.html">
+     researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-desc-to-bins-map.json.html">
+     winbindex-desc-to-bins-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-kb-to-bins-map.json.gz.html">
+     winbindex-kb-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/winbindex-versions-to-bins-map.json.gz.html">
+     winbindex-versions-to-bins-map.json.gz
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MSRC Monthly Update Tables
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   MSRC Updates Markdown
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Apr-pandas.html">
+     2016-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Aug-pandas.html">
+     2016-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Dec-pandas.html">
+     2016-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jul-pandas.html">
+     2016-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Jun-pandas.html">
+     2016-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-May-pandas.html">
+     2016-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Nov-pandas.html">
+     2016-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Oct-pandas.html">
+     2016-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2016-Sep-pandas.html">
+     2016-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Apr-pandas.html">
+     2017-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Aug-pandas.html">
+     2017-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Dec-pandas.html">
+     2017-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Feb-pandas.html">
+     2017-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jan-pandas.html">
+     2017-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jul-pandas.html">
+     2017-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Jun-pandas.html">
+     2017-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Mar-pandas.html">
+     2017-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-May-pandas.html">
+     2017-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Nov-pandas.html">
+     2017-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Oct-pandas.html">
+     2017-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2017-Sep-pandas.html">
+     2017-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Apr-pandas.html">
+     2018-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Aug-pandas.html">
+     2018-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Dec-pandas.html">
+     2018-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-FEB-pandas.html">
+     2018-FEB
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jan-pandas.html">
+     2018-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jul-pandas.html">
+     2018-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Jun-pandas.html">
+     2018-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Mar-pandas.html">
+     2018-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-May-pandas.html">
+     2018-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Nov-pandas.html">
+     2018-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Oct-pandas.html">
+     2018-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2018-Sep-pandas.html">
+     2018-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Apr-pandas.html">
+     2019-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Aug-pandas.html">
+     2019-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Dec-pandas.html">
+     2019-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Feb-pandas.html">
+     2019-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jan-pandas.html">
+     2019-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jul-pandas.html">
+     2019-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Jun-pandas.html">
+     2019-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Mar-pandas.html">
+     2019-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-May-pandas.html">
+     2019-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Nov-pandas.html">
+     2019-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Oct-pandas.html">
+     2019-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2019-Sep-pandas.html">
+     2019-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Apr-pandas.html">
+     2020-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Aug-pandas.html">
+     2020-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Dec-pandas.html">
+     2020-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Feb-pandas.html">
+     2020-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jan-pandas.html">
+     2020-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jul-pandas.html">
+     2020-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Jun-pandas.html">
+     2020-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Mar-pandas.html">
+     2020-Mar
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2020-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Nov-pandas.html">
+     2020-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Oct-pandas.html">
+     2020-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2020-Sep-pandas.html">
+     2020-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Apr-pandas.html">
+     2021-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Aug-pandas.html">
+     2021-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Dec-pandas.html">
+     2021-Dec
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Feb-pandas.html">
+     2021-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jan-pandas.html">
+     2021-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jul-pandas.html">
+     2021-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Jun-pandas.html">
+     2021-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Mar-pandas.html">
+     2021-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-May-pandas.html">
+     2021-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Nov-pandas.html">
+     2021-Nov
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Oct-pandas.html">
+     2021-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-Sep-pandas.html">
+     2021-Sep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Apr-pandas.html">
+     2022-Apr
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Aug-pandas.html">
+     2022-Aug
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Feb-pandas.html">
+     2022-Feb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jan-pandas.html">
+     2022-Jan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jul-pandas.html">
+     2022-Jul
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Jun-pandas.html">
+     2022-Jun
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Mar-pandas.html">
+     2022-Mar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-May-pandas.html">
+     2022-May
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Oct-pandas.html">
+     2022-Oct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2022-Sep-pandas.html">
+     2022-Sep
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/issues/new?title=Issue%20on%20page%20%2Fbook/msrc_pandas/2020-May-pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/edit/master/docs/book/msrc_pandas/2020-May-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/msrc_pandas/2020-May-pandas.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2020-May</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="may">
+<h1>2020-May<a class="headerlink" href="#may" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CVE</p></th>
+<th class="head"><p>Initial Release</p></th>
+<th class="head"><p>Tags</p></th>
+<th class="head"><p>Impact</p></th>
+<th class="head"><p>Max CVSS</p></th>
+<th class="head"><p>KBs</p></th>
+<th class="head"><p>Versions</p></th>
+<th class="head"><p>Acks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CVE-2020-0901</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4484338 KB4484365 KB4484384</p></td>
+<td><p></p></td>
+<td><p>Marcin ‘Icewall’ Noga of <a href="https://talosintelligence.com/vulnerability_reports">Cisco Talos</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-0909</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Hyper-V</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Huichen Lin and Dong Seong Kim of <a href="https://www.itee.uq.edu.au/">School of Information Technology and Electrical Engineering - The University of Queensland</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1021</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/galdeleon">Gal De Leon</a> of Palo Alto Networks Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1023</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/ivagunin">Ivan Vagunin,</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1024</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/ivagunin">Ivan Vagunin,</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1028</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of Trend Micro Zero Day Initiative</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1192</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Visual Studio</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://ronmasas.com/">Ron Masas</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ADV200009</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows DNS</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Prof. Yehuda Afek, Tel-Aviv University, Prof. Anat Bremler-Barr, The Interdisciplinary Center, Herzliya, Lior Shafir, Tel-Aviv University.</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-0963</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/klotxl404">Ke Liu</a> of <a href="https://xlab.tencent.com/en/">Tencent Security Xuanwu Lab</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Jaanus Kääp of <a href="https://www.clarifiedsecurity.com/">Clarified Security</a></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1010</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Jiadong Lu</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1195</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Edge on Chromium</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>3.1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a href="https://www.daviderceg.com/">David Erceg</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1035</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1037</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/S0rryMybad">Qixun Zhao</a> of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a>​</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1048</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Peleg Hadar (<a href="https://twitter.com/peleghd">&#64;peleghd</a>) and Tomer Bar of SafeBreach Labs</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1054</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Netanel Ben-Simon and Yoav Alon from Check Point Research bee13oy of Qihoo 360 Vulcan Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1055</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Active Directory</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4551853 KB4556799</p></td>
+<td><p></p></td>
+<td><p>Steve Patches</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1058</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1059</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Edge (HTML-based)</p></td>
+<td><p>Spoofing</p></td>
+<td><p>4.3</p></td>
+<td><p>KB4551853 KB4556799 KB4556807</p></td>
+<td><p></p></td>
+<td><p>Michal Bentkowski <a href="https://research.securitum.com/">with Securitum</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1060</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1061</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Scripting</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1062</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Anonymous working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Edward Thompson working with <a href="https://vcp.idefense.com">iDefense Labs</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1063</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Dynamics</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4551998 KB4552002</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1064</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1065</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Scripting Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4551853 KB4556799 KB4556807</p></td>
+<td><p></p></td>
+<td><p>Looben Yang</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1066</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>.NET Framework</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>0</p></td>
+<td><p>KB4556399 KB4556402 KB4556403 KB4556406</p></td>
+<td><p></p></td>
+<td><p>ChengBin Wang(<a href="https://github.com/cbwang505">&#64;cbwang505</a>) from ZheJiang Guoli Security Technology</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1071</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>6.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853</p></td>
+<td><p></p></td>
+<td><p>GhostInTheMachine</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1076</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556840 KB4556846 KB4556852 KB4556853</p></td>
+<td><p></p></td>
+<td><p>Gábor Selján (<A href="https://twitter.com/GaborSeljan">&#64;GaborSeljan</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1078</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>JeongOh Kyea(&#64;kkokkokye) of THEORI</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1084</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Sai Cheng with ChengDu MeetSec Technology Co., Ltd. Somaro Somaro2 Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Jiadong Lu</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1093</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1096</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Edge (HTML-based)</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>4.2</p></td>
+<td><p>KB4551853 KB4556799 KB4556807</p></td>
+<td><p></p></td>
+<td><p>kdot working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> yangkang(&#64;dnpushme) of qihoo 360 core security</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1099</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1101</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1107</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484352 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1110</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Update Stack</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Shefang Zhong of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1113</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Task Scheduler</p></td>
+<td><p>Security Feature Bypass</p></td>
+<td><p>5.3</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Sylvain Heiniger of <a href="https://www.compass-security.com">Compass Security</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1114</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1116</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Walied Assar (<a href="https://twitter.com/waleedassar">&#64;waleedassar</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1118</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>8.6</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1124</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>) anonymous k0shl of Qihoo 360 Vulcan team</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1126</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> Hossein Lotfi working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a> bee13oy of Qihoo 360 Vulcan Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1134</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1135</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/fluoroacetate">fluoroacetate</a> working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1137</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Anonymous researcher Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1138</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Shefang Zhong of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1140</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/flame36987044">liuxiaoliang</a> and <a href="http://weibo.com/jfpan">pjf</a> of IceSword Lab , Qihoo 360</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1143</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Netanel Ben-Simon and Yoav Alon from Check Point Research</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1144</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1149</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556846 KB4556853</p></td>
+<td><p></p></td>
+<td><p>George Hughey (<a href="https://twitter.com/ecthr0s">&#64;ecthr0s</a>) of MSRC Vulnerabilities &amp; Mitigations Team</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1150</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4556836 KB4556843</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1151</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1154</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Common Log File System Driver</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/kkokkokye">JeongOh Kyea</a> of THEORI</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1155</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1156</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Haoran Qin (<a href="https://twitter.com/Q4n">&#64;Q4n</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1157</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Haoran Qin (<a href="https://twitter.com/Q4n">&#64;Q4n</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1158</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous researcher Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1175</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft JET Database Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1179</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/klotxl404">Ke Liu</a> of <a href="https://xlab.tencent.com/en/">Tencent Security Xuanwu Lab</a> <a href=”https://twitter.com/hardik05”>Hardik Shah </a> of McAfee Simon Barsky (<a href="https://twitter.com/expend20">&#64;expend20</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1186</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1189</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1190</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1051</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft JET Database Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1056</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Edge (HTML-based)</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>5.4</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team via Tianfu Cup 2019</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1067</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1068</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1069</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Oleksandr Mirosh (&#64;olekmirosh) from Micro Focus Fortify</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1070</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/kkokkokye">JeongOh Kyea</a> of THEORI</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1072</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/waleedassar">Walied Assar</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1075</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Subsystem for Linux</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/anarcheuz">Anthony LAOU HINE TSUEI</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1077</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Researcher Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1079</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556840 KB4556846 KB4556852 KB4556853</p></td>
+<td><p></p></td>
+<td><p>Shefang Zhong of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1081</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/kkokkokye">JeongOh Kyea</a> of THEORI</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1082</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href=https://www.linkedin.com/in/dimopouloselias>Ilias Dimopoulos</a> a.k.a gweeperx (<a href=https://twitter.com/gweeperx>&#64;gweeperx</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1086</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Haoran Qin (<a href="https://twitter.com/Q4n">&#64;Q4n</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1087</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Kernel</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder bee13oy of Qihoo 360 Vulcan Team pgboy (<a class="reference external" href="http://weibo.com/pgboy1988">http://weibo.com/pgboy1988</a>) of 360vulcan</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1088</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/fritzboger">Søren Fritzbøger</a> <a href="https://www.mcerlane.co.uk">Conor McErlane</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1090</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous  Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1092</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Internet Explorer</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.5</p></td>
+<td><p>KB4551853 KB4556798 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556846 KB4556860</p></td>
+<td><p></p></td>
+<td><p>&#64;j00sean</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1100</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484352 KB4484383</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1102</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336</p></td>
+<td><p></p></td>
+<td><p>Secventuregroup working with <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1103</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Oleksandr Mirosh (&#64;olekmirosh) from Micro Focus Fortify</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1104</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1105</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p><a href="https://www.aswsec.com">Adam Willard</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1106</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Office SharePoint</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p>KB4484332 KB4484336 KB4484364</p></td>
+<td><p></p></td>
+<td><p>Huynh Phuoc Hung, <a href="https://twitter.com/hph0var">&#64;hph0var</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1108</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>.NET Core</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>0</p></td>
+<td><p>KB4552926 KB4552928 KB4552929 KB4552931 KB4556399 KB4556400 KB4556401 KB4556402 KB4556403 KB4556404 KB4556405 KB4556406 KB4556441 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1109</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Windows Update Stack</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>Shefang Zhong of <a href="http://www.360.com/">Qihoo 360 Vulcan Team</a> Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Jiadong Lu</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1111</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1112</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>8.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Guido Principe Passini (<a href="https://twitter.com/divintzero">&#64;DivIntZero</a>) of <a href="http://bawlsec.com/">BawlSec</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1117</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>8.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Dhanesh Kizhakkinan of <a href="https://fireeye.com">FireEye Inc</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1121</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Haoran Qin (<a href="https://twitter.com/Q4n">&#64;Q4n</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1123</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href="https://www.mcerlane.co.uk">Conor McErlane</a> Gábor Selján (<A href="https://twitter.com/GaborSeljan">&#64;GaborSeljan</a>) Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1125</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556846 KB4556853</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core Security &amp; Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>) anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1131</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1132</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/galdeleon">Gal De Leon</a> of Palo Alto Networks Yuki Chen of <a href="https://www.360.com/">Qihoo 360 Vulcan Team</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1136</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556846 KB4556853</p></td>
+<td><p></p></td>
+<td><p>yangkang3 (<a href="https://twitter.com/dnpushme">&#64;dnpushme</a>) of Qihoo 360 core security</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1139</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1141</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/hardik05">Hardik Shah</a> of McAfee</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1142</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812</p></td>
+<td><p></p></td>
+<td><p>anonymous</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1145</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Information Disclosure</p></td>
+<td><p>5.5</p></td>
+<td><p>KB4556799</p></td>
+<td><p></p></td>
+<td><p><a href="https://twitter.com/hardik05">Hardik Shah</a> of McAfee Wenguang Jiao of Qihoo 360 CoreSecurity</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1153</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Graphics Component</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Liubenjin from Codesafe Team of Legendsec at Qi’anxin Group</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1161</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>.NET Core</p></td>
+<td><p>Denial of Service</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1164</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1165</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4556799</p></td>
+<td><p></p></td>
+<td><p>Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1166</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4556799</p></td>
+<td><p></p></td>
+<td><p>Anonymous finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security &amp; Xuefeng Li</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1171</p></td>
+<td><p>2020-05-12</p></td>
+<td><p></p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Chris Gavin (<a href="https://twitter.com/chrisgavinme">&#64;chrisgavinme</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1173</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Power BI</p></td>
+<td><p>Spoofing</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Lukasz Plonka</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1174</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft JET Database Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1176</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft JET Database Engine</p></td>
+<td><p>Remote Code Execution</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813 KB4556826 KB4556836 KB4556840 KB4556843 KB4556846 KB4556852 KB4556853 KB4556854 KB4556860</p></td>
+<td><p></p></td>
+<td><p>Hossein Lotfi of <a href="https://www.zerodayinitiative.com/">Trend Micro’s Zero Day Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1184</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1185</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1187</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>CVE-2020-1188</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CVE-2020-1191</p></td>
+<td><p>2020-05-12</p></td>
+<td><p>Microsoft Windows</p></td>
+<td><p>Elevation of Privilege</p></td>
+<td><p>7.8</p></td>
+<td><p>KB4551853 KB4556799 KB4556807 KB4556812 KB4556813</p></td>
+<td><p></p></td>
+<td><p>Anonymous Finder Zhiniang Peng (<a href="https://twitter.com/edwardzpeng">&#64;edwardzpeng</a>) of Qihoo 360 Core security and Fangming Gu (<a href="https://twitter.com/afang5472">&#64;afang5472</a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/msrc_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2020-Mar-pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2020-Mar</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2020-Nov-pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2020-Nov</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By clearbluejar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
