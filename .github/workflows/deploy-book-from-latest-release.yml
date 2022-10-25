@@ -28,10 +28,6 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        pip install -r docs/requirements.txt
-
     - name: Download latest release data
       uses: robinraju/release-downloader@v1.5
       with:
@@ -40,13 +36,17 @@ jobs:
         fileName: "*"
         out-file-path: "cvedata/data"
 
-    - name: Check files
+    - name: Install dependencies
       run: |
-        find .
+        pip install -r docs/requirements.txt
 
     - name: Generate Notebooks from Data
       run: |        
         python docs/create_books.py
+
+    - name: Check generated files
+      run: |
+        find .
 
     # Build the book
     - name: Build the book
@@ -58,7 +58,7 @@ jobs:
       uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: error-report
+        name: jupyter-book-build
         path: docs/_build/        
         retention-days: 3
 
