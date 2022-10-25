@@ -250,8 +250,7 @@ def update():
     create_researcher_names_json()
     elapsed = time.time() - start
     count = len(get_researcher_names_json())
-    update_metadata(RESEARCHER_NAMES_JSON_PATH, {'sources': [
-                    CHROME_RELEASE_URL, MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(RESEARCHER_NAMES_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
 
     print(f"Updating {RESEARCHER_NAMES_GROUP_JSON_PATH}...")
 
@@ -259,8 +258,7 @@ def update():
     create_researcher_names_group_json()
     elapsed = time.time() - start
     count = len(get_researcher_names_group_json())
-    update_metadata(RESEARCHER_NAMES_GROUP_JSON_PATH, {'sources': [
-                    CHROME_RELEASE_URL, MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(RESEARCHER_NAMES_GROUP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,swap_axes=True,normalize=True)
 
     print(f"Updating {RESEARCHER_TWITTER_MAP_JSON_PATH}...")
 
@@ -268,8 +266,7 @@ def update():
     create_researcher_twitter_map_json()
     elapsed = time.time() - start
     count = len(get_researcher_twitter_map_json())
-    update_metadata(RESEARCHER_TWITTER_MAP_JSON_PATH, {'sources': [
-                    CHROME_RELEASE_URL, MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(RESEARCHER_TWITTER_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,swap_axes=True)
 
     print(f"Updating {RESEARCHER_CVE_MAP_JSON_PATH}...")
 
@@ -277,8 +274,7 @@ def update():
     create_researcher_cve_map_json()
     elapsed = time.time() - start
     count = len(get_researcher_cve_map_json())
-    update_metadata(RESEARCHER_CVE_MAP_JSON_PATH, {'sources': [
-                    CHROME_RELEASE_URL, MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(RESEARCHER_CVE_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
 
     check_top_x(100)
 

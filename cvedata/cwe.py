@@ -81,7 +81,7 @@ def update():
     create_cwe_json()
     elapsed = time.time() - start
     count = len(get_cwe_json())
-    update_metadata(CWE_JSON_PATH,{'sources': [CWE_XML_DOWNLOAD_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(CWE_JSON_PATH,{'sources': [CWE_XML_DOWNLOAD_URL]},count,elapsed,swap_axes=True)
 
     print("Loaded {} with length {}".format(CWE_JSON_PATH, count))
 

@@ -77,6 +77,14 @@ def create_tags_desc_to_bins():
 def get_tags_desc_to_bins() -> dict:
     return get_file_json(MSRC_TAGS_AND_DESC_TO_BINS_PATH,__file__)
 
+def  check_known_tags(tag_set):
+    """
+    Verify Known Tags List user Valid Keys
+    """
+
+    for tag in KNOWN_TAG_TO_BIN_MAP:
+        assert tag in tag_set
+
 def create_msrc_tags():
     msrc_cvrf_json = get_msrc_merged_cvrf_json()
 
@@ -119,6 +127,8 @@ def create_msrc_tags():
 
     print(f"Found {len(tag_set)} tags")
 
+    check_known_tags(tag_set)
+
     with open(MSRC_TAGS_PATH, 'w') as f:
         json.dump(tag_set,f,indent=4)
 
@@ -148,7 +158,9 @@ def update():
 
     count = len(get_msrc_tags())
 
-    update_metadata(MSRC_TAGS_PATH,{'sources': [MSRC_API_URL], 'generation_time': elapsed,  'count': count})
+    update_metadata(MSRC_TAGS_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,normalize=False)
+
+    update_metadata(MSRC_TAGS_FREQ_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,swap_axes=True,normalize=True)
 
     print(f"Updating {MSRC_TAGS_AND_DESC_TO_BINS_PATH}...")
     
@@ -157,7 +169,7 @@ def update():
     elapsed = time.time() - start
     
     count = len(get_tags_desc_to_bins())
-    update_metadata(MSRC_TAGS_AND_DESC_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL,MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(MSRC_TAGS_AND_DESC_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL,MSRC_API_URL]}, count, elapsed, swap_axes=True,normalize=True)
 
 
 if __name__ == "__main__":

@@ -136,7 +136,7 @@ def update():
 
     count = len(cvrf_json)
 
-    update_metadata(MSRC_CVRF_MERGED_PATH,{'sources': [MSRC_API_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(MSRC_CVRF_MERGED_PATH,{'sources': [MSRC_API_URL]},count,elapsed)
 
 
 if __name__ == "__main__":

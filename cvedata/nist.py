@@ -3,14 +3,15 @@ import json
 import gzip
 import requests
 import os
-import pathlib
 import time
+from pathlib import Path
 
 import io
 from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
 from .metadata import update_metadata
+from .util import get_file_json
 
 NIST_CVE_MERGED_PATH = os.path.join(DATA_DIR, 'nist_merged_cve.json.gz')
 NIST_DATA_FEEDS_URL = "https://nvd.nist.gov/feeds/json/cve/1.1/"
@@ -62,18 +63,11 @@ def create_nist_merged_cve_json():
 
 @lru_cache(None)
 def get_nist_merged_cve_json():
-
-    try:
-        with gzip.open(NIST_CVE_MERGED_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            NIST_CVE_MERGED_PATH, __file__)) from e
-
+    return get_file_json(NIST_CVE_MERGED_PATH,__file__)
 
 def update():
 
-    print(f"Updating {pathlib.Path(NIST_CVE_MERGED_PATH).name}...")
+    print(f"Updating {NIST_CVE_MERGED_PATH}...")
     
     start = time.time()
     # create the merged nist json file    
@@ -82,7 +76,7 @@ def update():
     
     count = len(get_nist_merged_cve_json())
     
-    update_metadata(NIST_CVE_MERGED_PATH,{'sources': [NIST_DATA_FEEDS_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(NIST_CVE_MERGED_PATH,{'sources': [NIST_DATA_FEEDS_URL]}, count, elapsed)
 
     print("Loaded {} with length {}".format(NIST_CVE_MERGED_PATH, count))
 

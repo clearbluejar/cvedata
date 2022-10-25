@@ -8,6 +8,9 @@ KNOWN_TAG_TO_BIN_MAP = {
     "diskusage": [
         "diskusage.exe"
     ],
+    "windows ike extension": [
+        "ikeext.dll"
+    ],
     "microsoft dtv-dvd video decoder": [
         "msmpeg2vdec.dll"
     ],

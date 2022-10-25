@@ -16,13 +16,12 @@ def update_all_data():
     print("Updating all data...")
     start = time.time()
 
-    cvrf_update()
-    msrc_tags_update()
+    cvrf_update()    
     chromerelease_update()
     ack_update()
     cwe_update()
     winbindex_update()
-    tags_to_bins_update()
+    msrc_tags_update()
     nist_update()
     msrc_pandas_update()
 

@@ -4,16 +4,15 @@ from datetime import datetime
 import json
 import os
 import time
-import pathlib
+from pathlib import Path
 
 from .config import DATA_DIR
 from .metadata import update_metadata
+from .util import get_file_json
 
 CHROME_RELEASE_URL = "https://chromereleases.googleblog.com"
-RAW_SCRAPE_CHROME_JSON_PATH = os.path.join(
-    DATA_DIR, 'chromerelease_raw_cve.json')
-PARSED_CHROME_JSON_PATH = os.path.join(
-    DATA_DIR, 'chromerelease_cve.json')
+RAW_SCRAPE_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease_raw_cve.json')
+PARSED_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease_cve.json')
 
 
 def scrape_chromerelease_cves():
@@ -221,34 +220,30 @@ def parse_chrome_release_list(raw_cves):
 
 
 def get_chromerelease_cve_json():
-    try:
-        with open(PARSED_CHROME_JSON_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            PARSED_CHROME_JSON_PATH, __file__)) from e
-
+    return get_file_json(PARSED_CHROME_JSON_PATH,__file__)
 
 def update():
     
-    print(f"Updating {pathlib.Path(RAW_SCRAPE_CHROME_JSON_PATH).name}...")
+    print(f"Updating {RAW_SCRAPE_CHROME_JSON_PATH}...")
     start = time.time()
     
     # Scrape Chrome Release acknowledgments
     raw_cves = scrape_chromerelease_cves()
     elapsed = time.time() - start
 
-    update_metadata(RAW_SCRAPE_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL], 'generation_time': elapsed})
+    count = len(json.loads(RAW_SCRAPE_CHROME_JSON_PATH.read_text()))
+
+    update_metadata(RAW_SCRAPE_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL]},count,elapsed,swap_axes=True)
 
     # Parse
-    print(f"Updating {pathlib.Path(PARSED_CHROME_JSON_PATH).name}...")
+    print(f"Updating {PARSED_CHROME_JSON_PATH}...")
     start = time.time()
     parse_chrome_release_list(raw_cves)
     elapsed = time.time() - start
 
     count = len(get_chromerelease_cve_json())
     
-    update_metadata(PARSED_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL], 'generation_time': elapsed, 'count': count})
+    update_metadata(PARSED_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL]},count,elapsed,'cve_id',normalize=True)
 
 
 if __name__ == "__main__":
