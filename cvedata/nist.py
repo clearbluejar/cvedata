@@ -13,7 +13,7 @@ from .config import DATA_DIR, CACHE_PATH
 from .metadata import update_metadata
 from .util import get_file_json
 
-NIST_CVE_MERGED_PATH = os.path.join(DATA_DIR, 'nist_merged_cve.json.gz')
+NIST_CVE_MERGED_PATH = Path(DATA_DIR, 'nist_merged_cve.json.gz')
 NIST_DATA_FEEDS_URL = "https://nvd.nist.gov/feeds/json/cve/1.1/"
 
 
