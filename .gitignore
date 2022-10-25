@@ -131,3 +131,4 @@ dmypy.json
 data/.cache
 data*
 .DS_Store
+docs/book*
