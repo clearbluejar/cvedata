@@ -11,6 +11,8 @@ on:
     #
     # paths:
     # - some-subfolder/**
+  release:
+    types: [published]    
   workflow_dispatch:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
