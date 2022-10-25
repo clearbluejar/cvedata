@@ -32,6 +32,6 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  favicon: facicon.ico
+  favicon: favicon.ico
 
 only_build_toc_files: true

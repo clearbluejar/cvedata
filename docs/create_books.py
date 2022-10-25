@@ -60,8 +60,7 @@ for title, row in meta_df.iterrows():
     # Metadata
     nb['cells'].append(nbf.v4.new_markdown_cell(row.to_markdown()))
 
-    if not row.get('skip_book'):
-        print(f"skipping Datables for {title}")        
+    if not row.get('skip_book'):                
 
         # DataTable Code
         code = nbf.v4.new_code_cell("""
@@ -122,7 +121,9 @@ df""")
         # set column full-width for table
         code['metadata'] =   { "tags": [ "full-width" ] }    
         nb['cells'].append(code)
-
+    else:
+        print(f"skipping Datables for {title}")
+        
     nbf.write(nb, nb_path)
     
     print(f"Wrote {nb_path}")
