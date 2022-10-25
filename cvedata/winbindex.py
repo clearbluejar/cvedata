@@ -62,7 +62,7 @@ def download_and_extract_from_url(url,extract_path):
             f.write(response.content)
 
         # extracting the zip file contents
-        unzip_path(WINBINDEX_ZIP_PATH,extract_path,WINBINDEX_ZIP_FILES_DATA_PATH)
+        unzip_path(WINBINDEX_ZIP_PATH.as_posix(),extract_path,WINBINDEX_ZIP_FILES_DATA_PATH.as_posix())
 
 def create_winbindex_maps():
 
