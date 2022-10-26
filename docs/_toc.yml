@@ -4,18 +4,19 @@
 format: jb-book
 root: intro
 parts:
-- caption: Tutorial
+- caption: Metadata
   chapters:
-  - file: using_generated_data
+  - file: book/metadata
+# - caption: Tutorial
+#   chapters:
+#   - file: using_generated_data
 - caption: Charts
   chapters:
   - glob: charts/*
 - caption: Generated Data
   chapters:
-  - file: book/metadata
   - file: book/generated/index
-    sections: 
-    - glob: book/generated/*
+  - glob: book/generated/*
 # - caption: MSRC Monthly Update Tables
 #   chapters:
 #   - file: book/msrc_pandas/index

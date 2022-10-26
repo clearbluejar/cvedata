@@ -39,11 +39,11 @@ print(meta_df.head())
 
 print(f"Creating jupyter books for cvedata in {DATA_DIR}")
 
-index_generated = Path(GENERATED_DIR / 'index.md')
-index_generated.write_text(index_template.format(
-    title="Generated Data",
-    name=Path(__file__).name,
-    link=Path(__file__).name))
+# index_generated = Path(GENERATED_DIR / 'index.md')
+# index_generated.write_text(index_template.format(
+#     title="Generated Data",
+#     name=Path(__file__).name,
+#     link=Path(__file__).name))
 
 for title, row in meta_df.iterrows():
     print(title)
