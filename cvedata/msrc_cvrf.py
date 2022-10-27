@@ -9,6 +9,7 @@ from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
 from .metadata import update_metadata
+from .util import get_file_json
 
 MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc_cvrf_merged.json.gz')
 MSRC_API_URL = "https://api.msrc.microsoft.com/"
@@ -74,7 +75,7 @@ def get_knowledge_base_cvrf_json(cvrf_id):
 def create_msrc_merged_cvrf_json():
 
     import glob
-    import json
+
 
     result = []
 
@@ -106,13 +107,7 @@ def create_msrc_merged_cvrf_json():
 
 @lru_cache(None)
 def get_msrc_merged_cvrf_json():
-
-    try:
-        with gzip.open(MSRC_CVRF_MERGED_PATH) as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        raise Exception("Missing {}. Please run {}".format(
-            MSRC_CVRF_MERGED_PATH, __file__)) from e
+    return get_file_json(MSRC_CVRF_MERGED_PATH,__file__)
 
 def get_msrc_merged_cvrf_json_keyed() -> dict:
 
