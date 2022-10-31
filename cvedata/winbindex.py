@@ -23,6 +23,7 @@ WINBINDEX_ZIP_PATH = Path(CACHE_PATH,WINBINDEX_GITHUB_URL.split('/')[-1])
 WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH = Path(DATA_DIR,"winbindex-desc-to-bins-map.json")
 WINDOWS_KBS_TO_BINS_PATH = Path(DATA_DIR,"winbindex-kb-to-bins-map.json.gz")
 WINDOWS_VERSION_TO_BINS_PATH = Path(DATA_DIR,"winbindex-versions-to-bins-map.json.gz")
+WINDOWS_VER_TO_BUILD_PATH = Path(DATA_DIR,"winbindex-winver-to-build-map.json")
 
 def open_gz_json(path):    
     
@@ -72,6 +73,7 @@ def create_winbindex_maps():
     desc_to_bins = {}
     kb_to_bins = {}
     ver_to_bins = {}
+    winver_to_build = {}
 
     files = os.listdir(WINBINDEX_FILES_DATA_PATH)
     total = len(files)
@@ -80,6 +82,9 @@ def create_winbindex_maps():
 
     print(f"Processing {total} files..")
     for i,file in enumerate(files):
+
+        # if count > 1000:
+        #     break
         
         if re.search('exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv',file):
             try: 
@@ -102,9 +107,23 @@ def create_winbindex_maps():
                 if file_json[bin].get('windowsVersions'):
                     for ver in file_json[bin]['windowsVersions'].keys():
                         for update in file_json[bin]['windowsVersions'][ver]:
-                            kb_to_bins.setdefault(update,set())
+                            
+                            # don't add BASE 
+                            if update == 'BASE':
+                                continue
+
+                            winver_to_build.setdefault(ver,set())
+                            
+                            kb_to_bins.setdefault(update,{})
+                            kb_to_bins[update].setdefault('updated',set())
+                            kb_to_bins[update].setdefault('versions',set()).add(ver)
                             if file_json[bin]['windowsVersions'][ver][update].get('updateInfo'):
                                 kb_ver = file_json[bin]['windowsVersions'][ver][update]['updateInfo']['releaseVersion']
+                                kb_to_bins[update]['release'] = file_json[bin]['windowsVersions'][ver][update]['updateInfo']['releaseDate']
+                                kb_to_bins[update]['url'] = file_json[bin]['windowsVersions'][ver][update]['updateInfo']['updateUrl']
+                                kb_to_bins[update]['build'] = kb_ver
+                                winver_to_build[ver].add(kb_ver)
+                                
                                 #assert len(file_json[bin]['windowsVersions'][ver][update]['assemblies']) <= 3
                                 for assem in file_json[bin]['windowsVersions'][ver][update]['assemblies']:
                                     for assemId in file_json[bin]['windowsVersions'][ver][update]['assemblies'][assem]:
@@ -112,8 +131,8 @@ def create_winbindex_maps():
                                         assem_ver = file_json[bin]['windowsVersions'][ver][update]['assemblies'][assem]['assemblyIdentity']['version']
                                         chopped_assem_ver = '.'.join(assem_ver.split('.')[-2:])
                                         #print(kb_ver)
-                                        if chopped_assem_ver == kb_ver:
-                                            kb_to_bins[update].add(filename + '-' + assem_ver + '-' + ver)
+                                        if chopped_assem_ver == kb_ver: # ver # set filename # Build == kb_ver
+                                            kb_to_bins[update]['updated'].add(filename)
                                 #assert len(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo']) == 2
                             else:
                                 #print(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo'])
@@ -136,11 +155,23 @@ def create_winbindex_maps():
     print(f"Sorting {WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH}")
     desc_to_bins = {k: sorted(desc_to_bins[k]) for k in sorted(desc_to_bins,key=lambda x: x, reverse=True)}
 
-    print(f"Sorting {WINDOWS_KBS_TO_BINS_PATH}")
-    kb_to_bins = {k: sorted(list(kb_to_bins[k])) for k in sorted(kb_to_bins,key=lambda x: x, reverse=True)}
+    print(f"Sorting {WINDOWS_KBS_TO_BINS_PATH} of length {len(kb_to_bins)}")
+    kb_to_bins = {k: kb_to_bins[k] for k in sorted(kb_to_bins,key=lambda x: x, reverse=True)}
 
     print(f"Sorting {WINDOWS_VERSION_TO_BINS_PATH}")
     ver_to_bins = {k: sorted(list(ver_to_bins[k])) for k in sorted(ver_to_bins,key=lambda x: x, reverse=True)}
+
+    # convert sets to lists
+    for k in kb_to_bins:
+        kb_to_bins[k]['updated'] = list(kb_to_bins[k]['updated'])
+        kb_to_bins[k]['versions'] = list(kb_to_bins[k]['versions'])
+
+    for k in winver_to_build:
+        winver_to_build[k] = list(winver_to_build[k])
+
+    # write out results
+    with open(WINDOWS_VER_TO_BUILD_PATH, 'w') as f:
+        json.dump(winver_to_build,f,indent=4)
 
     with open(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH, 'w') as f:
         json.dump(desc_to_bins,f,indent=4)
@@ -160,6 +191,10 @@ def get_winbindex_kbs_to_bin_map():
 def get_winbindex_ver_to_bin_map():
     return get_file_json(WINDOWS_VERSION_TO_BINS_PATH,__file__)
 
+def get_winbindex_ver_to_build_map():
+    return get_file_json(WINDOWS_VER_TO_BUILD_PATH,__file__)
+    
+
 def update():
 
     print(f"Updating {WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH}...")
@@ -174,10 +209,15 @@ def update():
     update_metadata(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=True,normalize=True)
 
     count = len(get_winbindex_kbs_to_bin_map())
-    update_metadata(WINDOWS_KBS_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=True,normalize=True)
+    update_metadata(WINDOWS_KBS_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=True)
     
     count = len(get_winbindex_ver_to_bin_map())
     update_metadata(WINDOWS_VERSION_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=True,normalize=True)
+
+    count = len(get_winbindex_ver_to_build_map())
+    update_metadata(WINDOWS_VER_TO_BUILD_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=False,normalize=False)
+
+    
 
 if __name__ == "__main__":
     update()
