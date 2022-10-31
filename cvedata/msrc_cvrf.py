@@ -4,6 +4,7 @@ import gzip
 import requests
 import os
 import time
+import glob
 from pathlib import Path
 from functools import lru_cache
 
@@ -73,9 +74,6 @@ def get_knowledge_base_cvrf_json(cvrf_id):
 
 
 def create_msrc_merged_cvrf_json():
-
-    import glob
-
 
     result = []
 

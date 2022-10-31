@@ -57,7 +57,7 @@ def update_metadata(path,meta: dict,count: int,gen_time: datetime,key_index=None
     with open(METADATA_PATH, "w") as f:
         json.dump(data_file_json,f,indent=4)
 
-def should_update(path, days_ago: int ) -> bool:
+def should_update(path, days_ago: int, meta_exist=True) -> bool:
 
     should_update = True
 
@@ -66,19 +66,22 @@ def should_update(path, days_ago: int ) -> bool:
     # check file actually exists
     if path.exists():
 
-        # make sure this is a metadata file to read
         if Path(METADATA_PATH).exists():
             with open(METADATA_PATH) as f:
                 data_file_json = json.load(f)
 
-            # make sure metadata contains an entry for path
-            if data_file_json.get(path.name):                   
+            # make sure this is a metadata file to read
+            if meta_exist:
+                assert data_file_json.get(path.name)
 
                 path_mod_date = datetime.fromisoformat(data_file_json[path.name]['last_modified'])
                 delta = datetime.now() - path_mod_date
+            else:
+                path_mod_date = datetime.fromtimestamp(path.stat().st_mtime)
+                delta = datetime.now() - path_mod_date
                 
-                if delta.days <= days_ago:
-                    should_update = False                        
+            if delta.days <= days_ago:
+                should_update = False
 
     return should_update
         
