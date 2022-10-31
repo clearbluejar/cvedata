@@ -67,7 +67,7 @@ for title, row in meta_df.iterrows():
 from itables import init_notebook_mode
 import itables.options as opt
 opt.lengthMenu = [60, 100, 300]
-opt.maxBytes = {size}
+opt.maxBytes = 0
 init_notebook_mode(all_interactive=True)    
     """.format(size=row['size']))
         
