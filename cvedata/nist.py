@@ -9,13 +9,14 @@ from pathlib import Path
 import io
 from functools import lru_cache
 
-from .config import DATA_DIR, CACHE_PATH
+from .config import DATA_DIR
 from .metadata import update_metadata
 from .util import get_file_json
 
-NIST_CVE_MERGED_PATH = Path(DATA_DIR, 'nist_merged_cve.json.gz')
+NIST_CVE_JSON_PREFIX_PATH = Path(DATA_DIR)
 NIST_DATA_FEEDS_URL = "https://nvd.nist.gov/feeds/json/cve/1.1/"
 
+NIST_OLDEST_YEAR = 2002
 
 def download_extract_gz(url):
     """
@@ -29,6 +30,12 @@ def download_extract_gz(url):
     with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as f:
         return f.read()
 
+def get_nist_filename_by_year(year):
+    return f"nvdcve-1.1-{year}.json.gz"
+
+def get_nist_url_by_year(year):
+    return f"{NIST_DATA_FEEDS_URL}{get_nist_filename_by_year(year)}"
+
 def get_all_nist_cve_urls(oldest) -> list:
     urls = [] 
    
@@ -36,50 +43,81 @@ def get_all_nist_cve_urls(oldest) -> list:
     current = datetime.now().year    
 
     for year in range(oldest, current+1):
-        url = f"{NIST_DATA_FEEDS_URL}nvdcve-1.1-{year}.json.gz"
-        urls.append(url)
+        url = get_nist_url_by_year(year)
+        urls.append([year,url])
 
     return urls
 
-def create_nist_merged_cve_json():
+# decided to save them individually due to size
+def create_nist_year_cve_jsons():
 
-    import glob
-    import json
+    all_nist_cves = {}
+    nist_cves = {}
 
-    result = []
+    # Download NIST CVEs and index them
+    for year,url in get_all_nist_cve_urls(NIST_OLDEST_YEAR):
 
-    # go ahead and download all the MSRC security updates fresh
-    for url in get_all_nist_cve_urls(2016):
-        print(f"Downloading {url}")
-        cve_data_json = json.loads(download_extract_gz(url))
+        start = time.time()
+        
+        nist_year_path = Path(NIST_CVE_JSON_PREFIX_PATH, get_nist_filename_by_year(year))
 
-        result.append(cve_data_json)
+        if nist_year_path.exists():
+            print(f"Already created {nist_year_path}, skipping!")
+        else:
+            print(f"Downloading {url}")
+            data = download_extract_gz(url)
 
-   
-    with gzip.open(NIST_CVE_MERGED_PATH, "w") as f:
-        f.write(json.dumps(result).encode("utf-8"))
+            nist_cves = json.loads(data)
 
-    print("Created {} with len {}".format(NIST_CVE_MERGED_PATH,len(result)))
+            cves = {}
 
+            # index by cve id
+            for cve in nist_cves['CVE_Items']:
+                cve_id = cve['cve']['CVE_data_meta']['ID']
+                cves[cve_id] = cve
+    
+            # delete non indexed copy of cves
+            nist_cves.pop('CVE_Items')
+
+            nist_cves['cves'] = cves
+
+            with gzip.GzipFile(nist_year_path,'w') as f:
+                f.write(json.dumps(nist_cves).encode("utf-8"))
+
+            count = len(nist_cves['cves'])
+            elapsed = time.time() - start
+
+            update_metadata(nist_year_path,{'sources': [NIST_DATA_FEEDS_URL]}, count, elapsed)
+
+            print(f"Created {nist_year_path} with CVE count {count}")
+    
+
+# cache this so its fast
 @lru_cache(None)
-def get_nist_merged_cve_json():
-    return get_file_json(NIST_CVE_MERGED_PATH,__file__)
+def get_nist_cve_json_by_year(year):
+    print(f"Loading {get_nist_filename_by_year(year)}")  
+    return get_file_json(Path(NIST_CVE_JSON_PREFIX_PATH,get_nist_filename_by_year(year)),__file__)
+
+def get_cve(cve: str):
+
+    year = cve.split('-')[1]
+    nist_cves_json = get_nist_cve_json_by_year(year)
+
+    return nist_cves_json['cves'].get(cve)
+
+def get_cves(cves: list): 
+
+    cve_results = []
+
+    for cve in cves:
+        if cve:
+            cve_results.append(get_cve(cve))
+
+    return cve_results
 
 def update():
-
-    print(f"Updating {NIST_CVE_MERGED_PATH}...")
-    
-    start = time.time()
-    # create the merged nist json file    
-    create_nist_merged_cve_json()
-    elapsed = time.time() - start
-    
-    count = len(get_nist_merged_cve_json())
-    
-    update_metadata(NIST_CVE_MERGED_PATH,{'sources': [NIST_DATA_FEEDS_URL]}, count, elapsed)
-
-    print("Loaded {} with length {}".format(NIST_CVE_MERGED_PATH, count))
-
+    create_nist_year_cve_jsons()
 
 if __name__ == "__main__":
     update()
+   
