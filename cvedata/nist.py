@@ -103,8 +103,12 @@ def get_nist_cve_json_by_year(year):
     return get_file_json(Path(NIST_CVE_JSON_PREFIX_PATH,get_nist_filename_by_year(year)),__file__)
 
 def get_cve(cve: str):
-
-    year = cve.split('-')[1]
+    
+    try:
+        year = cve.split('-')[1]
+    except IndexError:
+        return None
+    
     nist_cves_json = get_nist_cve_json_by_year(year)
 
     return nist_cves_json['cves'].get(cve)

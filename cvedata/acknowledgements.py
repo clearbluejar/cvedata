@@ -5,12 +5,14 @@ import pathlib
 import re
 import time
 from pathlib import Path
+import pandas as pd
 
 from .config import DATA_DIR
 from .msrc_cvrf import get_msrc_merged_cvrf_json, MSRC_API_URL
 from .chromerelease import get_chromerelease_cve_json, CHROME_RELEASE_URL
 from .metadata import update_metadata, should_update
 from .known_ack_to_twitter import KNOWN_ACK_TWITTER_HANDLES
+from .nist import get_cves
 from .util import get_file_json
 
 # list of all names available
@@ -20,6 +22,10 @@ RESEARCHER_NAMES_GROUP_JSON_PATH = Path(
     DATA_DIR, 'researcher_names_grouped.json')
 # map of all cves to normalized names
 RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_map.json')
+
+# map of all cve scores to normalized names
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_quality_map.json')
+
 # map of all researcher to twitter handle
 RESEARCHER_TWITTER_MAP_JSON_PATH = Path(
     DATA_DIR, 'researcher_twitter_map.json')
@@ -74,7 +80,7 @@ def create_researcher_names_group_json():
                      "discovered by", "microsoft corporation", "anonymous", "msrc vulnerabilities", "codesafe team",
                      "microsoft chakra", "", "mark", "twitter", "information", "kunlun lab", "microsoft offensive",
                      "chakra", "trend micro’s", "crowdstrike", "microsoft office", "microsoft security", "fortinet's fortiguard",
-                     "kaspersky lab"]
+                     "kaspersky lab", "the chromium"]
 
     for r in researcher_json:
         # group by first two keyworks (ignoring html)
@@ -150,6 +156,57 @@ def create_researcher_cve_map_json():
     else:
         print(f"Loading cached {RESEARCHER_CVE_MAP_JSON_PATH}.")
 
+
+def create_researcher_cve_quality_map_json():
+    # if should_update(RESEARCHER_CVE_MAP_JSON_PATH, 1):
+
+    researcher_cves = get_researcher_cve_map_json()
+
+    # GOAT CVEs
+    goat_quality = []
+
+    cve_columns = ['publishedDate', 'cve.CVE_data_meta.ID',
+       'cve.CVE_data_meta.ASSIGNER', 'cve.problemtype.problemtype_data',
+       'cve.description.description_data', 'impact.baseMetricV3.cvssV3.version',
+       'impact.baseMetricV3.cvssV3.vectorString',
+       'impact.baseMetricV3.cvssV3.attackVector',
+       'impact.baseMetricV3.cvssV3.attackComplexity',
+       'impact.baseMetricV3.cvssV3.privilegesRequired',
+       'impact.baseMetricV3.cvssV3.userInteraction',
+       'impact.baseMetricV3.cvssV3.scope',
+       'impact.baseMetricV3.cvssV3.confidentialityImpact',
+       'impact.baseMetricV3.cvssV3.integrityImpact',
+       'impact.baseMetricV3.cvssV3.availabilityImpact',
+       'impact.baseMetricV3.cvssV3.baseScore',
+       'impact.baseMetricV3.cvssV3.baseSeverity',
+       'impact.baseMetricV3.exploitabilityScore',
+       'impact.baseMetricV3.impactScore']
+
+    for researcher,cves in researcher_cves:
+
+        cve_data = get_cves(cves)
+        cve_df = pd.json_normalize(cve_data)        
+        #print(cve_df.columns)
+        cve_df = pd.DataFrame(cve_df,columns=cve_columns)
+        cve_df['researcher'] = researcher
+        #cve_df.set_index('researcher',inplace=True)
+        print(cve_df.head())
+        #print(cve_data)
+
+        #TODO add stat columns
+
+        goat_quality.append(cve_df)
+
+    
+
+    goat_quality_df = pd.concat(goat_quality)
+    goat_quality_df.reset_index(inplace=True)
+    print(goat_quality_df.head())
+    goat_quality_df.to_json(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH)
+
+    print(f"Found {len(goat_quality)} grouped researchers written to {RESEARCHER_CVE_QUALITY_MAP_JSON_PATH}")
+    # else:
+    #     print(f"Loading cached {RESEARCHER_CVE_MAP_JSON_PATH}.")
 
 def check_top_x(max) -> int:
     goat = get_researcher_cve_map_json()
@@ -237,6 +294,8 @@ def get_researcher_names_group_json():
 def get_researcher_cve_map_json():
     return get_file_json(RESEARCHER_CVE_MAP_JSON_PATH, __file__)
 
+def get_researcher_cve_quality_map_json():
+    return get_file_json(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH, __file__)
 
 def get_researcher_twitter_map_json():
     return get_file_json(RESEARCHER_TWITTER_MAP_JSON_PATH, __file__)
@@ -275,6 +334,13 @@ def update():
     elapsed = time.time() - start
     count = len(get_researcher_cve_map_json())
     update_metadata(RESEARCHER_CVE_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
+
+    start = time.time()
+    create_researcher_cve_quality_map_json()
+    elapsed = time.time() - start
+    count = len(get_researcher_cve_quality_map_json())
+    update_metadata(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
+
 
     check_top_x(100)
 
