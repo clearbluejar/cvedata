@@ -17,6 +17,11 @@ parts:
   chapters:
   - file: book/generated/index
   - glob: book/generated/*
+- caption: NVD CVEs by Year
+  chapters:
+  - file: book/nvd/index
+    sections:
+    - glob: book/nvd/*
 # - caption: MSRC Monthly Update Tables
 #   chapters:
 #   - file: book/msrc_pandas/index

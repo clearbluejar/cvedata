@@ -3,21 +3,26 @@ from numpy import isnan
 import pandas as pd
 from pathlib import Path
 
+# TODO make this run from package
+#from cvedata.config import DATA_DIR
+
 # inspired by https://github.com/OTRF/Security-Datasets/tree/master/scripts/book
 
 # Data from cvedata
 DATA_DIR = Path(Path(__file__).parent.parent,'cvedata','data')
 DATA_MSRC_MD_DIR = Path(DATA_DIR, 'pandas')
 
+
 # New Book Data
 BOOK_DIR = Path(Path(__file__).parent,'book')
 GENERATED_DIR = Path(BOOK_DIR,'generated')
 MSRC_PANDAS_DIR = Path(BOOK_DIR,'msrc_pandas')
+NVD_DIR = Path(BOOK_DIR,'nvd')
 
 BOOK_DIR.mkdir(exist_ok=True,parents=True)
 GENERATED_DIR.mkdir(exist_ok=True,parents=True)
 MSRC_PANDAS_DIR.mkdir(exist_ok=True,parents=True)
-
+NVD_DIR.mkdir(exist_ok=True,parents=True)
 
 index_template = """# {title}
 
@@ -49,7 +54,13 @@ for title, row in meta_df.iterrows():
     print(title)
     print(row)
 
-    nb_path = Path(GENERATED_DIR , (title + '.ipynb'))
+    if str(title).startswith("nvdcve"):
+        nb_path = Path(NVD_DIR , (title + '.ipynb'))
+        max_byte_var = 'opt.maxColumns = 12'
+    else:
+        nb_path = Path(GENERATED_DIR , (title + '.ipynb'))
+        # set unlimited max bytes
+        max_byte_var = "opt.maxBytes = 0"
 
     nb = nbf.v4.new_notebook()
     nb['cells'] = []
@@ -63,13 +74,13 @@ for title, row in meta_df.iterrows():
     if not row.get('skip_book'):                
 
         # DataTable Code
-        code = nbf.v4.new_code_cell("""
+        code = nbf.v4.new_code_cell(f"""
 from itables import init_notebook_mode
 import itables.options as opt
 opt.lengthMenu = [60, 100, 300]
-opt.maxBytes = 0
+{max_byte_var}
 init_notebook_mode(all_interactive=True)    
-    """.format(size=row['size']))
+    """)
         
         # TODO figure out metadata code['metadata'] = 
         code['metadata'] =   { "tags": [ "hide-input" ] }
@@ -77,39 +88,54 @@ init_notebook_mode(all_interactive=True)
         nb['cells'].append(code)
 
         # Read Data file
-        code = nbf.v4.new_code_cell("""
+#         code = nbf.v4.new_code_cell(f"""
+# import pathlib
+# import pandas
+# import json
+# data = pathlib.Path('..','..','..','cvedata','data', '{title}')
+# """)
+        code = nbf.v4.new_code_cell(f"""
 import pathlib
 import pandas
 import json
-data = pathlib.Path('..','..','..','cvedata','data', '{title}')
-    """.format(title=title))
+data = pathlib.Path("{DATA_DIR.absolute()}", '{title}')
+""")
 
         nb['cells'].append(code)
 
         code = ''
         # handle compressed data
+        
         if str(title).endswith(".gz"):
-            if row.get('normalize'):
-                code += """import gzip
-gz_data = None
+            code += """import gzip
 with gzip.open(data) as f:
-    gz_data = json.load(f)
-
-df = pandas.json_normalize(gz_data)"""
-            else:
-                code += "\ndf = pandas.read_json(data,compression='gzip')"
+    json_data = json.load(f)"""
         else:
-            if row.get('normalize'):
-                code += "\ndf = pandas.json_normalize(json.loads(data.read_text()))"
-            else:
-                code += "\ndf = pandas.read_json(data)"
+            code += """json_data = json.loads(data.read_text())"""
+
+        # read specific key from json
+        if row.get('key_data'):
+            code += f"\njson_data = json_data['{row['key_data']}']"
+
+
+        if str(title).startswith("nvdcve"):
+            code += "\njson_data = [json_data[k] for k in json_data]"
+
+        if row.get('normalize'):
+            code += f"\ndf = pandas.json_normalize(json_data)"
+        else:
+            code += f"\ndf = pandas.read_json(json.dumps(json_data))"
+
+    #     else:
+    #         code += "\ndf = pandas.read_json(data,compression='gzip')"
+    # else:
+    #     if row.get('normalize'):
+    #         code += "\ndf = pandas.json_normalize(json.loads(data.read_text()))"
 
         if row.get('swap_axes'):
             code += "\ndf = df.swapaxes('columns','index')"
 
         nb['cells'].append(nbf.v4.new_code_cell(code))
-
-    
 
         print(row)
         if pd.isnull(row.get('key_index')):
@@ -143,3 +169,10 @@ for md in DATA_MSRC_MD_DIR.glob("*.md"):
 
     print(f"Creating {new_md}")
     new_md.write_text(md.read_text())
+
+
+index_generated = Path(NVD_DIR / 'index.md')
+index_generated.write_text(index_template.format(
+    title="NVD CVE Data by Year",
+    name=Path(__file__).name,
+    link=Path(__file__).name))

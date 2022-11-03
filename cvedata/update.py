@@ -18,6 +18,10 @@ def update_all_data():
     print("Updating all data...")
     start = time.time()
 
+    # CVEs
+    nist_update()
+    cwe_update()    
+
     # Windows
     cvrf_update()    
     msrc_pandas_update()
@@ -28,9 +32,7 @@ def update_all_data():
     # Chrome
     chromerelease_update()
 
-    # CVEs
-    nist_update()
-    cwe_update()    
+    # Acknowledgements
     ack_update()
     
 
