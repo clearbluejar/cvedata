@@ -11,18 +11,24 @@ import difflib
 from .config import CACHE_PATH, DATA_DIR, PANDAS_DIR
 from .msrc_cvrf import get_msrc_merged_cvrf_json,get_msrc_merged_cvrf_json_keyed,MSRC_API_URL
 from .metadata import should_update, update_metadata
-from .msrc_tags import get_tags_desc_to_bins
+# from .msrc_tags import get_tags_desc_to_bins
 from .util import get_file_json
 
 MSRC_CVRF_PANDAS = Path(DATA_DIR,"msrc-cvrf-pandas-merged.json.gz")
-MSRC_CVE_TAGS_PANDAS = Path(DATA_DIR,"msrc-cve-tag-pandas.json")
-MSRC_CVE_TAGS_TITLE_PANDAS = Path(DATA_DIR,"msrc-cve-tag-title-pandas.json")
+MSRC_CVRF_PANDAS_FULL = Path(DATA_DIR,"msrc-cvrf-pandas-merged-full.json.gz")
+# MSRC_CVE_TAGS_PANDAS = Path(DATA_DIR,"msrc-cve-tag-pandas.json")
+MSRC_CVE_TAGS_TITLE = Path(DATA_DIR,"msrc-cve-tag-title.json")
 
-# temporary cache file
-ALL_KBS_VERSION_MAP = Path(CACHE_PATH,"all-msrc-kb-ver-pandas.json")
+MSRC_TAGS_PATH = Path(DATA_DIR,"msrc-tags-merged.json")
+MSRC_TAGS_FREQ_PATH = Path(DATA_DIR,"msrc-tags-merged-frequency.json")
+MSRC_TITLES_PATH = Path(DATA_DIR,"msrc-titles-merged.json")
+MSRC_TITLES_FREQ_PATH = Path(DATA_DIR,"msrc-titles-merged-frequency.json")
 
-MSRC_KB_VERSION_PANDAS = Path(DATA_DIR,"msrc-kb-ver-pandas.json")
+ALL_KBS_VERSION_MAP = Path(CACHE_PATH,"all-msrc-kb-ver-pandas.json") # temporary cache file
+MSRC_KB_VERSION = Path(DATA_DIR,"msrc-kb-ver.json")
 
+
+# MSRC column parsers
 def get_tag(notes):
     """
     The MSRC tag points to the affected software component
@@ -215,17 +221,20 @@ def get_cvss_base(scores):
 
     return max(base_scores, key=lambda x: float(x),default=0)
 
-def clean_tag(tag):
-    if not tag:
-        return ''
-    import re
-    tag = tag.lower()
-    # if len(tag.split()) > 2:
-    #     tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
 
-    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+# Tag utility functions
 
-    return tag.strip()
+# def clean_tag(tag):
+#     if not tag:
+#         return ''
+#     import re
+#     tag = tag.lower()
+#     # if len(tag.split()) > 2:
+#     #     tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
+
+#     tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+
+#     return tag.strip()
 
 def clean_impact(tag):
     if not tag or not isinstance(tag,str):
@@ -235,30 +244,31 @@ def clean_impact(tag):
     if len(tag.split()) > 2:
         tag = re.sub('remote code execution|information disclosure|elevation of privilege|tampering|spoofing|denial of service|security feature bypass|vulnerability', '', tag,flags=re.I)        
 
-    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)
 
     return tag.strip()
 
-def get_tag_similarity(tag1,tag2):  
-    ctag1 = clean_tag(tag1).split()
-    ctag2 = clean_tag(tag2).split()
-    sim = difflib.SequenceMatcher(None,ctag1,ctag2).ratio()
-    # if "remote procedure" in ctag1 or "remote procedure" in ctag2:
-    #     print(f"{ctag1}:{ctag2}: {sim}")
-    return sim
+# def get_tag_similarity(tag1,tag2):  
+#     ctag1 = clean_tag(tag1).split()
+#     ctag2 = clean_tag(tag2).split()
+#     sim = difflib.SequenceMatcher(None,ctag1,ctag2).ratio()
+#     # if "remote procedure" in ctag1 or "remote procedure" in ctag2:
+#     #     print(f"{ctag1}:{ctag2}: {sim}")
+#     return sim
 
-def get_sim(x):
-    sims = []
-    tag = x.name
-    for title in x['Title']:
-        sims.append(get_tag_similarity(tag,title))
-    return sims
+# def get_sim(x):
+#     sims = []
+#     tag = x.name
+#     for title in x['Title']:
+#         sims.append(get_tag_similarity(tag,title))
+#     return sims
 
 def create_msrc_cvrf_pandas():
 
     FIELDS = ["Initial Release", "Title", "Tags", "Impact", "CVSS", "KBs", "Versions", "Acks"]
 
-    if should_update(MSRC_CVRF_PANDAS,1):
+    if should_update(MSRC_CVRF_PANDAS_FULL,1):
+    #if True:
 
         msrc_merged_json = get_msrc_merged_cvrf_json_keyed()
 
@@ -283,7 +293,7 @@ def create_msrc_cvrf_pandas():
             df_vulns['Current Release'] = datetime.strftime(datetime.fromisoformat(df_update['DocumentTracking.CurrentReleaseDate'].values[0].replace('Z','')),'%Y-%m-%d')
             df_vulns['Acks'] = df_vulns['Acknowledgments'].apply(get_acks)
             df_vulns['CVSS'] = df_vulns['CVSSScoreSets'].apply(get_cvss_base)
-            df_vulns['Bins'] = df_vulns[['Tags','KBs','Versions']].apply(get_bins,axis=1)
+            #df_vulns['Bins'] = df_vulns[['Tags','KBs','Versions']].apply(get_bins,axis=1)
             df_vulns['Title'] = df_vulns['Title.Value'].apply(clean_impact)
             
             df_vulns.set_index('CVE',inplace=True,verify_integrity=True)
@@ -302,9 +312,10 @@ def create_msrc_cvrf_pandas():
 
         all_cvrf_df = pd.concat(cvrf_dfs)
     else:
-        all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS)
+        all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS_FULL)
 
     all_cvrf_df[FIELDS].to_json(MSRC_CVRF_PANDAS)
+    all_cvrf_df.to_json(MSRC_CVRF_PANDAS_FULL)
 
 def create_msrc_tags_titles():
     
@@ -312,23 +323,27 @@ def create_msrc_tags_titles():
 
     # tag to title
     tags_df = all_cvrf_df[['Tags','Title']]
-    tags_df['Tag Instance Count'] = tags_df['Tags'].apply(lambda x: len(tags_df[tags_df['Tags']==x]))
+    tags_title_df = tags_df.reset_index().groupby(['Tags','Title']).aggregate(set)
+    tags_title_df.to_json(Path(DATA_DIR,'test.json'))
+    print(tags_title_df.head())
+    copy_tags_df = tags_df.copy()
+    tags_df['Tag Instance Count'] = tags_df['Tags'].apply(lambda x: len(copy_tags_df[copy_tags_df['Tags'] == x]))
+
     tags_df = tags_df.groupby('Tags').aggregate(set)
+    
     tags_df['Title'] = tags_df['Title'].aggregate(list)
     tags_df['Tag Instance Count'] = tags_df['Tag Instance Count'].apply(lambda x: list(x)[0])
     tags_df['Title Length'] = tags_df['Title'].apply(lambda x: len(x))
-
-    #tags_df['sim'] = tags_df.apply(get_sim,axis=1)
-    tags_df.to_json(MSRC_CVE_TAGS_TITLE_PANDAS,indent=4)
-    print(tags_df.head())
+    #tags_df.index.name = 'Tags'
+    tags_df.to_json(MSRC_CVE_TAGS_TITLE,indent=4)
 
 def create_kb_ver():
 
     # msrc_kb_to_version    
     kb_vers_df = pd.DataFrame()
 
-    if should_update(ALL_KBS_VERSION_MAP,1,False):
-        all_cvrf_df = get_msrc_cvrf_pandas_df()
+    if should_update(ALL_KBS_VERSION_MAP,1):
+        all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS_FULL)
         rems = pd.Series(all_cvrf_df['Remediations'].explode('Remediations')) # .dropna().reset_index(drop=True)
         kb_vers_df[['KB','Version']] = rems.apply(get_kb_and_version).dropna()
         kb_vers_df.to_json(ALL_KBS_VERSION_MAP)
@@ -342,8 +357,39 @@ def create_kb_ver():
     # convert columns to list
     kb_vers_df['Version'] = kb_vers_df['Version'].apply(list)
     kb_vers_df['Build'] = kb_vers_df['Build'].apply(list)
-    kb_vers_df.to_json(MSRC_KB_VERSION_PANDAS)
+    kb_vers_df.to_json(MSRC_KB_VERSION)
 
+def create_msrc_tags():
+
+    all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS)
+
+    tags_df = all_cvrf_df['Tags'].drop_duplicates()
+    
+    print(tags_df.head())
+    tags_df.to_json(MSRC_TAGS_PATH,indent=4,orient='records')
+
+    freq_df = all_cvrf_df['Tags'].value_counts(ascending=False)
+    print(freq_df.head())
+    freq_df.to_json(MSRC_TAGS_FREQ_PATH,indent=4)
+
+def create_msrc_titles():
+
+    all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS)
+
+    titles_df = all_cvrf_df['Title'].drop_duplicates()
+    
+    print(titles_df.head())
+    titles_df.to_json(MSRC_TITLES_PATH,indent=4,orient='records')
+
+    freq_df = all_cvrf_df['Title'].value_counts(ascending=False)
+    print(freq_df.head())
+    freq_df.to_json(MSRC_TITLES_FREQ_PATH,indent=4)
+    
+def get_msrc_tags():
+    return get_file_json(MSRC_TAGS_PATH, __file__)
+
+def get_msrc_titles():
+    return get_file_json(MSRC_TITLES_PATH, __file__)
 
 def get_msrc_cvrf_pandas_json():
     return get_file_json(MSRC_CVRF_PANDAS,__file__)
@@ -352,10 +398,10 @@ def get_msrc_cvrf_pandas_df():
     return get_file_json(MSRC_CVRF_PANDAS,__file__)
 
 def get_msrc_tags_titles_json():
-    return get_file_json(MSRC_CVE_TAGS_TITLE_PANDAS,__file__)
+    return get_file_json(MSRC_CVE_TAGS_TITLE,__file__)
     
 def get_kb_ver_json():
-    return get_file_json(MSRC_KB_VERSION_PANDAS,__file__)
+    return get_file_json(MSRC_KB_VERSION,__file__)
 
 def update():
 
@@ -368,8 +414,9 @@ def update():
     count = len(get_msrc_cvrf_pandas_json())
 
     update_metadata(MSRC_CVRF_PANDAS,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
+    
 
-    print(f"Updating {MSRC_CVE_TAGS_TITLE_PANDAS}...")
+    print(f"Updating {MSRC_CVE_TAGS_TITLE}...")
     
     start = time.time()   
     create_msrc_tags_titles()
@@ -377,9 +424,9 @@ def update():
 
     count = len(get_msrc_tags_titles_json())
 
-    update_metadata(MSRC_CVE_TAGS_TITLE_PANDAS,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
+    update_metadata(MSRC_CVE_TAGS_TITLE,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False,swap_axes=False)
 
-    print(f"Updating {MSRC_KB_VERSION_PANDAS}...")
+    print(f"Updating {MSRC_KB_VERSION}...")
     
     start = time.time()   
     create_kb_ver()
@@ -387,7 +434,29 @@ def update():
 
     count = len(get_kb_ver_json())
 
-    update_metadata(MSRC_KB_VERSION_PANDAS,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
+    update_metadata(MSRC_KB_VERSION,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
+
+    print(f"Updating {MSRC_TAGS_PATH} and {MSRC_TAGS_FREQ_PATH}...")
+    
+    start = time.time()   
+    create_msrc_tags()
+    elapsed = time.time() - start
+
+    count = len(get_msrc_tags())
+
+    update_metadata(MSRC_TAGS_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,normalize=False)
+
+    update_metadata(MSRC_TAGS_FREQ_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,swap_axes=True,normalize=True)
+
+    start = time.time()   
+    create_msrc_titles()
+    elapsed = time.time() - start
+
+    count = len(get_msrc_tags())
+
+    update_metadata(MSRC_TITLES_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,normalize=False)
+
+    update_metadata(MSRC_TITLES_FREQ_PATH,{'sources': [MSRC_API_URL]}, count, elapsed,swap_axes=True,normalize=True)
 
 
 if __name__ == "__main__":

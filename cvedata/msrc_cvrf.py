@@ -9,7 +9,7 @@ from pathlib import Path
 from functools import lru_cache
 
 from .config import DATA_DIR, CACHE_PATH
-from .metadata import update_metadata
+from .metadata import update_metadata, should_update
 from .util import get_file_json
 
 MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc_cvrf_merged.json.gz')
@@ -58,8 +58,20 @@ def get_knowledge_base_cvrf_json(cvrf_id):
             MSRC_API_URL, cvrf_id)
         headers = {'Accept': 'application/json'}
         response = requests.get(url, headers=headers)
-        # if this fails the data would be incomplete
-        assert(response.status_code == 200)
+
+    
+        if response.status_code != 200:
+            # try once more
+            response = requests.get(url, headers=headers)
+
+        if response.status_code != 200:
+            # skip if it's this month
+            now = datetime.now()
+            if year == now.year and month == now.month:            
+                return None
+            else:
+                raise Exception(f'Failed to download MSRC data for {cvrf_id}')
+
         # cache to disk        
         with open(cvrf_file, 'w') as f:
             json.dump(json.loads(response.content), f)
@@ -81,27 +93,23 @@ def create_msrc_merged_cvrf_json():
     get_all_knowledge_base_cvrf()
 
     # Use created file unless outdated
-    # if os.path.exists(path):
-    #     current_year = datetime.now().year
-    #     current_month = datetime.now().month
-    #     mod_time = datetime.fromtimestamp(os.path.getmtime(path))
-    #     if mod_time.month == current_month and mod_time.year == current_year:
-    #         print("{} already up to date.".format(path))
-    #         return
-        
-    for f in glob.glob(os.path.join(CACHE_PATH, "*.json")):
-        with open(f, "r") as infile:
-            cvrf = json.load(infile)
-            if cvrf.get('Vulnerability'):
-                result.append(cvrf)
-            else:
-                print(f"skipping cvrf {cvrf['DocumentTitle']} lacking Vulnerability info")
-
+    if should_update(MSRC_CVRF_MERGED_PATH,1):
     
-    with gzip.open(MSRC_CVRF_MERGED_PATH, "w") as f:
-        f.write(json.dumps(result).encode("utf-8"))
+        for f in glob.glob(os.path.join(CACHE_PATH, "20*.json")):
+            with open(f, "r") as infile:
+                cvrf = json.load(infile)
+                if cvrf.get('Vulnerability'):
+                    result.append(cvrf)
+                else:
+                    print(f"skipping {f} lacking Vulnerability info")
 
-    print("Created {} with len {}".format(MSRC_CVRF_MERGED_PATH,len(result)))
+        
+        with gzip.open(MSRC_CVRF_MERGED_PATH, "w") as f:
+            f.write(json.dumps(result).encode("utf-8"))
+
+        print(f"Created {MSRC_CVRF_MERGED_PATH} with len {len(result)}")
+    else:
+        print(f"{MSRC_CVRF_MERGED_PATH} already exists. Skipping update!")
 
 @lru_cache(None)
 def get_msrc_merged_cvrf_json():

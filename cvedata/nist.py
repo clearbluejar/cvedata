@@ -2,7 +2,6 @@ from datetime import datetime
 import json
 import gzip
 import requests
-import os
 import time
 from pathlib import Path
 
@@ -63,6 +62,8 @@ def create_nist_year_cve_jsons():
 
         if nist_year_path.exists():
             print(f"Already created {nist_year_path}, skipping!")
+            with gzip.GzipFile(nist_year_path) as f:
+                nist_cves = json.load(f)
         else:
             print(f"Downloading {url}")
             data = download_extract_gz(url)
@@ -84,12 +85,15 @@ def create_nist_year_cve_jsons():
             with gzip.GzipFile(nist_year_path,'w') as f:
                 f.write(json.dumps(nist_cves).encode("utf-8"))
 
-            count = len(nist_cves['cves'])
-            elapsed = time.time() - start
+        count = len(nist_cves['cves'])
+        elapsed = time.time() - start
 
-            update_metadata(nist_year_path,{'sources': [NIST_DATA_FEEDS_URL]}, count, elapsed)
+        update_metadata(nist_year_path,{'sources': [NIST_DATA_FEEDS_URL]}, count, elapsed,normalize=True,key_data='cves')
 
-            print(f"Created {nist_year_path} with CVE count {count}")
+        print(f"Created {nist_year_path} with CVE count {count}")
+
+        # this really speeds up processing time
+        del nist_cves
     
 
 # cache this so its fast

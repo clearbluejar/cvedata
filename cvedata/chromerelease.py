@@ -233,7 +233,7 @@ def update():
 
     count = len(json.loads(RAW_SCRAPE_CHROME_JSON_PATH.read_text()))
 
-    update_metadata(RAW_SCRAPE_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL]},count,elapsed,swap_axes=True)
+    update_metadata(RAW_SCRAPE_CHROME_JSON_PATH,{'sources': [CHROME_RELEASE_URL]},count,elapsed,swap_axes=False)
 
     # Parse
     print(f"Updating {PARSED_CHROME_JSON_PATH}...")

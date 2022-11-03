@@ -9,6 +9,8 @@ from .winbindex import update as winbindex_update
 from .metadata import print_stats
 from .nist import update as nist_update
 from .msrc_pandas import update as msrc_pandas_update
+from .win_verinfo import update as verinfo_update
+
 
 
 def update_all_data():
@@ -16,14 +18,21 @@ def update_all_data():
     print("Updating all data...")
     start = time.time()
 
+    # Windows
     cvrf_update()    
-    chromerelease_update()
-    ack_update()
-    cwe_update()
-    winbindex_update()
-    msrc_tags_update()
-    nist_update()
     msrc_pandas_update()
+    msrc_tags_update()
+    winbindex_update()
+    verinfo_update()
+
+    # Chrome
+    chromerelease_update()
+
+    # CVEs
+    nist_update()
+    cwe_update()    
+    ack_update()
+    
 
     elapsed = time.time() - start
 

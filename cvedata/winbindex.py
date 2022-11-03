@@ -215,7 +215,7 @@ def update():
     update_metadata(WINDOWS_VERSION_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=True,normalize=True)
 
     count = len(get_winbindex_ver_to_build_map())
-    update_metadata(WINDOWS_VER_TO_BUILD_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=False,normalize=False)
+    update_metadata(WINDOWS_VER_TO_BUILD_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=False,normalize=True)
 
     
 
