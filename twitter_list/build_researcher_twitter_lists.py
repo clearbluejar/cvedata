@@ -8,6 +8,8 @@ import tweepy
 import pandas as pd
 from cvedata.acknowledgements import get_researcher_twitter_map_json
 
+BASE_DIR = Path(__file__).parent
+
 # Setup twitter client
 
 # set tokens
@@ -45,7 +47,7 @@ for researcher in researchers_json:
         if screen_name:
             screen_names.add(screen_name)
 
-current_members_path = Path('current_members.json')
+current_members_path = Path(BASE_DIR, 'current_members.json')
 current_members = []
 current_members_results = []
 
@@ -58,11 +60,15 @@ if not current_members_path.exists():
 
 current_members = json.loads(current_members_path.read_text())
 
+# Save dataframe of current list members
 members_df = pd.json_normalize(current_members)
+
+# Map back to names from original list
 members_df['cvedata_name'] = members_df['screen_name'].apply(
     lambda x: screen_name_to_researcher_map.get(str(x).lower()))
+
+members_df.to_json(BASE_DIR / 'members.json')
 print(members_df.head())
-members_df.to_json('members.json')
 
 current_ids = []
 current_screen_names = []
@@ -80,7 +86,7 @@ print(f"Screen names to add len {len(screen_names_to_add)}")
 valid_screen_names = []
 sub_size = 100
 
-invalid_sn_path = Path('invalid_screen_names.json')
+invalid_sn_path = Path(BASE_DIR,'invalid_screen_names.json')
 
 if invalid_sn_path.exists() and datetime.fromtimestamp(invalid_sn_path.stat().st_mtime).day == datetime.now().day:
     # load cached version

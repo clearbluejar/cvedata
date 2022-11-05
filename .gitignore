@@ -132,3 +132,5 @@ data/.cache
 data*
 .DS_Store
 docs/book*
+# ignore cache data
+twitter_list/*.json
