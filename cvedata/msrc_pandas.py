@@ -179,8 +179,8 @@ def get_bins(row):
 
     # TODO user version and KBs to sharpen bins list
 
-    if row['Tags']:
-        tag = row['Tags'].lower()
+    if row['Tag']:
+        tag = row['Tag'].lower()
 
         if td_to_bin_map.get(tag):
             for bin in td_to_bin_map[tag]:
@@ -265,7 +265,7 @@ def clean_impact(tag):
 
 def create_msrc_cvrf_pandas():
 
-    FIELDS = ["Initial Release", "Title", "Tags", "Impact", "CVSS", "KBs", "Versions", "Acks"]
+    FIELDS = ["Initial Release", "Title", "Tag", "Impact", "CVSS", "KBs", "Versions", "Acks"]
 
     if should_update(MSRC_CVRF_PANDAS_FULL,1):
     #if True:
@@ -283,7 +283,7 @@ def create_msrc_cvrf_pandas():
             print(df_vulns.columns)
             
 
-            df_vulns['Tags'] = df_vulns["Notes"].apply(get_tag)
+            df_vulns['Tag'] = df_vulns["Notes"].apply(get_tag)
             df_vulns['FAQs'] = df_vulns["Notes"].apply(get_faqs)
             df_vulns['KBs'] = df_vulns["Remediations"].apply(get_kbs)
             df_vulns['Versions'] = df_vulns["Remediations"].apply(get_versions)
@@ -293,7 +293,7 @@ def create_msrc_cvrf_pandas():
             df_vulns['Current Release'] = datetime.strftime(datetime.fromisoformat(df_update['DocumentTracking.CurrentReleaseDate'].values[0].replace('Z','')),'%Y-%m-%d')
             df_vulns['Acks'] = df_vulns['Acknowledgments'].apply(get_acks)
             df_vulns['CVSS'] = df_vulns['CVSSScoreSets'].apply(get_cvss_base)
-            #df_vulns['Bins'] = df_vulns[['Tags','KBs','Versions']].apply(get_bins,axis=1)
+            #df_vulns['Bins'] = df_vulns[['Tag','KBs','Versions']].apply(get_bins,axis=1)
             df_vulns['Title'] = df_vulns['Title.Value'].apply(clean_impact)
             
             df_vulns.set_index('CVE',inplace=True,verify_integrity=True)
@@ -322,19 +322,19 @@ def create_msrc_tags_titles():
     all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS)
 
     # tag to title
-    tags_df = all_cvrf_df[['Tags','Title']]
-    tags_title_df = tags_df.reset_index().groupby(['Tags','Title']).aggregate(set)
+    tags_df = all_cvrf_df[['Tag','Title']]
+    tags_title_df = tags_df.reset_index().groupby(['Tag','Title']).aggregate(set)
     tags_title_df.to_json(Path(DATA_DIR,'test.json'))
     print(tags_title_df.head())
     copy_tags_df = tags_df.copy()
-    tags_df['Tag Instance Count'] = tags_df['Tags'].apply(lambda x: len(copy_tags_df[copy_tags_df['Tags'] == x]))
+    tags_df['Tag Instance Count'] = tags_df['Tag'].apply(lambda x: len(copy_tags_df[copy_tags_df['Tag'] == x]))
 
-    tags_df = tags_df.groupby('Tags').aggregate(set)
+    tags_df = tags_df.groupby('Tag').aggregate(set)
     
     tags_df['Title'] = tags_df['Title'].aggregate(list)
     tags_df['Tag Instance Count'] = tags_df['Tag Instance Count'].apply(lambda x: list(x)[0])
     tags_df['Title Length'] = tags_df['Title'].apply(lambda x: len(x))
-    #tags_df.index.name = 'Tags'
+    #tags_df.index.name = 'Tag'
     tags_df.to_json(MSRC_CVE_TAGS_TITLE,indent=4)
 
 def create_kb_ver():
@@ -363,12 +363,12 @@ def create_msrc_tags():
 
     all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS)
 
-    tags_df = all_cvrf_df['Tags'].drop_duplicates()
+    tags_df = all_cvrf_df['Tag'].drop_duplicates()
     
     print(tags_df.head())
     tags_df.to_json(MSRC_TAGS_PATH,indent=4,orient='records')
 
-    freq_df = all_cvrf_df['Tags'].value_counts(ascending=False)
+    freq_df = all_cvrf_df['Tag'].value_counts(ascending=False)
     print(freq_df.head())
     freq_df.to_json(MSRC_TAGS_FREQ_PATH,indent=4)
 
