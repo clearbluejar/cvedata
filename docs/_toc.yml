@@ -4,19 +4,21 @@
 format: jb-book
 root: intro
 parts:
-- caption: Metadata
+
+- caption: Tutorial
   chapters:
-  - file: book/metadata
-# - caption: Tutorial
-#   chapters:
-#   - file: using_generated_data
+  - file: using_generated_data
+- caption: CVE Data Analysis
+  chapters:
+  - file: analysis/ms_kbs
 - caption: Charts
   chapters:
   - glob: charts/*
 - caption: Generated Data
   chapters:
-  - file: book/generated/index
-  - glob: book/generated/*
+  - file: book/metadata
+    sections:
+    - glob: book/generated/*
 - caption: NVD CVEs by Year
   chapters:
   - file: book/nvd/index

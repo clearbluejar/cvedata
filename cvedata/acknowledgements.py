@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 import pandas as pd
 
-from .config import DATA_DIR
+from .config import DATA_DIR, CACHE_PATH
 from .msrc_cvrf import get_msrc_merged_cvrf_json, MSRC_API_URL
 from .chromerelease import get_chromerelease_cve_json, CHROME_RELEASE_URL
 from .metadata import update_metadata, should_update
@@ -24,6 +24,7 @@ RESEARCHER_NAMES_GROUP_JSON_PATH = Path(
 RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_map.json')
 
 # map of all cve scores to normalized names
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL = Path(CACHE_PATH, 'researcher_cve_quality_map_full.json.gz')
 RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_quality_map.json')
 
 # map of all researcher to twitter handle
@@ -37,7 +38,7 @@ def create_researcher_names_json():
 
     # Get MSRC CVRF acknowledgements
     msrc_cvrf_json = get_msrc_merged_cvrf_json()
-
+    
     [names.append(name.get('Value').strip()) for cvrf in msrc_cvrf_json if cvrf.get('Vulnerability') for vuln in cvrf["Vulnerability"]
      for ack in vuln['Acknowledgments'] for name in ack['Name'] if name.get('Value') is not None]
 
@@ -47,7 +48,12 @@ def create_researcher_names_json():
     [names.append(cve.get('acknowledgment').strip())
      for cve in chrome_release_json if cve.get('acknowledgment')]
 
-    names = sorted(list(set(names)))
+    # remove double spaces
+    clean_names = []
+    for name in names:
+        clean_names.append(re.sub(r"(?:(?!\n)\s)+", " ", name))
+    
+    names = sorted(list(set(clean_names)))
 
     with open(RESEARCHER_NAMES_JSON_PATH, 'w') as f:
         json.dump(names, f, indent=4)
@@ -66,13 +72,9 @@ def cleanup_keywords_researcher_key(text):
     return re.sub(clean, '', text).strip()
 
 # researcher name normalization (using first two keywords)
-
-
 def create_researcher_names_group_json():
 
-    #names = []
     names = {}
-    groups = []
 
     researcher_json = get_researcher_names_json()
 
@@ -82,7 +84,7 @@ def create_researcher_names_group_json():
                      "chakra", "trend micro’s", "crowdstrike", "microsoft office", "microsoft security", "fortinet's fortiguard",
                      "kaspersky lab", "the chromium"]
 
-    for r in researcher_json:
+    for r in researcher_json:        
         # group by first two keyworks (ignoring html)
         key = ' '.join(cleanup_html_researcher_key(r).split(' ')[0:2])
         # remove common keywords to avoid "researcher and" or "researcher from" being different keys
@@ -158,53 +160,62 @@ def create_researcher_cve_map_json():
 
 
 def create_researcher_cve_quality_map_json():
-    # if should_update(RESEARCHER_CVE_MAP_JSON_PATH, 1):
-
-    researcher_cves = get_researcher_cve_map_json()
-
-    # GOAT CVEs
-    goat_quality = []
-
-    cve_columns = ['publishedDate', 'cve.CVE_data_meta.ID',
-       'cve.CVE_data_meta.ASSIGNER', 'cve.problemtype.problemtype_data',
-       'cve.description.description_data', 'impact.baseMetricV3.cvssV3.version',
-       'impact.baseMetricV3.cvssV3.vectorString',
-       'impact.baseMetricV3.cvssV3.attackVector',
-       'impact.baseMetricV3.cvssV3.attackComplexity',
-       'impact.baseMetricV3.cvssV3.privilegesRequired',
-       'impact.baseMetricV3.cvssV3.userInteraction',
-       'impact.baseMetricV3.cvssV3.scope',
-       'impact.baseMetricV3.cvssV3.confidentialityImpact',
-       'impact.baseMetricV3.cvssV3.integrityImpact',
-       'impact.baseMetricV3.cvssV3.availabilityImpact',
-       'impact.baseMetricV3.cvssV3.baseScore',
-       'impact.baseMetricV3.cvssV3.baseSeverity',
-       'impact.baseMetricV3.exploitabilityScore',
-       'impact.baseMetricV3.impactScore']
-
-    for researcher,cves in researcher_cves:
-
-        cve_data = get_cves(cves)
-        cve_df = pd.json_normalize(cve_data)        
-        #print(cve_df.columns)
-        cve_df = pd.DataFrame(cve_df,columns=cve_columns)
-        cve_df['researcher'] = researcher
-        #cve_df.set_index('researcher',inplace=True)
-        print(cve_df.head())
-        #print(cve_data)
-
-        #TODO add stat columns
-
-        goat_quality.append(cve_df)
-
     
+    if should_update(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL, 1):
 
-    goat_quality_df = pd.concat(goat_quality)
-    goat_quality_df.reset_index(inplace=True)
+        researcher_cves = get_researcher_cve_map_json()
+
+        # GOAT CVEs
+        goat_quality = []
+
+        cve_columns = ['publishedDate', 'cve.CVE_data_meta.ID',
+        'cve.CVE_data_meta.ASSIGNER', 'cve.problemtype.problemtype_data',
+        'cve.description.description_data', 'impact.baseMetricV3.cvssV3.version',
+        'impact.baseMetricV3.cvssV3.vectorString',
+        'impact.baseMetricV3.cvssV3.attackVector',
+        'impact.baseMetricV3.cvssV3.attackComplexity',
+        'impact.baseMetricV3.cvssV3.privilegesRequired',
+        'impact.baseMetricV3.cvssV3.userInteraction',
+        'impact.baseMetricV3.cvssV3.scope',
+        'impact.baseMetricV3.cvssV3.confidentialityImpact',
+        'impact.baseMetricV3.cvssV3.integrityImpact',
+        'impact.baseMetricV3.cvssV3.availabilityImpact',
+        'impact.baseMetricV3.cvssV3.baseScore',
+        'impact.baseMetricV3.cvssV3.baseSeverity',
+        'impact.baseMetricV3.exploitabilityScore',
+        'impact.baseMetricV3.impactScore']
+
+        for researcher,cves in researcher_cves:
+
+            cve_data = get_cves(cves)
+            cve_df = pd.json_normalize(cve_data)        
+            #print(cve_df.columns)
+            cve_df = pd.DataFrame(cve_df,columns=cve_columns)
+            cve_df['researcher'] = researcher
+            #cve_df.set_index('researcher',inplace=True)
+            print(cve_df.head())
+            #print(cve_data)
+
+            goat_quality.append(cve_df)
+
+        
+
+        goat_quality_df = pd.concat(goat_quality)
+        goat_quality_df.reset_index(drop=True,inplace=True)
+
+        goat_quality_df.to_json(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL)
+    else:
+        print(f"Loading cached {RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL}.")
+        goat_quality_df = pd.read_json(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL)
+
     print(goat_quality_df.head())
+    quality_cols = ['researcher','impact.baseMetricV3.cvssV3.baseScore', 'impact.baseMetricV3.exploitabilityScore','impact.baseMetricV3.impactScore']
+    goat_quality_df = goat_quality_df[quality_cols].groupby(by=['researcher']).mean()
+    print(goat_quality_df.sort_values(by=['impact.baseMetricV3.cvssV3.baseScore'],ascending=False))
+
     goat_quality_df.to_json(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH)
 
-    print(f"Found {len(goat_quality)} grouped researchers written to {RESEARCHER_CVE_QUALITY_MAP_JSON_PATH}")
+    #print(f"Found {len(goat_quality)} grouped researchers written to {RESEARCHER_CVE_QUALITY_MAP_JSON_PATH}")
     # else:
     #     print(f"Loading cached {RESEARCHER_CVE_MAP_JSON_PATH}.")
 
@@ -342,7 +353,7 @@ def update():
     update_metadata(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
 
 
-    check_top_x(100)
+    # check_top_x(100)
 
 
 if __name__ == "__main__":

@@ -19,6 +19,8 @@ auth = tweepy.OAuthHandler(os.getenv("consumer_key"),os.getenv("consumer_secret"
 auth.set_access_token(os.getenv("access_token"),os.getenv("access_token_secret"))
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
+
+# didn't have great success using API v2
 # client = tweepy.Client(
 #     bearer_token=os.getenv("bearer_token"),
 #     consumer_key=os.getenv("consumer_key"),
@@ -29,6 +31,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 # )
 
 # Used to create list
+
 # list_name = "researchers with a CVE"
 # list_description = "A list of researchers that have earned at least 1 CVE"
 
@@ -115,7 +118,7 @@ screen_names_to_add = list(set(screen_names_to_add).difference(set(invalid_sn)))
 print(f"Need to add {len(screen_names_to_add)} valid researchers")
 print(f"Starting member count = {len(current_screen_names)}")
 
-sub_size = 10 # twitter doesn't like you to add 100 at once
+sub_size = 5 # twitter doesn't like you to add 100 at once
 member_count = len(current_screen_names)
 for i in range(0, len(screen_names_to_add), sub_size):
     sub_screen_names = [sn for sn in screen_names_to_add[i: i + sub_size]]
@@ -137,6 +140,6 @@ for i in range(0, len(screen_names_to_add), sub_size):
         if current_members_path.exists() and added > 0:
             current_members_path.unlink()
 
-        time.sleep(1)
+        time.sleep(2)
     except Exception as e:
         print(f"{e}")

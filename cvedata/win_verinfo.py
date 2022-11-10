@@ -64,8 +64,8 @@ def create_win_verinfo_desc_to_bins():
     verinfo_df = pd.read_json(VERINFO_PATH)
     desc_to_bin_df = verinfo_df[['Name','VersionInfo.FileDescription']]
     desc_to_bin_df = desc_to_bin_df.groupby('VersionInfo.FileDescription').aggregate(list)
-    desc_to_bin_df.to_json(VERINFO_DESC_TO_BINS_PATH)
-    print(desc_to_bin_df.head())
+    desc_to_bin_df['Name'].to_json(VERINFO_DESC_TO_BINS_PATH)
+    print(desc_to_bin_df['Name'].head())
 
 def get_win_ver_info_json():
     return get_file_json(VERINFO_PATH,__file__)
