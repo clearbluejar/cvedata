@@ -3,3 +3,4 @@ xmltodict
 requests
 pandas
 tabulate
+feedparser

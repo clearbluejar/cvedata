@@ -369,26 +369,26 @@ def get_ms_kb_to_bins_json():
 
 def update():
 
-    # print(f"Updating {MS_KB_FEED_UPDATES_PATH}...")
+    print(f"Updating {MS_KB_FEED_UPDATES_PATH}...")
     
-    # start = time.time()   
-    # create_ms_kb_feeds()
-    # elapsed = time.time() - start
+    start = time.time()   
+    create_ms_kb_feeds()
+    elapsed = time.time() - start
 
-    # count = len(get_ms_kb_feeds_json())
+    count = len(get_ms_kb_feeds_json())
 
-    # update_metadata(MS_KB_FEED_UPDATES_PATH,{'sources': FEED_URLS}, count, elapsed, swap_axes=True)
+    update_metadata(MS_KB_FEED_UPDATES_PATH,{'sources': FEED_URLS}, count, elapsed, swap_axes=True)
 
 
-    # print(f"Updating {MS_KB_FEED_FILES_UPDATED_PATH}...")
+    print(f"Updating {MS_KB_FEED_FILES_UPDATED_PATH}...")
     
-    # start = time.time()   
-    # create_ms_kb_feed_files()
-    # elapsed = time.time() - start
+    start = time.time()   
+    create_ms_kb_feed_files()
+    elapsed = time.time() - start
 
-    # count = len(get_ms_kb_feed_files_json())
+    count = len(get_ms_kb_feed_files_json())
 
-    # update_metadata(MS_KB_FEED_FILES_UPDATED_PATH,{'sources': FEED_URLS}, count, elapsed, swap_axes=False)
+    update_metadata(MS_KB_FEED_FILES_UPDATED_PATH,{'sources': FEED_URLS}, count, elapsed, swap_axes=False)
 
     print(f"Updating {MS_KBS_TO_BINS_PATH}...")
     
