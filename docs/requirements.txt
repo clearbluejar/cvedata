@@ -6,3 +6,5 @@ requests
 pandas
 tabulate
 itables
+cvedata
+feedparser

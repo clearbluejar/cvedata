@@ -10,6 +10,7 @@ from .metadata import print_stats
 from .nist import update as nist_update
 from .msrc_pandas import update as msrc_pandas_update
 from .win_verinfo import update as verinfo_update
+from .ms_feed_kbs import update as ms_feeds_kbs_update
 
 
 
@@ -23,9 +24,10 @@ def update_all_data():
     cwe_update()    
 
     # Windows
-    cvrf_update()    
+    cvrf_update()
+    ms_feeds_kbs_update()
     msrc_pandas_update()
-    msrc_tags_update()
+    #msrc_tags_update()
     winbindex_update()
     verinfo_update()
 

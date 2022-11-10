@@ -90,6 +90,6 @@ jobs:
         files: |
           cvedata/data/*.json
           cvedata/data/*.gz
-        tag_name: "v0.2.0"
+        tag_name: "v0.2.1"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
