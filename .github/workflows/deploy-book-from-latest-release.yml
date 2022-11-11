@@ -2,6 +2,8 @@ name: deploy-book-from-release
 
 # Only run this when the master branch changes
 on:
+  release:
+    types: [published]
   push:
     branches:
     - master
@@ -36,8 +38,13 @@ jobs:
         fileName: "*"
         out-file-path: "cvedata/data"
 
+    - name: Install cvedata
+      run: |
+        pip install .
+        
     - name: Install dependencies
       run: |
+        pip install .
         pip install -r docs/requirements.txt
 
     - name: Generate Notebooks from Data
