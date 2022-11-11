@@ -58,8 +58,12 @@ jobs:
       with:
         name: cvedata-build
         path: |
-          cvedata/data
-          dist/    
+          cvedata/data/*.json
+          cvedata/data/*.json.gz
+          cvedata/data/.cache/*.csv
+          cvedata/data/.cache/*.json
+          cvedata/data/.cache/*.json.gz
+          dist/
         retention-days: 3
     
     - name: Release on GitHub
