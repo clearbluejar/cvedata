@@ -12,9 +12,7 @@ on:
     # folder has been modified.
     #
     # paths:
-    # - some-subfolder/**
-  release:
-    types: [published]    
+    # - some-subfolder/** 
   workflow_dispatch:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
@@ -41,7 +39,7 @@ jobs:
     - name: Install cvedata
       run: |
         pip install .
-        
+
     - name: Install dependencies
       run: |
         pip install .
