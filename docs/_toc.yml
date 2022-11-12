@@ -2,23 +2,31 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: README
 parts:
 
 - caption: Tutorial
   chapters:
   - file: using_generated_data
+
+- caption: CVE Data
+  chapters:
+  - file: book/metadata
+
+- caption: Generated
+  chapters:
+  - file: book/generated 
+    sections:
+    - glob: book/generated/*
+
 - caption: CVE Data Analysis
   chapters:
   - file: analysis/ms_kbs
+
 - caption: Charts
   chapters:
   - glob: charts/*
-- caption: Generated Data
-  chapters:
-  - file: book/metadata
-    sections:
-    - glob: book/generated/*
+
 - caption: NVD CVEs by Year
   chapters:
   - file: book/nvd/index

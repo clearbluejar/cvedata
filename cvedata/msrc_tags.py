@@ -1,8 +1,8 @@
-import os
 import json
 import time
 from pathlib import Path
 import difflib
+import re
 
 from .config import DATA_DIR
 from .msrc_cvrf import MSRC_API_URL
@@ -19,16 +19,6 @@ MSRC_TAGS_AND_DESC_TO_BINS_PATH = Path(DATA_DIR,"msrc-tags-to-bins.json")
 MIN_SIMILARITY = 0.55
 MAX_BINS_PER_TAG = 10
 
-def clean_tag(tag):
-    import re
-    tag = tag.lower()
-    if len(tag.split()) > 2:
-        tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
-
-    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
-
-    return tag.strip()
-
 def get_tag_similarity(tag1,tag2):  
     ctag1 = clean_tag(tag1).split()
     ctag2 = clean_tag(tag2).split()
@@ -37,6 +27,44 @@ def get_tag_similarity(tag1,tag2):
     #     print(f"{ctag1}:{ctag2}: {sim}")
     return sim
 
+def clean_tag(tag):
+    if not tag:
+        return ''
+
+    tag = tag.lower()
+    if len(tag.split()) > 2:
+        tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
+
+    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+
+    return tag.strip()
+    
+def get_tag_similarity_df(row,key,desc_to_bins,col_pre,min_sims):
+    """
+    Builds similarity columns into Dataframe at min_sims intervals
+    """
+
+    bins = {}
+
+    ctag1 = clean_tag(row[key]).split()
+
+    for desc in desc_to_bins:
+        
+        ctag2 = clean_tag(desc).split()
+        sim = difflib.SequenceMatcher(None,ctag1,ctag2).ratio()
+
+        # add bins to 
+        for min_sim in min_sims:
+            bins.setdefault(min_sim,[])            
+            if sim >= min_sim:
+                [bins[min_sim].append(bin) for bin in desc_to_bins[desc]]
+
+    bin_results = []
+
+    for sim_score in bins:
+        row[f"{col_pre}-{sim_score}"] = bins[sim_score]
+
+    return row
 
 def create_tags_desc_to_bins():
     tags_json = get_msrc_tags()
@@ -93,8 +121,6 @@ def  check_known_tags(tag_set):
 
     for tag in KNOWN_TAG_TO_BIN_MAP:
         assert tag in tag_set
-
-
 
 def update():
 
