@@ -39,21 +39,23 @@ def create_researcher_names_json():
     # Get MSRC CVRF acknowledgements
     msrc_cvrf_json = get_msrc_merged_cvrf_json()
     
-    [names.append(name.get('Value').strip()) for cvrf in msrc_cvrf_json if cvrf.get('Vulnerability') for vuln in cvrf["Vulnerability"]
+    [names.append([name.get('Value').strip(), vuln["CVE"]]) for cvrf in msrc_cvrf_json if cvrf.get('Vulnerability') for vuln in cvrf["Vulnerability"]
      for ack in vuln['Acknowledgments'] for name in ack['Name'] if name.get('Value') is not None]
 
     # Get Chrome acknowledgements
     chrome_release_json = get_chromerelease_cve_json()
 
-    [names.append(cve.get('acknowledgment').strip())
+    [names.append([cve.get('acknowledgment').strip(),cve.get('cve_id')] )
      for cve in chrome_release_json if cve.get('acknowledgment')]
 
-    # remove double spaces
-    clean_names = []
-    for name in names:
-        clean_names.append(re.sub(r"(?:(?!\n)\s)+", " ", name))
+    # # remove double spaces
+    # clean_names = []
+    # for name in names:
+    #     clean_names.append(re.sub(r"(?:(?!\n)\s)+", " ", name))
     
-    names = sorted(list(set(clean_names)))
+    # names = sorted(list(set(clean_names)))
+
+    names = sorted(names,key=lambda x: x[0])
 
     with open(RESEARCHER_NAMES_JSON_PATH, 'w') as f:
         json.dump(names, f, indent=4)
@@ -63,7 +65,7 @@ def create_researcher_names_json():
 
 
 def cleanup_html_researcher_key(text):
-    clean = re.compile('<.*?>|,|Discovered by')
+    clean = re.compile('()<.*?>|,|Discovered by')
     return re.sub(clean, '', text).strip()
 
 
@@ -75,6 +77,7 @@ def cleanup_keywords_researcher_key(text):
 def create_researcher_names_group_json():
 
     names = {}
+    cves = {}
 
     researcher_json = get_researcher_names_json()
 
@@ -82,11 +85,16 @@ def create_researcher_names_group_json():
                      "discovered by", "microsoft corporation", "anonymous", "msrc vulnerabilities", "codesafe team",
                      "microsoft chakra", "", "mark", "twitter", "information", "kunlun lab", "microsoft offensive",
                      "chakra", "trend micro’s", "crowdstrike", "microsoft office", "microsoft security", "fortinet's fortiguard",
-                     "kaspersky lab", "the chromium"]
+                     "kaspersky lab", "the chromium",]
 
-    for r in researcher_json:        
+    
+
+    for item in researcher_json:
+
+        line = item[0]
+        cve = item[1]
         # group by first two keyworks (ignoring html)
-        key = ' '.join(cleanup_html_researcher_key(r).split(' ')[0:2])
+        key = ' '.join(cleanup_html_researcher_key(line).split()[0:2])
         # remove common keywords to avoid "researcher and" or "researcher from" being different keys
         key = cleanup_keywords_researcher_key(key)
         # cleanup spaces
@@ -96,11 +104,12 @@ def create_researcher_names_group_json():
         key = key.lower()
 
         if len(key) <= 3 or key.lower() in common_groups:
-            print("Skipping researcher: {} with len {}".format(r, len(r)))
-            names.setdefault("ignored researchers", []).append(r)
+            print("Skipping researcher: {} with len {}".format(line, len(line)))
+            names.setdefault("ignored researchers", []).append(line)
             continue
 
-        names.setdefault(key, []).append(r)
+        names.setdefault(key, []).append(line)
+        cves.setdefault(key, []).append(cve)
 
     # for k, g in groupby(researcher_json, lambda x: cleanup_researcher_key(x).split()[0:2]):
     #     groups.append(list(g))    # Store group iterator as a list
@@ -115,48 +124,13 @@ def create_researcher_names_group_json():
     print("Found {} grouped researchers written to {}".format(
         len(names), RESEARCHER_NAMES_GROUP_JSON_PATH))
 
+    cves = {k : cves[k] for k in sorted(cves, key=lambda x: len(cves[x]), reverse=True)}
 
-def create_researcher_cve_map_json():
+    with open(RESEARCHER_CVE_MAP_JSON_PATH, 'w') as f:
+        json.dump(cves, f, indent=4)
 
-    if should_update(RESEARCHER_CVE_MAP_JSON_PATH, 1):
-
-        researcher_json = get_researcher_names_group_json()
-
-        # get date with reseracher names
-        msrc_cvrf_json = get_msrc_merged_cvrf_json()
-        chrome_release_json = get_chromerelease_cve_json()
-
-        # GOAT CVEs
-        goat_cves = []
-
-        for researcher in researcher_json:
-            cves = []
-
-            # MSRC data
-            [cves.append(vuln["CVE"]) for cvrf in msrc_cvrf_json if cvrf.get('Vulnerability') for vuln in cvrf["Vulnerability"]
-             for ack in vuln['Acknowledgments'] for name in ack['Name'] if name.get('Value') and researcher.lower() in name.get('Value').lower()]
-
-            # chromerelease data
-            [cves.append(cve.get('cve_id').strip()) for cve in chrome_release_json if cve.get(
-                'cve_id') and cve.get('acknowledgment') and researcher.lower() in cve.get('acknowledgment').lower()]
-
-            # remove duplicates
-            cves = set(cves)
-
-            # sort cves
-            cves = sorted(cves)
-
-            goat_cves.append([researcher, cves])
-
-        goat_cves = sorted(goat_cves, key=lambda x: len(x[1]), reverse=True)
-
-        with open(RESEARCHER_CVE_MAP_JSON_PATH, 'w') as f:
-            json.dump(goat_cves, f, indent=4)
-
-        print("Found {} grouped researchers written to {}".format(
-            len(goat_cves), RESEARCHER_CVE_MAP_JSON_PATH))
-    else:
-        print(f"Loading cached {RESEARCHER_CVE_MAP_JSON_PATH}.")
+    print("Found {} grouped researchers written to {}".format(
+        len(names), RESEARCHER_CVE_MAP_JSON_PATH))
 
 
 def create_researcher_cve_quality_map_json():
@@ -225,13 +199,13 @@ def check_top_x(max) -> int:
 
     found = 0
     for index, r in enumerate(goat):
-        if index > max:
+        if index == max:
             break
-        print(f" '{r[0]}' : '{twitter[r[0]][0]}',")
-        if twitter[r[0]][0]:
+        print(f" '{r}' : '{twitter[r][0]}',")
+        if twitter[r][0] != 'None':
             found += 1
 
-    print(f"Found {found} twitter handles of {max} of the top researchers")
+    print(f"Found {found} twitter handles for the top {max} researchers")
 
     return found
 
@@ -320,15 +294,17 @@ def update():
     create_researcher_names_json()
     elapsed = time.time() - start
     count = len(get_researcher_names_json())
-    update_metadata(RESEARCHER_NAMES_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
+    update_metadata(RESEARCHER_NAMES_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)    
 
     print(f"Updating {RESEARCHER_NAMES_GROUP_JSON_PATH}...")
+    print(f"Updating {RESEARCHER_CVE_MAP_JSON_PATH}...")
 
     start = time.time()
     create_researcher_names_group_json()
     elapsed = time.time() - start
     count = len(get_researcher_names_group_json())
     update_metadata(RESEARCHER_NAMES_GROUP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,swap_axes=True,normalize=True)
+    update_metadata(RESEARCHER_CVE_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,swap_axes=True,normalize=True)
 
     print(f"Updating {RESEARCHER_TWITTER_MAP_JSON_PATH}...")
 
@@ -338,14 +314,7 @@ def update():
     count = len(get_researcher_twitter_map_json())
     update_metadata(RESEARCHER_TWITTER_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,swap_axes=True)
 
-    print(f"Updating {RESEARCHER_CVE_MAP_JSON_PATH}...")
-
-    start = time.time()
-    create_researcher_cve_map_json()
-    elapsed = time.time() - start
-    count = len(get_researcher_cve_map_json())
-    update_metadata(RESEARCHER_CVE_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
-
+    print(f"Updating {RESEARCHER_CVE_QUALITY_MAP_JSON_PATH}...")
     start = time.time()
     create_researcher_cve_quality_map_json()
     elapsed = time.time() - start
@@ -353,7 +322,7 @@ def update():
     update_metadata(RESEARCHER_CVE_QUALITY_MAP_JSON_PATH, {'sources': [CHROME_RELEASE_URL, MSRC_API_URL]},count,elapsed,normalize=False)
 
 
-    # check_top_x(100)
+    check_top_x(100)
 
 
 if __name__ == "__main__":
