@@ -653,13 +653,47 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#most-often-updated-binary">
-   Most often updated Binary
+  <a class="reference internal nav-link" href="#what-kb-data-sources-do-we-have">
+   What KB data sources do we have?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winbindex">
+     winbindex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ms-feeds-kbs">
+     MS feeds kbs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#msrc-cves-with-kb-data">
+   MSRC CVEs with KB data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-number-of-updated-files-per-kb">
-   Graph number of updated files per KB
+  <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for">
+   What type of CVEs are we missing KBs for?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kb-source-improvement">
+     KB Source Improvement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
+   What type of CVEs lack KB information completely?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#most-often-updated-binary">
+   Most often updated Binary
   </a>
  </li>
 </ul>
@@ -682,13 +716,47 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#most-often-updated-binary">
-   Most often updated Binary
+  <a class="reference internal nav-link" href="#what-kb-data-sources-do-we-have">
+   What KB data sources do we have?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winbindex">
+     winbindex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ms-feeds-kbs">
+     MS feeds kbs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#msrc-cves-with-kb-data">
+   MSRC CVEs with KB data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-number-of-updated-files-per-kb">
-   Graph number of updated files per KB
+  <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for">
+   What type of CVEs are we missing KBs for?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kb-source-improvement">
+     KB Source Improvement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
+   What type of CVEs lack KB information completely?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#most-often-updated-binary">
+   Most often updated Binary
   </a>
  </li>
 </ul>
@@ -703,11 +771,1054 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="microsoft-kbs-analysis">
 <h1>Microsoft KBs Analysis<a class="headerlink" href="#microsoft-kbs-analysis" title="Permalink to this headline">#</a></h1>
+<section id="what-kb-data-sources-do-we-have">
+<h2>What KB data sources do we have?<a class="headerlink" href="#what-kb-data-sources-do-we-have" title="Permalink to this headline">#</a></h2>
+<section id="winbindex">
+<h3>winbindex<a class="headerlink" href="#winbindex" title="Permalink to this headline">#</a></h3>
+<p>Winbindex pulls Windows OS Builds by scraping the Windows update pages for Windows 10 and 11 in <a class="reference external" href="https://github.com/m417z/winbindex/blob/gh-pages/data/upd01_get_list_of_updates.py">upd01_get_list_of_updates.py</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://support.microsoft.com/en-us/help/4000823">https://support.microsoft.com/en-us/help/4000823</a></p></li>
+<li><p><a class="reference external" href="https://support.microsoft.com/en-us/help/5006099">https://support.microsoft.com/en-us/help/5006099</a></p></li>
+</ul>
+</section>
+<section id="ms-feeds-kbs">
+<h3>MS feeds kbs<a class="headerlink" href="#ms-feeds-kbs" title="Permalink to this headline">#</a></h3>
+<p>MS Feeds KBs relies on the <a class="reference external" href="https://support.microsoft.com/en-us/rss-feed-picker">https://support.microsoft.com/en-us/rss-feed-picker</a></p>
+<p>Pulling data from</p>
+<ul class="simple">
+<li><p>WIN10_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9">https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9</a>”</p></li>
+<li><p>WIN11_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92">https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92</a>”</p></li>
+<li><p>WIN_SERVER_2022_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f">https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f</a>”</p></li>
+<li><p>WIN_SERVER_2019_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f">https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f</a>”</p></li>
+<li><p>WIN_SERVER_2016_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc">https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc</a>”</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.ms_feed_kbs</span> <span class="kn">import</span> <span class="n">get_ms_kb_to_bins_json</span>
+<span class="kn">from</span> <span class="nn">cvedata.winbindex</span> <span class="kn">import</span> <span class="n">get_winbindex_kbs_to_bin_map</span>
+<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_cvrf_pandas_df</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">wb_kbs</span> <span class="o">=</span> <span class="n">get_winbindex_kbs_to_bin_map</span><span class="p">()</span>
+<span class="n">ms_kbs</span> <span class="o">=</span> <span class="n">get_ms_kb_to_bins_json</span><span class="p">()</span>
+<span class="n">msrc_pandas</span> <span class="o">=</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">wb_kbs</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">without_bins</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="p">[</span><span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">wb_kbs_df</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">without_bins</span><span class="p">)</span>
+<span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>versions</th>
+      <th>release</th>
+      <th>url</th>
+      <th>build</th>
+      <th>bin count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB5012643</th>
+      <td>[pcl5eres.dll, daconn.dll, systemsettingsadmin...</td>
+      <td>[11-21H2]</td>
+      <td>2022-04-25</td>
+      <td>https://support.microsoft.com/help/5012643</td>
+      <td>22000.652</td>
+      <td>3868</td>
+    </tr>
+    <tr>
+      <th>KB4598242</th>
+      <td>[daconn.dll, systemsettingsadminflows.exe, smt...</td>
+      <td>[2004]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598242</td>
+      <td>19041.746</td>
+      <td>3177</td>
+    </tr>
+    <tr>
+      <th>KB4598230</th>
+      <td>[daconn.dll, systemsettingsadminflows.exe, smt...</td>
+      <td>[1809]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598230</td>
+      <td>17763.1697</td>
+      <td>2982</td>
+    </tr>
+    <tr>
+      <th>KB5017389</th>
+      <td>[wmpnssci.dll.mui, pcl5eres.dll, systemsetting...</td>
+      <td>[11-22H2]</td>
+      <td>2022-09-30</td>
+      <td>https://support.microsoft.com/help/5017389</td>
+      <td>22621.608</td>
+      <td>2851</td>
+    </tr>
+    <tr>
+      <th>KB4598245</th>
+      <td>[daconn.dll, systemsettingsadminflows.exe, vds...</td>
+      <td>[1803]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598245</td>
+      <td>17134.1967</td>
+      <td>2705</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB4522014</th>
+      <td>[jscript.dll]</td>
+      <td>[1803]</td>
+      <td>2019-09-23</td>
+      <td>https://support.microsoft.com/help/4522014</td>
+      <td>17134.1009</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4522012</th>
+      <td>[jscript.dll]</td>
+      <td>[1709]</td>
+      <td>2019-09-23</td>
+      <td>https://support.microsoft.com/help/4522012</td>
+      <td>16299.1392</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4522011</th>
+      <td>[jscript.dll]</td>
+      <td>[1703]</td>
+      <td>2019-09-23</td>
+      <td>https://support.microsoft.com/help/4522011</td>
+      <td>15063.2046</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4534321</th>
+      <td>[slbmux.sys]</td>
+      <td>[1809]</td>
+      <td>2020-01-23</td>
+      <td>https://support.microsoft.com/help/4534321</td>
+      <td>17763.1012</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4530689</th>
+      <td>[gdi32full.dll]</td>
+      <td>[1607]</td>
+      <td>2019-12-10</td>
+      <td>https://support.microsoft.com/help/4530689</td>
+      <td>14393.3384</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>605 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ms_kbs</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ms_kbs_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>build</th>
+      <th>release</th>
+      <th>bin count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB5012643</th>
+      <td>[1394ohci.sys, 4mmdat.sys, 61883.sys, AAD.Core...</td>
+      <td>22000.65200</td>
+      <td>2022-04-25</td>
+      <td>3339</td>
+    </tr>
+    <tr>
+      <th>KB5017389</th>
+      <td>[1394ohci.sys, 6bea57fb-8dfb-4177-9ae8-42e8b35...</td>
+      <td>22621.60800</td>
+      <td>2022-09-30</td>
+      <td>2301</td>
+    </tr>
+    <tr>
+      <th>KB4598243</th>
+      <td>[Aad.core.dll, Aadtb.dll, Abovelockapphost.dll...</td>
+      <td>14393.41690</td>
+      <td>2021-01-12</td>
+      <td>2075</td>
+    </tr>
+    <tr>
+      <th>KB4598245</th>
+      <td>[Aad.core.dll, Aadtb.dll, Aadwamextension.dll,...</td>
+      <td>17134.19670</td>
+      <td>2021-01-12</td>
+      <td>2064</td>
+    </tr>
+    <tr>
+      <th>KB4598231</th>
+      <td>[Aad.core.dll, Aadtb.dll, Abovelockapphost.dll...</td>
+      <td>10240.18818</td>
+      <td>2021-01-12</td>
+      <td>1587</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB4568831</th>
+      <td>[Comctl32.dll]</td>
+      <td>19041.42300</td>
+      <td>2020-07-31</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4530689</th>
+      <td>[Gdi32full.dll]</td>
+      <td>14393.33840</td>
+      <td>2019-12-10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4534273</th>
+      <td>[Gdiplus.dll]</td>
+      <td>17763.97300</td>
+      <td>2020-01-14</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4503267</th>
+      <td>[Ieframe.dll]</td>
+      <td>14393.30250</td>
+      <td>2019-06-11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4534271</th>
+      <td>[User32.dll]</td>
+      <td>14393.34430</td>
+      <td>2020-01-14</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>433 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many KBs do we have information for?</span>
+<span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;KB3194798&#39;, &#39;KB3197954&#39;, &#39;KB3200970&#39;, &#39;KB3201845&#39;, &#39;KB3206632&#39;,
+       &#39;KB3213986&#39;, &#39;KB3216755&#39;, &#39;KB4010672&#39;, &#39;KB4013429&#39;, &#39;KB4015217&#39;,
+       ...
+       &#39;KB5019966&#39;, &#39;KB5019970&#39;, &#39;KB5019980&#39;, &#39;KB5020387&#39;, &#39;KB5020435&#39;,
+       &#39;KB5020436&#39;, &#39;KB5020438&#39;, &#39;KB5020439&#39;, &#39;KB5020440&#39;, &#39;KB5020953&#39;],
+      dtype=&#39;object&#39;, length=737)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">wb_kbs_df</span><span class="p">,</span><span class="n">ms_kbs_df</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">all_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;kb&#39;</span>
+<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;kb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+<span class="n">all_kbs_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>versions</th>
+      <th>release</th>
+      <th>url</th>
+      <th>build</th>
+      <th>bin count</th>
+    </tr>
+    <tr>
+      <th>kb</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB3194798</th>
+      <td>[Appxdeploymentextensions.server.dll, Eview.dl...</td>
+      <td>[nan]</td>
+      <td>[2016-10-11]</td>
+      <td>[nan]</td>
+      <td>[14393.321]</td>
+      <td>[173]</td>
+    </tr>
+    <tr>
+      <th>KB3197954</th>
+      <td>[Musupdatehandlers.dll.mui, Dnsproxyservice.co...</td>
+      <td>[nan]</td>
+      <td>[2016-10-27]</td>
+      <td>[nan]</td>
+      <td>[14393.351]</td>
+      <td>[388]</td>
+    </tr>
+    <tr>
+      <th>KB3200970</th>
+      <td>[Rdpshell.exe, Microsoft.identityserver.web.dl...</td>
+      <td>[nan]</td>
+      <td>[2016-11-08]</td>
+      <td>[nan]</td>
+      <td>[14393.447]</td>
+      <td>[359]</td>
+    </tr>
+    <tr>
+      <th>KB3201845</th>
+      <td>[Sppnp.dll, Iediagcmd.exe, Fveapi.dll, Ngcctnr...</td>
+      <td>[nan]</td>
+      <td>[2016-12-09]</td>
+      <td>[nan]</td>
+      <td>[14393.479]</td>
+      <td>[377]</td>
+    </tr>
+    <tr>
+      <th>KB3206632</th>
+      <td>[Appxdeploymentextensions.server.dll, Eview.dl...</td>
+      <td>[nan]</td>
+      <td>[2016-12-13]</td>
+      <td>[nan]</td>
+      <td>[14393.576]</td>
+      <td>[135]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB5020436</th>
+      <td>[tcbloader.dll, schannel.dll, tcblaunch.exe]</td>
+      <td>[nan]</td>
+      <td>[2022-10-17]</td>
+      <td>[nan]</td>
+      <td>[20348.1131]</td>
+      <td>[3]</td>
+    </tr>
+    <tr>
+      <th>KB5020438</th>
+      <td>[sxsoaps.dll, inputdial.dll, urlmon.dll, Windo...</td>
+      <td>[nan, [1809]]</td>
+      <td>[2022-10-17, 2022-10-17]</td>
+      <td>[nan, https://support.microsoft.com/help/5020438]</td>
+      <td>[17763.3534, 17763.3534]</td>
+      <td>[61, 58]</td>
+    </tr>
+    <tr>
+      <th>KB5020439</th>
+      <td>[wdsmgfw.efi.mui, Telemetry.Desktop.dll, wwaho...</td>
+      <td>[nan, [1607]]</td>
+      <td>[2022-10-18, 2022-10-18]</td>
+      <td>[nan, https://support.microsoft.com/help/5020439]</td>
+      <td>[14393.5429, 14393.5429]</td>
+      <td>[52, 70]</td>
+    </tr>
+    <tr>
+      <th>KB5020440</th>
+      <td>[mapconfiguration.dll, devinv.dll, ci.dll, iex...</td>
+      <td>[nan, [1507]]</td>
+      <td>[2022-10-18, 2022-10-18]</td>
+      <td>[nan, https://support.microsoft.com/help/5020440]</td>
+      <td>[10240.19509, 10240.19509]</td>
+      <td>[56, 138]</td>
+    </tr>
+    <tr>
+      <th>KB5020953</th>
+      <td>[urlmon.dll, WindowsCodecs.dll, AppVEntSubsyst...</td>
+      <td>[nan]</td>
+      <td>[2022-10-28]</td>
+      <td>[nan]</td>
+      <td>[19042.2194]</td>
+      <td>[79]</td>
+    </tr>
+  </tbody>
+</table>
+<p>737 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="msrc-cves-with-kb-data">
+<h2>MSRC CVEs with KB data<a class="headerlink" href="#msrc-cves-with-kb-data" title="Permalink to this headline">#</a></h2>
+<p>How many MSRC CVEs have KB data?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
+<span class="n">msrc_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2016-0088</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team...</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0089</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team...</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0090</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0128</th>
+      <td>2016-04-12</td>
+      <td>Windows SAM and LSAD Downgrade</td>
+      <td>SAM and LSAD Remote Protocols</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB3147458 KB3147461 KB3149090</td>
+      <td></td>
+      <td>This vulnerability was discovered and research...</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0135</th>
+      <td>2016-04-12</td>
+      <td>Secondary Logon</td>
+      <td>Secondary Logon</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB3147458 KB3147461</td>
+      <td></td>
+      <td>Tenable Network Security</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0792</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011022 KB4011642 KB4011643</td>
+      <td></td>
+      <td>&lt;a href=http://www.twitter.com/debasishm89&gt;Deb...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0793</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011607 KB4011643 KB4011651 KB4011657 KB4011...</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/n_joly"&gt;Nicolas J...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0794</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011607 KB4011643 KB4011651 KB4011657 KB4011...</td>
+      <td></td>
+      <td>&lt;a href=https://twitter.com/n_joly&gt;Nicolas Jol...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0796</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Excel</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011602 KB4011605 KB4011606 KB4011627 KB4011...</td>
+      <td></td>
+      <td>Omair working with T&lt;a href="http://www.zer...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0798</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office Memory Corruption</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011574 KB4011580 KB4011607 KB4011610 KB4011...</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/n_joly"&gt;Nicolas J...</td>
+    </tr>
+  </tbody>
+</table>
+<p>6376 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_kbs_d</span> <span class="o">=</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">to_dict</span>
+
+<span class="k">def</span> <span class="nf">has_ms_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+
+    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">has_kb</span>
+
+<span class="k">def</span> <span class="nf">has_wb_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+
+    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">has_kb</span>
+
+<span class="k">def</span> <span class="nf">has_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+
+    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">has_kb</span>
+
+<span class="k">def</span> <span class="nf">missing_all_kbs</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+    <span class="n">missing_all_kbs</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># note</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kbs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">missing_all_kbs</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">missing_all_kbs</span>
+
+<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_kb</span><span class="p">)</span>
+<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_ms_kb</span><span class="p">)</span>
+<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_wb_kb</span><span class="p">)</span>
+<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">missing_all_kbs</span><span class="p">)</span>
+<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">msrc_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+      <th>has_kb</th>
+      <th>has_ms_kb</th>
+      <th>has_wb_kb</th>
+      <th>missing_all_kbs</th>
+      <th>no_kb_info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2016-0088</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0089</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0090</th>
+      <td>2016-04-12</td>
+      <td>Windows HyperV</td>
+      <td>Windows Hyper-V</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB3135456 KB3147461</td>
+      <td></td>
+      <td>Kostya Kortchinsky of the Google Security Team</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0128</th>
+      <td>2016-04-12</td>
+      <td>Windows SAM and LSAD Downgrade</td>
+      <td>SAM and LSAD Remote Protocols</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB3147458 KB3147461 KB3149090</td>
+      <td></td>
+      <td>This vulnerability was discovered and research...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-0135</th>
+      <td>2016-04-12</td>
+      <td>Secondary Logon</td>
+      <td>Secondary Logon</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB3147458 KB3147461</td>
+      <td></td>
+      <td>Tenable Network Security</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0792</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011022 KB4011642 KB4011643</td>
+      <td></td>
+      <td>&lt;a href=http://www.twitter.com/debasishm89&gt;Deb...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0793</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011607 KB4011643 KB4011651 KB4011657 KB4011...</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/n_joly"&gt;Nicolas J...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0794</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011607 KB4011643 KB4011651 KB4011657 KB4011...</td>
+      <td></td>
+      <td>&lt;a href=https://twitter.com/n_joly&gt;Nicolas Jol...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0796</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Excel</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011602 KB4011605 KB4011606 KB4011627 KB4011...</td>
+      <td></td>
+      <td>Omair working with T&lt;a href="http://www.zer...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2018-0798</th>
+      <td>2018-01-09</td>
+      <td>Microsoft Office Memory Corruption</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4011574 KB4011580 KB4011607 KB4011610 KB4011...</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/n_joly"&gt;Nicolas J...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>6376 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">msrc_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2484/3227223014.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5))
+/tmp/ipykernel_2484/3227223014.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_10_2.png" src="../_images/ms_kbs_10_2.png" />
+</div>
+</div>
+</section>
+<section id="what-type-of-cves-are-we-missing-kbs-for">
+<h2>What type of CVEs are we missing KBs for?<a class="headerlink" href="#what-type-of-cves-are-we-missing-kbs-for" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_12_1.png" src="../_images/ms_kbs_12_1.png" />
+</div>
+</div>
+<section id="kb-source-improvement">
+<h3>KB Source Improvement<a class="headerlink" href="#kb-source-improvement" title="Permalink to this headline">#</a></h3>
+<p>Seems like there are several Microsoft Office products that we could add update information for.</p>
+</section>
+</section>
+<section id="what-type-of-cves-lack-kb-information-completely">
+<h2>What type of CVEs lack KB information completely?<a class="headerlink" href="#what-type-of-cves-lack-kb-information-completely" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_15_1.png" src="../_images/ms_kbs_15_1.png" />
+</div>
+</div>
+</section>
 <section id="most-often-updated-binary">
 <h2>Most often updated Binary<a class="headerlink" href="#most-often-updated-binary" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="graph-number-of-updated-files-per-kb">
-<h2>Graph number of updated files per KB<a class="headerlink" href="#graph-number-of-updated-files-per-kb" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">freq_bins</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           615
+hvix64.exe                                             579
+hvax64.exe                                             579
+bootmgr.exe.mui                                        527
+mshtml.dll                                             525
+kdhvcom.dll                                            517
+bootvhd.dll                                            515
+hvservice.sys                                          485
+win32kfull.sys                                         448
+shell32.dll                                            444
+win32k.sys                                             440
+efisys.bin                                             436
+efisys_noprompt.bin                                    436
+microsoft.msmq.activex.interop.dll                     432
+microsoft.msmq.powershell.commands.dll                 432
+microsoft.msmq.runtime.interop.dll                     432
+microsoft.virtualization.client.rdpclientaxhost.dll    429
+edgehtml.dll                                           414
+ieframe.dll                                            406
+comctl32.dll                                           405
+win32kbase.sys                                         404
+sppobjs.dll                                            395
+windows.media.protection.playready.dll                 389
+bootspaces.dll                                         389
+jscript9.dll                                           385
+win32u.dll                                             384
+mfcore.dll                                             379
+gdiplus.dll                                            378
+windows.storage.dll                                    375
+chakradiag.dll                                         367
+chakra.dll                                             367
+winload.efi                                            358
+winresume.efi                                          352
+winload.exe                                            352
+hvloader.dll                                           346
+winresume.exe                                          345
+gdi32.dll                                              344
+urlmon.dll                                             343
+sppsvc.exe                                             343
+iertutil.dll                                           338
+tcblaunch.exe                                          333
+wininet.dll                                            322
+user32.dll                                             319
+lsasrv.dll                                             318
+mfps.dll                                               313
+appxapplicabilityblob.dll                              312
+appxupgrademigrationplugin.dll                         312
+appxdeploymentserver.dll                               312
+comctl32.dll.mui                                       312
+offlinelsa.dll                                         302
+Name: updated, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_18_1.png" src="../_images/ms_kbs_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Graph number of updated files per KB </span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
