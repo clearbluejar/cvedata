@@ -42,7 +42,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install .
         pip install -r docs/requirements.txt
 
     - name: Generate Notebooks from Data
