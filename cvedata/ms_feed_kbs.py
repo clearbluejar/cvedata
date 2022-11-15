@@ -344,7 +344,6 @@ def create_ms_kb_to_bins():
 
     #all_kb_csv_dfs.set_index('kb', inplace=True)
     all_kb_csv_dfs = all_kb_csv_dfs.groupby(by=['kb']).aggregate(set)
-
     
 
     all_kb_csv_dfs['updated'] = all_kb_csv_dfs['file name'].apply(lambda x: sorted(list(x)))
@@ -365,7 +364,7 @@ def get_ms_kb_feed_files_json():
     return get_file_json(MS_KB_FEED_FILES_UPDATED_PATH,__file__)
 
 def get_ms_kb_to_bins_json():
-    return get_file_json(MS_KB_FEED_UPDATES_PATH,__file__)    
+    return get_file_json(MS_KBS_TO_BINS_PATH,__file__)    
 
 def update():
 
