@@ -1,7 +1,7 @@
 import time
 
 from .msrc_cvrf import update as cvrf_update
-from .msrc_tags import update as msrc_tags_update
+from .msrc_cve_to_bins import update as msrc_cve_to_bins_update
 from .chromerelease import update as chromerelease_update
 from .acknowledgements import update as ack_update
 from .cwe import update as cwe_update
@@ -27,7 +27,7 @@ def update_all_data():
     cvrf_update()
     ms_feeds_kbs_update()
     msrc_pandas_update()
-    #msrc_tags_update()
+    #msrc_cve_to_bins_update()
     winbindex_update()
     verinfo_update()
 
