@@ -13,7 +13,7 @@ from .msrc_pandas import get_msrc_tags, get_msrc_titles
 from .msrc_known_bins import KNOWN_TAG_TO_BIN_MAP
 from .util import get_file_json
 
-MSRC_TAGS_AND_DESC_TO_BINS_PATH = Path(DATA_DIR,"msrc-tags-to-bins.json")
+MSRC_TAGS_AND_DESC_TO_BINS_PATH = Path(DATA_DIR,"msrc-cve-to-bins.json")
 
 # controls the relationship of file description to tags
 MIN_SIMILARITY = 0.55
@@ -33,7 +33,7 @@ def clean_tag(tag):
 
     tag = tag.lower()
     if len(tag.split()) > 2:
-        tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
+        tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc|', '', tag)        
 
     tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
 

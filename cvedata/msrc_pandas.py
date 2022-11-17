@@ -58,26 +58,26 @@ def get_faqs(notes):
 
     return faqs
 
-def get_kb(rem):
-    """
-    MSRC List of KBs related to CVE
-    """
+# def get_kb(rem):
+#     """
+#     MSRC List of KBs related to CVE
+#     """
 
-    #TODO add URLS
-    #TODO add version numbers
+#     #TODO add URLS
+#     #TODO add version numbers
 
-    kb = None
+#     kb = None
 
-    if isinstance(rem,dict):
+#     if isinstance(rem,dict):
     
-        if rem['Description'].get('Value'):
-            kb_num = rem['Description']['Value']
-            if str(kb_num).isdigit():
-                # if rem.get('URL'):
-                #     kb = f"[KB{kb}]({rem['URL']})"
-                kb = f"KB{kb_num}"
+#         if rem['Description'].get('Value'):
+#             kb_num = rem['Description']['Value']
+#             if str(kb_num).isdigit():
+#                 # if rem.get('URL'):
+#                 #     kb = f"[KB{kb}]({rem['URL']})"
+#                 kb = f"KB{kb_num}"
 
-    return kb
+#     return kb
 
 
 def get_kbs(rems):
@@ -242,7 +242,7 @@ def clean_impact(tag):
     import re
     #tag = tag.lower()
     if len(tag.split()) > 2:
-        tag = re.sub('remote code execution|information disclosure|elevation of privilege|tampering|spoofing|denial of service|security feature bypass|vulnerability', '', tag,flags=re.I)        
+        tag = re.sub('remote code execution|information disclosure|elevation of privilege|tampering|spoofing|denial of service|security feature bypass|vulnerability|memory corruption', '', tag,flags=re.I)        
 
     tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)
 
@@ -388,8 +388,14 @@ def create_msrc_titles():
 def get_msrc_tags():
     return get_file_json(MSRC_TAGS_PATH, __file__)
 
+def get_msrc_tags_freq():
+    return get_file_json(MSRC_TAGS_FREQ_PATH, __file__)
+    
 def get_msrc_titles():
     return get_file_json(MSRC_TITLES_PATH, __file__)
+
+def get_msrc_titles_freq():
+    return get_file_json(MSRC_TITLES_FREQ_PATH, __file__)    
 
 def get_msrc_cvrf_pandas_json():
     return get_file_json(MSRC_CVRF_PANDAS,__file__)
