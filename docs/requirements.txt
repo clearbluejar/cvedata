@@ -7,4 +7,5 @@ pandas
 tabulate
 itables
 sphinxcontrib.mermaid
+ipykernel
 cvedata
