@@ -50,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="GOAT Researcher CVE Quantity" href="../charts/GOAT_researcher_cve_quantity.html" />
+    <link rel="next" title="Mapping MSRC CVEs to Bins" href="msrc_cve_to_bins.html" />
     <link rel="prev" title="winbindex-winver-to-build-map.json" href="../book/generated/winbindex-winver-to-build-map.json.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -61,6 +63,14 @@ const thebe_selector_output = ".output, .cell_output"
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PMN7HBPXLB"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-PMN7HBPXLB');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -291,6 +301,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Microsoft KBs Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="msrc_cve_to_bins.html">
+   Mapping MSRC CVEs to Bins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="win_verinfo.html">
+   MSRC Tags to File Version Info
   </a>
  </li>
 </ul>
@@ -663,8 +683,30 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ms-feeds-kbs">
-     MS feeds kbs
+    <a class="reference internal nav-link" href="#ms-atom-rss-feeds-kbs">
+     MS Atom RSS Feeds KBs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-cvedata">
+   Import cvedata
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winbindex-kb-data">
+     Winbindex KB Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ms-feeds-kb-data">
+     MS feeds KB Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-unique-kbs-do-we-have-information-for">
+     How many unique KBs do we have information for?
     </a>
    </li>
   </ul>
@@ -673,28 +715,57 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#msrc-cves-with-kb-data">
    MSRC CVEs with KB data
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for">
-   What type of CVEs are we missing KBs for?
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kb-source-improvement">
-     KB Source Improvement
+    <a class="reference internal nav-link" href="#how-many-msrc-cves-have-kb-data">
+     How many MSRC CVEs have KB data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-msrc-cves-have-kb-data-by-year">
+     How many MSRC CVEs have KB data by Year?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-per-month-in-2022">
+     How Many Per Month in 2022?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
-   What type of CVEs lack KB information completely?
+  <a class="reference internal nav-link" href="#kb-source-improvement">
+   KB Source Improvement
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for-cves-with-kbs-listed-but-we-lack-the-kb-source">
+     What type of CVEs are we missing KBs for? (CVEs with KBs listed, but we lack the KB source)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
+     What type of CVEs lack KB information completely?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#most-often-updated-binary">
    Most often updated Binary
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-dataframe-from-all-sources">
+     Create Dataframe from all sources
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-number-of-updated-files-per-kb">
+     Graph number of updated files per KB
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -726,8 +797,30 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ms-feeds-kbs">
-     MS feeds kbs
+    <a class="reference internal nav-link" href="#ms-atom-rss-feeds-kbs">
+     MS Atom RSS Feeds KBs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-cvedata">
+   Import cvedata
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winbindex-kb-data">
+     Winbindex KB Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ms-feeds-kb-data">
+     MS feeds KB Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-unique-kbs-do-we-have-information-for">
+     How many unique KBs do we have information for?
     </a>
    </li>
   </ul>
@@ -736,28 +829,57 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#msrc-cves-with-kb-data">
    MSRC CVEs with KB data
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for">
-   What type of CVEs are we missing KBs for?
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kb-source-improvement">
-     KB Source Improvement
+    <a class="reference internal nav-link" href="#how-many-msrc-cves-have-kb-data">
+     How many MSRC CVEs have KB data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-msrc-cves-have-kb-data-by-year">
+     How many MSRC CVEs have KB data by Year?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-per-month-in-2022">
+     How Many Per Month in 2022?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
-   What type of CVEs lack KB information completely?
+  <a class="reference internal nav-link" href="#kb-source-improvement">
+   KB Source Improvement
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-type-of-cves-are-we-missing-kbs-for-cves-with-kbs-listed-but-we-lack-the-kb-source">
+     What type of CVEs are we missing KBs for? (CVEs with KBs listed, but we lack the KB source)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-type-of-cves-lack-kb-information-completely">
+     What type of CVEs lack KB information completely?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#most-often-updated-binary">
    Most often updated Binary
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-dataframe-from-all-sources">
+     Create Dataframe from all sources
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-number-of-updated-files-per-kb">
+     Graph number of updated files per KB
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -773,17 +895,29 @@ title="Print to PDF"
 <h1>Microsoft KBs Analysis<a class="headerlink" href="#microsoft-kbs-analysis" title="Permalink to this headline">#</a></h1>
 <section id="what-kb-data-sources-do-we-have">
 <h2>What KB data sources do we have?<a class="headerlink" href="#what-kb-data-sources-do-we-have" title="Permalink to this headline">#</a></h2>
-<section id="winbindex">
+<div class="mermaid">
+            graph TD
+
+
+    A[winbindex fa:fa-database] --&gt; B[KBs]
+    C[ms support feeds fa:fa-database] --&gt;B
+    B --&gt; D[List of updated Binaries fa:fa-file]
+    B --&gt; E[Release dates fa:fa-calendar]
+    B --&gt; F[Build Versions]
+        </div><section id="winbindex">
 <h3>winbindex<a class="headerlink" href="#winbindex" title="Permalink to this headline">#</a></h3>
-<p>Winbindex pulls Windows OS Builds by scraping the Windows update pages for Windows 10 and 11 in <a class="reference external" href="https://github.com/m417z/winbindex/blob/gh-pages/data/upd01_get_list_of_updates.py">upd01_get_list_of_updates.py</a></p>
+<p>Winbindex pulls Windows OS Builds by <a class="reference external" href="https://github.com/m417z/winbindex/blob/gh-pages/data/upd01_get_list_of_updates.py">scraping the Windows update pages</a> for Windows 10 and 11 Updates from:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://support.microsoft.com/en-us/help/4000823">https://support.microsoft.com/en-us/help/4000823</a></p></li>
 <li><p><a class="reference external" href="https://support.microsoft.com/en-us/help/5006099">https://support.microsoft.com/en-us/help/5006099</a></p></li>
 </ul>
+<p>It has several more steps in it’s <a class="reference external" href="https://github.com/m417z/winbindex/tree/gh-pages/data#winbindex-flow-of-scripts">workflow</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cvedata</span></code> code that parses the winbindex data is here <a class="reference external" href="https://github.com/clearbluejar/cvedata/blob/main/cvedata/winbindex.py">winbindex.py</a></p>
 </section>
-<section id="ms-feeds-kbs">
-<h3>MS feeds kbs<a class="headerlink" href="#ms-feeds-kbs" title="Permalink to this headline">#</a></h3>
-<p>MS Feeds KBs relies on the <a class="reference external" href="https://support.microsoft.com/en-us/rss-feed-picker">https://support.microsoft.com/en-us/rss-feed-picker</a></p>
+<section id="ms-atom-rss-feeds-kbs">
+<h3>MS Atom RSS Feeds KBs<a class="headerlink" href="#ms-atom-rss-feeds-kbs" title="Permalink to this headline">#</a></h3>
+<p>MS Feeds KBs relies on:  <a class="reference external" href="https://support.microsoft.com/en-us/rss-feed-picker">https://support.microsoft.com/en-us/rss-feed-picker</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cvedata</span></code> code is here <a class="reference external" href="https://github.com/clearbluejar/cvedata/blob/main/cvedata/ms_feed_kbs.py">ms_feed_kbs.py</a></p>
 <p>Pulling data from</p>
 <ul class="simple">
 <li><p>WIN10_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9">https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9</a>”</p></li>
@@ -792,6 +926,10 @@ title="Print to PDF"
 <li><p>WIN_SERVER_2019_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f">https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f</a>”</p></li>
 <li><p>WIN_SERVER_2016_FEED_URL = “<a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc">https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc</a>”</p></li>
 </ul>
+</section>
+</section>
+<section id="import-cvedata">
+<h2>Import cvedata<a class="headerlink" href="#import-cvedata" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.ms_feed_kbs</span> <span class="kn">import</span> <span class="n">get_ms_kb_to_bins_json</span>
@@ -806,6 +944,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section id="winbindex-kb-data">
+<h3>Winbindex KB Data<a class="headerlink" href="#winbindex-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">wb_kbs</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
@@ -948,6 +1088,9 @@ title="Print to PDF"
 <p>605 rows × 6 columns</p>
 </div></div></div>
 </div>
+</section>
+<section id="ms-feeds-kb-data">
+<h3>MS feeds KB Data<a class="headerlink" href="#ms-feeds-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ms_kbs</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1063,181 +1206,26 @@ title="Print to PDF"
 <p>433 rows × 4 columns</p>
 </div></div></div>
 </div>
+</section>
+<section id="how-many-unique-kbs-do-we-have-information-for">
+<h3>How many unique KBs do we have information for?<a class="headerlink" href="#how-many-unique-kbs-do-we-have-information-for" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many KBs do we have information for?</span>
-<span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;KB3194798&#39;, &#39;KB3197954&#39;, &#39;KB3200970&#39;, &#39;KB3201845&#39;, &#39;KB3206632&#39;,
-       &#39;KB3213986&#39;, &#39;KB3216755&#39;, &#39;KB4010672&#39;, &#39;KB4013429&#39;, &#39;KB4015217&#39;,
-       ...
-       &#39;KB5019966&#39;, &#39;KB5019970&#39;, &#39;KB5019980&#39;, &#39;KB5020387&#39;, &#39;KB5020435&#39;,
-       &#39;KB5020436&#39;, &#39;KB5020438&#39;, &#39;KB5020439&#39;, &#39;KB5020440&#39;, &#39;KB5020953&#39;],
-      dtype=&#39;object&#39;, length=737)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>737
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">wb_kbs_df</span><span class="p">,</span><span class="n">ms_kbs_df</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<span class="n">all_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;kb&#39;</span>
-<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;kb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
-<span class="n">all_kbs_df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>updated</th>
-      <th>versions</th>
-      <th>release</th>
-      <th>url</th>
-      <th>build</th>
-      <th>bin count</th>
-    </tr>
-    <tr>
-      <th>kb</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>KB3194798</th>
-      <td>[Appxdeploymentextensions.server.dll, Eview.dl...</td>
-      <td>[nan]</td>
-      <td>[2016-10-11]</td>
-      <td>[nan]</td>
-      <td>[14393.321]</td>
-      <td>[173]</td>
-    </tr>
-    <tr>
-      <th>KB3197954</th>
-      <td>[Musupdatehandlers.dll.mui, Dnsproxyservice.co...</td>
-      <td>[nan]</td>
-      <td>[2016-10-27]</td>
-      <td>[nan]</td>
-      <td>[14393.351]</td>
-      <td>[388]</td>
-    </tr>
-    <tr>
-      <th>KB3200970</th>
-      <td>[Rdpshell.exe, Microsoft.identityserver.web.dl...</td>
-      <td>[nan]</td>
-      <td>[2016-11-08]</td>
-      <td>[nan]</td>
-      <td>[14393.447]</td>
-      <td>[359]</td>
-    </tr>
-    <tr>
-      <th>KB3201845</th>
-      <td>[Sppnp.dll, Iediagcmd.exe, Fveapi.dll, Ngcctnr...</td>
-      <td>[nan]</td>
-      <td>[2016-12-09]</td>
-      <td>[nan]</td>
-      <td>[14393.479]</td>
-      <td>[377]</td>
-    </tr>
-    <tr>
-      <th>KB3206632</th>
-      <td>[Appxdeploymentextensions.server.dll, Eview.dl...</td>
-      <td>[nan]</td>
-      <td>[2016-12-13]</td>
-      <td>[nan]</td>
-      <td>[14393.576]</td>
-      <td>[135]</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>KB5020436</th>
-      <td>[tcbloader.dll, schannel.dll, tcblaunch.exe]</td>
-      <td>[nan]</td>
-      <td>[2022-10-17]</td>
-      <td>[nan]</td>
-      <td>[20348.1131]</td>
-      <td>[3]</td>
-    </tr>
-    <tr>
-      <th>KB5020438</th>
-      <td>[sxsoaps.dll, inputdial.dll, urlmon.dll, Windo...</td>
-      <td>[nan, [1809]]</td>
-      <td>[2022-10-17, 2022-10-17]</td>
-      <td>[nan, https://support.microsoft.com/help/5020438]</td>
-      <td>[17763.3534, 17763.3534]</td>
-      <td>[61, 58]</td>
-    </tr>
-    <tr>
-      <th>KB5020439</th>
-      <td>[wdsmgfw.efi.mui, Telemetry.Desktop.dll, wwaho...</td>
-      <td>[nan, [1607]]</td>
-      <td>[2022-10-18, 2022-10-18]</td>
-      <td>[nan, https://support.microsoft.com/help/5020439]</td>
-      <td>[14393.5429, 14393.5429]</td>
-      <td>[52, 70]</td>
-    </tr>
-    <tr>
-      <th>KB5020440</th>
-      <td>[mapconfiguration.dll, devinv.dll, ci.dll, iex...</td>
-      <td>[nan, [1507]]</td>
-      <td>[2022-10-18, 2022-10-18]</td>
-      <td>[nan, https://support.microsoft.com/help/5020440]</td>
-      <td>[10240.19509, 10240.19509]</td>
-      <td>[56, 138]</td>
-    </tr>
-    <tr>
-      <th>KB5020953</th>
-      <td>[urlmon.dll, WindowsCodecs.dll, AppVEntSubsyst...</td>
-      <td>[nan]</td>
-      <td>[2022-10-28]</td>
-      <td>[nan]</td>
-      <td>[19042.2194]</td>
-      <td>[79]</td>
-    </tr>
-  </tbody>
-</table>
-<p>737 rows × 6 columns</p>
-</div></div></div>
 </div>
 </section>
 </section>
 <section id="msrc-cves-with-kb-data">
 <h2>MSRC CVEs with KB data<a class="headerlink" href="#msrc-cves-with-kb-data" title="Permalink to this headline">#</a></h2>
-<p>How many MSRC CVEs have KB data?</p>
+<p>Source - <a class="reference external" href="https://msrc.microsoft.com/update-guide/vulnerability">MSRC CVEs</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
@@ -1401,11 +1389,11 @@ title="Print to PDF"
 <p>6376 rows × 8 columns</p>
 </div></div></div>
 </div>
+<section id="how-many-msrc-cves-have-kb-data">
+<h3>How many MSRC CVEs have KB data?<a class="headerlink" href="#how-many-msrc-cves-have-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_kbs_d</span> <span class="o">=</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">to_dict</span>
-
-<span class="k">def</span> <span class="nf">has_ms_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_ms_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
 
     <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -1676,66 +1664,369 @@ title="Print to PDF"
 <p>6376 rows × 13 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+</section>
+<section id="how-many-msrc-cves-have-kb-data-by-year">
+<h3>How many MSRC CVEs have KB data by Year?<a class="headerlink" href="#how-many-msrc-cves-have-kb-data-by-year" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">msrc_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">msrc_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cvedata KB stats by Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2484/3227223014.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5))
-/tmp/ipykernel_2484/3227223014.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
-  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5))
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2784/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
+/tmp/ipykernel_2784/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;year&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;cvedata KB stats by Year&#39;}, xlabel=&#39;year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/ms_kbs_10_2.png" src="../_images/ms_kbs_10_2.png" />
+<img alt="../_images/ms_kbs_15_2.png" src="../_images/ms_kbs_15_2.png" />
 </div>
 </div>
 </section>
-<section id="what-type-of-cves-are-we-missing-kbs-for">
-<h2>What type of CVEs are we missing KBs for?<a class="headerlink" href="#what-type-of-cves-are-we-missing-kbs-for" title="Permalink to this headline">#</a></h2>
+<section id="how-many-per-month-in-2022">
+<h3>How Many Per Month in 2022?<a class="headerlink" href="#how-many-per-month-in-2022" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">])</span>
+<span class="n">msrc_date_df</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">msrc_date_df</span><span class="p">[</span><span class="n">msrc_date_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2022</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cvedata KB stats for 2022&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2784/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;cvedata KB stats for 2022&#39;}, xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_17_2.png" src="../_images/ms_kbs_17_2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="kb-source-improvement">
+<h2>KB Source Improvement<a class="headerlink" href="#kb-source-improvement" title="Permalink to this headline">#</a></h2>
+<section id="what-type-of-cves-are-we-missing-kbs-for-cves-with-kbs-listed-but-we-lack-the-kb-source">
+<h3>What type of CVEs are we missing KBs for? (CVEs with KBs listed, but we lack the KB source)<a class="headerlink" href="#what-type-of-cves-are-we-missing-kbs-for-cves-with-kbs-listed-but-we-lack-the-kb-source" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft SharePoint                                                126
+Microsoft Excel                                                     113
+Microsoft Office                                                     90
+Microsoft SharePoint Server                                          68
+Microsoft Office Memory Corruption                                   65
+Microsoft Exchange Server                                            63
+Microsoft Office SharePoint XSS                                      54
+Microsoft Word                                                       34
+Scripting Engine Memory Corruption                                   31
+Microsoft Outlook                                                    30
+Windows Uniscribe                                                    29
+Windows GDI                                                          29
+Windows Kernel                                                       29
+Microsoft Exchange                                                   28
+Win32k                                                               24
+Internet Explorer Memory Corruption                                  19
+Microsoft Browser Memory Corruption                                  15
+Microsoft Edge Memory Corruption                                     15
+Microsoft Office Access Connectivity Engine                          14
+Microsoft Dynamics 365 OnPremise Cross Site Scripting                14
+Microsoft Browser                                                    12
+Microsoft Edge                                                       10
+Microsoft PowerPoint                                                 10
+Internet Explorer                                                     9
+Skype for Business and Lync                                           9
+Windows Graphics Component                                            9
+Windows                                                               8
+Microsoft Office Graphics                                             8
+Microsoft Office Defense in Depth Update                              8
+Visual Studio                                                         8
+Microsoft Dynamics 365 onpremises                                     7
+Microsoft Access                                                      7
+Microsoft Dynamics 365 onpremises Crosssite Scripting                 6
+Windows EOT Font Engine                                               6
+Microsoft SharePoint Reflective XSS                                   5
+Microsoft Dynamics 365 onpremises version 8 Cross Site Scripting      4
+GDI                                                                   4
+Microsoft Outlook Memory Corruption                                   4
+Microsoft Exchange Memory Corruption                                  4
+Windows PDF                                                           4
+.NET and Visual Studio                                                4
+Windows HyperV                                                        4
+SQL RDBMS Engine                                                      3
+Microsoft SQL Server Analysis Services                                3
+Microsoft Dynamics Business Central Crosssite Scripting               3
+OpenType Font Driver                                                  3
+Dynamics Business Central                                             3
+Windows Media Center                                                  3
+Microsoft Project                                                     3
+Microsoft Graphics                                                    3
+Name: Title, dtype: int64
 </pre></div>
 </div>
-<img alt="../_images/ms_kbs_12_1.png" src="../_images/ms_kbs_12_1.png" />
 </div>
 </div>
-<section id="kb-source-improvement">
-<h3>KB Source Improvement<a class="headerlink" href="#kb-source-improvement" title="Permalink to this headline">#</a></h3>
-<p>Seems like there are several Microsoft Office products that we could add update information for.</p>
-</section>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs missing related KBs sources&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Types of CVEs missing related KBs sources&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_21_1.png" src="../_images/ms_kbs_21_1.png" />
+</div>
+</div>
 </section>
 <section id="what-type-of-cves-lack-kb-information-completely">
-<h2>What type of CVEs lack KB information completely?<a class="headerlink" href="#what-type-of-cves-lack-kb-information-completely" title="Permalink to this headline">#</a></h2>
+<h3>What type of CVEs lack KB information completely?<a class="headerlink" href="#what-type-of-cves-lack-kb-information-completely" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Edge (Chromium-based)         658
+Azure Site Recovery                      80
+Microsoft Windows Codecs Library         73
+Microsoft Office                         56
+Visual Studio                            51
+Visual Studio Code                       29
+Azure Sphere                             27
+Team Foundation Server                   21
+Azure                                    20
+Microsoft Malware Protection Engine      19
+Azure Real Time Operating System         19
+Microsoft Scripting Engine               17
+Open Source Software                     15
+Azure DevOps                             13
+ASP.NET                                  12
+Microsoft Defender for IoT               12
+Windows Defender                         12
+Microsoft Office Visio                    9
+.NET Core                                 9
+SQL Server                                7
+Microsoft Dynamics                        7
+Microsoft Windows                         6
+Microsoft Office Word                     6
+Windows Hyper-V                           6
+Microsoft Dynamics GP                     5
+.NET Core &amp; Visual Studio                 5
+Microsoft OneDrive                        5
+Microsoft Devices                         5
+3D Viewer                                 5
+Android App                               5
+Power BI                                  4
+Paint 3D                                  4
+Azure Open Management Infrastructure      4
+Apps                                      4
+Microsoft Intune                          3
+Microsoft PowerShell                      3
+ASP .NET                                  3
+Microsoft Teams                           3
+.NET and Visual Studio                    3
+Microsoft Exchange Server                 2
+Microsoft Windows DNS                     2
+Linux Kernel                              2
+NuGet                                     2
+Microsoft Edge for Android                2
+Azure SDK                                 2
+SysInternals                              2
+Developer Tools                           2
+Microsoft Yammer                          2
+Windows Update Assistant                  2
+Azure Arc                                 2
+Name: Tag, dtype: int64
 </pre></div>
 </div>
-<img alt="../_images/ms_kbs_15_1.png" src="../_images/ms_kbs_15_1.png" />
 </div>
 </div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs without KB data listed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Types of CVEs without KB data listed&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_24_1.png" src="../_images/ms_kbs_24_1.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="most-often-updated-binary">
 <h2>Most often updated Binary<a class="headerlink" href="#most-often-updated-binary" title="Permalink to this headline">#</a></h2>
+<section id="create-dataframe-from-all-sources">
+<h3>Create Dataframe from all sources<a class="headerlink" href="#create-dataframe-from-all-sources" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">wb_kbs_df</span><span class="p">,</span><span class="n">ms_kbs_df</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">all_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;kb&#39;</span>
+<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;kb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+<span class="n">all_kbs_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>versions</th>
+      <th>release</th>
+      <th>url</th>
+      <th>build</th>
+      <th>bin count</th>
+    </tr>
+    <tr>
+      <th>kb</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB3194798</th>
+      <td>[Gdiplus.dll, Printdialogs3d.dll, Microsoftedg...</td>
+      <td>[nan]</td>
+      <td>[2016-10-11]</td>
+      <td>[nan]</td>
+      <td>[14393.321]</td>
+      <td>[173]</td>
+    </tr>
+    <tr>
+      <th>KB3197954</th>
+      <td>[Dam.sys, Wuaueng.dll, Wsmsvc.dll, Pci.sys, Pl...</td>
+      <td>[nan]</td>
+      <td>[2016-10-27]</td>
+      <td>[nan]</td>
+      <td>[14393.351]</td>
+      <td>[388]</td>
+    </tr>
+    <tr>
+      <th>KB3200970</th>
+      <td>[Imesearchdll.dll, Imjpcd.dll, Itgtupg.dll, Wi...</td>
+      <td>[nan]</td>
+      <td>[2016-11-08]</td>
+      <td>[nan]</td>
+      <td>[14393.447]</td>
+      <td>[359]</td>
+    </tr>
+    <tr>
+      <th>KB3201845</th>
+      <td>[Wuaueng.dll, Pdfrenderfilter.dll, Vestoreeven...</td>
+      <td>[nan]</td>
+      <td>[2016-12-09]</td>
+      <td>[nan]</td>
+      <td>[14393.479]</td>
+      <td>[377]</td>
+    </tr>
+    <tr>
+      <th>KB3206632</th>
+      <td>[Hvax64.exe, Tzres.dll.mui, Sdnctlr.exe, Micro...</td>
+      <td>[nan]</td>
+      <td>[2016-12-13]</td>
+      <td>[nan]</td>
+      <td>[14393.576]</td>
+      <td>[135]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB5020436</th>
+      <td>[schannel.dll, tcbloader.dll, tcblaunch.exe]</td>
+      <td>[nan]</td>
+      <td>[2022-10-17]</td>
+      <td>[nan]</td>
+      <td>[20348.1131]</td>
+      <td>[3]</td>
+    </tr>
+    <tr>
+      <th>KB5020438</th>
+      <td>[batteryflyoutexperience.dll, hvloader.dll, ms...</td>
+      <td>[nan, [1809]]</td>
+      <td>[2022-10-17, 2022-10-17]</td>
+      <td>[nan, https://support.microsoft.com/help/5020438]</td>
+      <td>[17763.3534, 17763.3534]</td>
+      <td>[61, 58]</td>
+    </tr>
+    <tr>
+      <th>KB5020439</th>
+      <td>[aeinv.dll, pcadm.dll, SyncShareTTLib.dll, wds...</td>
+      <td>[nan, [1607]]</td>
+      <td>[2022-10-18, 2022-10-18]</td>
+      <td>[nan, https://support.microsoft.com/help/5020439]</td>
+      <td>[14393.5429, 14393.5429]</td>
+      <td>[52, 70]</td>
+    </tr>
+    <tr>
+      <th>KB5020440</th>
+      <td>[WSService.dll, aeinv.dll, uiribbonres.dll, pc...</td>
+      <td>[nan, [1507]]</td>
+      <td>[2022-10-18, 2022-10-18]</td>
+      <td>[nan, https://support.microsoft.com/help/5020440]</td>
+      <td>[10240.19509, 10240.19509]</td>
+      <td>[56, 138]</td>
+    </tr>
+    <tr>
+      <th>KB5020953</th>
+      <td>[ISM.dll, arm64\PrintConfig.dll, mshtml.dll, m...</td>
+      <td>[nan]</td>
+      <td>[2022-10-28]</td>
+      <td>[nan]</td>
+      <td>[19042.2194]</td>
+      <td>[79]</td>
+    </tr>
+  </tbody>
+</table>
+<p>737 rows × 6 columns</p>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -1745,8 +2036,8 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           615
-hvix64.exe                                             579
 hvax64.exe                                             579
+hvix64.exe                                             579
 bootmgr.exe.mui                                        527
 mshtml.dll                                             525
 kdhvcom.dll                                            517
@@ -1757,41 +2048,41 @@ shell32.dll                                            444
 win32k.sys                                             440
 efisys.bin                                             436
 efisys_noprompt.bin                                    436
-microsoft.msmq.activex.interop.dll                     432
-microsoft.msmq.powershell.commands.dll                 432
 microsoft.msmq.runtime.interop.dll                     432
+microsoft.msmq.powershell.commands.dll                 432
+microsoft.msmq.activex.interop.dll                     432
 microsoft.virtualization.client.rdpclientaxhost.dll    429
 edgehtml.dll                                           414
 ieframe.dll                                            406
 comctl32.dll                                           405
 win32kbase.sys                                         404
 sppobjs.dll                                            395
-windows.media.protection.playready.dll                 389
 bootspaces.dll                                         389
+windows.media.protection.playready.dll                 389
 jscript9.dll                                           385
 win32u.dll                                             384
 mfcore.dll                                             379
 gdiplus.dll                                            378
 windows.storage.dll                                    375
-chakradiag.dll                                         367
 chakra.dll                                             367
+chakradiag.dll                                         367
 winload.efi                                            358
-winresume.efi                                          352
 winload.exe                                            352
+winresume.efi                                          352
 hvloader.dll                                           346
 winresume.exe                                          345
 gdi32.dll                                              344
-urlmon.dll                                             343
 sppsvc.exe                                             343
+urlmon.dll                                             343
 iertutil.dll                                           338
 tcblaunch.exe                                          333
 wininet.dll                                            322
 user32.dll                                             319
 lsasrv.dll                                             318
 mfps.dll                                               313
+appxdeploymentserver.dll                               312
 appxapplicabilityblob.dll                              312
 appxupgrademigrationplugin.dll                         312
-appxdeploymentserver.dll                               312
 comctl32.dll.mui                                       312
 offlinelsa.dll                                         302
 Name: updated, dtype: int64
@@ -1799,26 +2090,37 @@ Name: updated, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Most Often Updated Binary&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Most Often Updated Binary&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/ms_kbs_18_1.png" src="../_images/ms_kbs_18_1.png" />
+<img alt="../_images/ms_kbs_29_1.png" src="../_images/ms_kbs_29_1.png" />
 </div>
 </div>
+</section>
+<section id="graph-number-of-updated-files-per-kb">
+<h3>Graph number of updated files per KB<a class="headerlink" href="#graph-number-of-updated-files-per-kb" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Graph number of updated files per KB </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin flat count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin flat count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;kb&#39;&gt;
+</pre></div>
 </div>
+<img alt="../_images/ms_kbs_31_1.png" src="../_images/ms_kbs_31_1.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1856,10 +2158,10 @@ Name: updated, dtype: int64
             <p class="prev-next-title">winbindex-winver-to-build-map.json</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../charts/GOAT_researcher_cve_quantity.html" title="next page">
+    <a class='right-next' id="next-link" href="msrc_cve_to_bins.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GOAT Researcher CVE Quantity</p>
+        <p class="prev-next-title">Mapping MSRC CVEs to Bins</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -50,17 +50,27 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="NVD CVE Data by Year" href="../book/nvd/index.html" />
-    <link rel="prev" title="Microsoft KBs Analysis" href="../analysis/ms_kbs.html" />
+    <link rel="prev" title="MSRC Tags to File Version Info" href="../analysis/win_verinfo.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PMN7HBPXLB"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-PMN7HBPXLB');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -291,6 +301,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../analysis/ms_kbs.html">
    Microsoft KBs Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../analysis/msrc_cve_to_bins.html">
+   Mapping MSRC CVEs to Bins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../analysis/win_verinfo.html">
+   MSRC Tags to File Version Info
   </a>
  </li>
 </ul>
@@ -994,11 +1014,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../analysis/ms_kbs.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../analysis/win_verinfo.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Microsoft KBs Analysis</p>
+            <p class="prev-next-title">MSRC Tags to File Version Info</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../book/nvd/index.html" title="next page">

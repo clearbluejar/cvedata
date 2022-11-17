@@ -1,0 +1,1247 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Mapping MSRC CVEs to Bins &#8212; cvedata</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MSRC Tags to File Version Info" href="win_verinfo.html" />
+    <link rel="prev" title="Microsoft KBs Analysis" href="ms_kbs.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PMN7HBPXLB"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-PMN7HBPXLB');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/chart.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">cvedata</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    cvedata
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../using_generated_data.html">
+   Using Release Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CVE Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/metadata.html">
+   Metadata
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generated
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../book/generated.html">
+   Generated Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/chromerelease_cve.json.html">
+     chromerelease_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/chromerelease_raw_cve.json.html">
+     chromerelease_raw_cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/cwe.json.gz.html">
+     cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ms-kb-feed-to-files-updated.json.gz.html">
+     ms-kb-feed-to-files-updated.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ms-kb-feed-updates.json.html">
+     ms-kb-feed-updates.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ms-kbs-bins.json.gz.html">
+     ms-kbs-bins.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-cve-tag-title.json.html">
+     msrc-cve-tag-title.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-cvrf-pandas-merged.json.gz.html">
+     msrc-cvrf-pandas-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-kb-ver.json.html">
+     msrc-kb-ver.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-tags-merged-frequency.json.html">
+     msrc-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-tags-merged.json.html">
+     msrc-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-titles-merged-frequency.json.html">
+     msrc-titles-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-titles-merged.json.html">
+     msrc-titles-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc_cvrf_merged.json.gz.html">
+     msrc_cvrf_merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/researcher_cve_map.json.html">
+     researcher_cve_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/researcher_cve_quality_map.json.html">
+     researcher_cve_quality_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/researcher_names.json.html">
+     researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/researcher_names_grouped.json.html">
+     researcher_names_grouped.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/researcher_twitter_map.json.html">
+     researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/versioninfo-system32-desc-to-bins.json.html">
+     versioninfo-system32-desc-to-bins.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/versioninfo-system32-full.json.gz.html">
+     versioninfo-system32-full.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/winbindex-desc-to-bins-map.json.html">
+     winbindex-desc-to-bins-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/winbindex-kb-to-bins-map.json.gz.html">
+     winbindex-kb-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/winbindex-versions-to-bins-map.json.gz.html">
+     winbindex-versions-to-bins-map.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/winbindex-winver-to-build-map.json.html">
+     winbindex-winver-to-build-map.json
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CVE Data Analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ms_kbs.html">
+   Microsoft KBs Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Mapping MSRC CVEs to Bins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="win_verinfo.html">
+   MSRC Tags to File Version Info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Charts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../charts/GOAT_researcher_cve_quantity.html">
+   GOAT Researcher CVE Quantity
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NVD CVEs by Year
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../book/nvd/index.html">
+   NVD CVE Data by Year
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2002.json.gz.html">
+     nvdcve-1.1-2002.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2003.json.gz.html">
+     nvdcve-1.1-2003.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2004.json.gz.html">
+     nvdcve-1.1-2004.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2005.json.gz.html">
+     nvdcve-1.1-2005.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2006.json.gz.html">
+     nvdcve-1.1-2006.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2007.json.gz.html">
+     nvdcve-1.1-2007.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2008.json.gz.html">
+     nvdcve-1.1-2008.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2009.json.gz.html">
+     nvdcve-1.1-2009.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2010.json.gz.html">
+     nvdcve-1.1-2010.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2011.json.gz.html">
+     nvdcve-1.1-2011.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2012.json.gz.html">
+     nvdcve-1.1-2012.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2013.json.gz.html">
+     nvdcve-1.1-2013.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2014.json.gz.html">
+     nvdcve-1.1-2014.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2015.json.gz.html">
+     nvdcve-1.1-2015.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2016.json.gz.html">
+     nvdcve-1.1-2016.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2017.json.gz.html">
+     nvdcve-1.1-2017.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2018.json.gz.html">
+     nvdcve-1.1-2018.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2019.json.gz.html">
+     nvdcve-1.1-2019.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2020.json.gz.html">
+     nvdcve-1.1-2020.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2021.json.gz.html">
+     nvdcve-1.1-2021.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/nvd/nvdcve-1.1-2022.json.gz.html">
+     nvdcve-1.1-2022.json.gz
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/clearbluejar/cvedata/main?urlpath=tree/docs/analysis/msrc_cve_to_bins.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/issues/new?title=Issue%20on%20page%20%2Fanalysis/msrc_cve_to_bins.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clearbluejar/cvedata/edit/main/docs/analysis/msrc_cve_to_bins.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/analysis/msrc_cve_to_bins.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-cvedata">
+   Import cvedata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-the-number-of-bins-on-average-for-each-percentile">
+   What is the number of bins on average for each percentile?
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Mapping MSRC CVEs to Bins</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-cvedata">
+   Import cvedata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-the-number-of-bins-on-average-for-each-percentile">
+   What is the number of bins on average for each percentile?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="mapping-msrc-cves-to-bins">
+<h1>Mapping MSRC CVEs to Bins<a class="headerlink" href="#mapping-msrc-cves-to-bins" title="Permalink to this headline">#</a></h1>
+<p>Is it possible to map <a class="reference external" href="https://msrc.microsoft.com/update-guide/vulnerability">MSRC CVEs</a> to Windows binaries?</p>
+<div class="mermaid">
+            graph TD
+    A[winbindex fa:fa-database] --&gt; B[KBs]
+    C[ms support feeds fa:fa-database] --&gt;B
+    B --&gt; D[msrc_cve_to_bins.py]
+    E[File Version Info fa:fa-file] --&gt; D
+    F[Known MSRC Tags fa:fa-tag] --&gt; D
+    D --&gt; G(cve to bin fa:fa-map)
+
+        </div><section id="import-cvedata">
+<h2>Import cvedata<a class="headerlink" href="#import-cvedata" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.winbindex</span> <span class="kn">import</span> <span class="n">get_winbindex_desc_to_bin_map</span><span class="p">,</span> <span class="n">WINBINDEX_GITHUB_URL</span><span class="p">,</span> <span class="n">get_winbindex_kbs_to_bin_map</span>
+<span class="kn">from</span> <span class="nn">cvedata.win_verinfo</span> <span class="kn">import</span> <span class="n">get_verinfo_desc_to_bins_json</span>
+<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_tags</span><span class="p">,</span> <span class="n">get_msrc_titles</span><span class="p">,</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">,</span> <span class="n">MSRC_CVRF_PANDAS_FULL</span><span class="p">,</span><span class="n">MSRC_CVRF_PANDAS</span>
+<span class="kn">from</span> <span class="nn">cvedata.msrc_known_bins</span> <span class="kn">import</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span>
+<span class="kn">from</span> <span class="nn">cvedata.ms_feed_kbs</span> <span class="kn">import</span> <span class="n">get_ms_kb_feeds_json</span><span class="p">,</span><span class="n">get_ms_kb_feed_files_json</span><span class="p">,</span><span class="n">get_ms_kb_to_bins_json</span>
+
+
+<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">clean_impact</span>
+<span class="kn">from</span> <span class="nn">cvedata.msrc_cve_to_bins</span> <span class="kn">import</span> <span class="n">clean_tag</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">difflib</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cvrf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
+
+<span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_json</span> <span class="o">=</span> <span class="n">get_msrc_tags</span><span class="p">()</span>
+<span class="n">titles_json</span> <span class="o">=</span> <span class="n">get_msrc_titles</span><span class="p">()</span>
+<span class="n">kbs_to_bins_json</span> <span class="o">=</span> <span class="n">get_winbindex_kbs_to_bin_map</span><span class="p">()</span>
+<span class="n">verinfo_desc_to_bins</span> <span class="o">=</span> <span class="n">get_verinfo_desc_to_bins_json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from cvedata.msrc_cve_to_bins import get_tag_similarity_df_df</span>
+
+   
+<span class="k">def</span> <span class="nf">get_tag_similarity_df</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">desc_to_bins</span><span class="p">,</span><span class="n">col_pre</span><span class="p">,</span><span class="n">min_sims</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds similarity columns into Dataframe at min_sims intervals</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">bins</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># init bins</span>
+    <span class="k">for</span> <span class="n">min_sim</span> <span class="ow">in</span> <span class="n">min_sims</span><span class="p">:</span>
+            <span class="n">bins</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">min_sim</span><span class="p">,[])</span>
+
+    <span class="n">ctag1</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">desc_to_bins</span><span class="p">:</span>
+        
+        <span class="n">ctag2</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctag1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctag2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>        
+            <span class="n">sim</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">ctag1</span><span class="p">,</span><span class="n">ctag2</span><span class="p">)</span><span class="o">.</span><span class="n">ratio</span><span class="p">()</span>
+
+        <span class="c1"># add bins to </span>
+        <span class="k">for</span> <span class="n">min_sim</span> <span class="ow">in</span> <span class="n">min_sims</span><span class="p">:</span>                      
+            <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;=</span> <span class="n">min_sim</span><span class="p">:</span>
+                <span class="p">[</span><span class="n">bins</span><span class="p">[</span><span class="n">min_sim</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span> <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">desc_to_bins</span><span class="p">[</span><span class="n">desc</span><span class="p">]]</span>
+
+    <span class="k">for</span> <span class="n">sim_score</span> <span class="ow">in</span> <span class="n">bins</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col_pre</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">sim_score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="n">sim_score</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">row</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Tag&#39;</span>
+<span class="n">tags_sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">])</span>
+<span class="c1"># tags_sim_wb_df = tags_sim_df.apply(get_tag_similarity_df,args=(key,wb_desc_to_bins,&#39;wb&#39;,[.25, .45, .5, .55, .75, .9, 1]),axis=1)</span>
+<span class="c1"># tags_sim_wb_df.head(20)</span>
+<span class="n">tags_sim_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_df</span><span class="o">.</span><span class="n">Tag</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ver_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">verinfo_desc_to_bins</span><span class="p">)</span>
+<span class="n">ver_df</span> <span class="o">=</span> <span class="n">ver_df</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">ver_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;desc&#39;</span>
+<span class="n">ver_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">ver_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ver_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;desc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+<span class="n">ver_df</span><span class="o">.</span><span class="n">desc</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tags_sim_df[&#39;wb_bins&#39;] = tags_sim_df[&#39;Tag&#39;].apply(lambda x : difflib.get_close_matches(clean_tag(x),wb_desc_to_bins.keys(),n=10000,cutoff=.6))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tags_sim_df[[&#39;kb_bins&#39;, &#39;wb_bins&#39;]].apply(lambda x: len(x)).value_counts()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_verinfo_df</span> <span class="o">=</span> <span class="n">tags_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">verinfo_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Title&#39;</span>
+<span class="n">titles_sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">])</span>
+<span class="c1"># titles_sim_wb_df = titles_sim_df.apply(get_tag_similarity_df,args=(key,wb_desc_to_bins,&#39;wb&#39;,[.25, .45, .5, .55, .75, .9, 1]),axis=1)</span>
+<span class="c1"># titles_sim_wb_df.head(25)</span>
+<span class="n">titles_sim_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_verinfo_df</span> <span class="o">=</span> <span class="n">titles_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">verinfo_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-the-number-of-bins-on-average-for-each-percentile">
+<h2>What is the number of bins on average for each percentile?<a class="headerlink" href="#what-is-the-number-of-bins-on-average-for-each-percentile" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_map</span> <span class="o">=</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">tags_sim_map</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#tags_sim_map = tags_sim_map.apply(lambda s: s.map(lambda x: len(x) if x else None))</span>
+<span class="c1">#tags_sim_map.sort_values(by=[&#39;vi-1&#39;], ascending=False)</span>
+<span class="c1">#tags_sim_map[&#39;vi-1&#39;].sort_values(ascending=False)</span>
+<span class="n">tag_counts_df</span> <span class="o">=</span> <span class="n">tags_sim_map</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">tag_counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tag_counts_df</span><span class="p">[</span><span class="n">tag_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_map</span> <span class="o">=</span> <span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">titles_sim_map</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">titles_sim_map</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;titles.json&#39;</span><span class="p">)</span>
+<span class="n">title_counts_df</span> <span class="o">=</span> <span class="n">titles_sim_map</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">title_counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">title_counts_df</span><span class="p">[</span><span class="n">title_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kb_feed_df</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">kb_feed</span> <span class="o">=</span> <span class="n">get_ms_kb_to_bins_json</span><span class="p">()[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span>
+<span class="n">kb_feed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cve_to_bin</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">])</span>
+
+    <span class="n">cve</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
+
+    <span class="c1"># for col in test.columns:</span>
+    <span class="c1">#     print(test.loc[tag])</span>
+    <span class="c1">#     row[col] = test.loc[tag]</span>
+    <span class="c1">#print(test[&#39;vi-0.55&#39;].loc[tag])</span>
+
+    <span class="n">bins</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    
+    <span class="c1"># print(tags_sim_map[&#39;vi-0.55&#39;].loc[tag])</span>
+    <span class="c1"># print(titles_sim_map[&#39;vi-0.55&#39;].loc[title])</span>
+    <span class="c1"># print(&quot;after titles&quot;)</span>
+
+    <span class="k">if</span> <span class="n">tag</span> <span class="ow">and</span> <span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">()]:</span>
+            <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+
+
+    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">tags_sim_map</span><span class="p">[</span><span class="s1">&#39;vi-0.55&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tag</span><span class="p">]:</span>
+        <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">titles_sim_map</span><span class="p">[</span><span class="s1">&#39;vi-0.45&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">title</span><span class="p">]:</span>
+        <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+
+    <span class="c1"># updated_bins</span>
+    
+    <span class="n">updated_bins</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>        
+        <span class="n">kb_updated_files</span> <span class="o">=</span> <span class="n">kb_feed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">kb_updated_files</span><span class="p">:</span>
+            <span class="n">updated_bins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">kb_updated_files</span><span class="p">)</span>
+            <span class="c1">#print(updated_bins)</span>
+
+
+    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Bins Updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">updated_bins</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">bins</span><span class="p">))</span>
+    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">row</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">bins_all_cvrf_df</span> <span class="o">=</span> <span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cve_to_bin</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bins_all_cvrf_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="n">tags_sim_verinfo_df</span><span class="p">[</span><span class="n">tags_sim_verinfo_df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Microsoft Office&#39;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How man CVEs have bins assigned?</span>
+<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many from specific update?</span>
+
+<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;2022-11&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#for all updates, what % have assigned bins?</span>
+<span class="n">updates</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">updates</span><span class="p">:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">update</span><span class="p">,{})</span>
+    <span class="n">update_df</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">update</span><span class="p">)]</span>
+    <span class="n">cve_per_update</span> <span class="o">=</span> <span class="n">update_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cves_with_updated_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">cves_without_updated_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">cves_with_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>    
+    <span class="n">cves_without_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[(</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+    
+    <span class="n">cve_with_bins_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">cves_with_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">cve_per_update</span><span class="p">)</span> 
+    <span class="n">cve_without_bins_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">cves_without_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">cve_per_update</span><span class="p">)</span>
+    
+    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;with_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_with_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_without_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_with_updated_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_without_updated_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    
+
+    <span class="c1">#results[update][&#39;total&#39;] = update_df.shape[0]</span>
+
+<span class="c1">#df = pd.DataFrame({&#39;with&#39;: results.values() }, index=results.keys())</span>
+<span class="c1">#df</span>
+<span class="c1">#df = pd.DataFrame(results, index=results.keys()).stack().reset_index()</span>
+<span class="c1"># df = pd.DataFrame.from_dict(results, orient=&#39;index&#39;).reset_index()</span>
+
+<span class="c1"># df[&#39;index&#39;] = pd.to_datetime(df[&#39;index&#39;])</span>
+<span class="c1"># #df.columns=[&#39;update&#39;, &#39;with&#39;, &#39;without&#39;]</span>
+<span class="c1"># #df.set_index(&#39;update&#39;)</span>
+<span class="c1"># df = df.set_index(&#39;index&#39;)</span>
+<span class="n">update_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">update_results_df</span> <span class="o">=</span> <span class="n">update_results_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">update_results_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">update_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2022</span><span class="p">][[</span><span class="s1">&#39;with_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">update_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2022</span><span class="p">][[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what is the next best title to hardcode?</span>
+
+<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what is the next best tag to hardcode?</span>
+<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what is the next best tag/title combo?</span>
+<span class="n">tags_df</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1">#tags_df = df[[&#39;Tag&#39;,&#39;Title&#39;, &#39;Initial Release&#39;]]</span>
+<span class="n">tags_df</span> <span class="o">=</span> <span class="n">tags_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;2022&#39;</span><span class="p">)]</span>
+<span class="n">tags_title_df</span> <span class="o">=</span> <span class="n">tags_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="s1">&#39;Title&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+<span class="n">tags_title_df</span> <span class="o">=</span> <span class="n">tags_title_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;CVEs&#39;</span><span class="p">})</span>
+<span class="n">tags_title_df</span><span class="p">[</span><span class="s1">&#39;CVE Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags_title_df</span><span class="p">[</span><span class="s1">&#39;CVEs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">tags_title_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CVE Count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ms_kbs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Microsoft KBs Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="win_verinfo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MSRC Tags to File Version Info</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By clearbluejar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
