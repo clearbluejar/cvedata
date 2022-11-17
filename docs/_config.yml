@@ -4,7 +4,7 @@
 title: cvedata
 author: clearbluejar
 logo: chart.svg
-
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -33,5 +33,10 @@ html:
   use_repository_button: true
   use_edit_page_button: true
   favicon: favicon.ico
+  google_analytics_id: G-PMN7HBPXLB
 
-only_build_toc_files: true
+
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid
+

@@ -22,6 +22,8 @@ parts:
 - caption: CVE Data Analysis
   chapters:
   - file: analysis/ms_kbs
+  - file: analysis/msrc_cve_to_bins
+  - file: analysis/win_verinfo
 
 - caption: Charts
   chapters:

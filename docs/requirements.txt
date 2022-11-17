@@ -6,5 +6,5 @@ requests
 pandas
 tabulate
 itables
+sphinxcontrib.mermaid
 cvedata
-feedparser
