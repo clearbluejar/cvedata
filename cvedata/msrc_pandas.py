@@ -58,26 +58,26 @@ def get_faqs(notes):
 
     return faqs
 
-# def get_kb(rem):
-#     """
-#     MSRC List of KBs related to CVE
-#     """
+def get_kb(rem):
+    """
+    MSRC List of KBs related to CVE
+    """
 
-#     #TODO add URLS
-#     #TODO add version numbers
+    #TODO add URLS
+    #TODO add version numbers
 
-#     kb = None
+    kb = None
 
-#     if isinstance(rem,dict):
+    if isinstance(rem,dict):
     
-#         if rem['Description'].get('Value'):
-#             kb_num = rem['Description']['Value']
-#             if str(kb_num).isdigit():
-#                 # if rem.get('URL'):
-#                 #     kb = f"[KB{kb}]({rem['URL']})"
-#                 kb = f"KB{kb_num}"
+        if rem['Description'].get('Value'):
+            kb_num = rem['Description']['Value']
+            if str(kb_num).isdigit():
+                # if rem.get('URL'):
+                #     kb = f"[KB{kb}]({rem['URL']})"
+                kb = f"KB{kb_num}"
 
-#     return kb
+    return kb
 
 
 def get_kbs(rems):
@@ -171,23 +171,23 @@ def get_types(threats):
     return ' '.join(sorted(list(types)))
 
 
-def get_bins(row):
+# def get_bins(row):
    
-    bins = []
+#     bins = []
 
-    td_to_bin_map = get_tags_desc_to_bins()
+#     td_to_bin_map = get_tags_desc_to_bins()
 
-    # TODO user version and KBs to sharpen bins list
+#     # TODO user version and KBs to sharpen bins list
 
-    if row['Tag']:
-        tag = row['Tag'].lower()
+#     if row['Tag']:
+#         tag = row['Tag'].lower()
 
-        if td_to_bin_map.get(tag):
-            for bin in td_to_bin_map[tag]:
-                bins.append(bin)
+#         if td_to_bin_map.get(tag):
+#             for bin in td_to_bin_map[tag]:
+#                 bins.append(bin)
 
 
-    return ' '.join(bins)
+#     return ' '.join(bins)
 
 def get_acks(acks):
     """
@@ -323,16 +323,14 @@ def create_msrc_tags_titles():
 
     # tag to title
     tags_df = all_cvrf_df[['Tag','Title']]
-    tags_title_df = tags_df.reset_index().groupby(['Tag','Title']).aggregate(set)
-    tags_title_df.to_json(Path(DATA_DIR,'test.json'))
+    tags_title_df = tags_df.reset_index().groupby(['Tag','Title']).aggregate(set)    
     print(tags_title_df.head())
     copy_tags_df = tags_df.copy()
-    tags_df['Tag Instance Count'] = tags_df['Tag'].apply(lambda x: len(copy_tags_df[copy_tags_df['Tag'] == x]))
-
+    tags_df['MSRC Count'] = tags_df['Tag'].apply(lambda x: len(copy_tags_df[copy_tags_df['Tag'] == x]))
     tags_df = tags_df.groupby('Tag').aggregate(set)
     
     tags_df['Title'] = tags_df['Title'].aggregate(list)
-    tags_df['Tag Instance Count'] = tags_df['Tag Instance Count'].apply(lambda x: list(x)[0])
+    tags_df['MSRC Count'] = tags_df['MSRC Count'].apply(lambda x: list(x)[0])
     tags_df['Title Length'] = tags_df['Title'].apply(lambda x: len(x))
     #tags_df.index.name = 'Tag'
     tags_df.to_json(MSRC_CVE_TAGS_TITLE,indent=4)
