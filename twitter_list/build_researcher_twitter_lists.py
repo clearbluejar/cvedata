@@ -39,6 +39,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 # list_id = twitter_list._json["id"]
 
 list_id = 1582329731005005825
+list_id = 1593117039949905921
 
 researchers_json = get_researcher_twitter_map_json()
 screen_name_to_researcher_map = {
@@ -63,15 +64,16 @@ if not current_members_path.exists():
 
 current_members = json.loads(current_members_path.read_text())
 
-# Save dataframe of current list members
-members_df = pd.json_normalize(current_members)
+if len(current_members) > 0:
+    # Save dataframe of current list members
+    members_df = pd.json_normalize(current_members)
 
-# Map back to names from original list
-members_df['cvedata_name'] = members_df['screen_name'].apply(
-    lambda x: screen_name_to_researcher_map.get(str(x).lower()))
+    # Map back to names from original list
+    members_df['cvedata_name'] = members_df['screen_name'].apply(
+        lambda x: screen_name_to_researcher_map.get(str(x).lower()))
 
-members_df.to_json(BASE_DIR / 'members.json')
-print(members_df.head())
+    members_df.to_json(BASE_DIR / 'members.json')
+    print(members_df.head())
 
 current_ids = []
 current_screen_names = []
@@ -100,8 +102,8 @@ else:
         sub_screen_names = [sn for sn in screen_names_to_add[i: i + sub_size]]
         users = api.lookup_users(screen_name=sub_screen_names)
         
-        for user in users:
-            if user.screen_name:
+        for user in users:            
+            if user.screen_name and not user.protected:
                 valid_screen_names.append(user.screen_name.lower())
 
     invalid_sn = set(screen_names_to_add).difference(set(valid_screen_names))
@@ -118,7 +120,7 @@ screen_names_to_add = list(set(screen_names_to_add).difference(set(invalid_sn)))
 print(f"Need to add {len(screen_names_to_add)} valid researchers")
 print(f"Starting member count = {len(current_screen_names)}")
 
-sub_size = 5 # twitter doesn't like you to add 100 at once
+sub_size = 10 # twitter doesn't like you to add 100 at once
 member_count = len(current_screen_names)
 for i in range(0, len(screen_names_to_add), sub_size):
     sub_screen_names = [sn for sn in screen_names_to_add[i: i + sub_size]]
@@ -127,9 +129,12 @@ for i in range(0, len(screen_names_to_add), sub_size):
     # this section always suffers from Twitter strange rate limiting
     # keep running until satisfied
     try:
+        time.sleep(2)
         print(f"Adding members: {sub_screen_names}")
         resp = api.add_list_members(
             list_id=list_id, screen_name=sub_screen_names)
+        # resp = api.add_list_member(
+        #     list_id=list_id, screen_name=sub_screen_names[0])
         new_member_count = resp.member_count
         added = new_member_count - member_count
         print(
@@ -139,7 +144,8 @@ for i in range(0, len(screen_names_to_add), sub_size):
         # delete current members as file is not outdated
         if current_members_path.exists() and added > 0:
             current_members_path.unlink()
+            invalid_sn_path.unlink()
 
-        time.sleep(2)
+
     except Exception as e:
         print(f"{e}")
