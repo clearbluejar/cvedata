@@ -36,15 +36,24 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
+    - name: Install cvedata
+      run: pip install .
+    - name: Get cvedata python-version
+      id: cvedata_ver
+      run: echo "CVEDATA_VER=v$(python -m cvedata.version)" >> $GITHUB_OUTPUT
+
     - name: Update CVE data
-      run: |
-        pip install -r requirements-dev.txt
-        python -m cvedata.update
-        ls -rotah cvedata/data/*.json cvedata/data/*.gz
+      run: |        
+        python -m cvedata.update        
     - name: Print Stats
       run: |        
         python -m cvedata
-        ls -rotah cvedata/data/*.json cvedata/data/*.gz
+        ls -rotah cvedata/data/
+    - name: Zip Generated Data
+      run: |
+        zip -r cache_data.zip cvedata/data/.cache/* -x cvedata/data/.cache/winbindex\*
+        zip -r cvedata_data.zip cvedata/data/ -x cvedata/data/.cache\* cvedata/data/.placeholder
+
     # - name: Publish package
     #   uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
     #   with:
@@ -60,9 +69,10 @@ jobs:
         path: |
           cvedata/data/*.json
           cvedata/data/*.json.gz
-          cvedata/data/.cache/*.csv
-          cvedata/data/.cache/*.json
+          cvedata/data/.cache/kb_csv/*.csv
+          cvedata/data/.cache/msrc_cvrfs/*.json
           cvedata/data/.cache/*.json.gz
+          cvedata/data/.cache/*.json
           dist/
         retention-days: 3
     
@@ -70,9 +80,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          cvedata/data/*.json
-          cvedata/data/*.gz
+          cache_data.zip
+          cvedata_data.zip
+          cvedata/data/metadata.json
           ./dist/*
-        tag_name: "v0.2.1"
+        tag_name: "${{ steps.cvedata_ver.outputs.CVEDATA_VER }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
