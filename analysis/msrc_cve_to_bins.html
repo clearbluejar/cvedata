@@ -1644,7 +1644,6 @@ vi-1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_map</span> <span class="o">=</span> <span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">titles_sim_map</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">titles_sim_map</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;titles.json&#39;</span><span class="p">)</span>
 <span class="n">title_counts_df</span> <span class="o">=</span> <span class="n">titles_sim_map</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">title_counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -102686,7 +102685,9 @@ Windows Push Notifications Apps
 CVE-2022-21868
 Windows Devices Human Interface
 Windows Devices Human Interface
-CVE-2022-21869
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-21869
 Windows Clipboard User Service
 Clipboard User Service
 CVE-2022-21870
@@ -102740,9 +102741,7 @@ Local Security Authority Subsystem Service
 CVE-2022-21885
 Windows Remote Access Connection Manager
 Windows Remote Access Connection Manager
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-21887
+CVE-2022-21887
 Windows Win32K
 Win32k
 CVE-2022-21888
@@ -103327,7 +103326,9 @@ Windows iSCSI Target Service
 CVE-2020-0901
 Microsoft Office
 Microsoft Excel
-CVE-2020-0909
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-0909
 Windows Hyper-V
 Windows HyperV
 CVE-2020-1021
@@ -103453,9 +103454,7 @@ Windows State Repository Service
 CVE-2020-1135
 Microsoft Graphics Component
 Windows Graphics Component
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-1137
+CVE-2020-1137
 Microsoft Windows
 Windows Push Notification Service
 CVE-2020-1138
@@ -103992,7 +103991,9 @@ Azure Data Explorer
 CVE-2022-23261
 Microsoft Edge (Chromium-based)
 Microsoft Edge Chromiumbased
-CVE-2022-23262
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-23262
 Microsoft Edge (Chromium-based)
 Microsoft Edge Chromiumbased
 CVE-2022-23263
@@ -104190,9 +104191,7 @@ Microsoft Edge Chrome based  on IE Mode
 CVE-2021-41356
 Microsoft Windows
 Windows
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-41370
+CVE-2021-41370
 Windows NTFS
 NTFS
 CVE-2021-41373
@@ -104657,7 +104656,9 @@ Windows Kernel
 CVE-2020-1310
 Windows Kernel
 Win32k
-CVE-2020-1311
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-1311
 Windows COM
 Component Object Model
 CVE-2020-1312
@@ -104945,9 +104946,7 @@ Windows Network File System
 CVE-2022-22029
 Windows Network File System
 Windows Network File System
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-22031
+CVE-2022-22031
 Windows Credential Guard
 Windows Credential Guard Domainjoined Public Key
 CVE-2022-22034
@@ -105319,7 +105318,9 @@ Windows Mobile Device Management Diagnostics
 CVE-2020-1406
 Microsoft Windows
 Windows Network List Service
-CVE-2020-1407
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-1407
 Microsoft JET Database Engine
 Jet Database Engine
 CVE-2020-1408
@@ -105697,9 +105698,7 @@ Microsoft Office
 CVE-2020-0701
 Microsoft Windows
 Windows Client License Service
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-0702
+CVE-2020-0702
 Windows Shell
 Surface Hub
 CVE-2020-0710
@@ -105996,7 +105995,9 @@ Microsoft Windows Support Diagnostic Tool MSDT
 CVE-2022-35744
 Windows Point-to-Point Tunneling Protocol
 Windows PointtoPoint Protocol PPP
-CVE-2022-35745
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-35745
 Windows Secure Socket Tunneling Protocol (SSTP)
 Windows Secure Socket Tunneling Protocol SSTP
 CVE-2022-35746
@@ -106461,9 +106462,7 @@ Windows Kernel
 CVE-2017-0168
 Windows Hyper-V
 HyperV
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2017-0169
+CVE-2017-0169
 Windows Hyper-V
 Windows HyperV
 CVE-2017-0194
@@ -106661,7 +106660,9 @@ Windows Function Discovery SSDP Provider
 CVE-2020-0914
 Microsoft Windows
 Windows State Repository Service
-CVE-2020-0921
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-0921
 Microsoft Graphics Component
 Microsoft Graphics Component
 CVE-2020-0922
@@ -107231,9 +107232,7 @@ Microsoft SharePoint Server
 CVE-2021-1727
 Windows Installer
 Windows Installer
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-1730
+CVE-2021-1730
 Microsoft Exchange Server
 Microsoft Exchange Server
 CVE-2021-24066
@@ -107338,7 +107337,9 @@ Chromium CVE202121143 Heap buffer overflow in Extensions
 CVE-2021-21144
 Microsoft Edge (Chromium-based)
 Chromium CVE202121144 Heap buffer overflow in Tab Groups
-CVE-2021-21145
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-21145
 Microsoft Edge (Chromium-based)
 Chromium CVE202121145 Use after free in Fonts
 CVE-2021-21146
@@ -107980,9 +107981,7 @@ Chromium CVE20221854 Use after free in ANGLE
 CVE-2022-1855
 Microsoft Edge (Chromium-based)
 Chromium CVE20221855 Use after free in Messaging
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-1856
+CVE-2022-1856
 Microsoft Edge (Chromium-based)
 Chromium CVE20221856 Use after free in User Education
 CVE-2022-1857
@@ -107997,7 +107996,9 @@ Chromium CVE20221859 Use after free in Performance Manager
 CVE-2022-1862
 Microsoft Edge (Chromium-based)
 Chromium CVE20221862 Inappropriate implementation in Extensions
-CVE-2022-1863
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-1863
 Microsoft Edge (Chromium-based)
 Chromium CVE20221863 Use after free in Tab Groups
 CVE-2022-1864
@@ -108672,7 +108673,9 @@ Windows Common Log File System Driver
 CVE-2016-0026
 Common Log File System Driver
 Windows Common Log File System Driver
-CVE-2016-7184
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2016-7184
 Common Log File System Driver
 Windows Common Log File System Driver
 CVE-2016-7195
@@ -108747,9 +108750,7 @@ Task Scheduler
 CVE-2016-7223
 Microsoft Virtual Hard Drive
 VHD Driver
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2016-7224
+CVE-2016-7224
 Microsoft Virtual Hard Drive
 VHD Driver
 CVE-2016-7225
@@ -109154,7 +109155,9 @@ Chromium CVE202137997  Use after free in SignIn
 CVE-2021-37998
 Microsoft Edge (Chromium-based)
 Chromium CVE202137998  Use after free in Garbage Collection
-CVE-2021-37999
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-37999
 Microsoft Edge (Chromium-based)
 Chromium CVE202137999  Insufficient data validation in New Tab Page
 CVE-2021-38000
@@ -109337,9 +109340,7 @@ Windows Error Reporting
 CVE-2019-1067
 Microsoft Windows
 Windows Kernel
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-1068
+CVE-2019-1068
 SQL Server
 Microsoft SQL Server
 CVE-2019-1074
@@ -109816,7 +109817,9 @@ Windows Uniscribe
 CVE-2017-0113
 Windows Uniscribe
 Windows Uniscribe
-CVE-2017-0114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2017-0114
 Windows Uniscribe
 Windows Uniscribe
 CVE-2017-0115
@@ -110086,9 +110089,7 @@ HyperV vSMB
 CVE-2017-0109
 Windows Hyper-V
 Windows HyperV
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2017-0110
+CVE-2017-0110
 Microsoft Exchange Server
 Microsoft Exchange Server
 CVE-2017-0130
@@ -110495,7 +110496,9 @@ Windows SMB Server
 Windows SMB
 CVE-2017-0274
 Windows SMB Server
-Windows SMB
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Windows SMB
 CVE-2017-0275
 Windows SMB Server
 Windows SMB
@@ -110853,9 +110856,7 @@ Microsoft SharePoint
 CVE-2016-3237
 Windows Authentication Methods
 Kerberos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2016-3288
+CVE-2016-3288
 Internet Explorer
 Internet Explorer Memory Corruption
 CVE-2016-3289
@@ -111197,7 +111198,9 @@ Windows
 CVE-2018-8207
 Windows Kernel
 Windows Kernel
-CVE-2018-8208
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2018-8208
 Microsoft Windows
 Windows Desktop Bridge
 CVE-2018-8209
@@ -111620,9 +111623,7 @@ MS XML
 CVE-2019-0802
 Microsoft Graphics Component
 Windows GDI
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-0803
+CVE-2019-0803
 Microsoft Graphics Component
 Win32k
 CVE-2019-0805
@@ -111877,7 +111878,9 @@ Windows Permissions Enforcement
 CVE-2016-3368
 Microsoft Windows
 Windows
-CVE-2016-3348
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2016-3348
 Microsoft Graphics Component
 Win32k
 CVE-2016-3349
@@ -112393,9 +112396,7 @@ Windows Search Indexer
 CVE-2020-0632
 Microsoft Windows Search Component
 Windows Search Indexer
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-0633
+CVE-2020-0633
 Microsoft Windows Search Component
 Windows Search Indexer
 CVE-2020-0634
@@ -112554,7 +112555,9 @@ Windows Defender Application Control
 CVE-2019-0734
 Kerberos
 Windows
-CVE-2019-0758
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-0758
 Microsoft Graphics Component
 Windows GDI
 CVE-2019-0819
@@ -113160,9 +113163,7 @@ Windows Push Notification Service
 CVE-2020-1002
 Windows Defender
 Microsoft Defender
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-1003
+CVE-2020-1003
 Windows Kernel
 Windows Kernel
 CVE-2020-1004
@@ -113234,7 +113235,9 @@ Adobe Font Manager Library
 CVE-2020-0939
 Windows Media
 Media Foundation
-CVE-2020-0940
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-0940
 Microsoft Windows
 Windows Push Notification Service
 CVE-2020-0942
@@ -113897,7 +113900,9 @@ Windows Shell
 CVE-2022-26928
 Windows Photo Import API
 Windows Photo Import API
-CVE-2022-26929
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-26929
 .NET Framework
 .NET Framework
 CVE-2022-30170
@@ -113915,9 +113920,7 @@ Windows Common Log File System Driver
 CVE-2022-35805
 Microsoft Dynamics
 Microsoft Dynamics CRM onpremises
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-35823
+CVE-2022-35823
 Microsoft Office SharePoint
 Microsoft SharePoint
 CVE-2022-35828
@@ -114562,7 +114565,9 @@ Microsoft Windows Media Foundation
 CVE-2019-1432
 Microsoft Graphics Component
 DirectWrite
-CVE-2019-1433
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-1433
 Microsoft Graphics Component
 Windows Graphics Component
 CVE-2019-1434
@@ -114673,9 +114678,7 @@ Win32k
 CVE-2019-1394
 Microsoft Graphics Component
 Win32k
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-1395
+CVE-2019-1395
 Microsoft Graphics Component
 Win32k
 CVE-2019-1396
@@ -115236,7 +115239,9 @@ Microsoft Office Defense in Depth Update
 CVE-2017-11786
 Microsoft Office
 Skype for Business
-CVE-2017-8693
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2017-8693
 Microsoft Graphics Component
 Microsoft Graphics Component
 CVE-2017-8694
@@ -115437,9 +115442,7 @@ Microsoft Defender
 CVE-2021-1651
 Windows Diagnostic Hub
 Diagnostics Hub Standard Collector
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-1652
+CVE-2021-1652
 Windows CSC Service
 Windows CSC Service
 CVE-2021-1653
@@ -115865,7 +115868,9 @@ Chakra Scripting Engine Memory Corruption
 CVE-2018-0945
 Microsoft Scripting Engine
 Scripting Engine Memory Corruption
-CVE-2018-0946
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2018-0946
 Microsoft Scripting Engine
 Scripting Engine Memory Corruption
 CVE-2018-0951
@@ -116123,9 +116128,7 @@ Microsoft Word
 CVE-2022-41103
 Microsoft Office Word
 Microsoft Word
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-41061
+CVE-2022-41061
 Microsoft Office Word
 Microsoft Word
 CVE-2022-41104
@@ -116518,7 +116521,9 @@ Chromium CVE20220790 Use after free in Cast UI
 CVE-2022-0791
 Microsoft Edge (Chromium-based)
 Chromium CVE20220791 Use after free in Omnibox
-CVE-2022-0792
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-0792
 Microsoft Edge (Chromium-based)
 Chromium CVE20220792 Out of bounds read in ANGLE
 CVE-2022-0793
@@ -116836,9 +116841,7 @@ Windows Console Driver
 CVE-2021-28444
 Role: Hyper-V
 Windows HyperV
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-28445
+CVE-2021-28445
 Windows Network File System
 Windows Network File System
 CVE-2021-28446
@@ -117177,7 +117180,9 @@ Windows Kernel
 CVE-2018-8444
 Windows SMB Server
 Windows SMB
-CVE-2018-8445
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2018-8445
 Windows Kernel
 Windows Kernel
 CVE-2018-8446
@@ -117588,9 +117593,7 @@ Windows Subsystem for Linux
 CVE-2019-0554
 Windows Kernel
 Windows Kernel
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2019-0555
+CVE-2019-0555
 Microsoft XML
 Microsoft XmlDocument
 CVE-2019-0556
@@ -117854,7 +117857,9 @@ Win32k
 CVE-2016-7272
 Microsoft Graphics Component
 Windows Graphics Component
-CVE-2016-7273
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2016-7273
 Microsoft Graphics Component
 Windows Graphics Component
 CVE-2016-7274
@@ -118328,9 +118333,7 @@ Windows Common Log File System Driver
 CVE-2022-24473
 Microsoft Office Excel
 Microsoft Excel
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-24474
+CVE-2022-24474
 Windows Win32K
 Windows Win32k
 CVE-2022-24523
@@ -118513,7 +118516,9 @@ Windows DNS Server
 CVE-2022-24488
 Windows App Store
 Windows Desktop Bridge
-CVE-2022-24537
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2022-24537
 Role: Windows Hyper-V
 Windows HyperV
 CVE-2022-24489
@@ -119071,9 +119076,7 @@ Chromium CVE202130615 Crossorigin data leak in Navigation
 CVE-2021-30616
 Microsoft Edge (Chromium-based)
 Chromium CVE202130616 Use after free in Media
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-30617
+CVE-2021-30617
 Microsoft Edge (Chromium-based)
 Chromium CVE202130617 Policy bypass in Blink
 CVE-2021-30618
@@ -119178,7 +119181,9 @@ Chromium CVE202137970  Use after free in File System API
 CVE-2021-37971
 Microsoft Edge (Chromium-based)
 Chromium CVE202137971 Incorrect security UI in Web Browser UI
-CVE-2021-37972
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-37972
 Microsoft Edge (Chromium-based)
 Chromium CVE202137972 Out of bounds read in libjpegturbo
 CVE-2021-37973
@@ -119829,9 +119834,7 @@ OLE Automation
 CVE-2021-31195
 Microsoft Exchange Server
 Microsoft Exchange Server
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-31198
+CVE-2021-31198
 Microsoft Exchange Server
 Microsoft Exchange Server
 CVE-2021-31204
@@ -119843,7 +119846,9 @@ Windows SMB Client
 CVE-2021-31207
 Microsoft Exchange Server
 Microsoft Exchange Server
-CVE-2021-31208
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2021-31208
 Windows Container Manager Service
 Windows Container Manager Service
 CVE-2021-31209
@@ -120503,7 +120508,9 @@ Windows GDI
 CVE-2020-17069
 Windows NDIS
 Windows NDIS
-CVE-2020-17070
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-17070
 Windows Update Stack
 Windows Update Medic Service
 CVE-2020-17071
@@ -120575,9 +120582,7 @@ Windows Camera Codec
 CVE-2020-1599
 Microsoft Windows
 Windows
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2020-16981
+CVE-2020-16981
 Azure Sphere
 Azure Sphere
 CVE-2020-16982
@@ -121162,7 +121167,9 @@ Scripting Engine Memory Corruption
 CVE-2018-0770
 Microsoft Scripting Engine
 Scripting Engine Memory Corruption
-CVE-2018-0772
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CVE-2018-0772
 Microsoft Browsers
 Scripting Engine Memory Corruption
 CVE-2018-0775
@@ -121251,7 +121258,7 @@ Microsoft Office Memory Corruption
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team...</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
     </tr>
     <tr>
       <th>CVE-2016-0089</th>
@@ -121264,7 +121271,7 @@ Microsoft Office Memory Corruption
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team...</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
     </tr>
     <tr>
       <th>CVE-2016-0090</th>
@@ -121277,7 +121284,7 @@ Microsoft Office Memory Corruption
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
     </tr>
     <tr>
       <th>CVE-2016-0128</th>
@@ -121491,32 +121498,6 @@ vi-1
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2022-29125</th>
-      <td>2022-05-10</td>
-      <td>Windows Push Notifications Apps</td>
-      <td>Windows Push Notifications</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB5013941 KB5013942 KB5013943 KB5013944 KB5013...</td>
-      <td>10.0.10240.19297 10.0.14393.5125 10.0.17763.29...</td>
-      <td>Anonymous</td>
-      <td>[wpncore.dll, wpnprv.dll, wpnapps.dll]</td>
-      <td>[wpnclient.dll, wpnprv.dll, WpnUserService.dll...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-21867</th>
-      <td>2022-01-11</td>
-      <td>Windows Push Notifications Apps</td>
-      <td>Windows Push Notifications</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB5009543 KB5009545 KB5009546 KB5009555 KB5009...</td>
-      <td>10.0.10240.19177 10.0.14393.4886 10.0.17763.24...</td>
-      <td></td>
-      <td>[wpnapps.dll]</td>
-      <td>[wpnclient.dll, wpnprv.dll, WpnUserService.dll...</td>
-    </tr>
-    <tr>
       <th>CVE-2022-41102</th>
       <td>2022-11-08</td>
       <td>Windows Overlay Filter</td>
@@ -121543,6 +121524,19 @@ vi-1
       <td>[wof.sys]</td>
     </tr>
     <tr>
+      <th>CVE-2021-26860</th>
+      <td>2021-03-09</td>
+      <td>Windows AppV Overlay Filter</td>
+      <td>Windows Overlay Filter</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5000802 KB5000808 KB5000822</td>
+      <td></td>
+      <td>James Forshaw of Google Project Zero</td>
+      <td>[]</td>
+      <td>[wof.sys]</td>
+    </tr>
+    <tr>
       <th>CVE-2021-26874</th>
       <td>2021-03-09</td>
       <td>Windows Overlay Filter</td>
@@ -121553,6 +121547,19 @@ vi-1
       <td></td>
       <td>James Forshaw of Google Project Zero</td>
       <td>[]</td>
+      <td>[wof.sys]</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41101</th>
+      <td>2022-11-08</td>
+      <td>Windows Overlay Filter</td>
+      <td>Windows Overlay Filter</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/keyz3r0"&gt;k0shl&lt;/a...</td>
+      <td>[wof.sys]</td>
       <td>[wof.sys]</td>
     </tr>
     <tr>
@@ -121698,7 +121705,7 @@ vi-1
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team...</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
       <td>16</td>
       <td>0</td>
     </tr>
@@ -121713,7 +121720,7 @@ vi-1
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team...</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
       <td>16</td>
       <td>0</td>
     </tr>
@@ -121728,7 +121735,7 @@ vi-1
       <td></td>
       <td>Kostya Kortchinsky of the Google Security Team</td>
       <td>[]</td>
-      <td>[vmgid.sys, vmsvcext.sys, VmsProxyHNic.sys, Vm...</td>
+      <td>[vmsvcext.sys, vmstorfl.sys, vmusb.sys, vmbusp...</td>
       <td>16</td>
       <td>0</td>
     </tr>
@@ -121758,7 +121765,7 @@ vi-1
       <td></td>
       <td>Alex Ionescu, &lt;a href="https://www.crowdstrike...</td>
       <td>[]</td>
-      <td>[localspl.dll, spoolsv.exe, spoolss.dll]</td>
+      <td>[spoolsv.exe, spoolss.dll, localspl.dll]</td>
       <td>3</td>
       <td>0</td>
     </tr>
@@ -122239,8 +122246,8 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
       <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
       <td>namnp working with &lt;a href="https://www.zeroda...</td>
-      <td>[win32k.sys, win32kfull.sys, win32kbase.sys]</td>
-      <td>[win32k.sys, win32kfull.sys, win32kns.sys, win...</td>
+      <td>[win32kbase.sys, win32k.sys, win32kfull.sys]</td>
+      <td>[win32kmin.sys, win32kbase.sys, win32kfull.sys...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -122284,8 +122291,8 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>Bing Sun</td>
-      <td>[win32k.sys, win32kfull.sys, win32kbase.sys]</td>
-      <td>[win32k.sys, win32kfull.sys, win32kns.sys, win...</td>
+      <td>[win32kbase.sys, win32k.sys, win32kfull.sys]</td>
+      <td>[win32kmin.sys, win32kbase.sys, win32kfull.sys...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -122314,8 +122321,8 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>&lt;a href="https://twitter.com/securiteam_ssd"&gt;Y...</td>
-      <td>[win32k.sys, win32kfull.sys, win32kbase.sys]</td>
-      <td>[win32k.sys, win32kfull.sys, win32kns.sys, win...</td>
+      <td>[win32kbase.sys, win32k.sys, win32kfull.sys]</td>
+      <td>[win32kmin.sys, win32kbase.sys, win32kfull.sys...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -122605,7 +122612,7 @@ Name: Tag, Length: 363, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2002/4272591546.py:5: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1884/4272591546.py:5: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
   tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(set)
 </pre></div>
 </div>
@@ -122658,13 +122665,13 @@ Name: Tag, Length: 363, dtype: int64
     <tr>
       <th>Azure Site Recovery</th>
       <th>Azure Site Recovery</th>
-      <td>{CVE-2022-35781, CVE-2022-33671, CVE-2022-3365...</td>
-      <td>{2022-04-12, 2022-08-09, 2022-03-08, 2022-07-12}</td>
-      <td>{Remote Code Execution, Denial of Service, Inf...</td>
+      <td>{CVE-2022-33677, CVE-2022-33650, CVE-2022-3018...</td>
+      <td>{2022-03-08, 2022-08-09, 2022-07-12, 2022-04-12}</td>
+      <td>{Information Disclosure, Denial of Service, El...</td>
       <td>{4.9, 4.4, 6.5, 7.2, 8.3, 7.8, 6.2, 8.1}</td>
       <td>{}</td>
-      <td>{9.47, 9.50, 9.49, 9.48}</td>
-      <td>{William Soderberg with &lt;a href="https://www.f...</td>
+      <td>{9.50, 9.49, 9.47, 9.48}</td>
+      <td>{21 &lt;a href="https://twitter.com/kwsecu"&gt;Willi...</td>
       <td>{0}</td>
       <td>{0}</td>
       <td>80</td>
@@ -122672,13 +122679,13 @@ Name: Tag, Length: 363, dtype: int64
     <tr>
       <th>Role: Windows Hyper-V</th>
       <th>Windows HyperV</th>
-      <td>{CVE-2022-30223, CVE-2022-21901, CVE-2022-3469...</td>
-      <td>{2022-02-08, 2022-04-12, 2022-05-10, 2022-11-0...</td>
-      <td>{Information Disclosure, Elevation of Privileg...</td>
+      <td>{CVE-2022-34696, CVE-2022-37979, CVE-2022-2453...</td>
+      <td>{2022-03-08, 2022-07-12, 2022-10-11, 2022-04-1...</td>
+      <td>{Denial of Service, Elevation of Privilege, Re...</td>
       <td>{4.6, 5.6, 6.5, 7.9, 5.7, 9.0, 7.8, 4.1, 4.7, ...</td>
-      <td>{KB5012592 KB5012599 KB5012604, KB5009543 KB50...</td>
-      <td>{10.0.10240.19235 10.0.14393.5006 10.0.17763.2...</td>
-      <td>{, &lt;a href="https://twitter.com/rezer0dai"&gt;rez...</td>
+      <td>{KB5016616 KB5016622 KB5016623 KB5016627 KB501...</td>
+      <td>{10.0.10240.19387 10.0.14393.5291 10.0.17763.3...</td>
+      <td>{, Microsoft Security Assurance &amp; Vulnerabilit...</td>
       <td>{0}</td>
       <td>{0}</td>
       <td>21</td>
@@ -122686,12 +122693,12 @@ Name: Tag, Length: 363, dtype: int64
     <tr>
       <th>Role: DNS Server</th>
       <th>Windows DNS Server</th>
-      <td>{CVE-2022-26823, CVE-2022-26825, CVE-2022-2681...</td>
-      <td>{2022-02-08, 2022-09-13, 2022-04-12, 2022-07-12}</td>
-      <td>{Remote Code Execution, Denial of Service, Inf...</td>
+      <td>{CVE-2022-26822, CVE-2022-30214, CVE-2022-2682...</td>
+      <td>{2022-02-08, 2022-07-12, 2022-04-12, 2022-09-13}</td>
+      <td>{Information Disclosure, Denial of Service, Re...</td>
       <td>{6.5, 7.2, 8.8, 6.6, 7.5}</td>
-      <td>{KB5015807 KB5015808 KB5015811 KB5015827, KB50...</td>
-      <td>{10.0.14393.5066 10.0.17763.2803 10.0.18363.22...</td>
+      <td>{KB5012591 KB5012592 KB5012596 KB5012599 KB501...</td>
+      <td>{10.0.14393.5066 10.0.17763.2803 10.0.19042.16...</td>
       <td>{, &lt;a href="https://twitter.com/guhe120"&gt;Yuki ...</td>
       <td>{0}</td>
       <td>{0}</td>
@@ -122700,13 +122707,13 @@ Name: Tag, Length: 363, dtype: int64
     <tr>
       <th>Microsoft Office SharePoint</th>
       <th>Microsoft SharePoint Server</th>
-      <td>{CVE-2022-21837, CVE-2022-21968, CVE-2022-2198...</td>
-      <td>{2022-02-08, 2022-04-12, 2022-05-10, 2022-11-0...</td>
-      <td>{Remote Code Execution, Security Feature Bypas...</td>
+      <td>{CVE-2022-41036, CVE-2022-21837, CVE-2022-3796...</td>
+      <td>{2022-10-11, 2022-04-12, 2022-01-11, 2022-02-0...</td>
+      <td>{Spoofing, Security Feature Bypass, Remote Cod...</td>
       <td>{4.3, 6.5, 8.3, 8.0, 8.8}</td>
-      <td>{KB5002194 KB5002195 KB5002203 KB5002207, KB50...</td>
-      <td>{15.0.5423.1000 16.0.10383.20001 16.0.14326.20...</td>
-      <td>{, &lt;a href="https://twitter.com/cjm00nw"&gt;Yuhao...</td>
+      <td>{KB5002120 KB5002135 KB5002136 KB5002145, KB50...</td>
+      <td>{15.0.5459.1001 16.0.10387.20008 16.0.14931.20...</td>
+      <td>{, H01 and H02 from FPT Software Cyber Securit...</td>
       <td>{0}</td>
       <td>{0}</td>
       <td>17</td>
@@ -122714,13 +122721,13 @@ Name: Tag, Length: 363, dtype: int64
     <tr>
       <th>Microsoft Graphics Component</th>
       <th>Windows Graphics Component</th>
-      <td>{CVE-2022-37985, CVE-2022-34728, CVE-2022-3583...</td>
-      <td>{2022-04-12, 2022-05-10, 2022-11-08, 2022-10-1...</td>
-      <td>{Remote Code Execution, Information Disclosure...</td>
+      <td>{CVE-2022-22011, CVE-2022-38006, CVE-2022-3022...</td>
+      <td>{2022-07-12, 2022-10-11, 2022-04-12, 2022-05-1...</td>
+      <td>{Elevation of Privilege, Information Disclosur...</td>
       <td>{8.8, 5.5, 6.5, 7.8}</td>
-      <td>{KB5013941 KB5013942 KB5013943 KB5013944 KB501...</td>
-      <td>{10.0.10240.19265 10.0.14393.5066 10.0.17763.2...</td>
-      <td>{Hossein Lotfi of &lt;a href="https://www.zeroday...</td>
+      <td>{KB5012591 KB5012596 KB5012599 KB5012604 KB501...</td>
+      <td>{10.0.17763.2928 10.0.18363.2274 10.0.19042.17...</td>
+      <td>{willJ from CDSRC, &lt;a href="https://twitter.co...</td>
       <td>{0}</td>
       <td>{0}</td>
       <td>15</td>
