@@ -17,7 +17,6 @@ README_PATH = Path(Path(__file__).parent,'README.md')
 # New Book Data
 BOOK_DIR = Path(Path(__file__).parent,'book')
 GENERATED_DIR = Path(BOOK_DIR,'generated')
-MSRC_PANDAS_DIR = Path(BOOK_DIR,'msrc_pandas')
 NVD_DIR = Path(BOOK_DIR,'nvd')
 
 BOOK_DIR.mkdir(exist_ok=True,parents=True)
@@ -105,7 +104,7 @@ for title, row in meta_df.iterrows():
     nb['cells'].append(nbf.v4.new_markdown_cell(f"# {title}"))
 
     # Metadata
-    nb['cells'].append(nbf.v4.new_markdown_cell(row[meta_cols].to_markdown()))
+    nb['cells'].append(nbf.v4.new_markdown_cell(row.to_markdown()))
 
     if not row.get('skip_book'):                
 
@@ -191,20 +190,20 @@ df""")
     print(f"Wrote {nb_path}")
     
 
-print("Copying MSRC pandas markdown")
-index_generated = Path(MSRC_PANDAS_DIR / 'index.md')
-index_generated.write_text(index_template.format(
-    title="MSRC Updates Markdown",
-    name=Path(__file__).name,
-    link=Path(__file__).name))
+# print("Copying MSRC pandas markdown")
+# index_generated = Path(MSRC_PANDAS_DIR / 'index.md')
+# index_generated.write_text(index_template.format(
+#     title="MSRC Updates Markdown",
+#     name=Path(__file__).name,
+#     link=Path(__file__).name))
 
-for md in DATA_MSRC_MD_DIR.glob("*.md"):
-    print(md.name)
+# for md in DATA_MSRC_MD_DIR.glob("*.md"):
+#     print(md.name)
 
-    new_md = MSRC_PANDAS_DIR / md.name
+#     new_md = MSRC_PANDAS_DIR / md.name
 
-    print(f"Creating {new_md}")
-    new_md.write_text(md.read_text())
+#     print(f"Creating {new_md}")
+#     new_md.write_text(md.read_text())
 
 
 index_generated = Path(NVD_DIR / 'index.md')
