@@ -21,7 +21,7 @@ NVD_DIR = Path(BOOK_DIR,'nvd')
 
 BOOK_DIR.mkdir(exist_ok=True,parents=True)
 GENERATED_DIR.mkdir(exist_ok=True,parents=True)
-MSRC_PANDAS_DIR.mkdir(exist_ok=True,parents=True)
+#MSRC_PANDAS_DIR.mkdir(exist_ok=True,parents=True)
 NVD_DIR.mkdir(exist_ok=True,parents=True)
 
 index_template = """# {title}
