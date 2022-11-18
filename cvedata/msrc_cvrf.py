@@ -14,6 +14,8 @@ from .util import get_file_json
 
 MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc_cvrf_merged.json.gz')
 MSRC_API_URL = "https://api.msrc.microsoft.com/"
+MSRC_CVRF_CACHE_PATH = Path(CACHE_PATH, 'msrc_cvrfs')
+MSRC_CVRF_CACHE_PATH.mkdir(exist_ok=True,parents=True)
 
 def get_all_knowledge_base_cvrf():
     cvrfs = []    
@@ -47,11 +49,8 @@ def get_knowledge_base_cvrf_json(cvrf_id):
 
     cvrf_json = None
 
-    if not os.path.exists(CACHE_PATH):
-        os.makedirs(CACHE_PATH,exist_ok=True)
-
     # if file exists locally, load it
-    cvrf_file = Path(CACHE_PATH, cvrf_id + ".json")
+    cvrf_file = Path(MSRC_CVRF_CACHE_PATH, cvrf_id + ".json")
 
     if not os.path.exists(cvrf_file):        
         url = "{}cvrf/v2.0/cvrf/{}".format(
@@ -95,7 +94,7 @@ def create_msrc_merged_cvrf_json():
     # Use created file unless outdated
     if should_update(MSRC_CVRF_MERGED_PATH,1):
     
-        for f in glob.glob(os.path.join(CACHE_PATH, "20*.json")):
+        for f in glob.glob(os.path.join(MSRC_CVRF_CACHE_PATH, "*.json")):
             with open(f, "r") as infile:
                 cvrf = json.load(infile)
                 if cvrf.get('Vulnerability'):

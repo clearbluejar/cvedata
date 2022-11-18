@@ -29,7 +29,9 @@ MS_KB_FEED_FILES_UPDATED_PATH = Path(DATA_DIR, 'ms-kb-feed-to-files-updated.json
 MS_KBS_TO_BINS_PATH = Path(DATA_DIR, 'ms-kbs-bins.json.gz')
 
 DOWNLOAD_HTML_PATH = Path(CACHE_PATH, 'ms-kb-html-downloaded.json')
-DOWNLOAD_HTML_FILEINFO_PATH_PRE = Path(CACHE_PATH)
+DOWNLOAD_HTML_FILEINFO_PATH_PRE = Path(CACHE_PATH,'kb_csv')
+# ensure cache dir exists
+DOWNLOAD_HTML_FILEINFO_PATH_PRE.mkdir(exist_ok=True,parents=True)
 
 broken_urls = []
 
@@ -89,10 +91,7 @@ def create_ms_kb_feeds():
                     os_build = match[1]
                     # end
 
-                    
-                    
                     # It is possible for KBs to exist across feeds. There data should match, just need to add the feed
-
                     if updates.get(update_kb):
                         assert updates[update_kb]['link'] == entry.link
                         feeds = updates[update_kb]['feeds'].append(feed.feed.title)

@@ -14,10 +14,11 @@ from .metadata import update_metadata
 from .util import get_file_json
 
 WINBINDEX_ZIP_EXTRACT_PATH = Path(CACHE_PATH,"winbindex")
+WINBINDEX_ZIP_EXTRACT_PATH.mkdir(exist_ok=True,parents=True)
 WINBINDEX_ZIP_FILES_DATA_PATH = Path("winbindex-gh-pages","data","by_filename_compressed")
 WINBINDEX_FILES_DATA_PATH = Path(WINBINDEX_ZIP_EXTRACT_PATH,WINBINDEX_ZIP_FILES_DATA_PATH)
 WINBINDEX_GITHUB_URL = "https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip"
-WINBINDEX_ZIP_PATH = Path(CACHE_PATH,WINBINDEX_GITHUB_URL.split('/')[-1])
+WINBINDEX_ZIP_PATH = Path(WINBINDEX_ZIP_EXTRACT_PATH,WINBINDEX_GITHUB_URL.split('/')[-1])
 
 
 WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH = Path(DATA_DIR,"winbindex-desc-to-bins-map.json")
@@ -45,9 +46,9 @@ def download_and_extract_from_url(url,extract_path):
     download = True
 
     # Use cached file unless outdated
-    if os.path.exists(WINBINDEX_ZIP_PATH) and os.path.getsize(WINBINDEX_ZIP_PATH) > 0:
+    if WINBINDEX_ZIP_PATH.exists() and WINBINDEX_ZIP_PATH.stat().st_size > 0:
         current_day = datetime.now().day
-        mod_time = datetime.fromtimestamp(os.path.getmtime(WINBINDEX_ZIP_PATH))    
+        mod_time = datetime.fromtimestamp(WINBINDEX_ZIP_PATH.stat().st_mtime)
         if mod_time.day == current_day:
             print("{} already up to date.".format(WINBINDEX_ZIP_PATH))
             download = False
