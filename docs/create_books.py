@@ -105,7 +105,7 @@ for title, row in meta_df.iterrows():
     nb['cells'].append(nbf.v4.new_markdown_cell(f"# {title}"))
 
     # Metadata
-    nb['cells'].append(nbf.v4.new_markdown_cell(row.to_markdown()))
+    nb['cells'].append(nbf.v4.new_markdown_cell(row[meta_cols].to_markdown()))
 
     if not row.get('skip_book'):                
 
