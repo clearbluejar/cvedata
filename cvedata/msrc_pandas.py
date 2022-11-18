@@ -8,10 +8,9 @@ from pathlib import Path
 import difflib
 
 
-from .config import CACHE_PATH, DATA_DIR, PANDAS_DIR
-from .msrc_cvrf import get_msrc_merged_cvrf_json,get_msrc_merged_cvrf_json_keyed,MSRC_API_URL
+from .config import CACHE_PATH, DATA_DIR
+from .msrc_cvrf import get_msrc_merged_cvrf_json_keyed,MSRC_API_URL
 from .metadata import should_update, update_metadata
-# from .msrc_tags import get_tags_desc_to_bins
 from .util import get_file_json
 
 MSRC_CVRF_PANDAS = Path(DATA_DIR,"msrc-cvrf-pandas-merged.json.gz")
@@ -299,12 +298,12 @@ def create_msrc_cvrf_pandas():
             df_vulns.set_index('CVE',inplace=True,verify_integrity=True)
             print(df_vulns[FIELDS].head())
 
-            panda_md_path = PANDAS_DIR / f"{cvrf_id}-pandas.md"
-            with panda_md_path.open('w') as f:
-                f.write(f"# {cvrf_id}\n\n")
-                df_vulns[FIELDS].to_markdown(f,tablefmt="github")
+            # panda_md_path = PANDAS_DIR / f"{cvrf_id}-pandas.md"
+            # with panda_md_path.open('w') as f:
+            #     f.write(f"# {cvrf_id}\n\n")
+            #     df_vulns[FIELDS].to_markdown(f,tablefmt="github")
 
-            df_vulns[FIELDS].to_json(PANDAS_DIR / f"{cvrf_id}-pandas.json" )
+            # df_vulns[FIELDS].to_json(PANDAS_DIR / f"{cvrf_id}-pandas.json" )
 
             print(df_vulns[FIELDS].head())
 

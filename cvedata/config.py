@@ -8,7 +8,6 @@ METADATA_PATH = Path(DATA_DIR, 'metadata.json')
 CACHE_PATH = Path(DATA_DIR, '.cache')
 
 DATA_DIR.mkdir(exist_ok=True,parents=True)
-PANDAS_DIR.mkdir(exist_ok=True,parents=True)
 CACHE_PATH.mkdir(exist_ok=True,parents=True)
 
 REPO_REL_VERSION_INFO = f"https://api.github.com/repos/clearbluejar/cvedata/releases/tags/v{__version__}"
