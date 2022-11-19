@@ -77,6 +77,7 @@ jobs:
           cvedata/data/.cache/msrc_cvrfs/*.json
           cvedata/data/.cache/*.json.gz
           cvedata/data/.cache/*.json
+          cvedata*.zip
           dist/
         retention-days: 3
     
