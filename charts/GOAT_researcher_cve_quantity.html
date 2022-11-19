@@ -165,6 +165,11 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/all-verinfo-system32-full.json.gz.html">
+     all-verinfo-system32-full.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/chromerelease_cve.json.html">
      chromerelease_cve.json
     </a>
@@ -262,11 +267,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/versioninfo-system32-desc-to-bins.json.html">
      versioninfo-system32-desc-to-bins.json
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/versioninfo-system32-full.json.gz.html">
-     versioninfo-system32-full.json.gz
     </a>
    </li>
    <li class="toctree-l2">
@@ -747,57 +747,74 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;cvedata&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;researcher_cve_map.json&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/util/_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>yuki chen</td>
-      <td>[CVE-2016-3375, CVE-2017-0228, CVE-2017-0236, ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>zhiniang peng</td>
-      <td>[CVE-2019-1253, CVE-2019-1292, CVE-2019-1317, ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>mateusz jurczyk</td>
-      <td>[CVE-2011-3019, CVE-2011-3062, CVE-2011-3099, ...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>james forshaw</td>
-      <td>[CVE-2016-0070, CVE-2016-0073, CVE-2016-0075, ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>xuefeng li</td>
-      <td>[CVE-2020-0616, CVE-2020-0641, CVE-2020-0697, ...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/util/_decorators.py:331,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">_format_argument_list</span><span class="p">(</span><span class="n">allow_args</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/io/json/_json.py:733,</span> in <span class="ni">read_json</span><span class="nt">(path_or_buf, orient, typ, dtype, convert_axes, convert_dates, keep_default_dates, numpy, precise_float, date_unit, encoding, encoding_errors, lines, chunksize, compression, nrows, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span> <span class="k">if</span> <span class="n">convert_axes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">orient</span> <span class="o">!=</span> <span class="s2">&quot;table&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">convert_axes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">733</span> <span class="n">json_reader</span> <span class="o">=</span> <span class="n">JsonReader</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span>     <span class="n">orient</span><span class="o">=</span><span class="n">orient</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span>     <span class="n">typ</span><span class="o">=</span><span class="n">typ</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span>     <span class="n">convert_axes</span><span class="o">=</span><span class="n">convert_axes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span>     <span class="n">convert_dates</span><span class="o">=</span><span class="n">convert_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span>     <span class="n">keep_default_dates</span><span class="o">=</span><span class="n">keep_default_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span>     <span class="n">numpy</span><span class="o">=</span><span class="n">numpy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span>     <span class="n">precise_float</span><span class="o">=</span><span class="n">precise_float</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">743</span>     <span class="n">date_unit</span><span class="o">=</span><span class="n">date_unit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">745</span>     <span class="n">lines</span><span class="o">=</span><span class="n">lines</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">746</span>     <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">748</span>     <span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span>     <span class="n">encoding_errors</span><span class="o">=</span><span class="n">encoding_errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span> <span class="k">if</span> <span class="n">chunksize</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">754</span>     <span class="k">return</span> <span class="n">json_reader</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/io/json/_json.py:818,</span> in <span class="ni">JsonReader.__init__</span><span class="nt">(self, filepath_or_buffer, orient, typ, dtype, convert_axes, convert_dates, keep_default_dates, numpy, precise_float, date_unit, encoding, lines, chunksize, compression, nrows, storage_options, encoding_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">815</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">816</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;nrows can only be passed if lines=True&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">818</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_filepath</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">819</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/io/json/_json.py:874,</span> in <span class="ni">JsonReader._get_data_from_filepath</span><span class="nt">(self, filepath_or_buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="n">filepath_or_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span> <span class="k">elif</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span>     <span class="nb">isinstance</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="ow">and</span> <span class="n">filepath_or_buffer</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>     <span class="ow">and</span> <span class="ow">not</span> <span class="n">file_exists</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span> <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">874</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">filepath_or_buffer</span><span class="si">}</span><span class="s2"> does not exist&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span> <span class="k">return</span> <span class="n">filepath_or_buffer</span>
+
+<span class="ne">FileNotFoundError</span>: File ../../cvedata/data/researcher_cve_map.json does not exist
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -842,7 +859,7 @@ title="Print to PDF"
     <tr>
       <th>0</th>
       <td>yuki chen</td>
-      <td>362</td>
+      <td>357</td>
     </tr>
     <tr>
       <th>1</th>
@@ -857,7 +874,7 @@ title="Print to PDF"
     <tr>
       <th>3</th>
       <td>james forshaw</td>
-      <td>124</td>
+      <td>123</td>
     </tr>
     <tr>
       <th>4</th>
@@ -891,28 +908,28 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>10</th>
-      <td>guang gong</td>
-      <td>72</td>
-    </tr>
-    <tr>
-      <th>11</th>
       <td>jun kokatsu</td>
       <td>70</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>k0shl</td>
-      <td>69</td>
+      <th>11</th>
+      <td>guang gong</td>
+      <td>70</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>12</th>
       <td>miaubiz</td>
       <td>68</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>13</th>
       <td>ashar javed</td>
       <td>66</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>k0shl</td>
+      <td>65</td>
     </tr>
     <tr>
       <th>15</th>
@@ -941,28 +958,28 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>20</th>
-      <td>hossein lotfi</td>
-      <td>57</td>
-    </tr>
-    <tr>
-      <th>21</th>
       <td>huynh phuoc</td>
       <td>56</td>
     </tr>
     <tr>
-      <th>22</th>
-      <td>jarvis_1oop</td>
-      <td>54</td>
+      <th>21</th>
+      <td>hossein lotfi</td>
+      <td>56</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>22</th>
       <td>pgboy</td>
       <td>50</td>
     </tr>
     <tr>
+      <th>23</th>
+      <td>jarvis_1oop</td>
+      <td>50</td>
+    </tr>
+    <tr>
       <th>24</th>
-      <td>sergei glazunov</td>
-      <td>48</td>
+      <td>nicolas joly</td>
+      <td>47</td>
     </tr>
   </tbody>
 </table>
