@@ -51,8 +51,12 @@ jobs:
         ls -rotah cvedata/data/
     - name: Zip Generated Data
       run: |
-        zip -r cache_data.zip cvedata/data/.cache/* -x cvedata/data/.cache/winbindex\*
-        zip -r cvedata_data.zip cvedata/data/ -x cvedata/data/.cache\* cvedata/data/.placeholder
+        cd cvedata/data/.cache
+        zip -r ../../../cvedata_cache.zip * -x winbindex\*
+        cd ../../..
+        cd cvedata/data
+        zip -r ../../cvedata_data.zip * -x .cache\* .placeholder
+        cd ../..
 
     # - name: Publish package
     #   uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
