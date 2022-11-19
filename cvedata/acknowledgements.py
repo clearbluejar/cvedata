@@ -159,8 +159,8 @@ def create_researcher_cve_quality_map_json():
         'impact.baseMetricV3.exploitabilityScore',
         'impact.baseMetricV3.impactScore']
 
-        for researcher,cves in researcher_cves:
-
+        for researcher in researcher_cves:
+            cves = researcher_cves[researcher]
             cve_data = get_cves(cves)
             cve_df = pd.json_normalize(cve_data)        
             #print(cve_df.columns)
