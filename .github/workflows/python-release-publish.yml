@@ -84,7 +84,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          cache_data.zip
+          cvedata_cache.zip
           cvedata_data.zip
           cvedata/data/metadata.json
           ./dist/*
