@@ -943,51 +943,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:16,</span> in <span class="ni">get_file_json</span><span class="nt">(path, base)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.gz&quot;</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/gzip.py:58,</span> in <span class="ni">open</span><span class="nt">(filename, mode, compresslevel, encoding, errors, newline)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="n">binary_file</span> <span class="o">=</span> <span class="n">GzipFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">gz_mode</span><span class="p">,</span> <span class="n">compresslevel</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/gzip.py:174,</span> in <span class="ni">GzipFile.__init__</span><span class="nt">(self, filename, mode, compresslevel, fileobj, mtime)</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span> <span class="k">if</span> <span class="n">fileobj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">174</span>     <span class="n">fileobj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">myfileobj</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">or</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/winbindex-kb-to-bins-map.json.gz&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_cvrf_pandas_df</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">wb_kbs</span> <span class="o">=</span> <span class="n">get_winbindex_kbs_to_bin_map</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">ms_kbs</span> <span class="o">=</span> <span class="n">get_ms_kb_to_bins_json</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">msrc_pandas</span> <span class="o">=</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/winbindex.py:190,</span> in <span class="ni">get_winbindex_kbs_to_bin_map</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span> <span class="k">def</span> <span class="nf">get_winbindex_kbs_to_bin_map</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">190</span>     <span class="k">return</span> <span class="n">get_file_json</span><span class="p">(</span><span class="n">WINDOWS_KBS_TO_BINS_PATH</span><span class="p">,</span><span class="vm">__file__</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:22,</span> in <span class="ni">get_file_json</span><span class="nt">(path, base)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="sa">f</span><span class="s2">&quot;Missing </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">. </span><span class="se">\n</span><span class="s2">Please run </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> or download release data: python -m cvedata.download&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-
-<span class="ne">Exception</span>: Missing /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/winbindex-kb-to-bins-map.json.gz. 
-<span class="n">Please</span> <span class="n">run</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.10.8</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cvedata</span><span class="o">/</span><span class="n">winbindex</span><span class="o">.</span><span class="n">py</span> <span class="ow">or</span> <span class="n">download</span> <span class="n">release</span> <span class="n">data</span><span class="p">:</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">cvedata</span><span class="o">.</span><span class="n">download</span>
-</pre></div>
-</div>
-</div>
 </div>
 <section id="winbindex-kb-data">
 <h3>Winbindex KB Data<a class="headerlink" href="#winbindex-kb-data" title="Permalink to this headline">#</a></h3>
@@ -1001,6 +956,137 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>versions</th>
+      <th>release</th>
+      <th>url</th>
+      <th>build</th>
+      <th>bin count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB5012643</th>
+      <td>[fdprint.dll, bluetoothpairingsystemtoasticon....</td>
+      <td>[11-21H2]</td>
+      <td>2022-04-25</td>
+      <td>https://support.microsoft.com/help/5012643</td>
+      <td>22000.652</td>
+      <td>3868</td>
+    </tr>
+    <tr>
+      <th>KB4598242</th>
+      <td>[virtualdisplaymanager.proxystubs.dll, hydroge...</td>
+      <td>[2004]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598242</td>
+      <td>19041.746</td>
+      <td>3177</td>
+    </tr>
+    <tr>
+      <th>KB4598230</th>
+      <td>[virtualdisplaymanager.proxystubs.dll, hydroge...</td>
+      <td>[1809]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598230</td>
+      <td>17763.1697</td>
+      <td>2982</td>
+    </tr>
+    <tr>
+      <th>KB5017389</th>
+      <td>[vccorlib120_app.dll, hydrogen.winmd, bluetoot...</td>
+      <td>[11-22H2]</td>
+      <td>2022-09-30</td>
+      <td>https://support.microsoft.com/help/5017389</td>
+      <td>22621.608</td>
+      <td>2851</td>
+    </tr>
+    <tr>
+      <th>KB4598245</th>
+      <td>[hydrogen.winmd, bluetoothpairingsystemtoastic...</td>
+      <td>[1803]</td>
+      <td>2021-01-12</td>
+      <td>https://support.microsoft.com/help/4598245</td>
+      <td>17134.1967</td>
+      <td>2705</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB4516045</th>
+      <td>[jscript.dll]</td>
+      <td>[1803]</td>
+      <td>2019-09-24</td>
+      <td>https://support.microsoft.com/help/4516045</td>
+      <td>17134.1039</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4530689</th>
+      <td>[gdi32full.dll]</td>
+      <td>[1607]</td>
+      <td>2019-12-10</td>
+      <td>https://support.microsoft.com/help/4530689</td>
+      <td>14393.3384</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4530711</th>
+      <td>[gdi32full.dll]</td>
+      <td>[1703]</td>
+      <td>2019-12-10</td>
+      <td>https://support.microsoft.com/help/4530711</td>
+      <td>15063.2224</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4534271</th>
+      <td>[user32.dll]</td>
+      <td>[1607]</td>
+      <td>2020-01-14</td>
+      <td>https://support.microsoft.com/help/4534271</td>
+      <td>14393.3443</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4522009</th>
+      <td>[jscript.dll]</td>
+      <td>[1507]</td>
+      <td>2019-09-23</td>
+      <td>https://support.microsoft.com/help/4522009</td>
+      <td>10240.18334</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>608 rows × 6 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="ms-feeds-kb-data">
@@ -1012,6 +1098,113 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>build</th>
+      <th>release</th>
+      <th>bin count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB5012643</th>
+      <td>[1394ohci.sys, 4mmdat.sys, 61883.sys, AAD.Core...</td>
+      <td>22000.65200</td>
+      <td>2022-04-25</td>
+      <td>3339</td>
+    </tr>
+    <tr>
+      <th>KB5017389</th>
+      <td>[1394ohci.sys, 6bea57fb-8dfb-4177-9ae8-42e8b35...</td>
+      <td>22621.60800</td>
+      <td>2022-09-30</td>
+      <td>2301</td>
+    </tr>
+    <tr>
+      <th>KB4598243</th>
+      <td>[Aad.core.dll, Aadtb.dll, Abovelockapphost.dll...</td>
+      <td>14393.41690</td>
+      <td>2021-01-12</td>
+      <td>2075</td>
+    </tr>
+    <tr>
+      <th>KB4598245</th>
+      <td>[Aad.core.dll, Aadtb.dll, Aadwamextension.dll,...</td>
+      <td>17134.19670</td>
+      <td>2021-01-12</td>
+      <td>2064</td>
+    </tr>
+    <tr>
+      <th>KB4598231</th>
+      <td>[Aad.core.dll, Aadtb.dll, Abovelockapphost.dll...</td>
+      <td>10240.18818</td>
+      <td>2021-01-12</td>
+      <td>1587</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB4534271</th>
+      <td>[User32.dll]</td>
+      <td>14393.34430</td>
+      <td>2020-01-14</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4530689</th>
+      <td>[Gdi32full.dll]</td>
+      <td>14393.33840</td>
+      <td>2019-12-10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4503267</th>
+      <td>[Ieframe.dll]</td>
+      <td>14393.30250</td>
+      <td>2019-06-11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB4512495</th>
+      <td>[Oleaut32.dll]</td>
+      <td>14393.31810</td>
+      <td>2019-08-17</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>KB5010690</th>
+      <td>[Windows.System.Profile.RetailInfo.dll]</td>
+      <td>22000.46700</td>
+      <td>2022-01-25</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>438 rows × 4 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="how-many-unique-kbs-do-we-have-information-for">
@@ -1019,6 +1212,11 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>742
 </pre></div>
 </div>
 </div>
@@ -1035,6 +1233,161 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2017-8597</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Edge based on Edge HTML</td>
+      <td>Microsoft Edge</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4038788</td>
+      <td></td>
+      <td>Liu Long of &lt;a href="http://www.360.com/"&gt;Qiho...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8629</th>
+      <td>2017-09-12</td>
+      <td>Microsoft SharePoint</td>
+      <td>Microsoft Office</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB4011113</td>
+      <td></td>
+      <td>Jayson Grace &lt;a href="http://www.sandia.gov"&gt;S...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8630</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3203474</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/debasishm89"&gt; Deb...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8631</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
+      <td></td>
+      <td>Steven Seeley (mr_me) of Offensive Security wo...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8632</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
+      <td></td>
+      <td>Jaanus Kääp &lt;br&gt;&lt;a href=""&gt;&lt;i&gt;Clarified Securi...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30553</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130553 Use after free in Networ...</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30554</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130554 Use after free in WebGL</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30555</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130555 Use after free in Sharing</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30556</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130556 Use after free in WebAudio</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30557</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130557 Use after free in TabGroups</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<p>6377 rows × 8 columns</p>
+</div></div></div>
 </div>
 <section id="how-many-msrc-cves-have-kb-data">
 <h3>How many MSRC CVEs have KB data?<a class="headerlink" href="#how-many-msrc-cves-have-kb-data" title="Permalink to this headline">#</a></h3>
@@ -1095,6 +1448,221 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+      <th>has_kb</th>
+      <th>has_ms_kb</th>
+      <th>has_wb_kb</th>
+      <th>missing_all_kbs</th>
+      <th>no_kb_info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2017-8597</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Edge based on Edge HTML</td>
+      <td>Microsoft Edge</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4038788</td>
+      <td></td>
+      <td>Liu Long of &lt;a href="http://www.360.com/"&gt;Qiho...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8629</th>
+      <td>2017-09-12</td>
+      <td>Microsoft SharePoint</td>
+      <td>Microsoft Office</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB4011113</td>
+      <td></td>
+      <td>Jayson Grace &lt;a href="http://www.sandia.gov"&gt;S...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8630</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3203474</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/debasishm89"&gt; Deb...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8631</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
+      <td></td>
+      <td>Steven Seeley (mr_me) of Offensive Security wo...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8632</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
+      <td></td>
+      <td>Jaanus Kääp &lt;br&gt;&lt;a href=""&gt;&lt;i&gt;Clarified Securi...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30553</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130553 Use after free in Networ...</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30554</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130554 Use after free in WebGL</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30555</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130555 Use after free in Sharing</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30556</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130556 Use after free in WebAudio</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-30557</th>
+      <td>2021-06-08</td>
+      <td>Chromium CVE202130557 Use after free in TabGroups</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>91.0.864.54</td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>6377 rows × 13 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="how-many-msrc-cves-have-kb-data-by-year">
@@ -1107,6 +1675,18 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1806/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
+/tmp/ipykernel_1806/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;cvedata KB stats by Year&#39;}, xlabel=&#39;year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_15_2.png" src="../_images/ms_kbs_15_2.png" />
+</div>
 </div>
 </section>
 <section id="how-many-per-month-in-2022">
@@ -1118,6 +1698,16 @@ title="Print to PDF"
 <span class="n">msrc_date_df</span><span class="p">[</span><span class="n">msrc_date_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2022</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cvedata KB stats for 2022&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1806/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;cvedata KB stats for 2022&#39;}, xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_17_2.png" src="../_images/ms_kbs_17_2.png" />
 </div>
 </div>
 </section>
@@ -1132,12 +1722,73 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                                    155
+Microsoft SharePoint                                                126
+Microsoft Excel                                                     113
+Microsoft SharePoint Server                                          68
+Microsoft Exchange Server                                            63
+Microsoft Office SharePoint XSS                                      54
+Scripting Engine                                                     34
+Microsoft Word                                                       34
+Microsoft Outlook                                                    34
+Microsoft Exchange                                                   32
+Windows GDI                                                          29
+Windows Kernel                                                       29
+Windows Uniscribe                                                    29
+Internet Explorer                                                    28
+Microsoft Browser                                                    27
+Microsoft Edge                                                       25
+Win32k                                                               24
+Microsoft Dynamics 365 OnPremise Cross Site Scripting                14
+Microsoft Office Access Connectivity Engine                          14
+Microsoft PowerPoint                                                 10
+Windows Graphics Component                                            9
+Skype for Business and Lync                                           9
+Microsoft Office Graphics                                             8
+Visual Studio                                                         8
+Windows                                                               8
+Microsoft Office Defense in Depth Update                              8
+Microsoft Access                                                      7
+Microsoft Dynamics 365 onpremises                                     7
+Microsoft Dynamics 365 onpremises Crosssite Scripting                 6
+Windows EOT Font Engine                                               6
+Microsoft SharePoint Reflective XSS                                   5
+GDI                                                                   4
+Windows HyperV                                                        4
+Microsoft Dynamics 365 onpremises version 8 Cross Site Scripting      4
+Windows PDF                                                           4
+.NET and Visual Studio                                                4
+Windows Media Center                                                  3
+                                                                      3
+SQL RDBMS Engine                                                      3
+Dynamics Business Central                                             3
+Microsoft Dynamics Business Central Crosssite Scripting               3
+OpenType Font Driver                                                  3
+Microsoft Project                                                     3
+Microsoft SQL Server                                                  3
+Microsoft Office Online                                               3
+Microsoft Graphics Components                                         3
+Device Guard Code Integrity Policy                                    3
+Microsoft Graphics                                                    3
+DirectX                                                               3
+.NET Framework                                                        3
+Name: Title, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs missing related KBs sources&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Types of CVEs missing related KBs sources&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_21_1.png" src="../_images/ms_kbs_21_1.png" />
 </div>
 </div>
 </section>
@@ -1149,12 +1800,73 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Edge (Chromium-based)          659
+Azure Site Recovery                       80
+Microsoft Windows Codecs Library          73
+Microsoft Office                          56
+Visual Studio                             51
+Visual Studio Code                        29
+Azure Sphere                              27
+Team Foundation Server                    21
+Azure                                     20
+Microsoft Malware Protection Engine       19
+Azure Real Time Operating System          19
+Microsoft Scripting Engine                17
+Open Source Software                      15
+Azure DevOps                              13
+Microsoft Defender for IoT                12
+Windows Defender                          12
+ASP.NET                                   12
+Microsoft Office Visio                     9
+.NET Core                                  9
+Microsoft Dynamics                         7
+SQL Server                                 7
+Microsoft Windows                          6
+Microsoft Office Word                      6
+Windows Hyper-V                            6
+3D Viewer                                  5
+Android App                                5
+.NET Core &amp; Visual Studio                  5
+Microsoft Devices                          5
+Microsoft Dynamics GP                      5
+Microsoft OneDrive                         5
+Apps                                       4
+Azure Open Management Infrastructure       4
+Power BI                                   4
+Paint 3D                                   4
+Microsoft Teams                            3
+Microsoft Intune                           3
+.NET and Visual Studio                     3
+ASP .NET                                   3
+Microsoft PowerShell                       3
+Microsoft Windows DNS                      2
+Azure Arc                                  2
+Windows Update Assistant                   2
+Microsoft Edge for Android                 2
+Visual Studio Code - Kubernetes Tools      2
+Microsoft Yammer                           2
+NuGet                                      2
+SysInternals                               2
+Azure SDK                                  2
+Developer Tools                            2
+Microsoft Exchange Server                  2
+Name: Tag, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs without KB data listed&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Types of CVEs without KB data listed&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_24_1.png" src="../_images/ms_kbs_24_1.png" />
 </div>
 </div>
 </section>
@@ -1174,11 +1886,206 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>updated</th>
+      <th>versions</th>
+      <th>release</th>
+      <th>url</th>
+      <th>build</th>
+      <th>bin count</th>
+    </tr>
+    <tr>
+      <th>kb</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>KB3194798</th>
+      <td>[Winload.efi, Windows.devices.sensors.dll, App...</td>
+      <td>[nan]</td>
+      <td>[2016-10-11]</td>
+      <td>[nan]</td>
+      <td>[14393.321]</td>
+      <td>[173]</td>
+    </tr>
+    <tr>
+      <th>KB3197954</th>
+      <td>[Windows.media.backgroundmediaplayback.dll, Is...</td>
+      <td>[nan]</td>
+      <td>[2016-10-27]</td>
+      <td>[nan]</td>
+      <td>[14393.351]</td>
+      <td>[388]</td>
+    </tr>
+    <tr>
+      <th>KB3200970</th>
+      <td>[Vmswitch.sys, Win32k.sys, Sdnvnet.dll, Ppibar...</td>
+      <td>[nan]</td>
+      <td>[2016-11-08]</td>
+      <td>[nan]</td>
+      <td>[14393.447]</td>
+      <td>[359]</td>
+    </tr>
+    <tr>
+      <th>KB3201845</th>
+      <td>[Vmswitch.sys, Searchfolder.dll, Win32k.sys, S...</td>
+      <td>[nan]</td>
+      <td>[2016-12-09]</td>
+      <td>[nan]</td>
+      <td>[14393.479]</td>
+      <td>[377]</td>
+    </tr>
+    <tr>
+      <th>KB3206632</th>
+      <td>[Windows.media.protection.playready.dll, Winlo...</td>
+      <td>[nan]</td>
+      <td>[2016-12-13]</td>
+      <td>[nan]</td>
+      <td>[14393.576]</td>
+      <td>[135]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>KB5020440</th>
+      <td>[mapsstore.dll, wsclient.dll, bootmgr.efi.mui,...</td>
+      <td>[nan, [1507]]</td>
+      <td>[2022-10-18, 2022-10-18]</td>
+      <td>[nan, https://support.microsoft.com/help/5020440]</td>
+      <td>[10240.19509, 10240.19509]</td>
+      <td>[56, 138]</td>
+    </tr>
+    <tr>
+      <th>KB5020953</th>
+      <td>[d3d11on12.dll, aadcloudap.dll, termsrv.dll, S...</td>
+      <td>[nan]</td>
+      <td>[2022-10-28]</td>
+      <td>[nan]</td>
+      <td>[19042.2194]</td>
+      <td>[79]</td>
+    </tr>
+    <tr>
+      <th>KB5021654</th>
+      <td>[Microsoft.Msmq.PowerShell.Commands.dll, telem...</td>
+      <td>[nan, [1607]]</td>
+      <td>[2022-11-17, 2022-11-17]</td>
+      <td>[nan, https://support.microsoft.com/help/5021654]</td>
+      <td>[14393.5502, 14393.5502]</td>
+      <td>[48, 63]</td>
+    </tr>
+    <tr>
+      <th>KB5021655</th>
+      <td>[ScreenClipping.dll, d3d11on12.dll, quickconne...</td>
+      <td>[nan, [1809]]</td>
+      <td>[2022-11-17, 2022-11-17]</td>
+      <td>[nan, https://support.microsoft.com/help/5021655]</td>
+      <td>[17763.3653, 17763.3653]</td>
+      <td>[67, 46]</td>
+    </tr>
+    <tr>
+      <th>KB5021656</th>
+      <td>[hvax64.exe, SppExtComObj.Exe, ApplyTrustOffli...</td>
+      <td>[nan]</td>
+      <td>[2022-11-17]</td>
+      <td>[nan]</td>
+      <td>[20348.1251]</td>
+      <td>[23]</td>
+    </tr>
+  </tbody>
+</table>
+<p>742 rows × 6 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">freq_bins</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           620
+hvix64.exe                                             584
+hvax64.exe                                             584
+bootmgr.exe.mui                                        532
+mshtml.dll                                             528
+kdhvcom.dll                                            521
+bootvhd.dll                                            518
+hvservice.sys                                          488
+win32kfull.sys                                         450
+shell32.dll                                            447
+win32k.sys                                             442
+efisys.bin                                             439
+efisys_noprompt.bin                                    439
+microsoft.msmq.runtime.interop.dll                     435
+microsoft.msmq.powershell.commands.dll                 435
+microsoft.msmq.activex.interop.dll                     435
+microsoft.virtualization.client.rdpclientaxhost.dll    432
+edgehtml.dll                                           416
+ieframe.dll                                            408
+comctl32.dll                                           407
+win32kbase.sys                                         406
+sppobjs.dll                                            400
+windows.media.protection.playready.dll                 391
+bootspaces.dll                                         391
+jscript9.dll                                           388
+win32u.dll                                             386
+mfcore.dll                                             383
+gdiplus.dll                                            379
+windows.storage.dll                                    378
+chakra.dll                                             368
+chakradiag.dll                                         368
+winload.efi                                            360
+winload.exe                                            354
+winresume.efi                                          354
+hvloader.dll                                           349
+gdi32.dll                                              347
+winresume.exe                                          347
+sppsvc.exe                                             347
+urlmon.dll                                             346
+iertutil.dll                                           341
+tcblaunch.exe                                          337
+wininet.dll                                            325
+user32.dll                                             321
+lsasrv.dll                                             320
+mfps.dll                                               316
+comctl32.dll.mui                                       313
+appxapplicabilityblob.dll                              313
+appxdeploymentserver.dll                               313
+appxupgrademigrationplugin.dll                         313
+offlinelsa.dll                                         302
+Name: updated, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1188,6 +2095,12 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Most Often Updated Binary&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Most Often Updated Binary&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_29_1.png" src="../_images/ms_kbs_29_1.png" />
 </div>
 </div>
 </section>
@@ -1199,6 +2112,12 @@ title="Print to PDF"
 <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin flat count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;kb&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ms_kbs_31_1.png" src="../_images/ms_kbs_31_1.png" />
 </div>
 </div>
 </section>

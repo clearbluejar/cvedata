@@ -17,42 +17,33 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-tags = get_msrc_tags_freq()
-titles = get_msrc_titles()
-
-win10_sys32_ver = get_verinfo_desc_to_bins_json()
-wb_ver_ver = get_winbindex_desc_to_bin_map()
+from pathlib import Path
+data = Path(Path('.').absolute().parent.parent,'10.0.19044.0-versioninfo-system32-winprogiles-recurse.json')
+print(data)
+win2022_sys32_ver_data = json.loads(data.read_bytes())
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-File [0;32m/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:19[0m, in [0;36mget_file_json[0;34m(path, base)[0m
-[1;32m     18[0m [38;5;28;01melse[39;00m:
-[0;32m---> 19[0m     [38;5;28;01mwith[39;00m [38;5;28;43mopen[39;49m[43m([49m[43mpath[49m[43m)[49m [38;5;28;01mas[39;00m f:
-[1;32m     20[0m         [38;5;28;01mreturn[39;00m json[38;5;241m.[39mload(f)
+Cell [0;32mIn [5], line 4[0m
+[1;32m      2[0m data [38;5;241m=[39m Path(Path([38;5;124m'[39m[38;5;124m.[39m[38;5;124m'[39m)[38;5;241m.[39mabsolute()[38;5;241m.[39mparent[38;5;241m.[39mparent,[38;5;124m'[39m[38;5;124m10.0.19044.0-versioninfo-system32-winprogiles-recurse.json[39m[38;5;124m'[39m)
+[1;32m      3[0m [38;5;28mprint[39m(data)
+[0;32m----> 4[0m win2022_sys32_ver_data [38;5;241m=[39m json[38;5;241m.[39mloads([43mdata[49m[38;5;241;43m.[39;49m[43mread_bytes[49m[43m([49m[43m)[49m)
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/msrc-tags-merged-frequency.json'
+File [0;32m/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/pathlib.py:1126[0m, in [0;36mPath.read_bytes[0;34m(self)[0m
+[1;32m   1122[0m [38;5;28;01mdef[39;00m [38;5;21mread_bytes[39m([38;5;28mself[39m):
+[1;32m   1123[0m     [38;5;124;03m"""[39;00m
+[1;32m   1124[0m [38;5;124;03m    Open the file in bytes mode, read it, and close the file.[39;00m
+[1;32m   1125[0m [38;5;124;03m    """[39;00m
+[0;32m-> 1126[0m     [38;5;28;01mwith[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mmode[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m'[39;49m[43m)[49m [38;5;28;01mas[39;00m f:
+[1;32m   1127[0m         [38;5;28;01mreturn[39;00m f[38;5;241m.[39mread()
 
-The above exception was the direct cause of the following exception:
+File [0;32m/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/pathlib.py:1119[0m, in [0;36mPath.open[0;34m(self, mode, buffering, encoding, errors, newline)[0m
+[1;32m   1117[0m [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
+[1;32m   1118[0m     encoding [38;5;241m=[39m io[38;5;241m.[39mtext_encoding(encoding)
+[0;32m-> 1119[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_accessor[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mmode[49m[43m,[49m[43m [49m[43mbuffering[49m[43m,[49m[43m [49m[43mencoding[49m[43m,[49m[43m [49m[43merrors[49m[43m,[49m
+[1;32m   1120[0m [43m                           [49m[43mnewline[49m[43m)[49m
 
-[0;31mException[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [2], line 1[0m
-[0;32m----> 1[0m tags [38;5;241m=[39m [43mget_msrc_tags_freq[49m[43m([49m[43m)[49m
-[1;32m      2[0m titles [38;5;241m=[39m get_msrc_titles()
-[1;32m      4[0m win10_sys32_ver [38;5;241m=[39m get_verinfo_desc_to_bins_json()
-
-File [0;32m/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/msrc_pandas.py:389[0m, in [0;36mget_msrc_tags_freq[0;34m()[0m
-[1;32m    388[0m [38;5;28;01mdef[39;00m [38;5;21mget_msrc_tags_freq[39m():
-[0;32m--> 389[0m     [38;5;28;01mreturn[39;00m [43mget_file_json[49m[43m([49m[43mMSRC_TAGS_FREQ_PATH[49m[43m,[49m[43m [49m[38;5;18;43m__file__[39;49m[43m)[49m
-
-File [0;32m/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:22[0m, in [0;36mget_file_json[0;34m(path, base)[0m
-[1;32m     20[0m             [38;5;28;01mreturn[39;00m json[38;5;241m.[39mload(f)
-[1;32m     21[0m [38;5;28;01mexcept[39;00m [38;5;167;01mFileNotFoundError[39;00m [38;5;28;01mas[39;00m e:
-[0;32m---> 22[0m     [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m(
-[1;32m     23[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mMissing [39m[38;5;132;01m{[39;00mpath[38;5;132;01m}[39;00m[38;5;124m. [39m[38;5;130;01m\n[39;00m[38;5;124mPlease run [39m[38;5;132;01m{[39;00mbase[38;5;132;01m}[39;00m[38;5;124m or download release data: python -m cvedata.download[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;21;01me[39;00m
-
-[0;31mException[0m: Missing /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/msrc-tags-merged-frequency.json. 
-Please run /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/msrc_pandas.py or download release data: python -m cvedata.download
-Exception: Missing /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/msrc-tags-merged-frequency.json. 
-Please run /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/msrc_pandas.py or download release data: python -m cvedata.download
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/home/runner/work/cvedata/cvedata/10.0.19044.0-versioninfo-system32-winprogiles-recurse.json'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/cvedata/cvedata/10.0.19044.0-versioninfo-system32-winprogiles-recurse.json'
 

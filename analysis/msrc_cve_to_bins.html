@@ -770,47 +770,93 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:16,</span> in <span class="ni">get_file_json</span><span class="nt">(path, base)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.gz&quot;</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/gzip.py:58,</span> in <span class="ni">open</span><span class="nt">(filename, mode, compresslevel, encoding, errors, newline)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="n">binary_file</span> <span class="o">=</span> <span class="n">GzipFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">gz_mode</span><span class="p">,</span> <span class="n">compresslevel</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/gzip.py:174,</span> in <span class="ni">GzipFile.__init__</span><span class="nt">(self, filename, mode, compresslevel, fileobj, mtime)</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span> <span class="k">if</span> <span class="n">fileobj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">174</span>     <span class="n">fileobj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">myfileobj</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">or</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/msrc-cvrf-pandas-merged.json.gz&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">all_cvrf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/msrc_pandas.py:401,</span> in <span class="ni">get_msrc_cvrf_pandas_df</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span> <span class="k">def</span> <span class="nf">get_msrc_cvrf_pandas_df</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">401</span>     <span class="k">return</span> <span class="n">get_file_json</span><span class="p">(</span><span class="n">MSRC_CVRF_PANDAS</span><span class="p">,</span><span class="vm">__file__</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/util.py:22,</span> in <span class="ni">get_file_json</span><span class="nt">(path, base)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="sa">f</span><span class="s2">&quot;Missing </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">. </span><span class="se">\n</span><span class="s2">Please run </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> or download release data: python -m cvedata.download&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-
-<span class="ne">Exception</span>: Missing /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/cvedata/data/msrc-cvrf-pandas-merged.json.gz. 
-<span class="n">Please</span> <span class="n">run</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.10.8</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cvedata</span><span class="o">/</span><span class="n">msrc_pandas</span><span class="o">.</span><span class="n">py</span> <span class="ow">or</span> <span class="n">download</span> <span class="n">release</span> <span class="n">data</span><span class="p">:</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">cvedata</span><span class="o">.</span><span class="n">download</span>
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2017-8597</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Edge based on Edge HTML</td>
+      <td>Microsoft Edge</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4038788</td>
+      <td></td>
+      <td>Liu Long of &lt;a href="http://www.360.com/"&gt;Qiho...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8629</th>
+      <td>2017-09-12</td>
+      <td>Microsoft SharePoint</td>
+      <td>Microsoft Office</td>
+      <td>Elevation of Privilege</td>
+      <td>0.0</td>
+      <td>KB4011113</td>
+      <td></td>
+      <td>Jayson Grace &lt;a href="http://www.sandia.gov"&gt;S...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8630</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3203474</td>
+      <td></td>
+      <td>&lt;a href="https://twitter.com/debasishm89"&gt; Deb...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8631</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
+      <td></td>
+      <td>Steven Seeley (mr_me) of Offensive Security wo...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8632</th>
+      <td>2017-09-12</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
+      <td></td>
+      <td>Jaanus Kääp &lt;br&gt;&lt;a href=""&gt;&lt;i&gt;Clarified Securi...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,10 +918,97 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Microsoft Edge</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Microsoft Office</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Windows Kernel-Mode Drivers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Microsoft Graphics Component</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Windows Kernel</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>431</th>
+      <td>Windows Services for NFS ONCRPC XDR Driver</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>Microsoft Edge on Chromium</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>Windows DCOM Server</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>Windows Filter Manager</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>Windows Drivers</td>
+    </tr>
+  </tbody>
+</table>
+<p>436 rows × 1 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_df</span><span class="o">.</span><span class="n">Tag</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Windows      250
+Microsoft     69
+Service       36
+Driver        23
+Azure         23
+            ... 
+HoloLens       1
+Adobe          1
+Flash          1
+Hard           1
+DCOM           1
+Length: 534, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -889,6 +1022,22 @@ title="Print to PDF"
 
 <span class="n">ver_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ver_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;desc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
 <span class="n">ver_df</span><span class="o">.</span><span class="n">desc</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft                                               1075
+Windows                                                  767
+DLL                                                      729
+Driver                                                   461
+for                                                      409
+                                                        ... 
+Microsoft.AspNetCore.Razor.LanguageServer.Common           1
+Microsoft.AspNetCore.Razor.LanguageServer                  1
+Microsoft.AspNetCore.Razor.Language                        1
+Microsoft.AspNetCore.Mvc.Razor.Extensions.Version2_X       1
+用户界面包装资源                                                   1
+Length: 8691, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -906,6 +1055,77 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Microsoft Edge</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Microsoft Office</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Windows Kernel-Mode Drivers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Microsoft Graphics Component</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Windows Kernel</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>431</th>
+      <td>Windows Services for NFS ONCRPC XDR Driver</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>Microsoft Edge on Chromium</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>Windows DCOM Server</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>Windows Filter Manager</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>Windows Drivers</td>
+    </tr>
+  </tbody>
+</table>
+<p>436 rows × 1 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -918,6 +1138,88 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_verinfo_df</span> <span class="o">=</span> <span class="n">tags_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">verinfo_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tags_sim_verinfo_df</span> <span class="o">=</span> <span class="n">tags_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">verinfo_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/core/frame.py:9555,</span> in <span class="ni">DataFrame.apply</span><span class="nt">(self, func, axis, raw, result_type, args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9544</span> <span class="kn">from</span> <span class="nn">pandas.core.apply</span> <span class="kn">import</span> <span class="n">frame_apply</span>
+<span class="g g-Whitespace">   </span><span class="mi">9546</span> <span class="n">op</span> <span class="o">=</span> <span class="n">frame_apply</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">9547</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9548</span>     <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9553</span>     <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9554</span> <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">9555</span> <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;apply&quot;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/core/apply.py:746,</span> in <span class="ni">FrameApply.apply</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">743</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_raw</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">746</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/core/apply.py:873,</span> in <span class="ni">FrameApply.apply_standard</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span> <span class="k">def</span> <span class="nf">apply_standard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>     <span class="n">results</span><span class="p">,</span> <span class="n">res_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_series_generator</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="c1"># wrap results</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">res_index</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/core/apply.py:889,</span> in <span class="ni">FrameApply.apply_series_generator</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span> <span class="k">with</span> <span class="n">option_context</span><span class="p">(</span><span class="s2">&quot;mode.chained_assignment&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series_gen</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span>         <span class="c1"># ignore SettingWithCopy here in case the user mutates</span>
+<span class="ne">--&gt; </span><span class="mi">889</span>         <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">891</span>             <span class="c1"># If we have a view on v, we need to make a copy because</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span>             <span class="c1">#  series_generator will swap out the underlying data</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span>             <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/site-packages/pandas/core/apply.py:139,</span> in <span class="ni">Apply.__init__.&lt;locals&gt;.f</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">139</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">Cell In [5], line 24,</span> in <span class="ni">get_tag_similarity_df</span><span class="nt">(row, key, desc_to_bins, col_pre, min_sims)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">break</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">else</span><span class="p">:</span>        
+<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="n">sim</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">ctag1</span><span class="p">,</span><span class="n">ctag2</span><span class="p">)</span><span class="o">.</span><span class="n">ratio</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1"># add bins to </span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">for</span> <span class="n">min_sim</span> <span class="ow">in</span> <span class="n">min_sims</span><span class="p">:</span>                      
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/difflib.py:619,</span> in <span class="ni">SequenceMatcher.ratio</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span> <span class="k">def</span> <span class="nf">ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="sd">&quot;&quot;&quot;Return a measure of the sequences&#39; similarity (float in [0,1]).</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">600</span><span class="sd">     Where T is the total number of elements in both sequences, and</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">616</span><span class="sd">     1.0</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="nn">--&gt; 619     matches = sum(triple[-1] for triple</span> in <span class="ni">self.get_matching_blocks</span><span class="nt">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="k">return</span> <span class="n">_calculate_ratio</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/difflib.py:454,</span> in <span class="ni">SequenceMatcher.get_matching_blocks</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="n">alo</span><span class="p">,</span> <span class="n">ahi</span><span class="p">,</span> <span class="n">blo</span><span class="p">,</span> <span class="n">bhi</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">454</span>     <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_longest_match</span><span class="p">(</span><span class="n">alo</span><span class="p">,</span> <span class="n">ahi</span><span class="p">,</span> <span class="n">blo</span><span class="p">,</span> <span class="n">bhi</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>     <span class="c1"># a[alo:i] vs b[blo:j] unknown</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="c1"># a[i:i+k] same as b[j:j+k]</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="c1"># a[i+k:ahi] vs b[j+k:bhi] unknown</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>     <span class="k">if</span> <span class="n">k</span><span class="p">:</span>   <span class="c1"># if k is 0, there was no matching block</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/difflib.py:419,</span> in <span class="ni">SequenceMatcher.find_longest_match</span><span class="nt">(self, alo, ahi, blo, bhi)</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="k">while</span> <span class="n">besti</span><span class="o">+</span><span class="n">bestsize</span> <span class="o">&lt;</span> <span class="n">ahi</span> <span class="ow">and</span> <span class="n">bestj</span><span class="o">+</span><span class="n">bestsize</span> <span class="o">&lt;</span> <span class="n">bhi</span> <span class="ow">and</span> \
+<span class="g g-Whitespace">    </span><span class="mi">415</span>       <span class="n">isbjunk</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">bestj</span><span class="o">+</span><span class="n">bestsize</span><span class="p">])</span> <span class="ow">and</span> \
+<span class="g g-Whitespace">    </span><span class="mi">416</span>       <span class="n">a</span><span class="p">[</span><span class="n">besti</span><span class="o">+</span><span class="n">bestsize</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">bestj</span><span class="o">+</span><span class="n">bestsize</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">bestsize</span> <span class="o">=</span> <span class="n">bestsize</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">419</span> <span class="k">return</span> <span class="n">Match</span><span class="p">(</span><span class="n">besti</span><span class="p">,</span> <span class="n">bestj</span><span class="p">,</span> <span class="n">bestsize</span><span class="p">)</span>
+
+<span class="nn">File &lt;string&gt;:1,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(_cls, a, b, size)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
