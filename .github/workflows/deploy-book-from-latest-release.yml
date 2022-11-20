@@ -28,14 +28,6 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Download latest release data
-      uses: robinraju/release-downloader@v1.5
-      with:
-        repository: "clearbluejar/cvedata"
-        latest: true
-        fileName: "*"
-        out-file-path: "cvedata/data"
-
     - name: Install cvedata
       run: |
         pip install .
@@ -44,13 +36,18 @@ jobs:
       run: |
         pip install -r docs/requirements.txt
 
+    - name: Download Release Data
+      run: | 
+        python -m cvedata.download
+        find cvedata/data
+
     - name: Generate Notebooks from Data
       run: |        
         python docs/create_books.py
 
     - name: Check generated files
       run: |
-        find .
+        find docs/
 
     # Build the book
     - name: Build the book
@@ -63,7 +60,7 @@ jobs:
       if: always()
       with:
         name: jupyter-book-build
-        path: docs/_build/        
+        path: docs/_build/
         retention-days: 3
 
     # Push the book's HTML to github-pages
