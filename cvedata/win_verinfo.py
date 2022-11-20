@@ -25,7 +25,7 @@ WINVERINOF_REL_URL = f"https://github.com/clearbluejar/win-sys32-versioninfo/rel
 
 
 VERINFO_DESC_TO_BINS_PATH = Path(DATA_DIR,"versioninfo-system32-desc-to-bins.json")
-ALL_VERINFO_PATH = Path(DATA_DIR,"all-verinfo-system32-full.json.gz")
+ALL_VERINFO_PATH = Path(DATA_DIR,"verinfo-system32-full.json.gz")
 
 
 
@@ -133,7 +133,7 @@ def update():
     elapsed = time.time() - start
     
     count = len(get_win_ver_info_json())
-    update_metadata(ALL_VERINFO_PATH,{'sources': [WINVERINOF_REL_URL + source[1] for source in VERINFO_SOURCES] },count,elapsed,swap_axes=False)
+    update_metadata(ALL_VERINFO_PATH,{'sources': [WINVERINOF_REL_URL + source[1] for source in VERINFO_SOURCES] },count,elapsed,swap_axes=False,normalize=False)
 
     print(f"Updating {VERINFO_DESC_TO_BINS_PATH}...")
     
@@ -142,7 +142,7 @@ def update():
     elapsed = time.time() - start
     
     count = len(get_win_ver_info_json())
-    update_metadata(VERINFO_DESC_TO_BINS_PATH,{'sources': [WINVERINOF_REL_URL + source[1] for source in VERINFO_SOURCES] },count,elapsed,swap_axes=False)
+    update_metadata(VERINFO_DESC_TO_BINS_PATH,{'sources': [WINVERINOF_REL_URL + source[1] for source in VERINFO_SOURCES] },count,elapsed,swap_axes=True,normalize=True)
 
 if __name__ == "__main__":
     update()
