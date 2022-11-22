@@ -24,9 +24,6 @@ KNOWN_TAG_TO_BIN_MAP = {
     "microsoft edge (chromium-based)": [
         "msedge.dll"
     ],
-    "microsoft windows alpc": [
-        "ntoskrnl.exe"
-    ],
     "microsoft windows codecs library": [
         "WindowsCodecs.dll"
     ],
@@ -44,6 +41,9 @@ KNOWN_TAG_TO_BIN_MAP = {
         "afunix.sys"
     ],
     "windows alpc": [
+        "ntoskrnl.exe"
+    ],
+    'windows advanced local procedure call': [
         "ntoskrnl.exe"
     ],
     "windows ancillary function driver for winsock": [
@@ -272,4 +272,20 @@ KNOWN_TAG_TO_BIN_MAP = {
     "windows wlan auto config service": [
         "wlansvc.dll"
     ]
+}
+
+KNOWN_TITLE_TO_BIN_MAP = {
+    "windows gpsvc": [
+        "gpsvc.dll"
+    ],
+    "chakra scripting engine": [
+        "chakra.dll",
+        "jscript9.dll"
+    ],
+    "windows advanced local procedure call alpc": [
+        "ntoskrnl.exe"
+    ],
+    "windows alpc": [
+        "ntoskrnl.exe"
+    ],
 }

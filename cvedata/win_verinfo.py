@@ -18,8 +18,9 @@ from .util import get_file_json
 WIN10_VERINFO = ['10.0.22621.0', "10.0.22621.0-versioninfo-system32.json"]
 WIN2022_VERINFO = ['10.0.20348.0', "10.0.20348.0-versioninfo-system32-winprogiles-recurse.json"]
 WIN10_O365 = ['10.0.19045.0', "10.0.19045.0-versioninfo-system32-winprogiles-recurse-o365-compress.json"]
+WIN2022_VERINFO_ROLES = ['10.0.20348.0-roles', "10.0.20348.0-versioninfo-system32-winprogiles-recurse-serv2022-roles.json"]
 
-VERINFO_SOURCES = [ WIN10_VERINFO, WIN2022_VERINFO, WIN10_O365 ]
+VERINFO_SOURCES = [ WIN10_VERINFO, WIN2022_VERINFO, WIN10_O365, WIN2022_VERINFO_ROLES ]
 
 WINVERINOF_REL_URL = f"https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/"
 
@@ -36,7 +37,8 @@ def create_win_verinfo():
     all_verinfo_df = pd.DataFrame()
 
 
-    if should_update(ALL_VERINFO_PATH,1):
+    #if should_update(ALL_VERINFO_PATH,1):
+    if True:
 
         for source in VERINFO_SOURCES:
 
@@ -87,23 +89,20 @@ def create_win_verinfo():
 
         all_verinfo_df = all_verinfo_df.groupby(by=['Name']).aggregate(lambda x: list(set(x)))        
 
-        print(all_verinfo_df.head())
-       
         all_verinfo_df.to_json(ALL_VERINFO_PATH,)
     else:
         print(f"Loading cached {ALL_VERINFO_PATH}")
 
-        
-
-
-
+    all_verinfo_df = pd.read_json(ALL_VERINFO_PATH)
+    print(all_verinfo_df.head())
+    print(f"all_verinfo_df len {all_verinfo_df.shape[0]}")
 
 def create_win_verinfo_desc_to_bins():
 
     desc_to_bin_df = pd.read_json(ALL_VERINFO_PATH)
     desc_to_bin_df.index.name = 'Name'
     desc_to_bin_df.reset_index(inplace=True)
-    desc_to_bin_df = desc_to_bin_df[['Name','VersionInfo.FileDescription']]
+    desc_to_bin_df = desc_to_bin_df[['Name','VersionInfo.FileDescription', 'source']]
     print(desc_to_bin_df.head())
     
     # flatten FileDescription
@@ -112,9 +111,10 @@ def create_win_verinfo_desc_to_bins():
     desc_to_bin_df = desc_to_bin_df.groupby('VersionInfo.FileDescription').aggregate(list)
     desc_to_bin_df.index.name = 'FileDescription'
     # drop empty data
-    desc_to_bin_df.drop(labels=['', ' '],axis=0,inplace=True)
+    desc_to_bin_df.drop(labels=['', ' ', '.'],axis=0,inplace=True)
     desc_to_bin_df['Name'].to_json(VERINFO_DESC_TO_BINS_PATH)
     print(desc_to_bin_df['Name'].head())
+    print(f"desc_to_bin_df len {desc_to_bin_df.shape[0]}")
 
 def get_win_ver_info_json():
     return get_file_json(ALL_VERINFO_PATH,__file__)
