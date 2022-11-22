@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using Release Data" href="using_generated_data.html" />
+    <link rel="next" title="Using cvedata" href="using_generated_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="using_generated_data.html">
-   Using Release Data
+   Using cvedata
   </a>
  </li>
 </ul>
@@ -164,23 +164,43 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/all-verinfo-system32-full.json.gz.html">
-     all-verinfo-system32-full.json.gz
+    <a class="reference internal" href="book/generated/ack-researcher_cve_map.json.html">
+     ack-researcher_cve_map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/chromerelease_cve.json.html">
-     chromerelease_cve.json
+    <a class="reference internal" href="book/generated/ack-researcher_cve_quality_map.json.html">
+     ack-researcher_cve_quality_map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/chromerelease_raw_cve.json.html">
-     chromerelease_raw_cve.json
+    <a class="reference internal" href="book/generated/ack-researcher_names.json.html">
+     ack-researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/ack-researcher_twitter_map.json.html">
+     ack-researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/chromerelease-cve.json.html">
+     chromerelease-cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/chromerelease-raw-cve.json.html">
+     chromerelease-raw-cve.json
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="book/generated/cwe.json.gz.html">
      cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/ms-kb-feed-kbs-bins.json.gz.html">
+     ms-kb-feed-kbs-bins.json.gz
     </a>
    </li>
    <li class="toctree-l2">
@@ -194,63 +214,83 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ms-kbs-bins.json.gz.html">
-     ms-kbs-bins.json.gz
+    <a class="reference internal" href="book/generated/msrc-cve-all-bins-list.json.html">
+     msrc-cve-all-bins-list.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-cve-tag-title.json.html">
-     msrc-cve-tag-title.json
+    <a class="reference internal" href="book/generated/msrc-cve-combined-desc-to_bins.json.html">
+     msrc-cve-combined-desc-to_bins.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-cvrf-pandas-merged.json.gz.html">
-     msrc-cvrf-pandas-merged.json.gz
+    <a class="reference internal" href="book/generated/msrc-cve-combined-kbs.json.html">
+     msrc-cve-combined-kbs.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-kb-ver.json.html">
-     msrc-kb-ver.json
+    <a class="reference internal" href="book/generated/msrc-cve-tags-combined-file-desc-sims.json.html">
+     msrc-cve-tags-combined-file-desc-sims.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-tags-merged-frequency.json.html">
-     msrc-tags-merged-frequency.json
+    <a class="reference internal" href="book/generated/msrc-cve-tags-combined-file-names.json.html">
+     msrc-cve-tags-combined-file-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-tags-merged.json.html">
-     msrc-tags-merged.json
+    <a class="reference internal" href="book/generated/msrc-cve-titles-combined-file-desc-sims.json.html">
+     msrc-cve-titles-combined-file-desc-sims.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-titles-merged-frequency.json.html">
-     msrc-titles-merged-frequency.json
+    <a class="reference internal" href="book/generated/msrc-cve-titles-combined-file-names.json.html">
+     msrc-cve-titles-combined-file-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-titles-merged.json.html">
-     msrc-titles-merged.json
+    <a class="reference internal" href="book/generated/msrc-cve-to-bins.json.html">
+     msrc-cve-to-bins.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc_cvrf_merged.json.gz.html">
-     msrc_cvrf_merged.json.gz
+    <a class="reference internal" href="book/generated/msrc-cvrf-merged.json.gz.html">
+     msrc-cvrf-merged.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_cve_map.json.html">
-     researcher_cve_map.json
+    <a class="reference internal" href="book/generated/msrc-pandas-cvrf-merged.json.gz.html">
+     msrc-pandas-cvrf-merged.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_cve_quality_map.json.html">
-     researcher_cve_quality_map.json
+    <a class="reference internal" href="book/generated/msrc-pandas-kb-ver.json.html">
+     msrc-pandas-kb-ver.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_names.json.html">
-     researcher_names.json
+    <a class="reference internal" href="book/generated/msrc-pandas-tag-title.json.html">
+     msrc-pandas-tag-title.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-tags-merged-frequency.json.html">
+     msrc-pandas-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-tags-merged.json.html">
+     msrc-pandas-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-titles-merged-frequency.json.html">
+     msrc-pandas-titles-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-titles-merged.json.html">
+     msrc-pandas-titles-merged.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -259,13 +299,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_twitter_map.json.html">
-     researcher_twitter_map.json
+    <a class="reference internal" href="book/generated/win-verinfo-system32-full.json.gz.html">
+     win-verinfo-system32-full.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/versioninfo-system32-desc-to-bins.json.html">
-     versioninfo-system32-desc-to-bins.json
+    <a class="reference internal" href="book/generated/win-versioninfo-system32-desc-to-bins.json.html">
+     win-versioninfo-system32-desc-to-bins.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -648,6 +688,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#releases">
+   Releases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#docs">
    Docs
   </a>
@@ -658,8 +703,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#project-using-data">
-   Project Using Data
+  <a class="reference internal nav-link" href="#projects-using-data">
+   Projects Using Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -692,6 +737,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#releases">
+   Releases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#docs">
    Docs
   </a>
@@ -702,8 +752,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#project-using-data">
-   Project Using Data
+  <a class="reference internal nav-link" href="#projects-using-data">
+   Projects Using Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -733,6 +783,12 @@ title="Print to PDF"
 <h2>About<a class="headerlink" href="#about" title="Permalink to this headline">#</a></h2>
 <p>A collection of CVE and related data. This python package is caught somewhere between a data collection tool and a CVE data API. Much more the former than the latter.</p>
 </section>
+<section id="releases">
+<h2>Releases<a class="headerlink" href="#releases" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/clearbluejar/cvedata/releases">https://github.com/clearbluejar/cvedata/releases</a></p></li>
+</ul>
+</section>
 <section id="docs">
 <h2>Docs<a class="headerlink" href="#docs" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -748,43 +804,53 @@ title="Print to PDF"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>C:\Windows\System32</p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/versioninfo-system32-full.json.gz">versioninfo-system32-full.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/versioninfo-system32-desc-to-bins.json">versioninfo-system32-desc-to-bins.json</a>’]</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://api.msrc.microsoft.com/">https://api.msrc.microsoft.com/</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cvrf-merged.json.gz">msrc-cvrf-merged.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-cvrf-merged.json.gz">msrc-pandas-cvrf-merged.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-tag-title.json">msrc-pandas-tag-title.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-kb-ver.json">msrc-pandas-kb-ver.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-tags-merged.json">msrc-pandas-tags-merged.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-tags-merged-frequency.json">msrc-pandas-tags-merged-frequency.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-titles-merged.json">msrc-pandas-titles-merged.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-pandas-titles-merged-frequency.json">msrc-pandas-titles-merged-frequency.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-combined-desc-to_bins.json">msrc-cve-combined-desc-to_bins.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-all-bins-list.json">msrc-cve-all-bins-list.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-tags-combined-file-names.json">msrc-cve-tags-combined-file-names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-titles-combined-file-names.json">msrc-cve-titles-combined-file-names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-tags-combined-file-desc-sims.json">msrc-cve-tags-combined-file-desc-sims.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-titles-combined-file-desc-sims.json">msrc-cve-titles-combined-file-desc-sims.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_names.json">ack-researcher_names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names_grouped.json">researcher_names_grouped.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_cve_map.json">ack-researcher_cve_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_twitter_map.json">ack-researcher_twitter_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_cve_quality_map.json">ack-researcher_cve_quality_map.json</a>’]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://api.msrc.microsoft.com/">https://api.msrc.microsoft.com/</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc_cvrf_merged.json.gz">msrc_cvrf_merged.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names.json">researcher_names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names_grouped.json">researcher_names_grouped.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_twitter_map.json">researcher_twitter_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_cve_map.json">researcher_cve_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cvrf-pandas-merged.json.gz">msrc-cvrf-pandas-merged.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-tag-title.json">msrc-cve-tag-title.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-kb-ver.json">msrc-kb-ver.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-tags-merged.json">msrc-tags-merged.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-tags-merged-frequency.json">msrc-tags-merged-frequency.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-titles-merged.json">msrc-titles-merged.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-titles-merged-frequency.json">msrc-titles-merged-frequency.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_cve_quality_map.json">researcher_cve_quality_map.json</a>’]</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://chromereleases.googleblog.com">https://chromereleases.googleblog.com</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/chromerelease-raw-cve.json">chromerelease-raw-cve.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/chromerelease-cve.json">chromerelease-cve.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_names.json">ack-researcher_names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names_grouped.json">researcher_names_grouped.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_cve_map.json">ack-researcher_cve_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_twitter_map.json">ack-researcher_twitter_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ack-researcher_cve_quality_map.json">ack-researcher_cve_quality_map.json</a>’]</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://chromereleases.googleblog.com">https://chromereleases.googleblog.com</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/chromerelease_raw_cve.json">chromerelease_raw_cve.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/chromerelease_cve.json">chromerelease_cve.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names.json">researcher_names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_names_grouped.json">researcher_names_grouped.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_twitter_map.json">researcher_twitter_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_cve_map.json">researcher_cve_map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/researcher_cve_quality_map.json">researcher_cve_quality_map.json</a>’]</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://cwe.mitre.org/data/xml/cwec_latest.xml.zip">https://cwe.mitre.org/data/xml/cwec_latest.xml.zip</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://cwe.mitre.org/data/xml/cwec_latest.xml.zip">https://cwe.mitre.org/data/xml/cwec_latest.xml.zip</a></p></td>
 <td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/cwe.json.gz">cwe.json.gz</a>’]</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip">https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-desc-to-bins-map.json">winbindex-desc-to-bins-map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-kb-to-bins-map.json.gz">winbindex-kb-to-bins-map.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-versions-to-bins-map.json.gz">winbindex-versions-to-bins-map.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-winver-to-build-map.json">winbindex-winver-to-build-map.json</a>’]</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.19045.0-versioninfo-system32-winprogiles-recurse-o365-compress.json">https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.19045.0-versioninfo-system32-winprogiles-recurse-o365-compress.json</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-verinfo-system32-full.json.gz">win-verinfo-system32-full.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-versioninfo-system32-desc-to-bins.json">win-versioninfo-system32-desc-to-bins.json</a>’]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f">https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kbs-bins.json.gz">ms-kbs-bins.json.gz</a>’]</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse-serv2022-roles.json">https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse-serv2022-roles.json</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-verinfo-system32-full.json.gz">win-verinfo-system32-full.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-versioninfo-system32-desc-to-bins.json">win-versioninfo-system32-desc-to-bins.json</a>’]</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92">https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kbs-bins.json.gz">ms-kbs-bins.json.gz</a>’]</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse.json">https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse.json</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-verinfo-system32-full.json.gz">win-verinfo-system32-full.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-versioninfo-system32-desc-to-bins.json">win-versioninfo-system32-desc-to-bins.json</a>’]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9">https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kbs-bins.json.gz">ms-kbs-bins.json.gz</a>’]</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.22621.0-versioninfo-system32.json">https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.22621.0-versioninfo-system32.json</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-verinfo-system32-full.json.gz">win-verinfo-system32-full.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/win-versioninfo-system32-desc-to-bins.json">win-versioninfo-system32-desc-to-bins.json</a>’]</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc">https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kbs-bins.json.gz">ms-kbs-bins.json.gz</a>’]</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip">https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-desc-to-bins-map.json">winbindex-desc-to-bins-map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-kb-to-bins-map.json.gz">winbindex-kb-to-bins-map.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-versions-to-bins-map.json.gz">winbindex-versions-to-bins-map.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/winbindex-winver-to-build-map.json">winbindex-winver-to-build-map.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-combined-desc-to_bins.json">msrc-cve-combined-desc-to_bins.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-all-bins-list.json">msrc-cve-all-bins-list.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-tags-combined-file-names.json">msrc-cve-tags-combined-file-names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-titles-combined-file-names.json">msrc-cve-titles-combined-file-names.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-tags-combined-file-desc-sims.json">msrc-cve-tags-combined-file-desc-sims.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/msrc-cve-titles-combined-file-desc-sims.json">msrc-cve-titles-combined-file-desc-sims.json</a>’]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f">https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f</a></p></td>
-<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kbs-bins.json.gz">ms-kbs-bins.json.gz</a>’]</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f">https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-kbs-bins.json.gz">ms-kb-feed-kbs-bins.json.gz</a>’]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92">https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-kbs-bins.json.gz">ms-kb-feed-kbs-bins.json.gz</a>’]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9">https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-kbs-bins.json.gz">ms-kb-feed-kbs-bins.json.gz</a>’]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc">https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-kbs-bins.json.gz">ms-kb-feed-kbs-bins.json.gz</a>’]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f">https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f</a></p></td>
+<td><p>[’<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-updates.json">ms-kb-feed-updates.json</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-to-files-updated.json.gz">ms-kb-feed-to-files-updated.json.gz</a>’, ‘<a class="reference external" href="https://clearbluejar.github.io/cvedata/book/generated/ms-kb-feed-kbs-bins.json.gz">ms-kb-feed-kbs-bins.json.gz</a>’]</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="project-using-data">
-<h2>Project Using Data<a class="headerlink" href="#project-using-data" title="Permalink to this headline">#</a></h2>
+<section id="projects-using-data">
+<h2>Projects Using Data<a class="headerlink" href="#projects-using-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/clearbluejar/cve-markdown-charts">cve-markdown-charts</a> - A simple tool to create mermaid js markdown charts from CVE IDs and CVE keyword searches.</p></li>
+<li><p><a class="reference external" href="https://github.com/clearbluejar/cve-to-researcher-twitter-list">cve-to-researcher-twitter-list</a></p></li>
 <li><p>More Coming soon…</p></li>
 </ul>
 </section>
@@ -839,7 +905,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="using_generated_data.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using Release Data</p>
+        <p class="prev-next-title">Using cvedata</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

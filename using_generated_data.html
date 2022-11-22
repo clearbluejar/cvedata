@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Using Release Data &#8212; cvedata</title>
+    <title>Using cvedata &#8212; cvedata</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -132,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Using Release Data
+   Using cvedata
   </a>
  </li>
 </ul>
@@ -165,23 +165,43 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/all-verinfo-system32-full.json.gz.html">
-     all-verinfo-system32-full.json.gz
+    <a class="reference internal" href="book/generated/ack-researcher_cve_map.json.html">
+     ack-researcher_cve_map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/chromerelease_cve.json.html">
-     chromerelease_cve.json
+    <a class="reference internal" href="book/generated/ack-researcher_cve_quality_map.json.html">
+     ack-researcher_cve_quality_map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/chromerelease_raw_cve.json.html">
-     chromerelease_raw_cve.json
+    <a class="reference internal" href="book/generated/ack-researcher_names.json.html">
+     ack-researcher_names.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/ack-researcher_twitter_map.json.html">
+     ack-researcher_twitter_map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/chromerelease-cve.json.html">
+     chromerelease-cve.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/chromerelease-raw-cve.json.html">
+     chromerelease-raw-cve.json
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="book/generated/cwe.json.gz.html">
      cwe.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/ms-kb-feed-kbs-bins.json.gz.html">
+     ms-kb-feed-kbs-bins.json.gz
     </a>
    </li>
    <li class="toctree-l2">
@@ -195,63 +215,83 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ms-kbs-bins.json.gz.html">
-     ms-kbs-bins.json.gz
+    <a class="reference internal" href="book/generated/msrc-cve-all-bins-list.json.html">
+     msrc-cve-all-bins-list.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-cve-tag-title.json.html">
-     msrc-cve-tag-title.json
+    <a class="reference internal" href="book/generated/msrc-cve-combined-desc-to_bins.json.html">
+     msrc-cve-combined-desc-to_bins.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-cvrf-pandas-merged.json.gz.html">
-     msrc-cvrf-pandas-merged.json.gz
+    <a class="reference internal" href="book/generated/msrc-cve-combined-kbs.json.html">
+     msrc-cve-combined-kbs.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-kb-ver.json.html">
-     msrc-kb-ver.json
+    <a class="reference internal" href="book/generated/msrc-cve-tags-combined-file-desc-sims.json.html">
+     msrc-cve-tags-combined-file-desc-sims.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-tags-merged-frequency.json.html">
-     msrc-tags-merged-frequency.json
+    <a class="reference internal" href="book/generated/msrc-cve-tags-combined-file-names.json.html">
+     msrc-cve-tags-combined-file-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-tags-merged.json.html">
-     msrc-tags-merged.json
+    <a class="reference internal" href="book/generated/msrc-cve-titles-combined-file-desc-sims.json.html">
+     msrc-cve-titles-combined-file-desc-sims.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-titles-merged-frequency.json.html">
-     msrc-titles-merged-frequency.json
+    <a class="reference internal" href="book/generated/msrc-cve-titles-combined-file-names.json.html">
+     msrc-cve-titles-combined-file-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc-titles-merged.json.html">
-     msrc-titles-merged.json
+    <a class="reference internal" href="book/generated/msrc-cve-to-bins.json.html">
+     msrc-cve-to-bins.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/msrc_cvrf_merged.json.gz.html">
-     msrc_cvrf_merged.json.gz
+    <a class="reference internal" href="book/generated/msrc-cvrf-merged.json.gz.html">
+     msrc-cvrf-merged.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_cve_map.json.html">
-     researcher_cve_map.json
+    <a class="reference internal" href="book/generated/msrc-pandas-cvrf-merged.json.gz.html">
+     msrc-pandas-cvrf-merged.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_cve_quality_map.json.html">
-     researcher_cve_quality_map.json
+    <a class="reference internal" href="book/generated/msrc-pandas-kb-ver.json.html">
+     msrc-pandas-kb-ver.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_names.json.html">
-     researcher_names.json
+    <a class="reference internal" href="book/generated/msrc-pandas-tag-title.json.html">
+     msrc-pandas-tag-title.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-tags-merged-frequency.json.html">
+     msrc-pandas-tags-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-tags-merged.json.html">
+     msrc-pandas-tags-merged.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-titles-merged-frequency.json.html">
+     msrc-pandas-titles-merged-frequency.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/msrc-pandas-titles-merged.json.html">
+     msrc-pandas-titles-merged.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -260,13 +300,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_twitter_map.json.html">
-     researcher_twitter_map.json
+    <a class="reference internal" href="book/generated/win-verinfo-system32-full.json.gz.html">
+     win-verinfo-system32-full.json.gz
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/versioninfo-system32-desc-to-bins.json.html">
-     versioninfo-system32-desc-to-bins.json
+    <a class="reference internal" href="book/generated/win-versioninfo-system32-desc-to-bins.json.html">
+     win-versioninfo-system32-desc-to-bins.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -650,23 +690,114 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install">
+   Install
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#development">
+     Development
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#production">
+     Production
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-release-data">
+   Generate Release Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-release-data">
+   Download Release Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#take-a-look-at-some-of-the-latest-msrc-cve-data">
+   Take a look at some of the latest MSRC CVE Data
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Using Release Data</h1>
+                <h1>Using cvedata</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install">
+   Install
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#development">
+     Development
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#production">
+     Production
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-release-data">
+   Generate Release Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-release-data">
+   Download Release Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#take-a-look-at-some-of-the-latest-msrc-cve-data">
+   Take a look at some of the latest MSRC CVE Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -674,8 +805,1160 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="using-release-data">
-<h1>Using Release Data<a class="headerlink" href="#using-release-data" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-cvedata">
+<h1>Using cvedata<a class="headerlink" href="#using-cvedata" title="Permalink to this headline">#</a></h1>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">#</a></h2>
+<section id="development">
+<h3>Development<a class="headerlink" href="#development" title="Permalink to this headline">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/clearbluejar/cvedata
+pip install .
+</pre></div>
+</div>
+</section>
+<section id="production">
+<h3>Production<a class="headerlink" href="#production" title="Permalink to this headline">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install https://github.com/clearbluejar/cvedata/releases/download/v0.2.2/cvedata-0.2.2-py3-none-any.whl
+</pre></div>
+</div>
+</section>
+</section>
+<section id="generate-release-data">
+<h2>Generate Release Data<a class="headerlink" href="#generate-release-data" title="Permalink to this headline">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m cvedata.update
+</pre></div>
+</div>
+</section>
+<section id="download-release-data">
+<h2>Download Release Data<a class="headerlink" href="#download-release-data" title="Permalink to this headline">#</a></h2>
+<p>Instead of generating data, you can download the <a class="reference external" href="https://github.com/clearbluejar/cvedata/releases/latest">latest release data</a> generated for the particular version.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m cvedata.download
+</pre></div>
+</div>
+<p>This will unpack the data to your local cvedata installation in the <a class="reference external" href="https://github.com/clearbluejar/cvedata/tree/main/cvedata/data">data</a> folder.</p>
+</section>
+<section id="take-a-look-at-some-of-the-latest-msrc-cve-data">
+<h2>Take a look at some of the latest MSRC CVE Data<a class="headerlink" href="#take-a-look-at-some-of-the-latest-msrc-cve-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_cvrf_pandas_json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">msrc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_json</span><span class="p">())</span>
+<span class="n">msrc_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial Release</th>
+      <th>Tag</th>
+      <th>Title</th>
+      <th>Impact</th>
+      <th>CVSS</th>
+      <th>KBs</th>
+      <th>Versions</th>
+      <th>Acks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CVE-2022-41128</th>
+      <td>2022-11-08</td>
+      <td>Windows Scripting</td>
+      <td>Windows Scripting Languages</td>
+      <td>Remote Code Execution</td>
+      <td>8.8</td>
+      <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Benoît Sevens and Clément Lecigne of Google's ...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41103</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office Word</td>
+      <td>Microsoft Word</td>
+      <td>Information Disclosure</td>
+      <td>5.5</td>
+      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
+      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
+      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
+    </tr>
+    <tr>
+      <th>ADV220003</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Defense in Depth Update</td>
+      <td>Defense in Depth</td>
+      <td>0.0</td>
+      <td>KB3191869 KB3191875</td>
+      <td>15.0.5501.1000 16.0.5369.1000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41057</th>
+      <td>2022-11-08</td>
+      <td>Windows HTTP.sys</td>
+      <td>Windows HTTP.sys</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>James Forshaw of Google Project Zero</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41099</th>
+      <td>2022-11-08</td>
+      <td>Windows BitLocker</td>
+      <td>BitLocker</td>
+      <td>Security Feature Bypass</td>
+      <td>4.6</td>
+      <td>KB5019959 KB5019961 KB5019964 KB5019966 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Anonymous</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41056</th>
+      <td>2022-11-08</td>
+      <td>Network Policy Server (NPS)</td>
+      <td>Network Policy Server NPS RADIUS Protocol</td>
+      <td>Denial of Service</td>
+      <td>7.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://www.twitter.com/guhe120"&gt;Yuki...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41098</th>
+      <td>2022-11-08</td>
+      <td>Windows Win32K</td>
+      <td>Windows GDI</td>
+      <td>Information Disclosure</td>
+      <td>5.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Bing Sun</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41055</th>
+      <td>2022-11-08</td>
+      <td>Windows Devices Human Interface</td>
+      <td>Windows Human Interface Device</td>
+      <td>Information Disclosure</td>
+      <td>5.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
+      <td>&lt;a href="https://github.com/troy532"&gt;Troy532&lt;/a&gt;</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41097</th>
+      <td>2022-11-08</td>
+      <td>Network Policy Server (NPS)</td>
+      <td>Network Policy Server NPS RADIUS Protocol</td>
+      <td>Information Disclosure</td>
+      <td>6.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://www.twitter.com/guhe120"&gt;Yuki...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41054</th>
+      <td>2022-11-08</td>
+      <td>Windows Resilient File System (ReFS)</td>
+      <td>Windows Resilient File System ReFS</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.14393.5501 10.0.17763.3650 10.0.19042.225...</td>
+      <td>&lt;a href="https://twitter.com/keyz3r0"&gt;k0shl&lt;/a...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41096</th>
+      <td>2022-11-08</td>
+      <td>Windows DWM Core Library</td>
+      <td>Microsoft DWM Core Library</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019081 KB5019959 KB5019961 KB5019966 KB5019980</td>
+      <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
+      <td>Keqi Hu</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41053</th>
+      <td>2022-11-08</td>
+      <td>Windows Kerberos</td>
+      <td>Windows Kerberos</td>
+      <td>Denial of Service</td>
+      <td>7.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://www.youtube.com/watch?v=0AhPC...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41095</th>
+      <td>2022-11-08</td>
+      <td>Windows Digital Media</td>
+      <td>Windows Digital Media Receiver</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019081 KB5019959 KB5019961 KB5019964 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41052</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Graphics Component</td>
+      <td>Windows Graphics Component</td>
+      <td>Remote Code Execution</td>
+      <td>7.8</td>
+      <td>KB5019081 KB5019959 KB5019961 KB5019964 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Hossein Lotfi of &lt;a href="https://www.zerodayi...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41051</th>
+      <td>2022-11-08</td>
+      <td>Azure Real Time Operating System</td>
+      <td>Azure RTOS GUIX Studio</td>
+      <td>Remote Code Execution</td>
+      <td>7.8</td>
+      <td></td>
+      <td>6.2.0.0</td>
+      <td>HP of Cyber Kunlun Lab</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41050</th>
+      <td>2022-11-08</td>
+      <td>Windows Extensible File Allocation</td>
+      <td>Windows Extensible File Allocation Table</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>HyungSeok Joo</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41093</th>
+      <td>2022-11-08</td>
+      <td>Windows Advanced Local Procedure Call</td>
+      <td>Windows Advanced Local Procedure Call ALPC</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/baixia4"&gt;Jarvis_1...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41060</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office Word</td>
+      <td>Microsoft Word</td>
+      <td>Information Disclosure</td>
+      <td>5.5</td>
+      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
+      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
+      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41061</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office Word</td>
+      <td>Microsoft Word</td>
+      <td>Remote Code Execution</td>
+      <td>7.8</td>
+      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
+      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
+      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41092</th>
+      <td>2022-11-08</td>
+      <td>Windows Win32K</td>
+      <td>Windows Win32k</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
+      <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
+      <td>namnp working with &lt;a href="https://www.zeroda...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41104</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office Excel</td>
+      <td>Microsoft Excel</td>
+      <td>Security Feature Bypass</td>
+      <td>5.5</td>
+      <td>KB5002253 KB5002275</td>
+      <td>15.0.5501.1000 16.0.5369.1000</td>
+      <td>&lt;a href="https://twitter.com/jdgregson"&gt;jdgreg...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-38015</th>
+      <td>2022-11-08</td>
+      <td>Role: Windows Hyper-V</td>
+      <td>Windows HyperV</td>
+      <td>Denial of Service</td>
+      <td>6.5</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Eran Segal with &lt;a href="https://www.safebreac...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-3786</th>
+      <td>2022-11-08</td>
+      <td>Open Source Software</td>
+      <td>OpenSSL CVE20223786 X.509 certificate verifica...</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>2022.11.02</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41125</th>
+      <td>2022-11-08</td>
+      <td>Windows CNG Key Isolation Service</td>
+      <td>Windows CNG Key Isolation Service</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;li&gt;Microsoft Threat Intelligence Center (MSTI...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41119</th>
+      <td>2022-11-08</td>
+      <td>Visual Studio</td>
+      <td>Visual Studio</td>
+      <td>Remote Code Execution</td>
+      <td>7.8</td>
+      <td></td>
+      <td>15.9.51 16.11.21 17.0.16 17.2.10 17.3.7</td>
+      <td>goodbyeselene</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Print current data metadata</span>
+<span class="kn">from</span> <span class="nn">cvedata.metadata</span> <span class="kn">import</span> <span class="n">print_stats</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">print_stats</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;nvdcve-1.1-2002.json.gz&quot;: {
+        &quot;size&quot;: 1296966,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:21.572617&quot;,
+        &quot;count&quot;: 6769,
+        &quot;gen_time&quot;: 1.2732033729553223,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;last_modified&quot;: &quot;2022-11-22T06:40:24.315867&quot;,
+    &quot;nvdcve-1.1-2003.json.gz&quot;: {
+        &quot;size&quot;: 381514,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:21.976623&quot;,
+        &quot;count&quot;: 1553,
+        &quot;gen_time&quot;: 0.4047684669494629,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2004.json.gz&quot;: {
+        &quot;size&quot;: 745309,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:22.764635&quot;,
+        &quot;count&quot;: 2707,
+        &quot;gen_time&quot;: 0.7857117652893066,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2005.json.gz&quot;: {
+        &quot;size&quot;: 1179128,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:23.992653&quot;,
+        &quot;count&quot;: 4765,
+        &quot;gen_time&quot;: 1.2291128635406494,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2006.json.gz&quot;: {
+        &quot;size&quot;: 1877058,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:26.148685&quot;,
+        &quot;count&quot;: 7140,
+        &quot;gen_time&quot;: 2.1573057174682617,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2007.json.gz&quot;: {
+        &quot;size&quot;: 1856604,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:28.076713&quot;,
+        &quot;count&quot;: 6577,
+        &quot;gen_time&quot;: 1.9259092807769775,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2008.json.gz&quot;: {
+        &quot;size&quot;: 1885389,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:30.460748&quot;,
+        &quot;count&quot;: 7171,
+        &quot;gen_time&quot;: 2.38291072845459,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2009.json.gz&quot;: {
+        &quot;size&quot;: 1667500,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:32.524776&quot;,
+        &quot;count&quot;: 5023,
+        &quot;gen_time&quot;: 2.0621583461761475,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2010.json.gz&quot;: {
+        &quot;size&quot;: 1557052,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:34.536804&quot;,
+        &quot;count&quot;: 5191,
+        &quot;gen_time&quot;: 2.011227607727051,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2011.json.gz&quot;: {
+        &quot;size&quot;: 1489652,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:36.696834&quot;,
+        &quot;count&quot;: 4831,
+        &quot;gen_time&quot;: 2.161363124847412,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2012.json.gz&quot;: {
+        &quot;size&quot;: 1689844,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:39.080867&quot;,
+        &quot;count&quot;: 5838,
+        &quot;gen_time&quot;: 2.3841724395751953,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2013.json.gz&quot;: {
+        &quot;size&quot;: 1915610,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:41.572899&quot;,
+        &quot;count&quot;: 6678,
+        &quot;gen_time&quot;: 2.4889683723449707,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2014.json.gz&quot;: {
+        &quot;size&quot;: 2015414,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:44.208933&quot;,
+        &quot;count&quot;: 8892,
+        &quot;gen_time&quot;: 2.6365771293640137,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2015.json.gz&quot;: {
+        &quot;size&quot;: 1875124,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:46.540963&quot;,
+        &quot;count&quot;: 8599,
+        &quot;gen_time&quot;: 2.333343982696533,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2016.json.gz&quot;: {
+        &quot;size&quot;: 2243164,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:49.389000&quot;,
+        &quot;count&quot;: 10510,
+        &quot;gen_time&quot;: 2.8445491790771484,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2017.json.gz&quot;: {
+        &quot;size&quot;: 3204464,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:53.465052&quot;,
+        &quot;count&quot;: 16678,
+        &quot;gen_time&quot;: 4.077627897262573,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2018.json.gz&quot;: {
+        &quot;size&quot;: 3464222,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:11:58.153114&quot;,
+        &quot;count&quot;: 16742,
+        &quot;gen_time&quot;: 4.6913161277771,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2019.json.gz&quot;: {
+        &quot;size&quot;: 3854932,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:12:03.985192&quot;,
+        &quot;count&quot;: 16667,
+        &quot;gen_time&quot;: 5.830981731414795,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2020.json.gz&quot;: {
+        &quot;size&quot;: 4715860,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:12:10.753284&quot;,
+        &quot;count&quot;: 19613,
+        &quot;gen_time&quot;: 6.764105796813965,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2021.json.gz&quot;: {
+        &quot;size&quot;: 5103580,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:12:18.497377&quot;,
+        &quot;count&quot;: 20923,
+        &quot;gen_time&quot;: 7.742632865905762,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;nvdcve-1.1-2022.json.gz&quot;: {
+        &quot;size&quot;: 3765415,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:12:22.669433&quot;,
+        &quot;count&quot;: 17357,
+        &quot;gen_time&quot;: 4.175026893615723,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: &quot;cves&quot;,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
+        ]
+    },
+    &quot;cwe.json.gz&quot;: {
+        &quot;size&quot;: 22733,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:12:23.901449&quot;,
+        &quot;count&quot;: 1402,
+        &quot;gen_time&quot;: 1.1426823139190674,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://cwe.mitre.org/data/xml/cwec_latest.xml.zip&quot;
+        ]
+    },
+    &quot;msrc-cvrf-merged.json.gz&quot;: {
+        &quot;size&quot;: 4559162,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:14:01.754751&quot;,
+        &quot;count&quot;: 80,
+        &quot;gen_time&quot;: 97.98645567893982,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: true,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;ms-kb-feed-updates.json&quot;: {
+        &quot;size&quot;: 312158,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:16:35.644855&quot;,
+        &quot;count&quot;: 466,
+        &quot;gen_time&quot;: 151.54158568382263,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc&quot;
+        ]
+    },
+    &quot;ms-kb-feed-to-files-updated.json.gz&quot;: {
+        &quot;size&quot;: 4247314,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:29.044202&quot;,
+        &quot;count&quot;: 10,
+        &quot;gen_time&quot;: 833.4153738021851,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc&quot;
+        ]
+    },
+    &quot;ms-kb-feed-kbs-bins.json.gz&quot;: {
+        &quot;size&quot;: 373699,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:31.372234&quot;,
+        &quot;count&quot;: 4,
+        &quot;gen_time&quot;: 1.818305253982544,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://support.microsoft.com/en-us/feed/atom/6ae59d69-36fc-8e4d-23dd-631d98bf74a9&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/4ec863cc-2ecd-e187-6cb3-b50c6545db92&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/2d67e9fb-2bd2-6742-08ee-628da707657f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/eb958e25-cff9-2d06-53ca-f656481bb31f&quot;,
+            &quot;https://support.microsoft.com/en-us/feed/atom/c3a1be8a-50db-47b7-d5eb-259debc3abcc&quot;
+        ]
+    },
+    &quot;msrc-pandas-cvrf-merged.json.gz&quot;: {
+        &quot;size&quot;: 307069,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:33.908268&quot;,
+        &quot;count&quot;: 8,
+        &quot;gen_time&quot;: 5.08787727355957,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-tag-title.json&quot;: {
+        &quot;size&quot;: 157084,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:40.276355&quot;,
+        &quot;count&quot;: 3,
+        &quot;gen_time&quot;: 3.74937105178833,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-kb-ver.json&quot;: {
+        &quot;size&quot;: 38726,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.264612&quot;,
+        &quot;count&quot;: 2,
+        &quot;gen_time&quot;: 19.164389610290527,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-tags-merged.json&quot;: {
+        &quot;size&quot;: 13973,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.488615&quot;,
+        &quot;count&quot;: 436,
+        &quot;gen_time&quot;: 0.0462651252746582,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-tags-merged-frequency.json&quot;: {
+        &quot;size&quot;: 14922,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.488615&quot;,
+        &quot;count&quot;: 436,
+        &quot;gen_time&quot;: 0.0462651252746582,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-titles-merged.json&quot;: {
+        &quot;size&quot;: 76330,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.536616&quot;,
+        &quot;count&quot;: 436,
+        &quot;gen_time&quot;: 0.0457611083984375,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-pandas-titles-merged-frequency.json&quot;: {
+        &quot;size&quot;: 79734,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.536616&quot;,
+        &quot;count&quot;: 436,
+        &quot;gen_time&quot;: 0.0457611083984375,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;winbindex-desc-to-bins-map.json&quot;: {
+        &quot;size&quot;: 876904,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.258770&quot;,
+        &quot;count&quot;: 9069,
+        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;
+        ]
+    },
+    &quot;winbindex-kb-to-bins-map.json.gz&quot;: {
+        &quot;size&quot;: 909581,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.758777&quot;,
+        &quot;count&quot;: 669,
+        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;
+        ]
+    },
+    &quot;winbindex-versions-to-bins-map.json.gz&quot;: {
+        &quot;size&quot;: 818874,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:33:43.314785&quot;,
+        &quot;count&quot;: 5572,
+        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;
+        ]
+    },
+    &quot;winbindex-winver-to-build-map.json&quot;: {
+        &quot;size&quot;: 14838,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.222770&quot;,
+        &quot;count&quot;: 13,
+        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;
+        ]
+    },
+    &quot;win-verinfo-system32-full.json.gz&quot;: {
+        &quot;size&quot;: 2902129,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:34:01.795055&quot;,
+        &quot;count&quot;: 24,
+        &quot;gen_time&quot;: 19.429661750793457,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.22621.0-versioninfo-system32.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.19045.0-versioninfo-system32-winprogiles-recurse-o365-compress.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse-serv2022-roles.json&quot;
+        ]
+    },
+    &quot;win-versioninfo-system32-desc-to-bins.json&quot;: {
+        &quot;size&quot;: 737266,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:34:04.527092&quot;,
+        &quot;count&quot;: 24,
+        &quot;gen_time&quot;: 1.3577096462249756,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.22621.0-versioninfo-system32.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.19045.0-versioninfo-system32-winprogiles-recurse-o365-compress.json&quot;,
+            &quot;https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/10.0.20348.0-versioninfo-system32-winprogiles-recurse-serv2022-roles.json&quot;
+        ]
+    },
+    &quot;msrc-cve-combined-desc-to_bins.json&quot;: {
+        &quot;size&quot;: 1142409,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:34:05.403105&quot;,
+        &quot;count&quot;: 13911,
+        &quot;gen_time&quot;: 0.060778141021728516,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-all-bins-list.json&quot;: {
+        &quot;size&quot;: 591378,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:34:05.371104&quot;,
+        &quot;count&quot;: 22050,
+        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-tags-combined-file-names.json&quot;: {
+        &quot;size&quot;: 15684,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:34:34.107499&quot;,
+        &quot;count&quot;: 436,
+        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-titles-combined-file-names.json&quot;: {
+        &quot;size&quot;: 42442,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:35:42.824431&quot;,
+        &quot;count&quot;: 1046,
+        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-tags-combined-file-desc-sims.json&quot;: {
+        &quot;size&quot;: 2603131,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:36:18.084906&quot;,
+        &quot;count&quot;: 7,
+        &quot;gen_time&quot;: 120.21459150314331,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-titles-combined-file-desc-sims.json&quot;: {
+        &quot;size&quot;: 5580883,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:37:43.034060&quot;,
+        &quot;count&quot;: 7,
+        &quot;gen_time&quot;: 120.21459150314331,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://github.com/m417z/winbindex/archive/refs/heads/gh-pages.zip&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;msrc-cve-combined-kbs.json&quot;: {
+        &quot;size&quot;: 6632760,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:37:43.366064&quot;,
+        &quot;count&quot;: 6,
+        &quot;gen_time&quot;: 0.28993773460388184,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: null
+    },
+    &quot;msrc-cve-to-bins.json&quot;: {
+        &quot;size&quot;: 8693406,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:37:55.518231&quot;,
+        &quot;count&quot;: 12,
+        &quot;gen_time&quot;: 12.119824409484863,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: null
+    },
+    &quot;chromerelease-raw-cve.json&quot;: {
+        &quot;size&quot;: 412770,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.059443&quot;,
+        &quot;count&quot;: 2321,
+        &quot;gen_time&quot;: 88.43039011955261,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;
+        ]
+    },
+    &quot;chromerelease-cve.json&quot;: {
+        &quot;size&quot;: 809447,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.155445&quot;,
+        &quot;count&quot;: 2321,
+        &quot;gen_time&quot;: 0.09266209602355957,
+        &quot;key_index&quot;: &quot;cve_id&quot;,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;
+        ]
+    },
+    &quot;ack-researcher_names.json&quot;: {
+        &quot;size&quot;: 971245,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.215446&quot;,
+        &quot;count&quot;: 8433,
+        &quot;gen_time&quot;: 0.05453300476074219,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;researcher_names_grouped.json&quot;: {
+        &quot;size&quot;: 710923,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.327447&quot;,
+        &quot;count&quot;: 1871,
+        &quot;gen_time&quot;: 0.11147546768188477,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;ack-researcher_cve_map.json&quot;: {
+        &quot;size&quot;: 251729,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.335447&quot;,
+        &quot;count&quot;: 1871,
+        &quot;gen_time&quot;: 0.11147546768188477,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: true,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;ack-researcher_twitter_map.json&quot;: {
+        &quot;size&quot;: 83791,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.387448&quot;,
+        &quot;count&quot;: 1871,
+        &quot;gen_time&quot;: 0.04590797424316406,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: true,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    },
+    &quot;ack-researcher_cve_quality_map.json&quot;: {
+        &quot;size&quot;: 118836,
+        &quot;last_modified&quot;: &quot;2022-11-22T06:40:24.296265&quot;,
+        &quot;count&quot;: 3,
+        &quot;gen_time&quot;: 59.91763615608215,
+        &quot;key_index&quot;: null,
+        &quot;key_data&quot;: null,
+        &quot;swap_axes&quot;: false,
+        &quot;normalize&quot;: false,
+        &quot;skip_book&quot;: false,
+        &quot;sources&quot;: [
+            &quot;https://chromereleases.googleblog.com&quot;,
+            &quot;https://api.msrc.microsoft.com/&quot;
+        ]
+    }
+}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;None&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
