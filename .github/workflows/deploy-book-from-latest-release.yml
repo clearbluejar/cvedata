@@ -28,13 +28,10 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Set up virtualenv
-      run: |
-        pip install --upgrade pip
-        python -m venv .env
-        source .env/bin/activate
-        echo "VIRTUAL ENV:" $VIRTUAL_ENV
-
+    # - name: Set up virtualenv
+    #   run: |
+    #     pip install --upgrade pip
+              
     - name: Install cvedata       
       run: |
         pip install -e .
@@ -42,6 +39,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r docs/requirements.txt
+        python -m ipykernel install --user --name=.env
 
     - name: Download Release Data
       run: |        
