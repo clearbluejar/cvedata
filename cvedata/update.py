@@ -26,10 +26,10 @@ def update_all_data():
     # Windows
     cvrf_update()
     ms_feeds_kbs_update()
-    msrc_pandas_update()
-    #msrc_cve_to_bins_update()
+    msrc_pandas_update()    
     winbindex_update()
     verinfo_update()
+    msrc_cve_to_bins_update()
 
     # Chrome
     chromerelease_update()
@@ -37,7 +37,6 @@ def update_all_data():
     # Acknowledgements
     ack_update()
     
-
     elapsed = time.time() - start
 
     print_stats()
