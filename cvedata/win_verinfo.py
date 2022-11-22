@@ -25,8 +25,8 @@ VERINFO_SOURCES = [ WIN10_VERINFO, WIN2022_VERINFO, WIN10_O365, WIN2022_VERINFO_
 WINVERINOF_REL_URL = f"https://github.com/clearbluejar/win-sys32-versioninfo/releases/download/v0.1.0/"
 
 
-VERINFO_DESC_TO_BINS_PATH = Path(DATA_DIR,"versioninfo-system32-desc-to-bins.json")
-ALL_VERINFO_PATH = Path(DATA_DIR,"verinfo-system32-full.json.gz")
+VERINFO_DESC_TO_BINS_PATH = Path(DATA_DIR,"win-versioninfo-system32-desc-to-bins.json")
+ALL_VERINFO_PATH = Path(DATA_DIR,"win-verinfo-system32-full.json.gz")
 
 
 
@@ -37,8 +37,7 @@ def create_win_verinfo():
     all_verinfo_df = pd.DataFrame()
 
 
-    #if should_update(ALL_VERINFO_PATH,1):
-    if True:
+    if should_update(ALL_VERINFO_PATH,1):
 
         for source in VERINFO_SOURCES:
 

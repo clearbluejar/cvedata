@@ -26,9 +26,9 @@ FEED_URLS = [WIN10_FEED_URL, WIN11_FEED_URL, WIN_SERVER_2022_FEED_URL, WIN_SERVE
 
 MS_KB_FEED_UPDATES_PATH = Path(DATA_DIR, 'ms-kb-feed-updates.json')
 MS_KB_FEED_FILES_UPDATED_PATH = Path(DATA_DIR, 'ms-kb-feed-to-files-updated.json.gz')
-MS_KBS_TO_BINS_PATH = Path(DATA_DIR, 'ms-kbs-bins.json.gz')
+MS_KBS_TO_BINS_PATH = Path(DATA_DIR, 'ms-kb-feed-kbs-bins.json.gz')
 
-DOWNLOAD_HTML_PATH = Path(CACHE_PATH, 'ms-kb-html-downloaded.json')
+DOWNLOAD_HTML_PATH = Path(CACHE_PATH, 'ms-kb-feed-html-downloaded.json')
 DOWNLOAD_HTML_FILEINFO_PATH_PRE = Path(CACHE_PATH,'kb_csv')
 # ensure cache dir exists
 DOWNLOAD_HTML_FILEINFO_PATH_PRE.mkdir(exist_ok=True,parents=True)

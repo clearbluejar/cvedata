@@ -12,7 +12,8 @@ from .config import DATA_DIR
 from .metadata import update_metadata
 from .util import get_file_json
 
-NIST_CVE_JSON_PREFIX_PATH = Path(DATA_DIR)
+NIST_CVE_JSON_PREFIX_PATH = Path(DATA_DIR,'nist')
+NIST_CVE_JSON_PREFIX_PATH.mkdir(exist_ok=True,parents=True)
 NIST_DATA_FEEDS_URL = "https://nvd.nist.gov/feeds/json/cve/1.1/"
 
 NIST_OLDEST_YEAR = 2002

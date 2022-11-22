@@ -13,18 +13,17 @@ from .msrc_cvrf import get_msrc_merged_cvrf_json_keyed,MSRC_API_URL
 from .metadata import should_update, update_metadata
 from .util import get_file_json
 
-MSRC_CVRF_PANDAS = Path(DATA_DIR,"msrc-cvrf-pandas-merged.json.gz")
-MSRC_CVRF_PANDAS_FULL = Path(DATA_DIR,"msrc-cvrf-pandas-merged-full.json.gz")
-# MSRC_CVE_TAGS_PANDAS = Path(DATA_DIR,"msrc-cve-tag-pandas.json")
-MSRC_CVE_TAGS_TITLE = Path(DATA_DIR,"msrc-cve-tag-title.json")
+MSRC_CVRF_PANDAS = Path(DATA_DIR,"msrc-pandas-cvrf-merged.json.gz")
+MSRC_CVRF_PANDAS_FULL = Path(DATA_DIR,"msrc-pandas-cvrf-merged-full.json.gz")
+MSRC_CVE_TAGS_TITLE = Path(DATA_DIR,"msrc-pandas-tag-title.json")
 
-MSRC_TAGS_PATH = Path(DATA_DIR,"msrc-tags-merged.json")
-MSRC_TAGS_FREQ_PATH = Path(DATA_DIR,"msrc-tags-merged-frequency.json")
-MSRC_TITLES_PATH = Path(DATA_DIR,"msrc-titles-merged.json")
-MSRC_TITLES_FREQ_PATH = Path(DATA_DIR,"msrc-titles-merged-frequency.json")
+MSRC_TAGS_PATH = Path(DATA_DIR,"msrc-pandas-tags-merged.json")
+MSRC_TAGS_FREQ_PATH = Path(DATA_DIR,"msrc-pandas-tags-merged-frequency.json")
+MSRC_TITLES_PATH = Path(DATA_DIR,"msrc-pandas-titles-merged.json")
+MSRC_TITLES_FREQ_PATH = Path(DATA_DIR,"msrc-pandas-titles-merged-frequency.json")
 
-ALL_KBS_VERSION_MAP = Path(CACHE_PATH,"all-msrc-kb-ver-pandas.json") # temporary cache file
-MSRC_KB_VERSION = Path(DATA_DIR,"msrc-kb-ver.json")
+ALL_KBS_VERSION_MAP = Path(CACHE_PATH,"msrc-pandas-all-msrc-kb-ver-pandas.json") # temporary cache file
+MSRC_KB_VERSION = Path(DATA_DIR,"msrc-pandas-kb-ver.json")
 
 
 # MSRC column parsers
@@ -264,10 +263,9 @@ def clean_impact(tag):
 
 def create_msrc_cvrf_pandas():
 
-    FIELDS = ["Initial Release", "Title", "Tag", "Impact", "CVSS", "KBs", "Versions", "Acks"]
+    FIELDS = ["Initial Release", "Tag", "Title", "Impact", "CVSS", "KBs", "Versions", "Acks"]
 
     if should_update(MSRC_CVRF_PANDAS_FULL,1):
-    #if True:
 
         msrc_merged_json = get_msrc_merged_cvrf_json_keyed()
 
@@ -382,13 +380,13 @@ def create_msrc_titles():
     print(freq_df.head())
     freq_df.to_json(MSRC_TITLES_FREQ_PATH,indent=4)
     
-def get_msrc_tags():
+def get_msrc_tags() -> list:
     return get_file_json(MSRC_TAGS_PATH, __file__)
 
 def get_msrc_tags_freq():
     return get_file_json(MSRC_TAGS_FREQ_PATH, __file__)
     
-def get_msrc_titles():
+def get_msrc_titles() -> list:
     return get_file_json(MSRC_TITLES_PATH, __file__)
 
 def get_msrc_titles_freq():

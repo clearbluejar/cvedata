@@ -16,21 +16,19 @@ from .nist import get_cves
 from .util import get_file_json
 
 # list of all names available
-RESEARCHER_NAMES_JSON_PATH = Path(DATA_DIR, 'researcher_names.json')
+RESEARCHER_NAMES_JSON_PATH = Path(DATA_DIR, 'ack-researcher_names.json')
 # list of all names normalized
 RESEARCHER_NAMES_GROUP_JSON_PATH = Path(
     DATA_DIR, 'researcher_names_grouped.json')
 # map of all cves to normalized names
-RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_map.json')
+RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_cve_map.json')
 
 # map of all cve scores to normalized names
-RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL = Path(CACHE_PATH, 'researcher_cve_quality_map_full.json.gz')
-RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'researcher_cve_quality_map.json')
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL = Path(CACHE_PATH, 'ack-researcher_cve_quality_map_full.json.gz')
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_cve_quality_map.json')
 
 # map of all researcher to twitter handle
-RESEARCHER_TWITTER_MAP_JSON_PATH = Path(
-    DATA_DIR, 'researcher_twitter_map.json')
-
+RESEARCHER_TWITTER_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_twitter_map.json')
 
 def create_researcher_names_json():
 

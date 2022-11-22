@@ -12,7 +12,7 @@ from .config import DATA_DIR, CACHE_PATH
 from .metadata import update_metadata, should_update
 from .util import get_file_json
 
-MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc_cvrf_merged.json.gz')
+MSRC_CVRF_MERGED_PATH = Path(DATA_DIR, 'msrc-cvrf-merged.json.gz')
 MSRC_API_URL = "https://api.msrc.microsoft.com/"
 MSRC_CVRF_CACHE_PATH = Path(CACHE_PATH, 'msrc_cvrfs')
 MSRC_CVRF_CACHE_PATH.mkdir(exist_ok=True,parents=True)

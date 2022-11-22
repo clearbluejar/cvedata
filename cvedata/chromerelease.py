@@ -11,8 +11,8 @@ from .metadata import update_metadata
 from .util import get_file_json
 
 CHROME_RELEASE_URL = "https://chromereleases.googleblog.com"
-RAW_SCRAPE_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease_raw_cve.json')
-PARSED_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease_cve.json')
+RAW_SCRAPE_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease-raw-cve.json')
+PARSED_CHROME_JSON_PATH = Path(DATA_DIR, 'chromerelease-cve.json')
 
 
 def scrape_chromerelease_cves():
