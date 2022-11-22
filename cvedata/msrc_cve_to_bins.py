@@ -474,7 +474,7 @@ def update():
     elapsed = time.time() - start
     
     count = len(get_msrc_cve_to_bins())
-    update_metadata(MSRC_CVE_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL,MSRC_API_URL].extend(FEED_URLS)}, count, elapsed, swap_axes=True,normalize=True)
+    update_metadata(MSRC_CVE_TO_BINS_PATH,{'sources': [WINBINDEX_GITHUB_URL,MSRC_API_URL].extend(FEED_URLS)}, count, elapsed, swap_axes=False)
 
 
 if __name__ == "__main__":

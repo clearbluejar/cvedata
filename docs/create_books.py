@@ -3,16 +3,14 @@ from numpy import isnan
 import pandas as pd
 from pathlib import Path
 
-# TODO make this run from package
-#from cvedata.config import DATA_DIR
+from cvedata.config import DATA_DIR
+from cvedata.nist import NIST_CVE_JSON_PREFIX_PATH
 
 # inspired by https://github.com/OTRF/Security-Datasets/tree/master/scripts/book
 
 # Data from cvedata
-DATA_DIR = Path(Path(__file__).parent.parent,'cvedata','data')
-DATA_MSRC_MD_DIR = Path(DATA_DIR, 'pandas')
-README_REPO_PATH = Path(Path(__file__).parent.parent,'README.md')
-README_PATH = Path(Path(__file__).parent,'README.md')
+REPO_README_PATH = Path(Path(__file__).parent.parent,'README.md')
+BOOK_README_PATH = Path(Path(__file__).parent,'README.md')
 
 # New Book Data
 BOOK_DIR = Path(Path(__file__).parent,'book')
@@ -42,7 +40,7 @@ def wrap_name(name: str):
     return f"[{name}]({url + name})"
 
 # Copy README from main repo
-README_PATH.write_text(README_REPO_PATH.read_text())
+BOOK_README_PATH.write_text(REPO_README_PATH.read_text())
 
 # Create Metadata
 
@@ -90,12 +88,14 @@ for title, row in meta_df.iterrows():
     print(row)
 
     if str(title).startswith("nvdcve"):
+        data_source_path = NIST_CVE_JSON_PREFIX_PATH.absolute()
         nb_path = Path(NVD_DIR , (title + '.ipynb'))
         max_byte_var = 'opt.maxColumns = 12'
     else:
         nb_path = Path(GENERATED_DIR , (title + '.ipynb'))
         # set unlimited max bytes
         max_byte_var = "opt.maxBytes = 0"
+        data_source_path = DATA_DIR.absolute()
 
     nb = nbf.v4.new_notebook()
     nb['cells'] = []
@@ -133,7 +133,7 @@ init_notebook_mode(all_interactive=True)
 import pathlib
 import pandas
 import json
-data = pathlib.Path("{DATA_DIR.absolute()}", '{title}')
+data = pathlib.Path("{data_source_path}", '{title}')
 """)
 
         nb['cells'].append(code)

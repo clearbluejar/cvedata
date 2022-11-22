@@ -9,7 +9,8 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: force  
+  timeout: 900
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -39,4 +40,5 @@ html:
 sphinx:
   extra_extensions:
     - sphinxcontrib.mermaid
+
 
