@@ -4,8 +4,9 @@ import difflib
 import re
 from pathlib import Path
 from functools import lru_cache
-import pandas as pd
 import itertools
+import pandas as pd
+
 
 from .config import DATA_DIR
 from .msrc_cvrf import MSRC_API_URL
@@ -45,7 +46,7 @@ def clean_tag(tag):
     if len(tag.split()) > 2:
         tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc|office', '', tag)
 
-    tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+    tag = re.sub(r'[^\. 0-9a-zA-Z]+', '', tag)      
 
     return tag.strip()
 
@@ -73,7 +74,7 @@ def get_tag_similarity_df(row : str,key : str,desc_to_bins: dict,col_pre : str,m
 
     # init bins
     for min_sim in min_sims:
-            bins.setdefault(min_sim,[])
+        bins.setdefault(min_sim,[])
 
     ctag1 = clean_tag(row[key]).split()
 
