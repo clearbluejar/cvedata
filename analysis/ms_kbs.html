@@ -1956,9 +1956,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1866/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1891/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
-/tmp/ipykernel_1866/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+/tmp/ipykernel_1891/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
@@ -1980,7 +1980,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1866/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1891/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
 </pre></div>
 </div>
@@ -2219,7 +2219,7 @@ Name: Tag, dtype: int64
   <tbody>
     <tr>
       <th>KB3194798</th>
-      <td>[Apprepsync.dll, Windows.networking.hostname.d...</td>
+      <td>[Shell32.dll, Windows.networking.servicediscov...</td>
       <td>[nan]</td>
       <td>[2016-10-11]</td>
       <td>[nan]</td>
@@ -2228,7 +2228,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3197954</th>
-      <td>[Sdnvsm.exe, Drvstore.dll, Hgcpl.dll, Cmbins.e...</td>
+      <td>[Indexeddbserver.dll, Microsoft.powershell.com...</td>
       <td>[nan]</td>
       <td>[2016-10-27]</td>
       <td>[nan]</td>
@@ -2237,7 +2237,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3200970</th>
-      <td>[Imjpskey.dll, Sdnvsm.exe, Hgcpl.dll, Cmbins.e...</td>
+      <td>[Indexeddbserver.dll, Microsoft.powershell.com...</td>
       <td>[nan]</td>
       <td>[2016-11-08]</td>
       <td>[nan]</td>
@@ -2246,7 +2246,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3201845</th>
-      <td>[Sdnvsm.exe, Apprepsync.dll, Cmbins.exe, Insta...</td>
+      <td>[Indexeddbserver.dll, Windows.staterepositoryb...</td>
       <td>[nan]</td>
       <td>[2016-12-09]</td>
       <td>[nan]</td>
@@ -2255,7 +2255,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3206632</th>
-      <td>[Sdnvsm.exe, Cmbins.exe, Windows.ui.actioncent...</td>
+      <td>[Indexeddbserver.dll, Jscript9.dll, Fveapi.dll...</td>
       <td>[nan]</td>
       <td>[2016-12-13]</td>
       <td>[nan]</td>
@@ -2273,7 +2273,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5020440</th>
-      <td>[jpmapcontrol.dll, appraiser.dll, bthavrcptg.s...</td>
+      <td>[clipup.exe, moshost.dll, sppobjs.dll, scfilte...</td>
       <td>[nan, [1507]]</td>
       <td>[2022-10-18, 2022-10-18]</td>
       <td>[nan, https://support.microsoft.com/help/5020440]</td>
@@ -2282,7 +2282,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5020953</th>
-      <td>[StartUI.dll, d3d10warp.dll, winlogon.exe, App...</td>
+      <td>[LogonController.dll, arm64\PrintConfig.dll, m...</td>
       <td>[nan]</td>
       <td>[2022-10-28]</td>
       <td>[nan]</td>
@@ -2291,7 +2291,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021654</th>
-      <td>[windows.ui.xaml.resources.dll, appraiser.dll,...</td>
+      <td>[sppobjs.dll, Windows.Media.Protection.PlayRea...</td>
       <td>[nan, [1607]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021654]</td>
@@ -2300,7 +2300,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021655</th>
-      <td>[comctl32.dll, GdiPlus.dll, d3d10warp.dll, peo...</td>
+      <td>[bcastdvruserservice.dll, windows.ui.softlandi...</td>
       <td>[nan, [1809]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021655]</td>
@@ -2309,7 +2309,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021656</th>
-      <td>[sppcext.dll, kdcsvc.dll, SppExtComObj.Exe, fc...</td>
+      <td>[hvix64.exe, tcbloader.dll, sppobjs.dll, Windo...</td>
       <td>[nan]</td>
       <td>[2022-11-17]</td>
       <td>[nan]</td>
@@ -2342,9 +2342,9 @@ shell32.dll                                            447
 win32k.sys                                             442
 efisys_noprompt.bin                                    439
 efisys.bin                                             439
-microsoft.msmq.runtime.interop.dll                     435
 microsoft.msmq.activex.interop.dll                     435
 microsoft.msmq.powershell.commands.dll                 435
+microsoft.msmq.runtime.interop.dll                     435
 microsoft.virtualization.client.rdpclientaxhost.dll    432
 edgehtml.dll                                           416
 ieframe.dll                                            408
@@ -2358,15 +2358,15 @@ win32u.dll                                             386
 mfcore.dll                                             383
 gdiplus.dll                                            379
 windows.storage.dll                                    378
-chakra.dll                                             368
 chakradiag.dll                                         368
+chakra.dll                                             368
 winload.efi                                            360
 winload.exe                                            354
 winresume.efi                                          354
 hvloader.dll                                           349
-sppsvc.exe                                             347
-gdi32.dll                                              347
 winresume.exe                                          347
+gdi32.dll                                              347
+sppsvc.exe                                             347
 urlmon.dll                                             346
 iertutil.dll                                           341
 tcblaunch.exe                                          337
@@ -2375,9 +2375,9 @@ user32.dll                                             321
 lsasrv.dll                                             320
 mfps.dll                                               316
 appxapplicabilityblob.dll                              313
-comctl32.dll.mui                                       313
 appxdeploymentserver.dll                               313
 appxupgrademigrationplugin.dll                         313
+comctl32.dll.mui                                       313
 sxsoa.dll                                              302
 Name: updated, dtype: int64
 </pre></div>
