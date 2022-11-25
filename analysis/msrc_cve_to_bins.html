@@ -1152,139 +1152,12 @@ title="Print to PDF"
 <h3>Setup data sources<a class="headerlink" href="#setup-data-sources" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_json</span> <span class="o">=</span> <span class="n">get_msrc_tags</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">,</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span> <span class="c1"># hardcoded tag/title to bin</span>
+<span class="n">tags_json</span> <span class="o">=</span> <span class="n">get_msrc_tags</span><span class="p">()</span>
 <span class="n">titles_json</span> <span class="o">=</span> <span class="n">get_msrc_titles</span><span class="p">()</span>
 <span class="n">verinfo_desc_to_bins</span> <span class="o">=</span> <span class="n">get_verinfo_desc_to_bins_json</span><span class="p">()</span>
 <span class="n">wv_ver</span> <span class="o">=</span> <span class="n">get_winbindex_desc_to_bin_map</span><span class="p">()</span>
-
 <span class="n">all_desc_to_bins</span> <span class="o">=</span> <span class="n">get_msrc_all_desc_to_bins</span><span class="p">()</span> <span class="c1">#combined wv_ver and verinfo</span>
-<span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">,</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span> <span class="c1"># hardcoded tag/title to bin</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;common log file system driver&#39;: [&#39;clfs.sys&#39;],
-  &#39;console window host&#39;: [&#39;ConhostV1.dll&#39;],
-  &#39;diskusage&#39;: [&#39;diskusage.exe&#39;],
-  &#39;windows ike extension&#39;: [&#39;ikeext.dll&#39;],
-  &#39;microsoft dtv-dvd video decoder&#39;: [&#39;msmpeg2vdec.dll&#39;],
-  &#39;microsoft identity manager&#39;: [&#39;msident.dll&#39;, &#39;msidntld.dll&#39;],
-  &#39;microsoft local security authority server (lsasrv)&#39;: [&#39;lsasrv.dll&#39;],
-  &#39;microsoft edge (chromium-based)&#39;: [&#39;msedge.dll&#39;],
-  &#39;microsoft windows codecs library&#39;: [&#39;WindowsCodecs.dll&#39;],
-  &#39;remote desktop client&#39;: [&#39;mstsc.exe&#39;],
-  &#39;volume manager driver&#39;: [&#39;volmgr.sys&#39;],
-  &#39;windows address book&#39;: [&#39;wab.exe&#39;, &#39;wab32.dll&#39;],
-  &#39;windows af_unix socket provider&#39;: [&#39;afunix.sys&#39;],
-  &#39;windows alpc&#39;: [&#39;ntoskrnl.exe&#39;],
-  &#39;windows advanced local procedure call&#39;: [&#39;ntoskrnl.exe&#39;],
-  &#39;windows ancillary function driver for winsock&#39;: [&#39;afd.sys&#39;],
-  &#39;windows appcontracts api server&#39;: [&#39;AppContracts.dll&#39;],
-  &#39;windows application compatibility cache&#39;: [&#39;ahcache.sys&#39;],
-  &#39;windows audio service&#39;: [&#39;audiosrv.dll&#39;],
-  &#39;windows autopilot&#39;: [&#39;autopilot.dll&#39;],
-  &#39;windows bind filter driver&#39;: [&#39;bindflt.sys&#39;],
-  &#39;windows bitlocker&#39;: [&#39;bdesvc.dll&#39;],
-  &#39;windows canonical display driver&#39;: [&#39;cdd.dll&#39;],
-  &#39;windows cd-rom driver&#39;: [&#39;cdrom.sys&#39;],
-  &#39;windows cloud files mini filter driver&#39;: [&#39;cldflt.sys&#39;],
-  &#39;windows com&#39;: [&#39;combase.dll&#39;],
-  &#39;windows common log file system driver&#39;: [&#39;clfs.sys&#39;],
-  &#39;windows console driver&#39;: [&#39;condrv.sys&#39;],
-  &#39;windows container isolation fs filter driver&#39;: [&#39;wcifs.sys&#39;],
-  &#39;windows container manager service&#39;: [&#39;CmService.dll&#39;],
-  &#39;windows cryptoapi&#39;: [&#39;cng.sys&#39;],
-  &#39;windows cryptographic services&#39;: [&#39;cryptsvc.dll&#39;],
-  &#39;windows directx&#39;: [&#39;dxgkrnl.sys&#39;],
-  &#39;windows dwm core library&#39;: [&#39;dwmcore.dll&#39;],
-  &#39;windows event logging service&#39;: [&#39;wevtsvc.dll&#39;],
-  &#39;windows fastfat driver&#39;: [&#39;fastfat.sys&#39;, &#39;exfat.sys&#39;],
-  &#39;windows fax compose form&#39;: [&#39;FXSCOMPOSE.dll&#39;,
-   &#39;FXSCOMPOSERES.dll&#39;,
-   &#39;FXSCOVER.exe&#39;,
-   &#39;FXSUTILITY.dll&#39;,
-   &#39;WFSR.dll&#39;,
-   &#39;WFS.exe&#39;],
-  &#39;windows file explorer&#39;: [&#39;explorer.exe&#39;],
-  &#39;windows file history service&#39;: [&#39;fhsvc.dll&#39;],
-  &#39;windows geolocation service&#39;: [&#39;lfsvc.dll&#39;],
-  &#39;windows group policy preference client&#39;: [&#39;gpprefcl.dll&#39;],
-  &#39;windows http protocol stack&#39;: [&#39;http.sys&#39;],
-  &#39;windows hyper-v&#39;: [&#39;vmswitch.sys&#39;,
-   &#39;VmsProxyHNic.sys&#39;,
-   &#39;VmsProxy.sys&#39;,
-   &#39;vmbkmclr.sys&#39;,
-   &#39;vmbkmcl.sys&#39;,
-   &#39;vmbusr.sys&#39;,
-   &#39;vmbus.sys&#39;,
-   &#39;vmsvcext.sys&#39;,
-   &#39;vmbusproxy.sys&#39;,
-   &#39;vmgencounter.sys&#39;,
-   &#39;vmgid.sys&#39;,
-   &#39;vmstorfl.sys&#39;,
-   &#39;VMBusHID.sys&#39;,
-   &#39;vms3cap.sys&#39;,
-   &#39;vmusb.sys&#39;,
-   &#39;vmci.sys&#39;],
-  &#39;windows installer&#39;: [&#39;msi.dll&#39;],
-  &#39;windows iscsi target service&#39;: [&#39;iscsied.dll&#39;,
-   &#39;iscsium.dll&#39;,
-   &#39;iscsiexe.dll&#39;,
-   &#39;iscsidsc.dll&#39;,
-   &#39;iscsicli.exe&#39;,
-   &#39;iscsiwmiv2.dll&#39;,
-   &#39;iscsicpl.dll&#39;,
-   &#39;iscsicpl.dll&#39;,
-   &#39;iscsilog.dll&#39;],
-  &#39;windows kerberos&#39;: [&#39;kerberos.dll&#39;],
-  &#39;windows kernel&#39;: [&#39;ntoskrnl.exe&#39;],
-  &#39;windows kernel32.dll&#39;: [&#39;kernel32.dll&#39;],
-  &#39;windows local security authority&#39;: [&#39;lsass.exe&#39;,
-   &#39;lsaiso.exe&#39;,
-   &#39;lsasrv.dll&#39;],
-  &#39;windows local security authority subsystem service&#39;: [&#39;lsass.exe&#39;,
-   &#39;lsaiso.exe&#39;],
-  &#39;windows modern execution server&#39;: [&#39;modernexecserver.dll&#39;],
-  &#39;windows named pipe file system&#39;: [&#39;npfs.sys&#39;],
-  &#39;windows ntfs&#39;: [&#39;ntfs.sys&#39;],
-  &#39;windows overlay filter&#39;: [&#39;wof.sys&#39;],
-  &#39;windows powershell&#39;: [&#39;powershell.exe&#39;],
-  &#39;windows print spooler components&#39;: [&#39;spoolss.dll&#39;,
-   &#39;spoolsv.exe&#39;,
-   &#39;localspl.dll&#39;],
-  &#39;windows push notifications&#39;: [&#39;wpnapps.dll&#39;,
-   &#39;wpnclient.dll&#39;,
-   &#39;wpncore.dll&#39;,
-   &#39;wpninprc.dll&#39;,
-   &#39;WpnUserService.dll&#39;,
-   &#39;wpnprv.dll&#39;,
-   &#39;wpnservice.dll&#39;],
-  &#39;windows rdp&#39;: [&#39;rdpvideominiport.sys&#39;],
-  &#39;windows remote access api&#39;: [&#39;rasapi32.dll&#39;],
-  &#39;windows remote access connection manager&#39;: [&#39;rasman.dll&#39;, &#39;rasmans.dll&#39;],
-  &#39;windows remote procedure call runtime&#39;: [&#39;rpcrt4.dll&#39;],
-  &#39;windows schannel&#39;: [&#39;schannel.dll&#39;],
-  &#39;windows security support provider interface&#39;: [&#39;secur32.dll&#39;,
-   &#39;security.dll&#39;,
-   &#39;sspicli.dll&#39;],
-  &#39;windows server service&#39;: [&#39;srv.sys&#39;, &#39;srvsvc.dll&#39;],
-  &#39;windows smb&#39;: [&#39;smbdirect.sys&#39;, &#39;npfs.sys&#39;, &#39;mrxsmb.sys&#39;, &#39;mrxsmb20.sys&#39;],
-  &#39;windows tcp/ip&#39;: [&#39;tcpip.sys&#39;],
-  &#39;windows telephony server&#39;: [&#39;tapisrv.dll&#39;, &#39;tapi3.dll&#39;],
-  &#39;windows tile data repository&#39;: [&#39;TileDataRepository.dll&#39;],
-  &#39;windows tpm device driver&#39;: [&#39;tpm.sys&#39;],
-  &#39;windows upnp device host&#39;: [&#39;upnphost.dll&#39;],
-  &#39;windows usb serial driver&#39;: [&#39;usbser.sys&#39;],
-  &#39;windows win32k&#39;: [&#39;win32k.sys&#39;,
-   &#39;win32kbase.sys&#39;,
-   &#39;win32kfull.sys&#39;,
-   &#39;win32kmin.sys&#39;,
-   &#39;win32kns.sys&#39;],
-  &#39;windows wlan auto config service&#39;: [&#39;wlansvc.dll&#39;]},
- {&#39;windows gpsvc&#39;: [&#39;gpsvc.dll&#39;],
-  &#39;chakra scripting engine&#39;: [&#39;chakra.dll&#39;, &#39;jscript9.dll&#39;],
-  &#39;windows advanced local procedure call alpc&#39;: [&#39;ntoskrnl.exe&#39;],
-  &#39;windows alpc&#39;: [&#39;ntoskrnl.exe&#39;]})
 </pre></div>
 </div>
 </div>
@@ -1344,6 +1217,96 @@ title="Print to PDF"
 <span class="n">all_bins_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">get_msrc_tags</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">])</span>
 <span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_match_at_cutoff</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">all_bin_names</span><span class="p">,</span><span class="mf">.75</span><span class="p">))</span>
 <span class="n">all_bins_df</span><span class="p">[</span><span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tag</th>
+      <th>all_bin_names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Microsoft Edge</td>
+      <td>[microsoftedge.exe, microsoftedgesh.exe, micro...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Microsoft Windows</td>
+      <td>[microsoft.windows.ual.dll, microsoft.windows....</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Windows Secure Kernel Mode</td>
+      <td>[securekernel.exe]</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Windows AppX Deployment Extensions</td>
+      <td>[appxdeploymentextensions.dll, appxdeploymente...</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>Microsoft PowerShell</td>
+      <td>[microsoft.dtc.powershell.dll, microsoft.dism....</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>378</th>
+      <td>Windows Push Notifications</td>
+      <td>[musnotification.exe]</td>
+    </tr>
+    <tr>
+      <th>380</th>
+      <td>Windows Tile Data Repository</td>
+      <td>[tiledatarepository.dll]</td>
+    </tr>
+    <tr>
+      <th>382</th>
+      <td>Windows Geolocation Service</td>
+      <td>[geolocation.dll, Geolocation.dll]</td>
+    </tr>
+    <tr>
+      <th>412</th>
+      <td>Windows Perception Simulation Service</td>
+      <td>[perceptionsimulationrest.dll, perceptionsimul...</td>
+    </tr>
+    <tr>
+      <th>429</th>
+      <td>ActiveSyncProvider</td>
+      <td>[activesyncprovider.dll, activesyncprovider.dl...</td>
+    </tr>
+  </tbody>
+</table>
+<p>40 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save results in a dictionary for later</span>
 <span class="n">tags_all_bins</span> <span class="o">=</span> <span class="n">all_bins_df</span><span class="p">[[</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]]</span>
 <span class="n">tags_all_bins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">all_bins_d</span> <span class="o">=</span> <span class="n">tags_all_bins</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
@@ -2007,7 +1970,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;# Tags correlated across similarities&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_25_1.png" src="../_images/msrc_cve_to_bins_25_1.png" />
+<img alt="../_images/msrc_cve_to_bins_26_1.png" src="../_images/msrc_cve_to_bins_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2053,7 +2016,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;# of Titles correlated across similarities&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_27_1.png" src="../_images/msrc_cve_to_bins_27_1.png" />
+<img alt="../_images/msrc_cve_to_bins_28_1.png" src="../_images/msrc_cve_to_bins_28_1.png" />
 </div>
 </div>
 </section>
@@ -2188,7 +2151,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[onramp.dll, msedge.exe, mojo_core.dll, notifi...</td>
+      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
     </tr>
     <tr>
       <th>CVE-2017-8629</th>
@@ -2200,7 +2163,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.exe, mscorlib.resources....</td>
+      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
     </tr>
     <tr>
       <th>CVE-2017-8630</th>
@@ -2280,64 +2243,64 @@ vi-1
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2022-33644</th>
-      <td>2022-07-12</td>
-      <td>XBox</td>
-      <td>Xbox Live Save Service</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB5015807</td>
-      <td>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826</td>
-      <td>[]</td>
-      <td>[xboxgipsvc.dll.mui, xbgmsvc.exe.mui, xblgames...</td>
-    </tr>
-    <tr>
-      <th>ADV170005</th>
-      <td>2017-04-11</td>
-      <td>Microsoft Office</td>
-      <td>DefenseinDepth Update for Microsoft Office</td>
-      <td></td>
-      <td>0.0</td>
-      <td>KB3141538 KB3178702 KB3178710</td>
-      <td></td>
-      <td>[]</td>
-      <td>[wuuhext.dll, chkwudrv.dll.mui, chkwudrv.dll]</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-21834</th>
-      <td>2022-01-11</td>
-      <td>Windows User-mode Driver Framework</td>
-      <td>Windows Usermode Driver Framework Reflector Dr...</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB5009543 KB5009545 KB5009546 KB5009555 KB5009...</td>
-      <td>10.0.10240.19177 10.0.14393.4886 10.0.17763.24...</td>
-      <td>[wudfcompanionhost.exe, WUDFCompanionHost.exe,...</td>
-      <td>[wudfhost.exe.mui, wudfcompanionhost.exe, wdfl...</td>
-    </tr>
-    <tr>
-      <th>CVE-2021-27092</th>
-      <td>2021-04-13</td>
-      <td>Azure AD Web Sign-in</td>
-      <td>Azure AD Web Signin</td>
-      <td>Security Feature Bypass</td>
-      <td>6.8</td>
-      <td>KB5001330 KB5001337 KB5001339 KB5001342</td>
-      <td></td>
-      <td>[]</td>
-      <td>[wssg.webapi.azureadmanagement.dll]</td>
-    </tr>
-    <tr>
-      <th>CVE-2021-43238</th>
-      <td>2021-12-14</td>
-      <td>Windows Remote Access Connection Manager</td>
-      <td>Windows Remote Access</td>
+      <th>CVE-2021-31167</th>
+      <td>2021-05-11</td>
+      <td>Windows Container Manager Service</td>
+      <td>Windows Container Manager Service</td>
       <td>Elevation of Privilege</td>
       <td>7.8</td>
-      <td>KB5008206 KB5008207 KB5008212 KB5008215 KB5008...</td>
-      <td>10.0.10240.19145 10.0.14393.4825 10.0.17763.23...</td>
-      <td>[rasmans.dll, mprsnap.dll, CapabilityAccessMan...</td>
-      <td>[wssg.rdaccessmanager.dll, remoteaccessprovide...</td>
+      <td>KB5003169 KB5003171 KB5003173</td>
+      <td>10.0.17763.1935 10.0.18363.1556 10.0.19041.982</td>
+      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
+      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-31165</th>
+      <td>2021-05-11</td>
+      <td>Windows Container Manager Service</td>
+      <td>Windows Container Manager Service</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5003173</td>
+      <td>10.0.19041.982</td>
+      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
+      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-31169</th>
+      <td>2021-05-11</td>
+      <td>Windows Container Manager Service</td>
+      <td>Windows Container Manager Service</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5003173</td>
+      <td>10.0.19041.982</td>
+      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
+      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-31208</th>
+      <td>2021-05-11</td>
+      <td>Windows Container Manager Service</td>
+      <td>Windows Container Manager Service</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5003173</td>
+      <td>10.0.19041.982</td>
+      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
+      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-31168</th>
+      <td>2021-05-11</td>
+      <td>Windows Container Manager Service</td>
+      <td>Windows Container Manager Service</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5003173</td>
+      <td>10.0.19041.982</td>
+      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
+      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2352,61 +2315,61 @@ vi-1
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2018-0797</th>
+      <th>CVE-2018-0812</th>
       <td>2018-01-09</td>
       <td>Microsoft Office</td>
       <td>Microsoft Office</td>
       <td>Remote Code Execution</td>
       <td>0.0</td>
-      <td>KB4011022 KB4011579 KB4011607 KB4011609 KB4011...</td>
+      <td>KB4011574 KB4011580 KB4011607 KB4011610 KB4011...</td>
       <td></td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2016-7260</th>
-      <td>2016-12-13</td>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>Win32k</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB3204723 KB3205383 KB3205386 KB3205394 KB3205...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2016-7259</th>
-      <td>2016-12-13</td>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>Win32k</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB3204723 KB3205383 KB3205386 KB3205394 KB3205...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2018-0795</th>
+      <th>CVE-2018-0807</th>
       <td>2018-01-09</td>
       <td>Microsoft Office</td>
       <td>Microsoft Office</td>
       <td>Remote Code Execution</td>
       <td>0.0</td>
-      <td>KB4011611 KB4011632 KB4011636</td>
+      <td>KB4011574 KB4011607 KB4011610 KB4011643 KB4011...</td>
       <td></td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2017-11826</th>
+      <th>CVE-2016-3233</th>
+      <td>2016-06-14</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3115107 KB3115111 KB3115130</td>
+      <td></td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>CVE-2016-3234</th>
+      <td>2016-06-14</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB3115014 KB3115170 KB3115187 KB3115194 KB3115...</td>
+      <td></td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11825</th>
       <td>2017-10-10</td>
       <td>Microsoft Office</td>
       <td>Microsoft Office</td>
       <td>Remote Code Execution</td>
       <td>0.0</td>
-      <td>KB3213623 KB3213627 KB3213630 KB3213647 KB3213...</td>
+      <td></td>
       <td></td>
       <td>[]</td>
       <td>[]</td>
@@ -2469,7 +2432,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[onramp.dll, msedge.exe, mojo_core.dll, notifi...</td>
+      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2483,7 +2446,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.exe, mscorlib.resources....</td>
+      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
       <td>5</td>
       <td>0</td>
     </tr>
@@ -2584,7 +2547,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[onramp.dll, msedge.exe, mojo_core.dll, notifi...</td>
+      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2598,7 +2561,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.exe, mscorlib.resources....</td>
+      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
       <td>5</td>
       <td>0</td>
     </tr>
@@ -2611,8 +2574,8 @@ vi-1
       <td>3.3</td>
       <td>KB3212225 KB3213638 KB3213641 KB4011040 KB4011...</td>
       <td></td>
-      <td>[setup.exe, msoe.dll, msoeres.dll, textentitye...</td>
-      <td>[GKWord.dll, provsvc.dll.mui, OUTLMIME.DLL, FB...</td>
+      <td>[gdiplus.dll, msoe.dll, setup.exe, msoeres.dll...</td>
+      <td>[C2R64.dll, msiexec.exe.mui, OUTLMIME.DLL, Com...</td>
       <td>221</td>
       <td>7</td>
     </tr>
@@ -2625,8 +2588,8 @@ vi-1
       <td>5.5</td>
       <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
       <td></td>
-      <td>[setup.exe, msoe.dll, msoeres.dll, wuauclt.exe...</td>
-      <td>[WindowsSandbox.exe, windows.globalization.dll...</td>
+      <td>[gdiplus.dll, msoe.dll, setup.exe, msoeres.dll...</td>
+      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
       <td>60</td>
       <td>6</td>
     </tr>
@@ -2639,8 +2602,8 @@ vi-1
       <td>5.5</td>
       <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
       <td></td>
-      <td>[wuauclt.exe, msoeres.dll, msoe.dll, setup.exe]</td>
-      <td>[WindowsSandbox.exe, windows.globalization.dll...</td>
+      <td>[msoe.dll, msoeres.dll, wuauclt.exe, setup.exe]</td>
+      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
       <td>60</td>
       <td>4</td>
     </tr>
@@ -2784,8 +2747,8 @@ vi-1
       <td>7.8</td>
       <td>KB4598229 KB4598230 KB4598231 KB4598242 KB4598...</td>
       <td></td>
-      <td>[wmp.dll, wmidx.dll, certxds.dll, msflacdecode...</td>
-      <td>[windows.media.dll.mui, provsvc.dll.mui, Windo...</td>
+      <td>[msauddecmft.dll, mfpmp.exe, mfreadwrite.dll, ...</td>
+      <td>[mfpmp.exe, msiexec.exe.mui, MCRecvSrc.dll, mf...</td>
       <td>147</td>
       <td>56</td>
     </tr>
@@ -2798,8 +2761,8 @@ vi-1
       <td>7.8</td>
       <td>KB5000802 KB5000808 KB5000822</td>
       <td></td>
-      <td>[AppVPublishing.dll, AppVShNotify.exe, AppVOrc...</td>
-      <td>[wininit.exe, searchapp.exe, AppvClientEventLo...</td>
+      <td>[appvorchestration.dll, AppVEntSubsystemContro...</td>
+      <td>[AppVManifest.dll, appvpolicy.dll, appvetwclie...</td>
       <td>99</td>
       <td>48</td>
     </tr>
@@ -2812,8 +2775,8 @@ vi-1
       <td>4.4</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[wmp.dll, Windows.Media.Editing.dll, mfnetsrc....</td>
-      <td>[windows.media.dll.mui, Windows.Media.Backgrou...</td>
+      <td>[msauddecmft.dll, mfpmp.exe, Windows.Media.Edi...</td>
+      <td>[mfpmp.exe, MCRecvSrc.dll, mfh264enc.dll, mfwm...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2826,8 +2789,8 @@ vi-1
       <td>3.3</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[wmp.dll, Windows.Media.Editing.dll, mfnetsrc....</td>
-      <td>[windows.media.dll.mui, Windows.Media.Backgrou...</td>
+      <td>[msauddecmft.dll, mfpmp.exe, Windows.Media.Edi...</td>
+      <td>[mfpmp.exe, MCRecvSrc.dll, mfh264enc.dll, mfwm...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2840,8 +2803,8 @@ vi-1
       <td>5.0</td>
       <td>KB4598229 KB4598230 KB4598242 KB4598243</td>
       <td></td>
-      <td>[sapi_extensions.dll, themeui.dll.mun, sensors...</td>
-      <td>[ipamserver.dll, ntasn1.dll.mui, provsvc.dll.m...</td>
+      <td>[apisampling.dll, themeui.dll, msoe.dll, mmdev...</td>
+      <td>[msiexec.exe.mui, Magnification.dll, themeui.d...</td>
       <td>104</td>
       <td>34</td>
     </tr>
@@ -2869,7 +2832,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[rasmans.dll]</td>
-      <td>[mstsc.exe.mui, cmcfg32.dll, cmdl32.exe, wssg....</td>
+      <td>[rastls.dll, raschap.dll, cmmon32.exe.mui, dac...</td>
       <td>59</td>
       <td>1</td>
     </tr>
@@ -2883,7 +2846,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[partmgr.sys]</td>
-      <td>[Windows.Management.Service.dll, quota.sys, pa...</td>
+      <td>[windows.management.service.dll.mui, csvnsflt....</td>
       <td>10</td>
       <td>1</td>
     </tr>
@@ -2897,7 +2860,7 @@ vi-1
       <td>KB5004237 KB5004244 KB5004245</td>
       <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
       <td>[rasmans.dll]</td>
-      <td>[mstsc.exe.mui, cmcfg32.dll, cmdl32.exe, wssg....</td>
+      <td>[rastls.dll, raschap.dll, cmmon32.exe.mui, dac...</td>
       <td>59</td>
       <td>1</td>
     </tr>
@@ -2911,7 +2874,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[windlp.dll]</td>
-      <td>[rjvplatform.dll, LoggingPlatform.dll, RjvPlat...</td>
+      <td>[LoggingPlatform.dll, hhsetup.dll, rjvplatform...</td>
       <td>10</td>
       <td>1</td>
     </tr>
@@ -2925,7 +2888,7 @@ vi-1
       <td>KB5015807 KB5015808 KB5015811 KB5015814 KB5015...</td>
       <td>10.0.10240.19360 10.0.14393.5246 10.0.17763.31...</td>
       <td>[samcli.dll]</td>
-      <td>[wlidsvc.dll, acctres.dll, samcli.dll, wlidsvc...</td>
+      <td>[wlidsvc.dll, samcli.dll, wlidsvc.dll.mui, mso...</td>
       <td>6</td>
       <td>1</td>
     </tr>
@@ -2989,7 +2952,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>[ipnat.sys]</td>
-      <td>[ipnat.sys.mui, ipnat.sys]</td>
+      <td>[ipnat.sys, ipnat.sys.mui]</td>
       <td>2</td>
       <td>1</td>
     </tr>
@@ -3002,8 +2965,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
-      <td>[rtffilt.dll, nlhtml.dll, fltLib.dll, ieapfltr...</td>
+      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
+      <td>[smbbandwidthlimitfilter.sys, ieapfltr.dll.mun...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -3016,8 +2979,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
-      <td>[rtffilt.dll, nlhtml.dll, fltLib.dll, ieapfltr...</td>
+      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
+      <td>[smbbandwidthlimitfilter.sys, ieapfltr.dll.mun...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -3031,7 +2994,7 @@ vi-1
       <td>KB5019970 KB5020614 KB5020622 KB5020678 KB5020...</td>
       <td>10.0.04005.02 10.0.04585.02 10.0.09110.12 10.0...</td>
       <td>[uiribbon.dll]</td>
-      <td>[coreclr.dll, AxImp.exe, System.Runtime.Serial...</td>
+      <td>[accessibility.dll, msvcr100_clr0400.dll, syst...</td>
       <td>162</td>
       <td>1</td>
     </tr>
@@ -3044,8 +3007,8 @@ vi-1
       <td>8.8</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msiexec.exe, setup.exe, msi.dll, wwahost.exe....</td>
-      <td>[WindowsSandbox.exe, windows.globalization.dll...</td>
+      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
+      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3072,8 +3035,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msiexec.exe, setup.exe, msi.dll, wwahost.exe....</td>
-      <td>[WindowsSandbox.exe, windows.globalization.dll...</td>
+      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
+      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
       <td>56</td>
       <td>7</td>
     </tr>
@@ -3087,7 +3050,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
       <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
       <td>[bindflt.sys]</td>
-      <td>[ndiscap.sys, hvsifltr.sys, IndirectKmd.sys, s...</td>
+      <td>[ipfltdrv.sys, bfs.sys, mouhid.sys, tsfairshar...</td>
       <td>50</td>
       <td>1</td>
     </tr>
@@ -3100,8 +3063,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[winspool.drv, Windows.Graphics.Printing.Workf...</td>
-      <td>[printdialog.exe, printdialog.exe.mui, print.p...</td>
+      <td>[Windows.Graphics.Printing.Workflow.dll, Print...</td>
+      <td>[spoolss.dll, localspl.dll.mui, printdialog.ex...</td>
       <td>21</td>
       <td>3</td>
     </tr>
@@ -3114,8 +3077,8 @@ vi-1
       <td>7.5</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msiexec.exe, setup.exe, msi.dll, wwahost.exe....</td>
-      <td>[WindowsSandbox.exe, windows.globalization.dll...</td>
+      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
+      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3128,8 +3091,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[lsaiso.exe, keyiso.dll, LsaIso.exe]</td>
-      <td>[cngkeyhelper.dll, LsaIso.exe, lsaiso.exe, key...</td>
+      <td>[keyiso.dll, lsaiso.exe, LsaIso.exe]</td>
+      <td>[keyiso.dll, lsaiso.exe, LsaIso.exe, keyiso.dl...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -3207,7 +3170,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[onramp.dll, msedge.exe, mojo_core.dll, notifi...</td>
+      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
       <td>23</td>
       <td>0</td>
       <td>True</td>
@@ -3223,7 +3186,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.exe, mscorlib.resources....</td>
+      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
       <td>5</td>
       <td>0</td>
       <td>True</td>
@@ -3350,7 +3313,7 @@ vi-1
       <td>KB5002258 KB5002264 KB5002267 KB5002269 KB5002271</td>
       <td>15.0.5485.1000 16.0.10390.20000 16.0.15601.200...</td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.exe, srvsvc.dll, srvsvc....</td>
+      <td>[Microsoft.SharePoint.Calc.dll, Microsoft.Shar...</td>
       <td>8</td>
       <td>0</td>
       <td>True</td>
@@ -3366,7 +3329,7 @@ vi-1
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[staxmem.dll, srvsvc.dll.mui, srvsvc.dll]</td>
+      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3382,7 +3345,7 @@ vi-1
       <td>KB5019758</td>
       <td>15.01.2375.037 15.01.2507.016 15.02.0986.036 1...</td>
       <td>[]</td>
-      <td>[staxmem.dll, srvsvc.dll.mui, srvsvc.dll]</td>
+      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3398,7 +3361,7 @@ vi-1
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[staxmem.dll, srvsvc.dll.mui, srvsvc.dll]</td>
+      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3430,7 +3393,7 @@ vi-1
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[mscorlib.resources.dll, XLCALL32.DLL, Microso...</td>
+      <td>[EXCEL.EXE, XLINTL32.COMMON.DLL, Microsoft.Exc...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3446,7 +3409,7 @@ vi-1
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[mscorlib.resources.dll, XLCALL32.DLL, Microso...</td>
+      <td>[EXCEL.EXE, XLINTL32.COMMON.DLL, Microsoft.Exc...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3462,7 +3425,7 @@ vi-1
       <td>KB5021000 KB5021001 KB5021002 KB5021003 KB5021004</td>
       <td>49345 Application Build 14.42.49347, Platform ...</td>
       <td>[]</td>
-      <td>[msprivs.dll.mui, mscorlib.resources.dll, cmst...</td>
+      <td>[mscorlib.resources.dll, msprivs.dll.mui, cmst...</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3478,7 +3441,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
       <td>[]</td>
-      <td>[GKWord.dll, OUTLMIME.DLL, FBIBLIO.DLL, Entity...</td>
+      <td>[C2R64.dll, OUTLMIME.DLL, Common.SqlDatabase.d...</td>
       <td>161</td>
       <td>0</td>
       <td>True</td>
@@ -3626,7 +3589,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with Bins Assigned This Year&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_49_1.png" src="../_images/msrc_cve_to_bins_49_1.png" />
+<img alt="../_images/msrc_cve_to_bins_50_1.png" src="../_images/msrc_cve_to_bins_50_1.png" />
 </div>
 </div>
 </section>
@@ -3643,7 +3606,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with Bins Assigned All Time&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_51_1.png" src="../_images/msrc_cve_to_bins_51_1.png" />
+<img alt="../_images/msrc_cve_to_bins_52_1.png" src="../_images/msrc_cve_to_bins_52_1.png" />
 </div>
 </div>
 </section>
@@ -3660,7 +3623,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with KB Verified Update Bins This Year&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_53_1.png" src="../_images/msrc_cve_to_bins_53_1.png" />
+<img alt="../_images/msrc_cve_to_bins_54_1.png" src="../_images/msrc_cve_to_bins_54_1.png" />
 </div>
 </div>
 </section>
@@ -3677,7 +3640,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with KB Verified Update Bins All Time&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_55_1.png" src="../_images/msrc_cve_to_bins_55_1.png" />
+<img alt="../_images/msrc_cve_to_bins_56_1.png" src="../_images/msrc_cve_to_bins_56_1.png" />
 </div>
 </div>
 </section>
@@ -3694,7 +3657,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with KB Verified Update Bins That Have KB information This Year&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_57_1.png" src="../_images/msrc_cve_to_bins_57_1.png" />
+<img alt="../_images/msrc_cve_to_bins_58_1.png" src="../_images/msrc_cve_to_bins_58_1.png" />
 </div>
 </div>
 </section>
@@ -3711,7 +3674,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_59_1.png" src="../_images/msrc_cve_to_bins_59_1.png" />
+<img alt="../_images/msrc_cve_to_bins_60_1.png" src="../_images/msrc_cve_to_bins_60_1.png" />
 </div>
 </div>
 </section>
@@ -3731,7 +3694,7 @@ vi-1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time Ratio&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/msrc_cve_to_bins_61_1.png" src="../_images/msrc_cve_to_bins_61_1.png" />
+<img alt="../_images/msrc_cve_to_bins_62_1.png" src="../_images/msrc_cve_to_bins_62_1.png" />
 </div>
 </div>
 </section>
@@ -3856,7 +3819,7 @@ Name: Tag, Length: 32, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1919/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1886/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
   tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(lambda x: list(set(x)))
 </pre></div>
 </div>
@@ -3911,12 +3874,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Azure Site Recovery</th>
       <th>Azure Site Recovery</th>
-      <td>[CVE-2022-35802, CVE-2022-35775, CVE-2022-3580...</td>
-      <td>[2022-07-12, 2022-04-12, 2022-08-09, 2022-03-08]</td>
-      <td>[Information Disclosure, Elevation of Privileg...</td>
+      <td>[CVE-2022-35801, CVE-2022-35813, CVE-2022-3577...</td>
+      <td>[2022-08-09, 2022-07-12, 2022-03-08, 2022-04-12]</td>
+      <td>[Denial of Service, Remote Code Execution, Ele...</td>
       <td>[4.9, 4.4, 6.2, 6.5, 8.1, 7.2, 8.3, 7.8]</td>
       <td>[]</td>
-      <td>[9.47, 9.48, 9.49, 9.50]</td>
+      <td>[9.49, 9.47, 9.50, 9.48]</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False]</td>
@@ -3926,12 +3889,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Microsoft Office</th>
       <th>Microsoft Office</th>
-      <td>[CVE-2022-30159, CVE-2022-38048, CVE-2022-4104...</td>
-      <td>[2022-07-12, 2022-05-10, 2022-06-14, 2022-10-1...</td>
-      <td>[Security Feature Bypass, Remote Code Executio...</td>
+      <td>[CVE-2022-21840, CVE-2022-30172, CVE-2022-2910...</td>
+      <td>[2022-08-09, 2022-06-14, 2022-10-11, 2022-05-1...</td>
+      <td>[Spoofing, Security Feature Bypass, Remote Cod...</td>
       <td>[3.3, 4.7, 5.5, 6.5, 7.8, 8.8]</td>
-      <td>[, KB5002062 KB5002210 KB5002212 KB5002214 KB5...</td>
-      <td>[, 15.0.5467.1000 16.0.5344.1000, 15.0.5423.10...</td>
+      <td>[, KB5002026 KB5002279 KB5002288, KB4462205 KB...</td>
+      <td>[, 15.0.5493.1000 16.0.5365.1000 16.66.2210090...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False, True]</td>
@@ -3941,12 +3904,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30143, CVE-2022-30161, CVE-2022-3014...</td>
-      <td>[2022-09-13, 2022-06-14]</td>
+      <td>[CVE-2022-30161, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
-      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
+      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>
@@ -3956,9 +3919,9 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Microsoft Dynamics GP</th>
       <th>Microsoft Dynamics GP</th>
-      <td>[CVE-2022-23274, CVE-2022-23273, CVE-2022-2327...</td>
+      <td>[CVE-2022-23273, CVE-2022-23272, CVE-2022-2327...</td>
       <td>[2022-02-08]</td>
-      <td>[Elevation of Privilege, Remote Code Execution...</td>
+      <td>[Spoofing, Remote Code Execution, Elevation of...</td>
       <td>[5.4, 6.5, 7.1, 8.1, 8.8]</td>
       <td>[]</td>
       <td>[18.4.1434]</td>
@@ -4139,12 +4102,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30143, CVE-2022-30161, CVE-2022-3014...</td>
-      <td>[2022-09-13, 2022-06-14]</td>
+      <td>[CVE-2022-30161, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
-      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
+      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>
@@ -4375,16 +4338,16 @@ Name: Tag, Length: 32, dtype: int64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ".env"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: ".env",
+            kernelName: "python3",
             path: "./analysis"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = '.env'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
