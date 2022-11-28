@@ -718,53 +718,53 @@ title="Print to PDF"
 <h1>MSRC Tags to File Version Info<a class="headerlink" href="#msrc-tags-to-file-version-info" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">difflib</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import difflib
+import requests
+import pandas as pd
+import requests
+import json
+import matplotlib
 
-<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_tags</span><span class="p">,</span> <span class="n">get_msrc_titles</span><span class="p">,</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">,</span> <span class="n">MSRC_CVRF_PANDAS_FULL</span><span class="p">,</span><span class="n">MSRC_CVRF_PANDAS</span><span class="p">,</span> <span class="n">get_msrc_tags_freq</span>
-<span class="kn">from</span> <span class="nn">cvedata.win_verinfo</span> <span class="kn">import</span> <span class="n">get_verinfo_desc_to_bins_json</span>
-<span class="kn">from</span> <span class="nn">cvedata.winbindex</span> <span class="kn">import</span> <span class="n">get_winbindex_desc_to_bin_map</span>
+from cvedata.msrc_pandas import get_msrc_tags, get_msrc_titles, get_msrc_cvrf_pandas_df, MSRC_CVRF_PANDAS_FULL,MSRC_CVRF_PANDAS, get_msrc_tags_freq
+from cvedata.win_verinfo import get_verinfo_desc_to_bins_json
+from cvedata.winbindex import get_winbindex_desc_to_bin_map
 
-<span class="kn">from</span> <span class="nn">cvedata.msrc_cve_to_bins</span> <span class="kn">import</span> <span class="n">clean_tag</span>
+from cvedata.msrc_cve_to_bins import clean_tag
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="n">get_msrc_tags_freq</span><span class="p">()</span>
-<span class="n">titles</span> <span class="o">=</span> <span class="n">get_msrc_titles</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags = get_msrc_tags_freq()
+titles = get_msrc_titles()
 
-<span class="n">win10_sys32_ver</span> <span class="o">=</span> <span class="n">get_verinfo_desc_to_bins_json</span><span class="p">()</span>
-<span class="n">wb_ver</span> <span class="o">=</span> <span class="n">get_winbindex_desc_to_bin_map</span><span class="p">()</span>
+win10_sys32_ver = get_verinfo_desc_to_bins_json()
+wb_ver = get_winbindex_desc_to_bin_map()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_names</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin_names = []
 
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">wb_ver</span><span class="p">:</span>
-    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">wb_ver</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-        <span class="n">bin_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+for key in wb_ver:
+    for bin in wb_ver[key]:
+        bin_names.append(bin)
 
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">win10_sys32_ver</span><span class="p">:</span>
-    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">win10_sys32_ver</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-        <span class="n">bin_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+for key in win10_sys32_ver:
+    for bin in win10_sys32_ver[key]:
+        bin_names.append(bin)
 
-<span class="n">bin_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">bin_names</span><span class="p">))</span>
+bin_names = list(set(bin_names))
 
-<span class="n">all_bin_names</span> <span class="o">=</span> <span class="p">{}</span>
+all_bin_names = {}
 
-<span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">bin_names</span><span class="p">:</span>
-    <span class="n">all_bin_names</span><span class="p">[</span><span class="nb">bin</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bin</span><span class="p">]</span>
+for bin in bin_names:
+    all_bin_names[bin] = [bin]
 
-<span class="nb">len</span><span class="p">(</span><span class="n">all_bin_names</span><span class="p">)</span>
+len(all_bin_names)
 </pre></div>
 </div>
 </div>
@@ -776,8 +776,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">win10_sys32_ver</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wb_ver</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(len(win10_sys32_ver))
+print(len(wb_ver))
 </pre></div>
 </div>
 </div>
@@ -790,9 +790,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;tag count&#39;</span> <span class="p">:</span> <span class="n">tags</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">tags_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;tag&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tags_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tag count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_df = pd.DataFrame({&#39;tag count&#39; : tags}).reset_index()
+tags_df.rename(columns={&#39;index&#39;: &#39;tag&#39;},inplace=True)
+tags_df.sort_values(by=[&#39;tag count&#39;], ascending=False)
 </pre></div>
 </div>
 </div>
@@ -882,24 +882,25 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_match_at_cutoff</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">possibilities</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span><span class="n">cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def get_match_at_cutoff(key,possibilities: dict,cutoff: float = 0.6):
 
-    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[]</span>
+    if key is None:
+        return []
 
-    <span class="n">key</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="n">matches</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">get_close_matches</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">possibilities</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+    key = clean_tag(key)
+    matches = difflib.get_close_matches(key,possibilities.keys(),n=10000,cutoff=cutoff)
 
-    <span class="c1"># map keys to bins</span>
-    <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bin</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">possibilities</span><span class="p">[</span><span class="n">desc</span><span class="p">]]</span>
-    <span class="k">return</span> <span class="n">bins</span>
+    # map keys to bins
+    bins = [bin for desc in matches for bin in possibilities[desc]]
+    return bins
+
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">win10_sys32_ver</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(win10_sys32_ver)
 </pre></div>
 </div>
 </div>
@@ -911,8 +912,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;win10_sys32_ver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_match_at_cutoff</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">win10_sys32_ver</span><span class="p">,))</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;win10_sys32_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_df[&#39;win10_sys32_ver&#39;] = tags_df[&#39;tag&#39;].apply(get_match_at_cutoff, args=(win10_sys32_ver,))
+tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
 </pre></div>
 </div>
 </div>
@@ -1014,9 +1015,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wb_ver</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;wb_ver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_match_at_cutoff</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">wb_ver</span><span class="p">,))</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;wb_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># wb_ver
+tags_df[&#39;wb_ver&#39;] = tags_df[&#39;tag&#39;].apply(get_match_at_cutoff, args=(wb_ver,))
+tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
 </pre></div>
 </div>
 </div>
@@ -1130,9 +1131,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all_bin_names</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_match_at_cutoff</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">all_bin_names</span><span class="p">,</span><span class="mf">.75</span><span class="p">))</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># all_bin_names
+tags_df[&#39;all_bin_names&#39;] = tags_df[&#39;tag&#39;].apply(get_match_at_cutoff, args=(all_bin_names,.75))
+tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
 </pre></div>
 </div>
 </div>
@@ -1489,8 +1490,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># files unique to ver_info</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;win10_sys32_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;wb_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># files unique to ver_info
+tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) == 0) &amp; tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) == 0) ]
 </pre></div>
 </div>
 </div>
@@ -1679,8 +1680,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># files unique to winbindex</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;wb_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;win10_sys32_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># files unique to winbindex
+tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) == 0) &amp; tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) == 0)]
 </pre></div>
 </div>
 </div>
@@ -1829,8 +1830,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># files unique to bin names</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;wb_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;win10_sys32_ver&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># files unique to bin names
+tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) == 0) &amp; tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) == 0)]
 </pre></div>
 </div>
 </div>
@@ -1907,8 +1908,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many tags did we match based on bin name alone?</span>
-<span class="n">tags_df</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># how many tags did we match based on bin name alone?
+tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
 </pre></div>
 </div>
 </div>

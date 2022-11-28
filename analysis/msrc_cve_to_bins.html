@@ -1123,26 +1123,26 @@ title="Print to PDF"
 <h3>import cvedata<a class="headerlink" href="#import-cvedata" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.winbindex</span> <span class="kn">import</span> <span class="n">get_winbindex_desc_to_bin_map</span><span class="p">,</span> <span class="n">WINBINDEX_GITHUB_URL</span><span class="p">,</span> <span class="n">get_winbindex_kbs_to_bin_map</span>
-<span class="kn">from</span> <span class="nn">cvedata.win_verinfo</span> <span class="kn">import</span> <span class="n">get_verinfo_desc_to_bins_json</span>
-<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_tags</span><span class="p">,</span> <span class="n">get_msrc_titles</span><span class="p">,</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">,</span> <span class="n">MSRC_CVRF_PANDAS_FULL</span><span class="p">,</span><span class="n">MSRC_CVRF_PANDAS</span>
-<span class="kn">from</span> <span class="nn">cvedata.msrc_known_bins</span> <span class="kn">import</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">,</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span>
-<span class="kn">from</span> <span class="nn">cvedata.ms_feed_kbs</span> <span class="kn">import</span> <span class="n">get_ms_kb_to_bins_json</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from cvedata.winbindex import get_winbindex_desc_to_bin_map, WINBINDEX_GITHUB_URL, get_winbindex_kbs_to_bin_map
+from cvedata.win_verinfo import get_verinfo_desc_to_bins_json
+from cvedata.msrc_pandas import get_msrc_tags, get_msrc_titles, get_msrc_cvrf_pandas_df, MSRC_CVRF_PANDAS_FULL,MSRC_CVRF_PANDAS
+from cvedata.msrc_known_bins import KNOWN_TAG_TO_BIN_MAP, KNOWN_TITLE_TO_BIN_MAP
+from cvedata.ms_feed_kbs import get_ms_kb_to_bins_json
 
 
-<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">clean_impact</span>
-<span class="kn">from</span> <span class="nn">cvedata.msrc_cve_to_bins</span> <span class="kn">import</span> <span class="n">clean_tag</span><span class="p">,</span><span class="n">get_msrc_all_desc_to_bins</span>
+from cvedata.msrc_pandas import clean_impact
+from cvedata.msrc_cve_to_bins import clean_tag,get_msrc_all_desc_to_bins
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">difflib</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import difflib
+from datetime import datetime
 
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+pd.set_option(&#39;display.max_rows&#39;, 20)
 </pre></div>
 </div>
 </div>
@@ -1152,12 +1152,12 @@ title="Print to PDF"
 <h3>Setup data sources<a class="headerlink" href="#setup-data-sources" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">,</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span> <span class="c1"># hardcoded tag/title to bin</span>
-<span class="n">tags_json</span> <span class="o">=</span> <span class="n">get_msrc_tags</span><span class="p">()</span>
-<span class="n">titles_json</span> <span class="o">=</span> <span class="n">get_msrc_titles</span><span class="p">()</span>
-<span class="n">verinfo_desc_to_bins</span> <span class="o">=</span> <span class="n">get_verinfo_desc_to_bins_json</span><span class="p">()</span>
-<span class="n">wv_ver</span> <span class="o">=</span> <span class="n">get_winbindex_desc_to_bin_map</span><span class="p">()</span>
-<span class="n">all_desc_to_bins</span> <span class="o">=</span> <span class="n">get_msrc_all_desc_to_bins</span><span class="p">()</span> <span class="c1">#combined wv_ver and verinfo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>KNOWN_TAG_TO_BIN_MAP, KNOWN_TITLE_TO_BIN_MAP # hardcoded tag/title to bin
+tags_json = get_msrc_tags()
+titles_json = get_msrc_titles()
+verinfo_desc_to_bins = get_verinfo_desc_to_bins_json()
+wv_ver = get_winbindex_desc_to_bin_map()
+all_desc_to_bins = get_msrc_all_desc_to_bins() #combined wv_ver and verinfo
 </pre></div>
 </div>
 </div>
@@ -1170,24 +1170,24 @@ title="Print to PDF"
 <h3>Build list of all known Windows binary names<a class="headerlink" href="#build-list-of-all-known-windows-binary-names" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_names</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin_names = []
 
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">wv_ver</span><span class="p">:</span>
-    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">wv_ver</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-        <span class="n">bin_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+for key in wv_ver:
+    for bin in wv_ver[key]:
+        bin_names.append(bin)
 
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">verinfo_desc_to_bins</span><span class="p">:</span>
-    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">verinfo_desc_to_bins</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-        <span class="n">bin_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+for key in verinfo_desc_to_bins:
+    for bin in verinfo_desc_to_bins[key]:
+        bin_names.append(bin)
 
-<span class="n">bin_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">bin_names</span><span class="p">))</span>
+bin_names = list(set(bin_names))
 
-<span class="n">all_bin_names</span> <span class="o">=</span> <span class="p">{}</span>
+all_bin_names = {}
 
-<span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">bin_names</span><span class="p">:</span>
-    <span class="n">all_bin_names</span><span class="p">[</span><span class="nb">bin</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bin</span><span class="p">]</span>
+for bin in bin_names:
+    all_bin_names[bin] = [bin]
 
-<span class="nb">len</span><span class="p">(</span><span class="n">all_bin_names</span><span class="p">)</span>
+len(all_bin_names)
 </pre></div>
 </div>
 </div>
@@ -1202,21 +1202,21 @@ title="Print to PDF"
 <h3>Correlate MSRC tags to Windows Binary Names<a class="headerlink" href="#correlate-msrc-tags-to-windows-binary-names" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_match_at_cutoff</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">possibilities</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span><span class="n">cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def get_match_at_cutoff(key,possibilities: dict,cutoff: float = 0.6):
 
-    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[]</span>
+    if key is None:
+        return []
 
-    <span class="n">key</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="n">matches</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">get_close_matches</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">possibilities</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+    key = clean_tag(key)
+    matches = difflib.get_close_matches(key,possibilities.keys(),n=10000,cutoff=cutoff)
 
-    <span class="c1"># map keys to bins</span>
-    <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bin</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">possibilities</span><span class="p">[</span><span class="n">desc</span><span class="p">]]</span>
-    <span class="k">return</span> <span class="n">bins</span>
+    # map keys to bins
+    bins = [bin for desc in matches for bin in possibilities[desc]]
+    return bins
     
-<span class="n">all_bins_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">get_msrc_tags</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">])</span>
-<span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_match_at_cutoff</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">all_bin_names</span><span class="p">,</span><span class="mf">.75</span><span class="p">))</span>
-<span class="n">all_bins_df</span><span class="p">[</span><span class="n">all_bins_df</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+all_bins_df = pd.DataFrame(get_msrc_tags(),columns=[&#39;Tag&#39;])
+all_bins_df[&#39;all_bin_names&#39;] = all_bins_df[&#39;Tag&#39;].apply(get_match_at_cutoff, args=(all_bin_names,.75))
+all_bins_df[all_bins_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
 </pre></div>
 </div>
 </div>
@@ -1306,19 +1306,19 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save results in a dictionary for later</span>
-<span class="n">tags_all_bins</span> <span class="o">=</span> <span class="n">all_bins_df</span><span class="p">[[</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]]</span>
-<span class="n">tags_all_bins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">all_bins_d</span> <span class="o">=</span> <span class="n">tags_all_bins</span><span class="p">[</span><span class="s1">&#39;all_bin_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Save results in a dictionary for later
+tags_all_bins = all_bins_df[[&#39;Tag&#39;,&#39;all_bin_names&#39;]]
+tags_all_bins.set_index(&#39;Tag&#39;, inplace=True)
+all_bins_d = tags_all_bins[&#39;all_bin_names&#39;].to_dict()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cvrf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
-<span class="n">all_cvrf_df</span> <span class="o">=</span> <span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Acks&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>all_cvrf_df = pd.DataFrame.from_dict(get_msrc_cvrf_pandas_df())
+all_cvrf_df = all_cvrf_df.drop(&#39;Acks&#39;,axis=1)
+all_cvrf_df.head()
 </pre></div>
 </div>
 </div>
@@ -1410,54 +1410,54 @@ title="Print to PDF"
 <h3>Correlate MSRC tags to Windows File Descriptions across Similarities [.25, .45, .5, .55, .75, .9, 1]<a class="headerlink" href="#correlate-msrc-tags-to-windows-file-descriptions-across-similarities-25-45-5-55-75-9-1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_tag_similarity_df</span><span class="p">(</span><span class="n">row</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">key</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">desc_to_bins</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span><span class="n">col_pre</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">min_sims</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Builds similarity columns into Dataframe at min_sims intervals</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def get_tag_similarity_df(row : str,key : str,desc_to_bins: dict,col_pre : str,min_sims: list):
+    &quot;&quot;&quot;
+    Builds similarity columns into Dataframe at min_sims intervals
+    &quot;&quot;&quot;
 
-    <span class="n">bins</span> <span class="o">=</span> <span class="p">{}</span>
+    bins = {}
 
-    <span class="c1"># init bins</span>
-    <span class="k">for</span> <span class="n">min_sim</span> <span class="ow">in</span> <span class="n">min_sims</span><span class="p">:</span>
-            <span class="n">bins</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">min_sim</span><span class="p">,[])</span>
+    # init bins
+    for min_sim in min_sims:
+            bins.setdefault(min_sim,[])
 
-    <span class="n">ctag1</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    ctag1 = clean_tag(row[key]).split()
 
-    <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">desc_to_bins</span><span class="p">:</span>
+    for desc in desc_to_bins:
 
-        <span class="c1"># check for bad/common tag</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctag1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">break</span>
+        # check for bad/common tag
+        if len(ctag1) == 0:
+            break
         
-        <span class="n">ctag2</span> <span class="o">=</span> <span class="n">clean_tag</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        ctag2 = clean_tag(desc).split()
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctag2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">continue</span>
+        if len(ctag2) == 0:
+            continue
         
-        <span class="n">s</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">ctag1</span><span class="p">,</span><span class="n">ctag2</span><span class="p">)</span>
+        s = difflib.SequenceMatcher(None,ctag1,ctag2)
         
-        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">real_quick_ratio</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">min_sims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">s</span><span class="o">.</span><span class="n">quick_ratio</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">min_sims</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        if s.real_quick_ratio() &gt; min_sims[0] and s.quick_ratio() &gt; min_sims[0]:
             
-            <span class="n">sim</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">ratio</span><span class="p">()</span>
+            sim = s.ratio()
 
-            <span class="c1"># add bins to </span>
-            <span class="k">for</span> <span class="n">min_sim</span> <span class="ow">in</span> <span class="n">min_sims</span><span class="p">:</span>                      
-                <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;=</span> <span class="n">min_sim</span><span class="p">:</span>
-                    <span class="p">[</span><span class="n">bins</span><span class="p">[</span><span class="n">min_sim</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span> <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">desc_to_bins</span><span class="p">[</span><span class="n">desc</span><span class="p">]]</span>
+            # add bins to 
+            for min_sim in min_sims:                      
+                if sim &gt;= min_sim:
+                    [bins[min_sim].append(bin) for bin in desc_to_bins[desc]]
 
-    <span class="k">for</span> <span class="n">sim_score</span> <span class="ow">in</span> <span class="n">bins</span><span class="p">:</span>
-        <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col_pre</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">sim_score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="n">sim_score</span><span class="p">]</span>
+    for sim_score in bins:
+        row[f&quot;{col_pre}-{sim_score}&quot;] = bins[sim_score]
 
-    <span class="k">return</span> <span class="n">row</span>
+    return row
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Tag&#39;</span>
-<span class="n">tags_sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">])</span>
-<span class="n">tags_sim_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>key = &#39;Tag&#39;
+tags_sim_df = pd.DataFrame(all_cvrf_df[&#39;Tag&#39;].unique(),columns= [&#39;Tag&#39;])
+tags_sim_df.head()
 </pre></div>
 </div>
 </div>
@@ -1510,10 +1510,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Tag&#39;</span>
-<span class="n">tags_sim_verinfo_df</span> <span class="o">=</span> <span class="n">tags_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">all_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">tags_sim_map</span> <span class="o">=</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">)</span>
-<span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>key = &#39;Tag&#39;
+tags_sim_verinfo_df = tags_sim_df.apply(get_tag_similarity_df,args=(key,all_desc_to_bins,&#39;vi&#39;,[.25, .45, .5, .55, .75, .9, 1]),axis=1)
+tags_sim_map = tags_sim_verinfo_df.set_index(&#39;Tag&#39;)
+tags_sim_verinfo_df.head()
 </pre></div>
 </div>
 </div>
@@ -1608,10 +1608,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">])</span>
-<span class="c1"># drop chromium titles</span>
-<span class="n">titles_sim_df</span> <span class="o">=</span> <span class="n">titles_sim_df</span><span class="p">[</span><span class="o">~</span><span class="n">titles_sim_df</span><span class="o">.</span><span class="n">Title</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Chromium CVE&#39;</span><span class="p">)]</span>
-<span class="n">titles_sim_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>titles_sim_df = pd.DataFrame(all_cvrf_df[&#39;Title&#39;].unique(),columns= [&#39;Title&#39;])
+# drop chromium titles
+titles_sim_df = titles_sim_df[~titles_sim_df.Title.str.contains(&#39;Chromium CVE&#39;)]
+titles_sim_df.head()
 </pre></div>
 </div>
 </div>
@@ -1664,10 +1664,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Title&#39;</span>
-<span class="n">titles_sim_verinfo_df</span> <span class="o">=</span> <span class="n">titles_sim_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_tag_similarity_df</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">all_desc_to_bins</span><span class="p">,</span><span class="s1">&#39;vi&#39;</span><span class="p">,[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.45</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.55</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">all_titles_sim_map</span> <span class="o">=</span> <span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">)</span>
-<span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>key = &#39;Title&#39;
+titles_sim_verinfo_df = titles_sim_df.apply(get_tag_similarity_df,args=(key,all_desc_to_bins,&#39;vi&#39;,[.25, .45, .5, .55, .75, .9, 1]),axis=1)
+all_titles_sim_map = titles_sim_verinfo_df.set_index(&#39;Title&#39;)
+titles_sim_verinfo_df.head(25)
 </pre></div>
 </div>
 </div>
@@ -1833,7 +1833,7 @@ title="Print to PDF"
 <h2>What is the number of bins on average for each similarity?<a class="headerlink" href="#what-is-the-number-of-bins-on-average-for-each-similarity" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x) if x else 0)).mean()
 </pre></div>
 </div>
 </div>
@@ -1853,7 +1853,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>titles_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x))).mean() 
 </pre></div>
 </div>
 </div>
@@ -1875,8 +1875,8 @@ dtype: float64
 <h3>Which tag descriptions are a bit too noisy?<a class="headerlink" href="#which-tag-descriptions-are-a-bit-too-noisy" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_count_tags_sim_verinfo_df</span> <span class="o">=</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">)</span>
-<span class="n">bin_count_tags_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))[</span><span class="s1">&#39;vi-0.45&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin_count_tags_sim_verinfo_df = tags_sim_verinfo_df.set_index(&#39;Tag&#39;)
+bin_count_tags_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x) if x else 0))[&#39;vi-0.45&#39;].sort_values(ascending=False)
 </pre></div>
 </div>
 </div>
@@ -1903,8 +1903,8 @@ Name: vi-0.45, Length: 436, dtype: int64
 <h3>Which titles are a bit too noisy?<a class="headerlink" href="#which-titles-are-a-bit-too-noisy" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_count_titles_sim_verinfo_df</span> <span class="o">=</span> <span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">)</span>
-<span class="n">bin_count_titles_sim_verinfo_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))[</span><span class="s1">&#39;vi-0.45&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin_count_titles_sim_verinfo_df = titles_sim_verinfo_df.set_index(&#39;Title&#39;)
+bin_count_titles_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x) if x else 0))[&#39;vi-0.45&#39;].sort_values(ascending=False)
 </pre></div>
 </div>
 </div>
@@ -1928,15 +1928,15 @@ Name: vi-0.45, Length: 1046, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_sim_map</span> <span class="o">=</span> <span class="n">tags_sim_verinfo_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">tags_sim_map</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tag_counts_df</span> <span class="o">=</span> <span class="n">tags_sim_map</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_sim_map = tags_sim_verinfo_df.copy()
+tags_sim_map.set_index(&#39;Tag&#39;,inplace=True)
+tag_counts_df = tags_sim_map.apply(lambda s: s.map(lambda x: len(x) if x else 0))
 
-<span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">tag_counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tag_counts_df</span><span class="p">[</span><span class="n">tag_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">])</span>
-    <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">tag_counts_df</span><span class="p">[</span><span class="n">tag_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">]}))</span>
+counts = []
+for col in tag_counts_df.columns:
+    print(col)
+    print(tag_counts_df[tag_counts_df[col] &gt; 0].count()[col])
+    counts.append(pd.Series( {col: tag_counts_df[tag_counts_df[col] &gt; 0].count()[col]}))
     
 </pre></div>
 </div>
@@ -1962,7 +1962,7 @@ vi-1
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;# Tags correlated across similarities&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat(counts).plot.bar(figsize=(20,5), title=&quot;# Tags correlated across similarities&quot;)
 </pre></div>
 </div>
 </div>
@@ -1975,15 +1975,15 @@ vi-1
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles_sim_map</span> <span class="o">=</span> <span class="n">titles_sim_verinfo_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">titles_sim_map</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">title_counts_df</span> <span class="o">=</span> <span class="n">titles_sim_map</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>titles_sim_map = titles_sim_verinfo_df.copy()
+titles_sim_map.set_index(&#39;Title&#39;,inplace=True)
+title_counts_df = titles_sim_map.apply(lambda s: s.map(lambda x: len(x) if x else 0))
 
-<span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">title_counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">title_counts_df</span><span class="p">[</span><span class="n">title_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">])</span>
-    <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">title_counts_df</span><span class="p">[</span><span class="n">title_counts_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="n">col</span><span class="p">]}))</span>
+counts = []
+for col in title_counts_df.columns:
+    print(col)
+    print(title_counts_df[title_counts_df[col] &gt; 0].count()[col])
+    counts.append(pd.Series( {col: title_counts_df[title_counts_df[col] &gt; 0].count()[col]}))
 </pre></div>
 </div>
 </div>
@@ -2008,7 +2008,7 @@ vi-1
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;# of Titles correlated across similarities&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat(counts).plot.bar(figsize=(20,5), title=&quot;# of Titles correlated across similarities&quot;)
 </pre></div>
 </div>
 </div>
@@ -2025,19 +2025,19 @@ vi-1
 <h2>Setup KB update data<a class="headerlink" href="#setup-kb-update-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_feed</span> <span class="o">=</span> <span class="n">get_winbindex_kbs_to_bin_map</span><span class="p">()</span>
-<span class="n">wb_feed_d</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>wb_feed = get_winbindex_kbs_to_bin_map()
+wb_feed_d = {}
 
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">wb_feed</span><span class="p">:</span>
-    <span class="n">wb_feed_d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">wb_feed</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span>
+for key in wb_feed:
+    wb_feed_d[key] = wb_feed[key][&#39;updated&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kb_feed_df</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">kb_feed</span> <span class="o">=</span> <span class="n">get_ms_kb_to_bins_json</span><span class="p">()[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>kb_feed_df = None
+kb_feed = get_ms_kb_to_bins_json()[&#39;updated&#39;]
 </pre></div>
 </div>
 </div>
@@ -2047,63 +2047,63 @@ vi-1
 <h2>Mapping CVEs to bins<a class="headerlink" href="#mapping-cves-to-bins" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cve_to_bin</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="n">cve</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span>
-    <span class="n">tag</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def cve_to_bin(row):
+    cve = row.name
+    tag = row[&#39;Tag&#39;]
+    title = row[&#39;Title&#39;]
 
-    <span class="n">bins</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    bins = set()
     
-    <span class="k">if</span> <span class="n">tag</span> <span class="ow">and</span> <span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">:</span>
-        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">KNOWN_TAG_TO_BIN_MAP</span><span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">()]:</span>
-            <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+    if tag and tag.lower() in KNOWN_TAG_TO_BIN_MAP:
+        for bin in KNOWN_TAG_TO_BIN_MAP[tag.lower()]:
+            bins.add(bin)
 
-    <span class="k">if</span> <span class="n">title</span> <span class="ow">and</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span><span class="p">:</span>
-        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">KNOWN_TITLE_TO_BIN_MAP</span><span class="p">[</span><span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()]:</span>
-            <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+    if title and title.lower() in KNOWN_TITLE_TO_BIN_MAP:
+        for bin in KNOWN_TITLE_TO_BIN_MAP[title.lower()]:
+            bins.add(bin)
 
-    <span class="k">if</span> <span class="n">all_bins_d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">all_bins_d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-            <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+    if all_bins_d.get(tag):
+        for bin in all_bins_d.get(tag):
+            bins.add(bin)
 
-    <span class="k">if</span> <span class="n">tag</span> <span class="ow">and</span> <span class="s2">&quot;microsoft&quot;</span> <span class="ow">in</span> <span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="n">tag_min</span> <span class="o">=</span> <span class="s1">&#39;vi-0.55&#39;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">tag_min</span> <span class="o">=</span> <span class="s1">&#39;vi-0.45&#39;</span>
+    if tag and &quot;microsoft&quot; in tag.lower():
+        tag_min = &#39;vi-0.55&#39;
+    else:
+        tag_min = &#39;vi-0.45&#39;
 
-    <span class="k">if</span> <span class="n">title</span> <span class="ow">and</span> <span class="s2">&quot;microsoft&quot;</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="n">title_min</span> <span class="o">=</span> <span class="s1">&#39;vi-0.55&#39;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title_min</span> <span class="o">=</span> <span class="s1">&#39;vi-0.45&#39;</span>
+    if title and &quot;microsoft&quot; in title.lower():
+        title_min = &#39;vi-0.55&#39;
+    else:
+        title_min = &#39;vi-0.45&#39;
 
-    <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">tags_sim_map</span><span class="p">[</span><span class="n">tag_min</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tag</span><span class="p">]:</span>
-        <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+    for bin in tags_sim_map[tag_min].loc[tag]:
+        bins.add(bin)
 
-    <span class="k">if</span> <span class="n">titles_sim_map</span><span class="p">[</span><span class="n">title_min</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
-        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="n">titles_sim_map</span><span class="p">[</span><span class="n">title_min</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
-            <span class="n">bins</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">bin</span><span class="p">)</span>
+    if titles_sim_map[title_min].get(title):
+        for bin in titles_sim_map[title_min].get(title):
+            bins.add(bin)
 
-    <span class="c1"># updated_bins    </span>
-    <span class="n">updated_bins</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>        
-        <span class="n">kb_updated_files</span> <span class="o">=</span> <span class="n">kb_feed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">kb_updated_files</span><span class="p">:</span>
-            <span class="n">updated_bins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">kb_updated_files</span><span class="p">)</span>
-        <span class="n">wb_updated_files</span> <span class="o">=</span> <span class="n">wb_feed_d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">wb_updated_files</span><span class="p">:</span>
-            <span class="n">updated_bins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">wb_updated_files</span><span class="p">)</span>
-            <span class="n">wb_feed_d</span>
+    # updated_bins    
+    updated_bins = []
+    for kb in row[&#39;KBs&#39;].split():        
+        kb_updated_files = kb_feed.get(kb)
+        if kb_updated_files:
+            updated_bins.extend(kb_updated_files)
+        wb_updated_files = wb_feed_d.get(kb)
+        if wb_updated_files:
+            updated_bins.extend(wb_updated_files)
+            wb_feed_d
 
 
-    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Bins Updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">updated_bins</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">bins</span><span class="p">))</span>
-    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
+    row[&#39;Bins Updated&#39;] = list(set(updated_bins).intersection(bins))
+    row[&#39;Bins&#39;] = list(bins)
 
-    <span class="k">return</span> <span class="n">row</span>
+    return row
 
-<span class="nb">print</span><span class="p">(</span><span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+print(all_cvrf_df.columns)
 
-<span class="n">bins_all_cvrf_df</span> <span class="o">=</span> <span class="n">all_cvrf_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cve_to_bin</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">bins_all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+bins_all_cvrf_df = all_cvrf_df.apply(cve_to_bin,axis=1)
+bins_all_cvrf_df.head()
 </pre></div>
 </div>
 </div>
@@ -2151,7 +2151,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
+      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
     </tr>
     <tr>
       <th>CVE-2017-8629</th>
@@ -2163,7 +2163,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
+      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
     </tr>
     <tr>
       <th>CVE-2017-8630</th>
@@ -2207,7 +2207,7 @@ vi-1
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df.sort_values(by=[&#39;Bins&#39;], ascending=False)
 </pre></div>
 </div>
 </div>
@@ -2243,64 +2243,64 @@ vi-1
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2021-31167</th>
-      <td>2021-05-11</td>
-      <td>Windows Container Manager Service</td>
-      <td>Windows Container Manager Service</td>
+      <th>CVE-2020-0787</th>
+      <td>2020-03-10</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Background Intelligent Transfer Service</td>
       <td>Elevation of Privilege</td>
       <td>7.8</td>
-      <td>KB5003169 KB5003171 KB5003173</td>
-      <td>10.0.17763.1935 10.0.18363.1556 10.0.19041.982</td>
-      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
-      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+      <td>KB4538461 KB4540670 KB4540673 KB4540681 KB4540...</td>
+      <td></td>
+      <td>[mapsbtsvcproxy.dll, msprivs.dll.mui, msimsg.d...</td>
+      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
     </tr>
     <tr>
-      <th>CVE-2021-31165</th>
-      <td>2021-05-11</td>
-      <td>Windows Container Manager Service</td>
-      <td>Windows Container Manager Service</td>
+      <th>CVE-2020-1112</th>
+      <td>2020-05-12</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Background Intelligent Transfer Service</td>
       <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5003173</td>
-      <td>10.0.19041.982</td>
-      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
-      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+      <td>8.5</td>
+      <td>KB4551853 KB4556799 KB4556807 KB4556812 KB4556...</td>
+      <td></td>
+      <td>[mapsbtsvc.dll, mapsbtsvcproxy.dll, msprivs.dl...</td>
+      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
     </tr>
     <tr>
-      <th>CVE-2021-31169</th>
-      <td>2021-05-11</td>
-      <td>Windows Container Manager Service</td>
-      <td>Windows Container Manager Service</td>
+      <th>CVE-2020-1255</th>
+      <td>2020-06-09</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Background Intelligent Transfer Service</td>
       <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5003173</td>
-      <td>10.0.19041.982</td>
-      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
-      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+      <td>8.5</td>
+      <td>KB4557957 KB4560960 KB4561602 KB4561608 KB4561...</td>
+      <td></td>
+      <td>[mapsbtsvcproxy.dll, msprivs.dll.mui, msimsg.d...</td>
+      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
     </tr>
     <tr>
-      <th>CVE-2021-31208</th>
-      <td>2021-05-11</td>
-      <td>Windows Container Manager Service</td>
-      <td>Windows Container Manager Service</td>
+      <th>CVE-2022-33644</th>
+      <td>2022-07-12</td>
+      <td>XBox</td>
+      <td>Xbox Live Save Service</td>
       <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5003173</td>
-      <td>10.0.19041.982</td>
-      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
-      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+      <td>7.0</td>
+      <td>KB5015807</td>
+      <td>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826</td>
+      <td>[]</td>
+      <td>[xblauthmanager.dll.mui, xbgmsvc.exe, xboxgips...</td>
     </tr>
     <tr>
-      <th>CVE-2021-31168</th>
-      <td>2021-05-11</td>
-      <td>Windows Container Manager Service</td>
-      <td>Windows Container Manager Service</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5003173</td>
-      <td>10.0.19041.982</td>
-      <td>[bootmgr.exe.mui, cmservice.dll, reservemanage...</td>
-      <td>[zipcontainer.dll, bootmgr.efi.mui, EdgeManage...</td>
+      <th>CVE-2022-26935</th>
+      <td>2022-05-10</td>
+      <td>Windows WLAN Auto Config Service</td>
+      <td>Windows WLAN AutoConfig Service</td>
+      <td>Information Disclosure</td>
+      <td>6.5</td>
+      <td>KB5013941 KB5013942 KB5013943 KB5013944 KB5013...</td>
+      <td>10.0.10240.19297 10.0.14393.5125 10.0.17763.29...</td>
+      <td>[wlanapi.dll, wlansvcpal.dll, wwansvc.dll, wla...</td>
+      <td>[wwansvc.dll, wlansvc.dll, dot3svc.dll, wwansv...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2315,62 +2315,62 @@ vi-1
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2018-0812</th>
-      <td>2018-01-09</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
+      <th>CVE-2022-3786</th>
+      <td>2022-11-08</td>
+      <td>Open Source Software</td>
+      <td>OpenSSL CVE20223786 X.509 certificate verifica...</td>
+      <td></td>
       <td>0.0</td>
-      <td>KB4011574 KB4011580 KB4011607 KB4011610 KB4011...</td>
+      <td></td>
+      <td>2022.11.02</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>ADV220003</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Defense in Depth Update</td>
+      <td>Defense in Depth</td>
+      <td>0.0</td>
+      <td>KB3191869 KB3191875</td>
+      <td>15.0.5501.1000 16.0.5369.1000</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-8468</th>
+      <td>2017-06-13</td>
+      <td>Windows Kernel-Mode Drivers</td>
+      <td>Win32k</td>
+      <td>Elevation of Privilege</td>
+      <td>7.0</td>
+      <td>KB4022714 KB4022715 KB4022717 KB4022726 KB4022727</td>
       <td></td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2018-0807</th>
-      <td>2018-01-09</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB4011574 KB4011607 KB4011610 KB4011643 KB4011...</td>
-      <td></td>
+      <th>CVE-2021-41351</th>
+      <td>2021-11-09</td>
+      <td>Microsoft Edge (Chromium-based) in IE Mode</td>
+      <td>Microsoft Edge Chrome based  on IE Mode</td>
+      <td>Spoofing</td>
+      <td>4.3</td>
+      <td>KB5007186 KB5007189 KB5007206 KB5007215</td>
+      <td>10.0.17763.2300 10.0.18363.1916 10.0.19041.134...</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2016-3233</th>
-      <td>2016-06-14</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3115107 KB3115111 KB3115130</td>
+      <th>CVE-2022-33655</th>
+      <td>2022-07-12</td>
+      <td>Azure Site Recovery</td>
+      <td>Azure Site Recovery</td>
+      <td>Elevation of Privilege</td>
+      <td>6.5</td>
       <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2016-3234</th>
-      <td>2016-06-14</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Information Disclosure</td>
-      <td>0.0</td>
-      <td>KB3115014 KB3115170 KB3115187 KB3115194 KB3115...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-11825</th>
-      <td>2017-10-10</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td></td>
-      <td></td>
+      <td>9.49</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -2383,9 +2383,9 @@ vi-1
 <h3>How man CVEs have bins assigned?<a class="headerlink" href="#how-man-cves-have-bins-assigned" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">bins_all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[&#39;Bins Count&#39;] = bins_all_cvrf_df[&#39;Bins&#39;].apply(lambda x: len(x) if x else 0)
+bins_all_cvrf_df[&#39;Bins Updated Count&#39;] = bins_all_cvrf_df[&#39;Bins Updated&#39;].apply(lambda x: len(x) if x else 0)
+bins_all_cvrf_df.head()
 </pre></div>
 </div>
 </div>
@@ -2432,7 +2432,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
+      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2446,7 +2446,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
+      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
       <td>5</td>
       <td>0</td>
     </tr>
@@ -2500,7 +2500,7 @@ vi-1
 <h4>CVEs with Bins Assigned<a class="headerlink" href="#cves-with-bins-assigned" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[bins_all_cvrf_df[&#39;Bins Count&#39;] &gt; 0]
 </pre></div>
 </div>
 </div>
@@ -2547,7 +2547,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
+      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2561,7 +2561,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
+      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
       <td>5</td>
       <td>0</td>
     </tr>
@@ -2574,8 +2574,8 @@ vi-1
       <td>3.3</td>
       <td>KB3212225 KB3213638 KB3213641 KB4011040 KB4011...</td>
       <td></td>
-      <td>[gdiplus.dll, msoe.dll, setup.exe, msoeres.dll...</td>
-      <td>[C2R64.dll, msiexec.exe.mui, OUTLMIME.DLL, Com...</td>
+      <td>[msoeres.dll, gdi32.dll, textentityextractorpr...</td>
+      <td>[SCNPST64C.DLL, outicon.exe, OsfTaskengine.dll...</td>
       <td>221</td>
       <td>7</td>
     </tr>
@@ -2588,8 +2588,8 @@ vi-1
       <td>5.5</td>
       <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
       <td></td>
-      <td>[gdiplus.dll, msoe.dll, setup.exe, msoeres.dll...</td>
-      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
+      <td>[gdi32.dll, msoeres.dll, gdiplus.dll, wuauclt....</td>
+      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
       <td>60</td>
       <td>6</td>
     </tr>
@@ -2602,8 +2602,8 @@ vi-1
       <td>5.5</td>
       <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
       <td></td>
-      <td>[msoe.dll, msoeres.dll, wuauclt.exe, setup.exe]</td>
-      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
+      <td>[msoeres.dll, wuauclt.exe, setup.exe, msoe.dll]</td>
+      <td>[certpdef.dll, kd.exe, netcellcorecellmanagerp...</td>
       <td>60</td>
       <td>4</td>
     </tr>
@@ -2701,7 +2701,7 @@ vi-1
 <h4>CVEs with Bins Assigned and Verified with KB Update<a class="headerlink" href="#cves-with-bins-assigned-and-verified-with-kb-update" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[bins_all_cvrf_df[&#39;Bins Updated Count&#39;] &gt; 0].sort_values(by=&#39;Bins Updated Count&#39;, ascending=False)
 </pre></div>
 </div>
 </div>
@@ -2747,8 +2747,8 @@ vi-1
       <td>7.8</td>
       <td>KB4598229 KB4598230 KB4598231 KB4598242 KB4598...</td>
       <td></td>
-      <td>[msauddecmft.dll, mfpmp.exe, mfreadwrite.dll, ...</td>
-      <td>[mfpmp.exe, msiexec.exe.mui, MCRecvSrc.dll, mf...</td>
+      <td>[mcrecvsrc.dll, certpdef.dll, mfasfsrcsnk.dll,...</td>
+      <td>[WMASF.DLL, mfasfsrcsnk.dll, calc.exe, mfcaptu...</td>
       <td>147</td>
       <td>56</td>
     </tr>
@@ -2761,8 +2761,8 @@ vi-1
       <td>7.8</td>
       <td>KB5000802 KB5000808 KB5000822</td>
       <td></td>
-      <td>[appvorchestration.dll, AppVEntSubsystemContro...</td>
-      <td>[AppVManifest.dll, appvpolicy.dll, appvetwclie...</td>
+      <td>[appventstreamingmanager.dll, AppVManifest.dll...</td>
+      <td>[appventstreamingmanager.dll, AppVManifest.dll...</td>
       <td>99</td>
       <td>48</td>
     </tr>
@@ -2775,8 +2775,8 @@ vi-1
       <td>4.4</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[msauddecmft.dll, mfpmp.exe, Windows.Media.Edi...</td>
-      <td>[mfpmp.exe, MCRecvSrc.dll, mfh264enc.dll, mfwm...</td>
+      <td>[mcrecvsrc.dll, Windows.Media.dll, mfasfsrcsnk...</td>
+      <td>[WMASF.DLL, mfasfsrcsnk.dll, mfcaptureengine.d...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2789,8 +2789,8 @@ vi-1
       <td>3.3</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[msauddecmft.dll, mfpmp.exe, Windows.Media.Edi...</td>
-      <td>[mfpmp.exe, MCRecvSrc.dll, mfh264enc.dll, mfwm...</td>
+      <td>[mcrecvsrc.dll, Windows.Media.dll, mfasfsrcsnk...</td>
+      <td>[WMASF.DLL, mfasfsrcsnk.dll, mfcaptureengine.d...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2803,8 +2803,8 @@ vi-1
       <td>5.0</td>
       <td>KB4598229 KB4598230 KB4598242 KB4598243</td>
       <td></td>
-      <td>[apisampling.dll, themeui.dll, msoe.dll, mmdev...</td>
-      <td>[msiexec.exe.mui, Magnification.dll, themeui.d...</td>
+      <td>[certpdef.dll, calc.exe, devicemetadataretriev...</td>
+      <td>[ntasn1.dll, firewallapi.dll.mui, calc.exe, lo...</td>
       <td>104</td>
       <td>34</td>
     </tr>
@@ -2832,7 +2832,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[rasmans.dll]</td>
-      <td>[rastls.dll, raschap.dll, cmmon32.exe.mui, dac...</td>
+      <td>[rasautou.exe, daconn.dll, cmpbk32.dll, rasapi...</td>
       <td>59</td>
       <td>1</td>
     </tr>
@@ -2846,7 +2846,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[partmgr.sys]</td>
-      <td>[windows.management.service.dll.mui, csvnsflt....</td>
+      <td>[CsvNSFlt.sys, windows.management.service.dll....</td>
       <td>10</td>
       <td>1</td>
     </tr>
@@ -2860,7 +2860,7 @@ vi-1
       <td>KB5004237 KB5004244 KB5004245</td>
       <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
       <td>[rasmans.dll]</td>
-      <td>[rastls.dll, raschap.dll, cmmon32.exe.mui, dac...</td>
+      <td>[rasautou.exe, daconn.dll, cmpbk32.dll, rasapi...</td>
       <td>59</td>
       <td>1</td>
     </tr>
@@ -2874,7 +2874,7 @@ vi-1
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[windlp.dll]</td>
-      <td>[LoggingPlatform.dll, hhsetup.dll, rjvplatform...</td>
+      <td>[biplatim.dll, entplat.dll, LoggingPlatform.dl...</td>
       <td>10</td>
       <td>1</td>
     </tr>
@@ -2888,7 +2888,7 @@ vi-1
       <td>KB5015807 KB5015808 KB5015811 KB5015814 KB5015...</td>
       <td>10.0.10240.19360 10.0.14393.5246 10.0.17763.31...</td>
       <td>[samcli.dll]</td>
-      <td>[wlidsvc.dll, samcli.dll, wlidsvc.dll.mui, mso...</td>
+      <td>[samcli.dll, acctres.dll.mui, wlidsvc.dll.mui,...</td>
       <td>6</td>
       <td>1</td>
     </tr>
@@ -2903,9 +2903,9 @@ vi-1
 <h3>How many verified from this month’s MSRC update?<a class="headerlink" href="#how-many-verified-from-this-month-s-msrc-update" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
-<span class="n">month</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">month</span>
-<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>year = datetime.now().year
+month = datetime.now().month
+bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;{year}-{month}&#39;) &amp; bins_all_cvrf_df[&#39;Bins Updated Count&#39;] &gt; 0]
 </pre></div>
 </div>
 </div>
@@ -2965,8 +2965,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
-      <td>[smbbandwidthlimitfilter.sys, ieapfltr.dll.mun...</td>
+      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
+      <td>[fltlib.dll, wof.sys, rtffilt.dll, ieapfltr.dl...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2979,8 +2979,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
-      <td>[smbbandwidthlimitfilter.sys, ieapfltr.dll.mun...</td>
+      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
+      <td>[fltlib.dll, wof.sys, rtffilt.dll, ieapfltr.dl...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2994,7 +2994,7 @@ vi-1
       <td>KB5019970 KB5020614 KB5020622 KB5020678 KB5020...</td>
       <td>10.0.04005.02 10.0.04585.02 10.0.09110.12 10.0...</td>
       <td>[uiribbon.dll]</td>
-      <td>[accessibility.dll, msvcr100_clr0400.dll, syst...</td>
+      <td>[system.xml.linq.resources.dll, system.design....</td>
       <td>162</td>
       <td>1</td>
     </tr>
@@ -3007,8 +3007,8 @@ vi-1
       <td>8.8</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
-      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
+      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
+      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3035,8 +3035,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
-      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
+      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
+      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
       <td>56</td>
       <td>7</td>
     </tr>
@@ -3050,7 +3050,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
       <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
       <td>[bindflt.sys]</td>
-      <td>[ipfltdrv.sys, bfs.sys, mouhid.sys, tsfairshar...</td>
+      <td>[wpcfltr.sys, vwififlt.sys, scfilter.sys.mui, ...</td>
       <td>50</td>
       <td>1</td>
     </tr>
@@ -3064,7 +3064,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>[Windows.Graphics.Printing.Workflow.dll, Print...</td>
-      <td>[spoolss.dll, localspl.dll.mui, printdialog.ex...</td>
+      <td>[winspool.drv.mui, print.exe, windows.graphics...</td>
       <td>21</td>
       <td>3</td>
     </tr>
@@ -3077,8 +3077,8 @@ vi-1
       <td>7.5</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[wwahost.exe.mui, msiexec.exe, setup.exe, expl...</td>
-      <td>[windowscamera.dll, msiexec.exe.mui, winmail.e...</td>
+      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
+      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3091,8 +3091,8 @@ vi-1
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[keyiso.dll, lsaiso.exe, LsaIso.exe]</td>
-      <td>[keyiso.dll, lsaiso.exe, LsaIso.exe, keyiso.dl...</td>
+      <td>[LsaIso.exe, lsaiso.exe, keyiso.dll]</td>
+      <td>[LsaIso.exe, keyiso.dll, keyiso.dll.mui, lsais...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -3107,21 +3107,21 @@ vi-1
 <h2>How many CVEs have KB data?<a class="headerlink" href="#how-many-cves-have-kb-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_kb_data</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def has_kb_data(kbs):
 
-    <span class="n">has_kb_data</span> <span class="o">=</span> <span class="kc">False</span>
+    has_kb_data = False
 
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">kb_feed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kb_feed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)[</span><span class="s1">&#39;updated&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="n">has_kb_data</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">break</span>
-        <span class="k">if</span> <span class="n">wb_feed_d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wb_feed_d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">kb</span><span class="p">)[</span><span class="s1">&#39;updated&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="n">has_kb_data</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">break</span>
+    for kb in kbs.split():
+        if kb_feed.get(kb) and (len(kb_feed.get(kb)[&#39;updated&#39;]) &gt; 0):
+            has_kb_data = True
+            break
+        if wb_feed_d.get(kb) and (len(wb_feed_d.get(kb)[&#39;updated&#39;]) &gt; 0):
+            has_kb_data = True
+            break
 
-<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;has_kb_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">bins_all_cvrf_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+bins_all_cvrf_df[&#39;has_kb&#39;] = bins_all_cvrf_df[&#39;KBs&#39;].apply(lambda x: len(x.split()) &gt; 0)
+bins_all_cvrf_df[&#39;has_kb_data&#39;] = bins_all_cvrf_df[&#39;KBs&#39;].apply(lambda x: len(x.split()) &gt; 0)
+bins_all_cvrf_df.head()
 </pre></div>
 </div>
 </div>
@@ -3170,7 +3170,7 @@ vi-1
       <td>KB4038788</td>
       <td></td>
       <td>[]</td>
-      <td>[wns_push_client.dll, msedge_wer.dll, cmstp.ex...</td>
+      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
       <td>23</td>
       <td>0</td>
       <td>True</td>
@@ -3186,7 +3186,7 @@ vi-1
       <td>KB4011113</td>
       <td></td>
       <td>[]</td>
-      <td>[cmstp.exe, mscorlib.resources.dll, Microsoft....</td>
+      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
       <td>5</td>
       <td>0</td>
       <td>True</td>
@@ -3248,7 +3248,7 @@ vi-1
 <h3>How many CVEs have KB information but no verified bins? (cvedata is missing KB source coverage)<a class="headerlink" href="#how-many-cves-have-kb-information-but-no-verified-bins-cvedata-is-missing-kb-source-coverage" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[(bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&quot;{year}-{month}&quot;)) &amp; (bins_all_cvrf_df[&#39;Bins Updated Count&#39;] == 0) &amp; (bins_all_cvrf_df[&#39;has_kb&#39;] == True)]
 </pre></div>
 </div>
 </div>
@@ -3313,7 +3313,7 @@ vi-1
       <td>KB5002258 KB5002264 KB5002267 KB5002269 KB5002271</td>
       <td>15.0.5485.1000 16.0.10390.20000 16.0.15601.200...</td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.Calc.dll, Microsoft.Shar...</td>
+      <td>[Microsoft.SharePoint.HttpSvr.dll, Microsoft.S...</td>
       <td>8</td>
       <td>0</td>
       <td>True</td>
@@ -3393,7 +3393,7 @@ vi-1
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[EXCEL.EXE, XLINTL32.COMMON.DLL, Microsoft.Exc...</td>
+      <td>[Microsoft.Excel.AdomdClient.dll, excelcnv.exe...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3409,7 +3409,7 @@ vi-1
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[EXCEL.EXE, XLINTL32.COMMON.DLL, Microsoft.Exc...</td>
+      <td>[Microsoft.Excel.AdomdClient.dll, excelcnv.exe...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3425,7 +3425,7 @@ vi-1
       <td>KB5021000 KB5021001 KB5021002 KB5021003 KB5021004</td>
       <td>49345 Application Build 14.42.49347, Platform ...</td>
       <td>[]</td>
-      <td>[mscorlib.resources.dll, msprivs.dll.mui, cmst...</td>
+      <td>[cmstp.exe, msprivs.dll.mui, mscorlib.resource...</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3441,7 +3441,7 @@ vi-1
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
       <td>[]</td>
-      <td>[C2R64.dll, OUTLMIME.DLL, Common.SqlDatabase.d...</td>
+      <td>[SCNPST64C.DLL, outicon.exe, OsfTaskengine.dll...</td>
       <td>161</td>
       <td>0</td>
       <td>True</td>
@@ -3474,34 +3474,35 @@ vi-1
 <h2>For all updates, what % have assigned bins?<a class="headerlink" href="#for-all-updates-what-have-assigned-bins" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">updates</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+updates = bins_all_cvrf_df[&#39;Initial Release&#39;].unique()
 
-<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+results = {}
 
-<span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">updates</span><span class="p">:</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">update</span><span class="p">,{})</span>
-    <span class="n">update_df</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">update</span><span class="p">)]</span>
-    <span class="n">cve_per_update</span> <span class="o">=</span> <span class="n">update_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">cves_with_updated_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">cves_without_updated_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">cves_without_updated_bins_and_has_kbs</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[(</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)]</span>
-    <span class="n">cves_with_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>    
-    <span class="n">cves_without_bins</span> <span class="o">=</span> <span class="n">update_df</span><span class="p">[(</span><span class="n">update_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+for update in updates:
+    results.setdefault(update,{})
+    update_df = bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(update)]
+    cve_per_update = update_df.shape[0]
+    cves_with_updated_bins = update_df[update_df[&#39;Bins Updated Count&#39;] &gt; 0]
+    cves_without_updated_bins = update_df[update_df[&#39;Bins Updated Count&#39;] == 0]
+    cves_without_updated_bins_and_has_kbs = update_df[(update_df[&#39;Bins Updated Count&#39;] == 0) &amp; (update_df[&#39;has_kb&#39;] == True)]
+    cves_with_bins = update_df[update_df[&#39;Bins Count&#39;] &gt; 0]    
+    cves_without_bins = update_df[(update_df[&#39;Bins Count&#39;] == 0)]
     
-    <span class="n">cve_with_bins_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">cves_with_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">cve_per_update</span><span class="p">)</span> 
-    <span class="n">cve_without_bins_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">cves_without_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">cve_per_update</span><span class="p">)</span>
+    cve_with_bins_percent = (cves_with_bins.shape[0] * 100 / cve_per_update) 
+    cve_without_bins_percent = (cves_without_bins.shape[0] * 100 / cve_per_update)
     
-    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;with_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_with_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_without_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_with_updated_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_without_updated_bins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="p">[</span><span class="n">update</span><span class="p">][</span><span class="s1">&#39;without_updated_bins_has_kbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cves_without_updated_bins_and_has_kbs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    results[update][&#39;with_bins&#39;] = cves_with_bins.shape[0]
+    results[update][&#39;without_bins&#39;] = cves_without_bins.shape[0]
+    results[update][&#39;with_updated_bins&#39;] = cves_with_updated_bins.shape[0]
+    results[update][&#39;without_updated_bins&#39;] = cves_without_updated_bins.shape[0]
+    results[update][&#39;without_updated_bins_has_kbs&#39;] = cves_without_updated_bins_and_has_kbs.shape[0]
     
     
-<span class="n">update_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">update_results_df</span> <span class="o">=</span> <span class="n">update_results_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<span class="n">update_results_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+update_results_df = pd.DataFrame.from_dict(results, orient=&#39;index&#39;)
+update_results_df.index = pd.to_datetime(update_results_df.index)
+update_results_df = update_results_df.sort_index()
+update_results_df.head()
 </pre></div>
 </div>
 </div>
@@ -3580,8 +3581,8 @@ vi-1
 <h3>CVEs with Bins Assigned This Year<a class="headerlink" href="#cves-with-bins-assigned-this-year" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CVEs with Bins Assigned This Year&#39;</span>
-<span class="n">update_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">year</span><span class="p">][[</span><span class="s1">&#39;with_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title=&#39;CVEs with Bins Assigned This Year&#39;
+update_results_df.loc[update_results_df.index.year == year][[&#39;with_bins&#39;,&#39;without_bins&#39;]].plot.bar(figsize=(20,3), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3597,8 +3598,8 @@ vi-1
 <h3>CVEs with Bins Assigned All Time<a class="headerlink" href="#cves-with-bins-assigned-all-time" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CVEs with Bins Assigned All Time&#39;</span>
-<span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title=&#39;CVEs with Bins Assigned All Time&#39;
+update_results_df[[&#39;with_bins&#39;,&#39;without_bins&#39;]].plot.bar(figsize=(20,5), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3614,8 +3615,8 @@ vi-1
 <h3>CVEs with KB Verified Update Bins This Year<a class="headerlink" href="#cves-with-kb-verified-update-bins-this-year" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CVEs with KB Verified Update Bins This Year&#39;</span>
-<span class="n">update_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">year</span><span class="p">][[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title=&#39;CVEs with KB Verified Update Bins This Year&#39;
+update_results_df.loc[update_results_df.index.year == year][[&#39;with_updated_bins&#39;,&#39;without_updated_bins&#39;]].plot.bar(figsize=(20,3), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3631,8 +3632,8 @@ vi-1
 <h3>CVEs with KB Verified Update Bins All Time<a class="headerlink" href="#cves-with-kb-verified-update-bins-all-time" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CVEs with KB Verified Update Bins All Time&#39;</span>
-<span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title=&#39;CVEs with KB Verified Update Bins All Time&#39;
+update_results_df[[&#39;with_updated_bins&#39;,&#39;without_updated_bins&#39;]].plot.bar(figsize=(20,5), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3648,8 +3649,8 @@ vi-1
 <h3>CVEs with KB Verified Update Bins That Have KB information This Year<a class="headerlink" href="#cves-with-kb-verified-update-bins-that-have-kb-information-this-year" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CVEs with KB Verified Update Bins That Have KB information This Year&#39;</span>
-<span class="n">update_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">update_results_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">year</span><span class="p">][[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins_has_kbs&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title=&#39;CVEs with KB Verified Update Bins That Have KB information This Year&#39;
+update_results_df.loc[update_results_df.index.year == year][[&#39;with_updated_bins&#39;,&#39;without_updated_bins_has_kbs&#39;]].plot.bar(figsize=(20,3), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3665,8 +3666,8 @@ vi-1
 <h3>CVEs with KB Verified Update Bins That Have KB Source Info All Time<a class="headerlink" href="#cves-with-kb-verified-update-bins-that-have-kb-source-info-all-time" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time&#39;</span>
-<span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins_has_kbs&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time&#39;
+update_results_df[[&#39;with_updated_bins&#39;,&#39;without_updated_bins_has_kbs&#39;]].plot.bar(figsize=(20,5), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3682,11 +3683,11 @@ vi-1
 <h3>CVEs with KB Verified Update Bins That Have KB Source Info All Time Ratio<a class="headerlink" href="#cves-with-kb-verified-update-bins-that-have-kb-source-info-all-time-ratio" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#update_results_df[[&#39;with_updated_bins&#39;,&#39;without_updated_bins_has_kbs&#39;]].apply(lambda x: [x[0] * 100 / sum(x),x[1] * 100 / sum(x) ], axis=1)</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time Ratio&#39;</span>
-<span class="n">updated_with_without_kbs_df</span> <span class="o">=</span> <span class="n">update_results_df</span><span class="p">[[</span><span class="s1">&#39;with_updated_bins&#39;</span><span class="p">,</span><span class="s1">&#39;without_updated_bins_has_kbs&#39;</span><span class="p">]]</span>
-<span class="n">updated_with_without_kbs_df</span> <span class="o">=</span> <span class="n">updated_with_without_kbs_df</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">updated_with_without_kbs_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">updated_with_without_kbs_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#update_results_df[[&#39;with_updated_bins&#39;,&#39;without_updated_bins_has_kbs&#39;]].apply(lambda x: [x[0] * 100 / sum(x),x[1] * 100 / sum(x) ], axis=1)
+title = &#39;CVEs with KB Verified Update Bins That Have KB Source Info All Time Ratio&#39;
+updated_with_without_kbs_df = update_results_df[[&#39;with_updated_bins&#39;,&#39;without_updated_bins_has_kbs&#39;]]
+updated_with_without_kbs_df = updated_with_without_kbs_df.div(updated_with_without_kbs_df.sum(axis=1), axis=0)
+updated_with_without_kbs_df.plot.bar(figsize=(20,5), stacked=True, title=title)
 </pre></div>
 </div>
 </div>
@@ -3705,7 +3706,7 @@ vi-1
 <h3>What is the next best title to hardcode?<a class="headerlink" href="#what-is-the-next-best-title-to-hardcode" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[bins_all_cvrf_df[&#39;Bins Count&#39;] == 0][&#39;Title&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -3731,7 +3732,7 @@ Name: Title, Length: 93, dtype: int64
 <h3>what is the next best title to hardcode that has KBs?<a class="headerlink" href="#what-is-the-next-best-title-to-hardcode-that-has-kbs" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Updated Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[(bins_all_cvrf_df[&#39;Bins Updated Count&#39;] == 0) &amp; (bins_all_cvrf_df[&#39;has_kb&#39;] == True)][&#39;Title&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -3757,7 +3758,7 @@ Name: Title, Length: 408, dtype: int64
 <h3>what is the next best tag to hardcode?<a class="headerlink" href="#what-is-the-next-best-tag-to-hardcode" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[bins_all_cvrf_df[&#39;Bins Count&#39;] == 0][&#39;Tag&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -3783,7 +3784,7 @@ Name: Tag, Length: 50, dtype: int64
 <h3>what is the next best title to hardcode that has KBs?<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins_all_cvrf_df</span><span class="p">[(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins_all_cvrf_df[(bins_all_cvrf_df[&#39;Bins Count&#39;] == 0) &amp; (bins_all_cvrf_df[&#39;has_kb&#39;] == True)][&#39;Tag&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -3809,17 +3810,17 @@ Name: Tag, Length: 32, dtype: int64
 <h3>What is the next best tag/title combo?<a class="headerlink" href="#what-is-the-next-best-tag-title-combo" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_df</span> <span class="o">=</span> <span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="n">bins_all_cvrf_df</span><span class="p">[</span><span class="s1">&#39;Bins Count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">tags_df</span> <span class="o">=</span> <span class="n">tags_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tags_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;2022&#39;</span><span class="p">)]</span>
-<span class="n">tags_title_df</span> <span class="o">=</span> <span class="n">tags_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Tag&#39;</span><span class="p">,</span><span class="s1">&#39;Title&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-<span class="n">tags_title_df</span> <span class="o">=</span> <span class="n">tags_title_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;CVEs&#39;</span><span class="p">})</span>
-<span class="n">tags_title_df</span><span class="p">[</span><span class="s1">&#39;CVE Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags_title_df</span><span class="p">[</span><span class="s1">&#39;CVEs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">tags_title_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CVE Count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_df = bins_all_cvrf_df[bins_all_cvrf_df[&#39;Bins Count&#39;] == 0]
+tags_df = tags_df.loc[tags_df[&#39;Initial Release&#39;].str.contains(&#39;2022&#39;)]
+tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(lambda x: list(set(x)))
+tags_title_df = tags_title_df.rename(columns={&#39;index&#39;: &#39;CVEs&#39;})
+tags_title_df[&#39;CVE Count&#39;] = tags_title_df[&#39;CVEs&#39;].apply(lambda x: len(x))
+tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1886/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1830/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
   tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(lambda x: list(set(x)))
 </pre></div>
 </div>
@@ -3874,12 +3875,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Azure Site Recovery</th>
       <th>Azure Site Recovery</th>
-      <td>[CVE-2022-35801, CVE-2022-35813, CVE-2022-3577...</td>
-      <td>[2022-08-09, 2022-07-12, 2022-03-08, 2022-04-12]</td>
-      <td>[Denial of Service, Remote Code Execution, Ele...</td>
+      <td>[CVE-2022-35814, CVE-2022-33656, CVE-2022-3367...</td>
+      <td>[2022-08-09, 2022-04-12, 2022-03-08, 2022-07-12]</td>
+      <td>[Information Disclosure, Denial of Service, El...</td>
       <td>[4.9, 4.4, 6.2, 6.5, 8.1, 7.2, 8.3, 7.8]</td>
       <td>[]</td>
-      <td>[9.49, 9.47, 9.50, 9.48]</td>
+      <td>[9.48, 9.47, 9.49, 9.50]</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False]</td>
@@ -3889,12 +3890,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Microsoft Office</th>
       <th>Microsoft Office</th>
-      <td>[CVE-2022-21840, CVE-2022-30172, CVE-2022-2910...</td>
-      <td>[2022-08-09, 2022-06-14, 2022-10-11, 2022-05-1...</td>
-      <td>[Spoofing, Security Feature Bypass, Remote Cod...</td>
+      <td>[CVE-2022-23252, CVE-2022-34717, CVE-2022-3017...</td>
+      <td>[2022-02-08, 2022-05-10, 2022-01-11, 2022-08-0...</td>
+      <td>[Spoofing, Information Disclosure, Remote Code...</td>
       <td>[3.3, 4.7, 5.5, 6.5, 7.8, 8.8]</td>
-      <td>[, KB5002026 KB5002279 KB5002288, KB4462205 KB...</td>
-      <td>[, 15.0.5493.1000 16.0.5365.1000 16.66.2210090...</td>
+      <td>[, KB5002062 KB5002210 KB5002212 KB5002214 KB5...</td>
+      <td>[15.0.5459.1001 16.0.10387.20008 16.0.14931.20...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False, True]</td>
@@ -3904,12 +3905,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30161, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[CVE-2022-30146, CVE-2022-30139, CVE-2022-3014...</td>
       <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
-      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
+      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
+      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>
@@ -3919,9 +3920,9 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Microsoft Dynamics GP</th>
       <th>Microsoft Dynamics GP</th>
-      <td>[CVE-2022-23273, CVE-2022-23272, CVE-2022-2327...</td>
+      <td>[CVE-2022-23272, CVE-2022-23269, CVE-2022-2327...</td>
       <td>[2022-02-08]</td>
-      <td>[Spoofing, Remote Code Execution, Elevation of...</td>
+      <td>[Spoofing, Elevation of Privilege, Remote Code...</td>
       <td>[5.4, 6.5, 7.1, 8.1, 8.8]</td>
       <td>[]</td>
       <td>[18.4.1434]</td>
@@ -4046,7 +4047,7 @@ Name: Tag, Length: 32, dtype: int64
 <h3>What is the next best hardcode tag title with kbs?<a class="headerlink" href="#what-is-the-next-best-hardcode-tag-title-with-kbs" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags_title_df</span><span class="p">[</span><span class="n">tags_title_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CVE Count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags_title_df[tags_title_df[&#39;has_kb&#39;].apply(lambda x: x[0]) == True].sort_values(by=[&#39;CVE Count&#39;], ascending=False)
 </pre></div>
 </div>
 </div>
@@ -4102,12 +4103,12 @@ Name: Tag, Length: 32, dtype: int64
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30161, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[CVE-2022-30146, CVE-2022-30139, CVE-2022-3014...</td>
       <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
-      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
+      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
+      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>

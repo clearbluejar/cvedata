@@ -992,14 +992,14 @@ title="Print to PDF"
 <h2>Import cvedata<a class="headerlink" href="#import-cvedata" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.ms_feed_kbs</span> <span class="kn">import</span> <span class="n">get_ms_kb_to_bins_json</span>
-<span class="kn">from</span> <span class="nn">cvedata.winbindex</span> <span class="kn">import</span> <span class="n">get_winbindex_kbs_to_bin_map</span>
-<span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_cvrf_pandas_df</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from cvedata.ms_feed_kbs import get_ms_kb_to_bins_json
+from cvedata.winbindex import get_winbindex_kbs_to_bin_map
+from cvedata.msrc_pandas import get_msrc_cvrf_pandas_df
+import pandas as pd
 
-<span class="n">wb_kbs</span> <span class="o">=</span> <span class="n">get_winbindex_kbs_to_bin_map</span><span class="p">()</span>
-<span class="n">ms_kbs</span> <span class="o">=</span> <span class="n">get_ms_kb_to_bins_json</span><span class="p">()</span>
-<span class="n">msrc_pandas</span> <span class="o">=</span> <span class="n">get_msrc_cvrf_pandas_df</span><span class="p">()</span>
+wb_kbs = get_winbindex_kbs_to_bin_map()
+ms_kbs = get_ms_kb_to_bins_json()
+msrc_pandas = get_msrc_cvrf_pandas_df()
 </pre></div>
 </div>
 </div>
@@ -1008,11 +1008,11 @@ title="Print to PDF"
 <h3>Winbindex KB Data<a class="headerlink" href="#winbindex-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">wb_kbs</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">without_bins</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="p">[</span><span class="n">wb_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">wb_kbs_df</span> <span class="o">=</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">without_bins</span><span class="p">)</span>
-<span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>wb_kbs_df = pd.DataFrame.from_dict(wb_kbs, orient=&#39;index&#39;)
+wb_kbs_df[&#39;bin count&#39;] = wb_kbs_df[&#39;updated&#39;].apply(lambda x: len(x))
+without_bins = wb_kbs_df[wb_kbs_df[&#39;bin count&#39;] == 0].index
+wb_kbs_df = wb_kbs_df.drop(without_bins)
+wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
 </pre></div>
 </div>
 </div>
@@ -1153,8 +1153,8 @@ title="Print to PDF"
 <h3>MS feeds KB Data<a class="headerlink" href="#ms-feeds-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ms_kbs</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ms_kbs_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ms_kbs_df = pd.DataFrame.from_dict(ms_kbs).sort_values(by=[&#39;bin count&#39;], ascending=False)
+ms_kbs_df
 </pre></div>
 </div>
 </div>
@@ -1271,7 +1271,8 @@ title="Print to PDF"
 <h3>How many unique KBs do we have information for?<a class="headerlink" href="#how-many-unique-kbs-do-we-have-information-for" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+wb_kbs_df.index.union(ms_kbs_df.index).shape[0]
 </pre></div>
 </div>
 </div>
@@ -1286,14 +1287,14 @@ title="Print to PDF"
 <h3>Why does Winbindex report more updated files?<a class="headerlink" href="#why-does-winbindex-report-more-updated-files" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#wb_updated = wb_kbs_df[&#39;updated&#39;].explode().str.split(&#39;.&#39;)</span>
-<span class="c1">#wb_updated = wb_kbs_df[]</span>
-<span class="c1"># wb_updated_index = wb_updated.apply(lambda x: x[1]).value_counts().index</span>
-<span class="c1"># wb_updated_index</span>
-<span class="c1">#wb_updated</span>
-<span class="n">file_ext_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;wb&#39;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;KB5012643&#39;</span><span class="p">][</span><span class="s1">&#39;updated&#39;</span><span class="p">]),</span> <span class="s1">&#39;mskb&#39;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;KB5012643&#39;</span><span class="p">][</span><span class="s1">&#39;updated&#39;</span><span class="p">])})</span>
-<span class="n">file_ext_df</span> <span class="o">=</span> <span class="n">file_ext_df</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">file_ext_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#wb_updated = wb_kbs_df[&#39;updated&#39;].explode().str.split(&#39;.&#39;)
+#wb_updated = wb_kbs_df[]
+# wb_updated_index = wb_updated.apply(lambda x: x[1]).value_counts().index
+# wb_updated_index
+#wb_updated
+file_ext_df = pd.DataFrame({&#39;wb&#39; : pd.Series(wb_kbs_df.loc[&#39;KB5012643&#39;][&#39;updated&#39;]), &#39;mskb&#39; : pd.Series(ms_kbs_df.loc[&#39;KB5012643&#39;][&#39;updated&#39;])})
+file_ext_df = file_ext_df.applymap(lambda x: str(x).split(&#39;.&#39;)[-1])
+file_ext_df
 </pre></div>
 </div>
 </div>
@@ -1383,8 +1384,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_ext</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">file_ext_df</span><span class="p">[</span><span class="s1">&#39;wb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">wb_ext</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>wb_ext = set(file_ext_df[&#39;wb&#39;].str.lower().unique())
+wb_ext
 </pre></div>
 </div>
 </div>
@@ -1429,8 +1430,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mskb_ext</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">file_ext_df</span><span class="p">[</span><span class="s1">&#39;mskb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">mskb_ext</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mskb_ext = set(file_ext_df[&#39;mskb&#39;].str.lower().unique())
+mskb_ext
 </pre></div>
 </div>
 </div>
@@ -1458,7 +1459,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb_ext</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">mskb_ext</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>wb_ext.difference(mskb_ext)
 </pre></div>
 </div>
 </div>
@@ -1490,7 +1491,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mskb_ext</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">wb_ext</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mskb_ext.difference(wb_ext)
 </pre></div>
 </div>
 </div>
@@ -1508,8 +1509,8 @@ title="Print to PDF"
 <p>Source - <a class="reference external" href="https://msrc.microsoft.com/update-guide/vulnerability">MSRC CVEs</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_df</span><span class="p">())</span>
-<span class="n">msrc_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df = pd.DataFrame.from_dict(get_msrc_cvrf_pandas_df())
+msrc_df
 </pre></div>
 </div>
 </div>
@@ -1673,58 +1674,58 @@ title="Print to PDF"
 <h3>How many MSRC CVEs have KB data?<a class="headerlink" href="#how-many-msrc-cves-have-kb-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_ms_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def has_ms_kb(kbs):
 
-    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+    has_kb = False
 
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">break</span>
+    for kb in kbs.split():
+        if kb in ms_kbs_df.index:
+            has_kb = True
+            break
 
-    <span class="k">return</span> <span class="n">has_kb</span>
+    return has_kb
 
-<span class="k">def</span> <span class="nf">has_wb_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+def has_wb_kb(kbs):
 
-    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+    has_kb = False
 
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">break</span>
+    for kb in kbs.split():
+        if kb in wb_kbs_df.index:
+            has_kb = True
+            break
 
-    <span class="k">return</span> <span class="n">has_kb</span>
+    return has_kb
 
-<span class="k">def</span> <span class="nf">has_kb</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
+def has_kb(kbs):
 
-    <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">False</span>
+    has_kb = False
 
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">has_kb</span> <span class="o">=</span> <span class="kc">True</span>
+    for kb in kbs.split():
+        if kb in wb_kbs_df.index or kb in ms_kbs_df.index:
+            has_kb = True
 
-    <span class="k">return</span> <span class="n">has_kb</span>
+    return has_kb
 
-<span class="k">def</span> <span class="nf">missing_all_kbs</span><span class="p">(</span><span class="n">kbs</span><span class="p">):</span>
-    <span class="n">missing_all_kbs</span> <span class="o">=</span> <span class="kc">False</span>
+def missing_all_kbs(kbs):
+    missing_all_kbs = False
 
-    <span class="c1"># note</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">kbs</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">wb_kbs_df</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span> <span class="n">kb</span> <span class="ow">in</span> <span class="n">ms_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    # note
+    count = 0
+    for kb in kbs.split():
+        if kb in wb_kbs_df.index or kb in ms_kbs_df.index:
+            count += 1
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kbs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">missing_all_kbs</span> <span class="o">=</span> <span class="kc">True</span>
+    if len(kbs) &gt; 0 and count == 0:
+        missing_all_kbs = True
 
-    <span class="k">return</span> <span class="n">missing_all_kbs</span>
+    return missing_all_kbs
 
-<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_kb</span><span class="p">)</span>
-<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_ms_kb</span><span class="p">)</span>
-<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_wb_kb</span><span class="p">)</span>
-<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">missing_all_kbs</span><span class="p">)</span>
-<span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;KBs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">msrc_df</span>
+msrc_df[&#39;has_kb&#39;] = msrc_df[&#39;KBs&#39;].apply(has_kb)
+msrc_df[&#39;has_ms_kb&#39;] = msrc_df[&#39;KBs&#39;].apply(has_ms_kb)
+msrc_df[&#39;has_wb_kb&#39;] = msrc_df[&#39;KBs&#39;].apply(has_wb_kb)
+msrc_df[&#39;missing_all_kbs&#39;] = msrc_df[&#39;KBs&#39;].apply(missing_all_kbs)
+msrc_df[&#39;no_kb_info&#39;] = msrc_df[&#39;KBs&#39;].apply(lambda x: len(x) == 0)
+msrc_df
 </pre></div>
 </div>
 </div>
@@ -1949,16 +1950,16 @@ title="Print to PDF"
 <h3>How many MSRC CVEs have KB data by Year?<a class="headerlink" href="#how-many-msrc-cves-have-kb-data-by-year" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[&#39;year&#39;] = msrc_df[&#39;Initial Release&#39;].apply(lambda x: x.split(&#39;-&#39;)[0])
 
-<span class="n">msrc_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cvedata KB stats by Year&#39;</span><span class="p">)</span>
+msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1859/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1802/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
-/tmp/ipykernel_1859/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+/tmp/ipykernel_1802/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
@@ -1973,14 +1974,14 @@ title="Print to PDF"
 <h3>How Many Per Month in 2022?<a class="headerlink" href="#how-many-per-month-in-2022" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">])</span>
-<span class="n">msrc_date_df</span> <span class="o">=</span> <span class="n">msrc_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;has_ms_kb&#39;</span><span class="p">,</span><span class="s1">&#39;has_wb_kb&#39;</span><span class="p">,</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">,</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">msrc_date_df</span><span class="p">[</span><span class="n">msrc_date_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2022</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cvedata KB stats for 2022&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[&#39;date&#39;] = pd.to_datetime(msrc_df[&#39;Initial Release&#39;])
+msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
+msrc_date_df[msrc_date_df.index.year.isin([2022])].plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats for 2022&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1859/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1802/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
 </pre></div>
 </div>
@@ -1998,7 +1999,8 @@ title="Print to PDF"
 <h3>What type of CVEs are we missing KBs for? (CVEs with KBs listed, but we lack the KB source)<a class="headerlink" href="#what-type-of-cves-are-we-missing-kbs-for-cves-with-kbs-listed-but-we-lack-the-kb-source" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+msrc_df[msrc_df[&#39;missing_all_kbs&#39;] == True][&#39;Title&#39;].value_counts()[:50]
 </pre></div>
 </div>
 </div>
@@ -2060,7 +2062,7 @@ Name: Title, dtype: int64
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;missing_all_kbs&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs missing related KBs sources&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[msrc_df[&#39;missing_all_kbs&#39;] == True][&#39;Title&#39;].value_counts()[:50].plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;Types of CVEs missing related KBs sources&#39;)
 </pre></div>
 </div>
 </div>
@@ -2076,7 +2078,7 @@ Name: Title, dtype: int64
 <h3>What type of CVEs lack KB information completely?<a class="headerlink" href="#what-type-of-cves-lack-kb-information-completely" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[msrc_df[&#39;no_kb_info&#39;] == True][&#39;Tag&#39;].value_counts()[:50]
 </pre></div>
 </div>
 </div>
@@ -2138,7 +2140,7 @@ Name: Tag, dtype: int64
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs without KB data listed&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[msrc_df[&#39;no_kb_info&#39;] == True][&#39;Tag&#39;].value_counts()[:50].plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;Types of CVEs without KB data listed&#39;)
 </pre></div>
 </div>
 </div>
@@ -2151,7 +2153,7 @@ Name: Tag, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msrc_df</span><span class="p">[</span><span class="n">msrc_df</span><span class="p">[</span><span class="s1">&#39;no_kb_info&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Types of CVEs without KB data listed (ignoring Chrome)&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>msrc_df[msrc_df[&#39;no_kb_info&#39;] == True][&#39;Tag&#39;].value_counts()[1:50].plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;Types of CVEs without KB data listed (ignoring Chrome)&#39;)
 </pre></div>
 </div>
 </div>
@@ -2170,13 +2172,13 @@ Name: Tag, dtype: int64
 <h3>Create Dataframe from all sources<a class="headerlink" href="#create-dataframe-from-all-sources" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">wb_kbs_df</span><span class="p">,</span><span class="n">ms_kbs_df</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<span class="n">all_kbs_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;kb&#39;</span>
-<span class="n">all_kbs_df</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;kb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
-<span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
-<span class="n">all_kbs_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import itertools
+all_kbs_df = pd.concat([wb_kbs_df,ms_kbs_df]).sort_index()
+all_kbs_df.index.name = &#39;kb&#39;
+all_kbs_df = all_kbs_df.groupby(&#39;kb&#39;).aggregate(list)
+all_kbs_df[&#39;updated&#39;] = all_kbs_df[&#39;updated&#39;].apply(lambda x: list(set(itertools.chain.from_iterable(x))))
+all_kbs_df[&#39;bin count&#39;] = all_kbs_df[&#39;updated&#39;].apply(len)
+all_kbs_df
 </pre></div>
 </div>
 </div>
@@ -2219,7 +2221,7 @@ Name: Tag, dtype: int64
   <tbody>
     <tr>
       <th>KB3194798</th>
-      <td>[Cortana.contactpermissions.dll, Windows.web.h...</td>
+      <td>[Msfeeds.dll, Azuresettingsyncprovider.dll, Ap...</td>
       <td>[nan]</td>
       <td>[2016-10-11]</td>
       <td>[nan]</td>
@@ -2228,7 +2230,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3197954</th>
-      <td>[Windows.ui.immersive.dll, Oleaut32.dll, Micro...</td>
+      <td>[Nlbmgr.exe, Srhealth.dll, Sppobjs.dll, Displa...</td>
       <td>[nan]</td>
       <td>[2016-10-27]</td>
       <td>[nan]</td>
@@ -2237,7 +2239,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3200970</th>
-      <td>[Windows.ui.immersive.dll, Oleaut32.dll, Table...</td>
+      <td>[Imecfmui.exe, Rdpshell.exe, Vmswitch.sys, Acp...</td>
       <td>[nan]</td>
       <td>[2016-11-08]</td>
       <td>[nan]</td>
@@ -2246,7 +2248,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3201845</th>
-      <td>[Windows.ui.immersive.dll, Trustedinstaller.ex...</td>
+      <td>[Vmswitch.sys, Sppobjs.dll, Appxdeploymentserv...</td>
       <td>[nan]</td>
       <td>[2016-12-09]</td>
       <td>[nan]</td>
@@ -2255,7 +2257,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB3206632</th>
-      <td>[Clusport.sys, Hvloader.exe, Setuphost.exe, Mi...</td>
+      <td>[Microsoft.powershell.consolehost.dll, Windows...</td>
       <td>[nan]</td>
       <td>[2016-12-13]</td>
       <td>[nan]</td>
@@ -2273,7 +2275,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5020440</th>
-      <td>[wuauclt.exe, dxcapturereplay.dll, uxinit.dll,...</td>
+      <td>[BthAvrcpTg.sys, pcaevts.dll, compattelrunner....</td>
       <td>[nan, [1507]]</td>
       <td>[2022-10-18, 2022-10-18]</td>
       <td>[nan, https://support.microsoft.com/help/5020440]</td>
@@ -2282,7 +2284,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5020953</th>
-      <td>[Windows.UI.Xaml.Resources.th.dll, Amd64\Print...</td>
+      <td>[msmpeg2vdec.dll, tcbloader.dll, Windows.Media...</td>
       <td>[nan]</td>
       <td>[2022-10-28]</td>
       <td>[nan]</td>
@@ -2291,7 +2293,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021654</th>
-      <td>[tipresx.dll.mui, pcadm.dll, winresume.efi, bo...</td>
+      <td>[pcaevts.dll, compattelrunner.exe, Windows.Med...</td>
       <td>[nan, [1607]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021654]</td>
@@ -2300,7 +2302,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021655</th>
-      <td>[QuickConnectUI.dll, peoplebarflyout.dll, shel...</td>
+      <td>[msmpeg2vdec.dll, tcbloader.dll, Windows.Media...</td>
       <td>[nan, [1809]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021655]</td>
@@ -2309,7 +2311,7 @@ Name: Tag, dtype: int64
     </tr>
     <tr>
       <th>KB5021656</th>
-      <td>[hvix64.exe, sppsvc.exe, ntoskrnl.exe, ApplyTr...</td>
+      <td>[tcbloader.dll, DolbyDecMFT.dll, sppcext.dll, ...</td>
       <td>[nan]</td>
       <td>[2022-11-17]</td>
       <td>[nan]</td>
@@ -2323,8 +2325,8 @@ Name: Tag, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span> <span class="o">=</span> <span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;updated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">freq_bins</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>freq_bins = all_kbs_df[&#39;updated&#39;].explode().value_counts()
+freq_bins.head(50)
 </pre></div>
 </div>
 </div>
@@ -2340,26 +2342,26 @@ hvservice.sys                                          488
 win32kfull.sys                                         450
 shell32.dll                                            447
 win32k.sys                                             442
-efisys.bin                                             439
 efisys_noprompt.bin                                    439
-microsoft.msmq.powershell.commands.dll                 435
-microsoft.msmq.runtime.interop.dll                     435
+efisys.bin                                             439
 microsoft.msmq.activex.interop.dll                     435
+microsoft.msmq.runtime.interop.dll                     435
+microsoft.msmq.powershell.commands.dll                 435
 microsoft.virtualization.client.rdpclientaxhost.dll    432
 edgehtml.dll                                           416
 ieframe.dll                                            408
 comctl32.dll                                           407
 win32kbase.sys                                         406
 sppobjs.dll                                            400
-bootspaces.dll                                         391
 windows.media.protection.playready.dll                 391
+bootspaces.dll                                         391
 jscript9.dll                                           388
 win32u.dll                                             386
 mfcore.dll                                             383
 gdiplus.dll                                            379
 windows.storage.dll                                    378
-chakradiag.dll                                         368
 chakra.dll                                             368
+chakradiag.dll                                         368
 winload.efi                                            360
 winresume.efi                                          354
 winload.exe                                            354
@@ -2374,11 +2376,11 @@ wininet.dll                                            325
 user32.dll                                             321
 lsasrv.dll                                             320
 mfps.dll                                               316
+appxupgrademigrationplugin.dll                         313
 appxdeploymentserver.dll                               313
 appxapplicabilityblob.dll                              313
-appxupgrademigrationplugin.dll                         313
 comctl32.dll.mui                                       313
-offlinelsa.dll                                         302
+sxsoa.dll                                              302
 Name: updated, dtype: int64
 </pre></div>
 </div>
@@ -2386,7 +2388,7 @@ Name: updated, dtype: int64
 </div>
 <div class="cell tag_full-width docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Most Often Updated Binary&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>freq_bins[:100].plot(kind=&#39;bar&#39;,figsize=(20,5),title=&#39;Most Often Updated Binary&#39;)
 </pre></div>
 </div>
 </div>
@@ -2402,7 +2404,7 @@ Name: updated, dtype: int64
 <h3>Graph number of updated files per KB<a class="headerlink" href="#graph-number-of-updated-files-per-kb" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>all_kbs_df[&#39;bin count&#39;].sort_values(ascending=False)[:50].plot(kind=&#39;bar&#39;,figsize=(20,5))
 </pre></div>
 </div>
 </div>
@@ -2418,7 +2420,8 @@ Name: updated, dtype: int64
 <h3>Average number per KB<a class="headerlink" href="#average-number-per-kb" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kbs_df</span><span class="p">[</span><span class="s1">&#39;bin count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+all_kbs_df[&#39;bin count&#39;].sort_values(ascending=False).mean()
 </pre></div>
 </div>
 </div>

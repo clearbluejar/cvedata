@@ -841,11 +841,11 @@ pip install .
 <h2>Take a look at some of the latest MSRC CVE Data<a class="headerlink" href="#take-a-look-at-some-of-the-latest-msrc-cve-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvedata.msrc_pandas</span> <span class="kn">import</span> <span class="n">get_msrc_cvrf_pandas_json</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from cvedata.msrc_pandas import get_msrc_cvrf_pandas_json
+import pandas as pd
 
-<span class="n">msrc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_msrc_cvrf_pandas_json</span><span class="p">())</span>
-<span class="n">msrc_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Initial Release&#39;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+msrc_df = pd.DataFrame.from_dict(get_msrc_cvrf_pandas_json())
+msrc_df.sort_values(by=[&#39;Initial Release&#39;],ascending=False).head(25)
 </pre></div>
 </div>
 </div>
@@ -1160,9 +1160,10 @@ pip install .
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Print current data metadata</span>
-<span class="kn">from</span> <span class="nn">cvedata.metadata</span> <span class="kn">import</span> <span class="n">print_stats</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">print_stats</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### Print current data metadata
+from cvedata.metadata import print_stats
+str(print_stats())
+
 </pre></div>
 </div>
 </div>
