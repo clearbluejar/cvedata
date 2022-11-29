@@ -43,7 +43,7 @@ jobs:
 
     - name: Download Release Data
       run: |        
-        python -m cvedata.download
+        python -m cvedata.download --latest --data-only
         find cvedata/data
 
     - name: Generate Notebooks from Data

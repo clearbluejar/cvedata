@@ -41,6 +41,8 @@ jobs:
     - name: Get cvedata python-version
       id: cvedata_ver
       run: echo "CVEDATA_VER=v$(python -m cvedata.version)" >> $GITHUB_OUTPUT
+    - name: Download previous cache      
+      run: python -m cvedata.download --latest --cache-only
 
     - name: Update CVE data
       run: |        
@@ -88,6 +90,7 @@ jobs:
           cvedata_cache.zip
           cvedata_data.zip
           cvedata/data/metadata.json
+          cvedata/data/.cache/winbindex/gh-pages.zip 
           ./dist/*
         tag_name: "${{ steps.cvedata_ver.outputs.CVEDATA_VER }}"
       env:
