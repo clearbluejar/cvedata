@@ -1,7 +1,4 @@
 import json
-import os
-from itertools import groupby
-import pathlib
 import re
 import time
 from pathlib import Path
@@ -16,19 +13,19 @@ from .nist import get_cves
 from .util import get_file_json
 
 # list of all names available
-RESEARCHER_NAMES_JSON_PATH = Path(DATA_DIR, 'ack-researcher_names.json')
+RESEARCHER_NAMES_JSON_PATH = Path(DATA_DIR, 'ack-researcher-names.json')
 # list of all names normalized
 RESEARCHER_NAMES_GROUP_JSON_PATH = Path(
-    DATA_DIR, 'researcher_names_grouped.json')
+    DATA_DIR, 'ack-researcher_names_grouped.json')
 # map of all cves to normalized names
-RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_cve_map.json')
+RESEARCHER_CVE_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher-cve-map.json')
 
 # map of all cve scores to normalized names
-RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL = Path(CACHE_PATH, 'ack-researcher_cve_quality_map_full.json.gz')
-RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_cve_quality_map.json')
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH_FULL = Path(CACHE_PATH, 'ack-researcher-cve-quality-map-full.json.gz')
+RESEARCHER_CVE_QUALITY_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher-cve-quality-map.json')
 
 # map of all researcher to twitter handle
-RESEARCHER_TWITTER_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher_twitter_map.json')
+RESEARCHER_TWITTER_MAP_JSON_PATH = Path(DATA_DIR, 'ack-researcher-twitter-map.json')
 
 def create_researcher_names_json():
 
@@ -83,7 +80,7 @@ def create_researcher_names_group_json():
                      "discovered by", "microsoft corporation", "anonymous", "msrc vulnerabilities", "codesafe team",
                      "microsoft chakra", "", "mark", "twitter", "information", "kunlun lab", "microsoft offensive",
                      "chakra", "trend micro’s", "crowdstrike", "microsoft office", "microsoft security", "fortinet's fortiguard",
-                     "kaspersky lab", "the chromium",]
+                     "kaspersky lab", "the chromium","unnamed researcher"]
 
     
 
@@ -115,6 +112,18 @@ def create_researcher_names_group_json():
 
     # with open(RESEARCHER_NAMES_GROUP_JSON_PATH, 'w') as f:
     #     json.dump(groups, f)
+
+    # group similar groups
+    # TODO remove duplicates
+    # matches = {}
+    # for name in names.keys():
+    #     #matches = difflib.get_close_matches(name,names,n=100,cutoff=.9)
+    #     # if len(matches) > 1:
+    #     #     print(matches)
+
+    #     for other in names.keys():
+    #         if name in other and name != other:
+    #             matches.append([name,other])
 
     with open(RESEARCHER_NAMES_GROUP_JSON_PATH, 'w') as f:
         json.dump(names, f, indent=4)
@@ -165,7 +174,7 @@ def create_researcher_cve_quality_map_json():
             cve_df = pd.DataFrame(cve_df,columns=cve_columns)
             cve_df['researcher'] = researcher
             #cve_df.set_index('researcher',inplace=True)
-            print(cve_df.head())
+            #print(cve_df.head())
             #print(cve_data)
 
             goat_quality.append(cve_df)
