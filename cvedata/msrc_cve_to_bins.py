@@ -193,7 +193,7 @@ def create_combined_name_desc_files():
     for source in sources:
         for desc in source:
             for bin in source[desc]:
-                bin_names.append(bin)
+                bin_names.append(bin.lower())
 
     # unique bin names
     bin_names = list(set(bin_names))
@@ -328,8 +328,9 @@ def create_msrc_cve_kbs():
     all_kbs_df.index.name = 'kb'
     all_kbs_df = all_kbs_df.groupby('kb').aggregate(list)
     
-    # merge and unique updated bins
-    all_kbs_df['updated'] = all_kbs_df['updated'].apply(lambda x: list(set(itertools.chain.from_iterable(x))))
+    # merge, lower, and unique updated bins
+    all_kbs_df['updated'] = all_kbs_df['updated'].apply(lambda x: list(itertools.chain.from_iterable(x)))
+    all_kbs_df['updated'] = all_kbs_df['updated'].apply(lambda x: sorted(list(set([y.lower() for y in x]))))
 
     all_kbs_df['bin count'] = all_kbs_df['updated'].apply(len)
 
@@ -358,6 +359,13 @@ def create_msrc_cve_to_bins():
 
     bins_all_cvrf_df.to_json(MSRC_CVE_TO_BINS_PATH)
     print(bins_all_cvrf_df.head())
+
+    bin_assigned_count = bins_all_cvrf_df[bins_all_cvrf_df['Bins Count'] > 0].shape[0]
+    bin_updated_assigned_count = bins_all_cvrf_df[bins_all_cvrf_df['Updated Count'] > 0].shape[0]
+    total_cves = bins_all_cvrf_df.shape[0]
+    
+    print(f"Assigned bins to {bin_assigned_count} of {total_cves}: {(bin_assigned_count/total_cves)*100}%")
+    print(f"Assigned updated bins to {bin_updated_assigned_count} of {total_cves}: {(bin_updated_assigned_count/total_cves)*100}%")
 
 
 
