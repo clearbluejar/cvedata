@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="metagen.html">
+   Data Generation Time
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../book/generated.html">
    Generated Data
@@ -165,23 +170,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_map.json.html">
-     ack-researcher_cve_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-map.json.html">
+     ack-researcher-cve-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_quality_map.json.html">
-     ack-researcher_cve_quality_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-quality-map.json.html">
+     ack-researcher-cve-quality-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_names.json.html">
-     ack-researcher_names.json
+    <a class="reference internal" href="../book/generated/ack-researcher-names.json.html">
+     ack-researcher-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_twitter_map.json.html">
-     ack-researcher_twitter_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-twitter-map.json.html">
+     ack-researcher-twitter-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ack-researcher_names_grouped.json.html">
+     ack-researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -292,11 +302,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/msrc-pandas-titles-merged.json.html">
      msrc-pandas-titles-merged.json
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/researcher_names_grouped.json.html">
-     researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -769,7 +774,7 @@ len(all_bin_names)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22050
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22058
 </pre></div>
 </div>
 </div>
@@ -782,8 +787,8 @@ print(len(wb_ver))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10587
-9069
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10589
+9070
 </pre></div>
 </div>
 </div>
@@ -905,7 +910,7 @@ tags_df.sort_values(by=[&#39;tag count&#39;], ascending=False)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10587
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10589
 </pre></div>
 </div>
 </div>
@@ -952,7 +957,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>2</th>
       <td>.NET Framework</td>
       <td>44</td>
-      <td>[System.Data.dll, System.Drawing.dll, System.O...</td>
+      <td>[System.Drawing.dll, System.Numerics.dll, Syst...</td>
     </tr>
     <tr>
       <th>3</th>
@@ -988,7 +993,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>429</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
     </tr>
     <tr>
       <th>430</th>
@@ -1010,7 +1015,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
     </tr>
   </tbody>
 </table>
-<p>295 rows × 3 columns</p>
+<p>293 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1051,7 +1056,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>2</th>
       <td>.NET Framework</td>
       <td>44</td>
-      <td>[System.Data.dll, System.Drawing.dll, System.O...</td>
+      <td>[System.Drawing.dll, System.Numerics.dll, Syst...</td>
       <td>[accessibility.dll, accessibility.ni.dll, adon...</td>
     </tr>
     <tr>
@@ -1093,7 +1098,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>429</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
     </tr>
     <tr>
@@ -1400,7 +1405,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>382</th>
       <td>Windows Shell</td>
       <td>34</td>
-      <td>[powershell.exe, WindowsBase.dll, WindowsBase....</td>
+      <td>[WindowsBase.dll, powershell.exe, WindowsBase....</td>
       <td>[windowsbase.dll, windowsbase.ni.dll, windowsb...</td>
       <td>[windowsbase.dll, windows.sets.dll]</td>
     </tr>
@@ -1472,7 +1477,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>429</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
       <td>[kernel32.dll]</td>
     </tr>
@@ -1614,7 +1619,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <th>185</th>
       <td>Visual Studio</td>
       <td>65</td>
-      <td>[Microsoft.VisualStudio.Setup.Download.resourc...</td>
+      <td>[Microsoft.VisualStudio.Setup.Common.resources...</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -1761,6 +1766,14 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
+      <th>167</th>
+      <td>SQL Server</td>
+      <td>22</td>
+      <td>[]</td>
+      <td>[symsrv.dll]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
       <th>224</th>
       <td>Windows Bluetooth Service</td>
       <td>2</td>
@@ -1798,6 +1811,14 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>57</td>
       <td>[]</td>
       <td>[cmiaisupport.dll]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>368</th>
+      <td>Windows SMB Server</td>
+      <td>42</td>
+      <td>[]</td>
+      <td>[symsrv.dll, wmssvc.exe]</td>
       <td>[]</td>
     </tr>
     <tr>
@@ -2176,7 +2197,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <th>382</th>
       <td>Windows Shell</td>
       <td>34</td>
-      <td>[powershell.exe, WindowsBase.dll, WindowsBase....</td>
+      <td>[WindowsBase.dll, powershell.exe, WindowsBase....</td>
       <td>[windowsbase.dll, windowsbase.ni.dll, windowsb...</td>
       <td>[windowsbase.dll, windows.sets.dll]</td>
     </tr>
@@ -2248,7 +2269,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <th>429</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
       <td>[kernel32.dll]</td>
     </tr>

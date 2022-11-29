@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="metagen.html">
+   Data Generation Time
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../book/generated.html">
    Generated Data
@@ -165,23 +170,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_map.json.html">
-     ack-researcher_cve_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-map.json.html">
+     ack-researcher-cve-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_quality_map.json.html">
-     ack-researcher_cve_quality_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-quality-map.json.html">
+     ack-researcher-cve-quality-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_names.json.html">
-     ack-researcher_names.json
+    <a class="reference internal" href="../book/generated/ack-researcher-names.json.html">
+     ack-researcher-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_twitter_map.json.html">
-     ack-researcher_twitter_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-twitter-map.json.html">
+     ack-researcher-twitter-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ack-researcher_names_grouped.json.html">
+     ack-researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -292,11 +302,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/msrc-pandas-titles-merged.json.html">
      msrc-pandas-titles-merged.json
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/researcher_names_grouped.json.html">
-     researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -1046,7 +1051,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
   <tbody>
     <tr>
       <th>KB5012643</th>
-      <td>[gamechattranscription.dll, useraccountcontrol...</td>
+      <td>[accessibilitycpl.dll, consentexperiencecommon...</td>
       <td>[11-21H2]</td>
       <td>2022-04-25</td>
       <td>https://support.microsoft.com/help/5012643</td>
@@ -1055,7 +1060,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598242</th>
-      <td>[windows.globalization.japanesephoneme.dll, ds...</td>
+      <td>[peopleband.dll, consentexperiencecommon.dll, ...</td>
       <td>[2004]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598242</td>
@@ -1064,7 +1069,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598230</th>
-      <td>[windows.globalization.japanesephoneme.dll, ds...</td>
+      <td>[peopleband.dll, consentexperiencecommon.dll, ...</td>
       <td>[1809]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598230</td>
@@ -1073,7 +1078,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB5017389</th>
-      <td>[filesnodeicon.png, dsregcmd.exe, appvdllsurro...</td>
+      <td>[cloudexperiencehostbroker.hello.winmd, access...</td>
       <td>[11-22H2]</td>
       <td>2022-09-30</td>
       <td>https://support.microsoft.com/help/5017389</td>
@@ -1082,7 +1087,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598245</th>
-      <td>[windows.globalization.japanesephoneme.dll, ds...</td>
+      <td>[peopleband.dll, captureservice.dll, mshwlatin...</td>
       <td>[1803]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598245</td>
@@ -1145,7 +1150,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
   </tbody>
 </table>
-<p>608 rows × 6 columns</p>
+<p>609 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1277,7 +1282,7 @@ wb_kbs_df.index.union(ms_kbs_df.index).shape[0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>742
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>743
 </pre></div>
 </div>
 </div>
@@ -1334,7 +1339,7 @@ file_ext_df
     </tr>
     <tr>
       <th>2</th>
-      <td>dll</td>
+      <td>exe</td>
       <td>sys</td>
     </tr>
     <tr>
@@ -1344,7 +1349,7 @@ file_ext_df
     </tr>
     <tr>
       <th>4</th>
-      <td>xml</td>
+      <td>exe</td>
       <td>dll</td>
     </tr>
     <tr>
@@ -1354,12 +1359,12 @@ file_ext_df
     </tr>
     <tr>
       <th>3863</th>
-      <td>exe</td>
+      <td>sys</td>
       <td>nan</td>
     </tr>
     <tr>
       <th>3864</th>
-      <td>exe</td>
+      <td>dll</td>
       <td>nan</td>
     </tr>
     <tr>
@@ -1545,59 +1550,59 @@ msrc_df
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>Bachraty Gergely</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>Lei Shi of &lt;a href="https://www.360.com/"&gt; Qih...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>Hui Gao of &lt;a href="https://www.paloaltonetwor...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>Liu Long of &lt;a href="http://www.360.com/"&gt;Qiho...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>Jayson Grace &lt;a href="http://www.sandia.gov"&gt;S...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-      <td>&lt;a href="https://twitter.com/debasishm89"&gt; Deb...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-      <td>Steven Seeley (mr_me) of Offensive Security wo...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
-      <td></td>
-      <td>Jaanus Kääp &lt;br&gt;&lt;a href=""&gt;&lt;i&gt;Clarified Securi...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1611,58 +1616,58 @@ msrc_df
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2021-30553</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130553 Use after free in Networ...</td>
+      <th>CVE-2017-13080</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Wireless WPA Group Key Reinstallation</td>
+      <td>Spoofing</td>
+      <td>4.2</td>
+      <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
+      <td>&lt;a href="https://www.mathyvanhoef.com/"&gt;Mathy ...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11825</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
       <td>0.0</td>
       <td></td>
+      <td></td>
+      <td>&lt;a href="https://www.cybellum.com"&gt;Cybellum Te...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11826</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB3213623 KB3213627 KB3213630 KB3213647 KB3213...</td>
+      <td></td>
+      <td>Yang Kang, Ding Maoyin and Song Shenlei of Qih...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11829</th>
+      <td>2017-10-10</td>
+      <td>Windows Update</td>
+      <td>Windows Update Delivery Optimization</td>
+      <td>Elevation of Privilege</td>
+      <td>5.5</td>
+      <td>KB4041676 KB4041691</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <th>CVE-2021-30554</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130554 Use after free in WebGL</td>
-      <td></td>
+      <th>ADV170018</th>
+      <td>2017-10-10</td>
+      <td>None</td>
+      <td>October 2017 Adobe Flash Security Update</td>
+      <td>Remote Code Execution</td>
       <td>0.0</td>
+      <td>KB4049179</td>
       <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2021-30555</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130555 Use after free in Sharing</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2021-30556</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130556 Use after free in WebAudio</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2021-30557</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130557 Use after free in TabGroups</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
       <td></td>
     </tr>
   </tbody>
@@ -1765,83 +1770,83 @@ msrc_df
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>Bachraty Gergely</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>Lei Shi of &lt;a href="https://www.360.com/"&gt; Qih...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>Hui Gao of &lt;a href="https://www.paloaltonetwor...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>Liu Long of &lt;a href="http://www.360.com/"&gt;Qiho...</td>
-      <td>False</td>
-      <td>False</td>
+      <td>True</td>
       <td>False</td>
       <td>True</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>Jayson Grace &lt;a href="http://www.sandia.gov"&gt;S...</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-      <td>&lt;a href="https://twitter.com/debasishm89"&gt; Deb...</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-      <td>Steven Seeley (mr_me) of Offensive Security wo...</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
-      <td></td>
-      <td>Jaanus Kääp &lt;br&gt;&lt;a href=""&gt;&lt;i&gt;Clarified Securi...</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
       <td>False</td>
     </tr>
     <tr>
@@ -1861,15 +1866,31 @@ msrc_df
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2021-30553</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130553 Use after free in Networ...</td>
+      <th>CVE-2017-13080</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Wireless WPA Group Key Reinstallation</td>
+      <td>Spoofing</td>
+      <td>4.2</td>
+      <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
+      <td>&lt;a href="https://www.mathyvanhoef.com/"&gt;Mathy ...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11825</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
       <td>0.0</td>
       <td></td>
       <td></td>
-      <td></td>
+      <td>&lt;a href="https://www.cybellum.com"&gt;Cybellum Te...</td>
       <td>False</td>
       <td>False</td>
       <td>False</td>
@@ -1877,68 +1898,52 @@ msrc_df
       <td>True</td>
     </tr>
     <tr>
-      <th>CVE-2021-30554</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130554 Use after free in WebGL</td>
-      <td></td>
+      <th>CVE-2017-11826</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Remote Code Execution</td>
       <td>0.0</td>
+      <td>KB3213623 KB3213627 KB3213630 KB3213647 KB3213...</td>
       <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
-      <td>False</td>
+      <td>Yang Kang, Ding Maoyin and Song Shenlei of Qih...</td>
       <td>False</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>CVE-2021-30555</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130555 Use after free in Sharing</td>
+      <th>CVE-2017-11829</th>
+      <td>2017-10-10</td>
+      <td>Windows Update</td>
+      <td>Windows Update Delivery Optimization</td>
+      <td>Elevation of Privilege</td>
+      <td>5.5</td>
+      <td>KB4041676 KB4041691</td>
       <td></td>
-      <td>0.0</td>
       <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
       <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>CVE-2021-30556</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130556 Use after free in WebAudio</td>
-      <td></td>
+      <th>ADV170018</th>
+      <td>2017-10-10</td>
+      <td>None</td>
+      <td>October 2017 Adobe Flash Security Update</td>
+      <td>Remote Code Execution</td>
       <td>0.0</td>
+      <td>KB4049179</td>
       <td></td>
-      <td>91.0.864.54</td>
       <td></td>
-      <td>False</td>
       <td>False</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>CVE-2021-30557</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130557 Use after free in TabGroups</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td></td>
       <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
     </tr>
   </tbody>
 </table>
@@ -1957,9 +1962,9 @@ msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1802/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1832/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
-/tmp/ipykernel_1802/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+/tmp/ipykernel_1832/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
@@ -1981,7 +1986,7 @@ msrc_date_df[msrc_date_df.index.year.isin([2022])].plot(kind=&#39;bar&#39;,figsi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1802/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1832/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
 </pre></div>
 </div>
@@ -2011,50 +2016,50 @@ Microsoft Excel                                                     113
 Microsoft SharePoint Server                                          68
 Microsoft Exchange Server                                            63
 Microsoft Office SharePoint XSS                                      54
-Scripting Engine                                                     34
 Microsoft Word                                                       34
+Scripting Engine                                                     34
 Microsoft Outlook                                                    34
 Microsoft Exchange                                                   32
-Windows GDI                                                          29
 Windows Kernel                                                       29
+Windows GDI                                                          29
 Windows Uniscribe                                                    29
 Internet Explorer                                                    28
 Microsoft Browser                                                    27
 Microsoft Edge                                                       25
 Win32k                                                               24
-Microsoft Dynamics 365 OnPremise Cross Site Scripting                14
 Microsoft Office Access Connectivity Engine                          14
+Microsoft Dynamics 365 OnPremise Cross Site Scripting                14
 Microsoft PowerPoint                                                 10
-Windows Graphics Component                                            9
 Skype for Business and Lync                                           9
-Microsoft Office Graphics                                             8
-Visual Studio                                                         8
-Windows                                                               8
+Windows Graphics Component                                            9
 Microsoft Office Defense in Depth Update                              8
-Microsoft Access                                                      7
+Microsoft Office Graphics                                             8
+Windows                                                               8
+Visual Studio                                                         8
 Microsoft Dynamics 365 onpremises                                     7
+Microsoft Access                                                      7
 Microsoft Dynamics 365 onpremises Crosssite Scripting                 6
 Windows EOT Font Engine                                               6
 Microsoft SharePoint Reflective XSS                                   5
 GDI                                                                   4
-Windows HyperV                                                        4
 Microsoft Dynamics 365 onpremises version 8 Cross Site Scripting      4
-Windows PDF                                                           4
 .NET and Visual Studio                                                4
-Windows Media Center                                                  3
-                                                                      3
-SQL RDBMS Engine                                                      3
-Dynamics Business Central                                             3
-Microsoft Dynamics Business Central Crosssite Scripting               3
-OpenType Font Driver                                                  3
-Microsoft Project                                                     3
-Microsoft SQL Server                                                  3
+Windows HyperV                                                        4
+Windows PDF                                                           4
 Microsoft Office Online                                               3
-Microsoft Graphics Components                                         3
-Device Guard Code Integrity Policy                                    3
-Microsoft Graphics                                                    3
-DirectX                                                               3
+SQL RDBMS Engine                                                      3
 .NET Framework                                                        3
+Microsoft Dynamics Business Central Crosssite Scripting               3
+Microsoft Graphics Components                                         3
+Dynamics Business Central                                             3
+Microsoft SQL Server Analysis Services                                3
+DirectX                                                               3
+Microsoft Project                                                     3
+Microsoft Graphics                                                    3
+Microsoft SQL Server                                                  3
+Device Guard Code Integrity Policy                                    3
+OpenType Font Driver                                                  3
+Windows Media Center                                                  3
 Name: Title, dtype: int64
 </pre></div>
 </div>
@@ -2097,42 +2102,42 @@ Azure Real Time Operating System          19
 Microsoft Scripting Engine                17
 Open Source Software                      15
 Azure DevOps                              13
-Microsoft Defender for IoT                12
 Windows Defender                          12
 ASP.NET                                   12
+Microsoft Defender for IoT                12
 Microsoft Office Visio                     9
 .NET Core                                  9
-Microsoft Dynamics                         7
 SQL Server                                 7
+Microsoft Dynamics                         7
 Microsoft Windows                          6
-Microsoft Office Word                      6
 Windows Hyper-V                            6
+Microsoft Office Word                      6
 3D Viewer                                  5
 Android App                                5
-.NET Core &amp; Visual Studio                  5
-Microsoft Devices                          5
 Microsoft Dynamics GP                      5
 Microsoft OneDrive                         5
-Apps                                       4
-Azure Open Management Infrastructure       4
+.NET Core &amp; Visual Studio                  5
+Microsoft Devices                          5
 Power BI                                   4
+Apps                                       4
 Paint 3D                                   4
+Azure Open Management Infrastructure       4
 Microsoft Teams                            3
 Microsoft Intune                           3
-.NET and Visual Studio                     3
 ASP .NET                                   3
+.NET and Visual Studio                     3
 Microsoft PowerShell                       3
 Microsoft Windows DNS                      2
-Azure Arc                                  2
-Windows Update Assistant                   2
-Microsoft Edge for Android                 2
-Visual Studio Code - Kubernetes Tools      2
-Microsoft Yammer                           2
 NuGet                                      2
-SysInternals                               2
-Azure SDK                                  2
-Developer Tools                            2
+Visual Studio Code - Kubernetes Tools      2
+Windows Update Assistant                   2
+Microsoft Yammer                           2
 Microsoft Exchange Server                  2
+Azure Arc                                  2
+Developer Tools                            2
+SysInternals                               2
+ASP.NET Core &amp; Visual Studio               2
+Azure SDK                                  2
 Name: Tag, dtype: int64
 </pre></div>
 </div>
@@ -2221,7 +2226,7 @@ all_kbs_df
   <tbody>
     <tr>
       <th>KB3194798</th>
-      <td>[Msfeeds.dll, Azuresettingsyncprovider.dll, Ap...</td>
+      <td>[Authbroker.dll, Aadtb.dll, Facerecognitioneng...</td>
       <td>[nan]</td>
       <td>[2016-10-11]</td>
       <td>[nan]</td>
@@ -2230,7 +2235,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3197954</th>
-      <td>[Nlbmgr.exe, Srhealth.dll, Sppobjs.dll, Displa...</td>
+      <td>[Iphlpsvc.dll, Sndvolsso.dll, Hidclass.sys, Ie...</td>
       <td>[nan]</td>
       <td>[2016-10-27]</td>
       <td>[nan]</td>
@@ -2239,7 +2244,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3200970</th>
-      <td>[Imecfmui.exe, Rdpshell.exe, Vmswitch.sys, Acp...</td>
+      <td>[Imjppred.dll, Wordpad.exe, Vsd3dwarpdebug.dll...</td>
       <td>[nan]</td>
       <td>[2016-11-08]</td>
       <td>[nan]</td>
@@ -2248,7 +2253,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3201845</th>
-      <td>[Vmswitch.sys, Sppobjs.dll, Appxdeploymentserv...</td>
+      <td>[Facecredentialprovider.dll, Securekernel.exe,...</td>
       <td>[nan]</td>
       <td>[2016-12-09]</td>
       <td>[nan]</td>
@@ -2257,7 +2262,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3206632</th>
-      <td>[Microsoft.powershell.consolehost.dll, Windows...</td>
+      <td>[Wordbreakers.dll, Win32k.sys, Facecredentialp...</td>
       <td>[nan]</td>
       <td>[2016-12-13]</td>
       <td>[nan]</td>
@@ -2275,16 +2280,16 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5020440</th>
-      <td>[BthAvrcpTg.sys, pcaevts.dll, compattelrunner....</td>
-      <td>[nan, [1507]]</td>
+      <td>[UIRibbonRes.dll, certprop.dll, sppwinob.dll, ...</td>
+      <td>[[1507], nan]</td>
       <td>[2022-10-18, 2022-10-18]</td>
-      <td>[nan, https://support.microsoft.com/help/5020440]</td>
+      <td>[https://support.microsoft.com/help/5020440, nan]</td>
       <td>[10240.19509, 10240.19509]</td>
       <td>163</td>
     </tr>
     <tr>
       <th>KB5020953</th>
-      <td>[msmpeg2vdec.dll, tcbloader.dll, Windows.Media...</td>
+      <td>[d3d10warp.dll, ieframe.dll, CoreMessaging.dll...</td>
       <td>[nan]</td>
       <td>[2022-10-28]</td>
       <td>[nan]</td>
@@ -2293,7 +2298,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021654</th>
-      <td>[pcaevts.dll, compattelrunner.exe, Windows.Med...</td>
+      <td>[syncsharettsvc.exe, pcalua.exe, acmigration.d...</td>
       <td>[nan, [1607]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021654]</td>
@@ -2302,7 +2307,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021655</th>
-      <td>[msmpeg2vdec.dll, tcbloader.dll, Windows.Media...</td>
+      <td>[d3d10warp.dll, CoreMessaging.dll, sppobjs.dll...</td>
       <td>[nan, [1809]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021655]</td>
@@ -2311,7 +2316,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021656</th>
-      <td>[tcbloader.dll, DolbyDecMFT.dll, sppcext.dll, ...</td>
+      <td>[hvix64.exe, sppwinob.dll, ntoskrnl.exe, sppsv...</td>
       <td>[nan]</td>
       <td>[2022-11-17]</td>
       <td>[nan]</td>
@@ -2320,7 +2325,7 @@ all_kbs_df
     </tr>
   </tbody>
 </table>
-<p>742 rows × 6 columns</p>
+<p>743 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2331,56 +2336,56 @@ freq_bins.head(50)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           620
-hvix64.exe                                             584
-hvax64.exe                                             584
-bootmgr.exe.mui                                        532
-mshtml.dll                                             528
-kdhvcom.dll                                            521
-bootvhd.dll                                            518
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           621
+hvax64.exe                                             585
+hvix64.exe                                             585
+bootmgr.exe.mui                                        533
+mshtml.dll                                             529
+kdhvcom.dll                                            522
+bootvhd.dll                                            519
 hvservice.sys                                          488
-win32kfull.sys                                         450
-shell32.dll                                            447
-win32k.sys                                             442
-efisys_noprompt.bin                                    439
-efisys.bin                                             439
-microsoft.msmq.activex.interop.dll                     435
-microsoft.msmq.runtime.interop.dll                     435
-microsoft.msmq.powershell.commands.dll                 435
-microsoft.virtualization.client.rdpclientaxhost.dll    432
-edgehtml.dll                                           416
+win32kfull.sys                                         451
+shell32.dll                                            448
+win32k.sys                                             443
+efisys_noprompt.bin                                    440
+efisys.bin                                             440
+microsoft.msmq.powershell.commands.dll                 436
+microsoft.msmq.runtime.interop.dll                     436
+microsoft.msmq.activex.interop.dll                     436
+microsoft.virtualization.client.rdpclientaxhost.dll    433
+edgehtml.dll                                           417
 ieframe.dll                                            408
 comctl32.dll                                           407
-win32kbase.sys                                         406
-sppobjs.dll                                            400
-windows.media.protection.playready.dll                 391
-bootspaces.dll                                         391
+win32kbase.sys                                         407
+sppobjs.dll                                            401
+bootspaces.dll                                         392
+windows.media.protection.playready.dll                 392
 jscript9.dll                                           388
-win32u.dll                                             386
-mfcore.dll                                             383
+win32u.dll                                             387
+mfcore.dll                                             384
 gdiplus.dll                                            379
-windows.storage.dll                                    378
-chakra.dll                                             368
-chakradiag.dll                                         368
-winload.efi                                            360
-winresume.efi                                          354
-winload.exe                                            354
-hvloader.dll                                           349
-winresume.exe                                          347
-sppsvc.exe                                             347
+windows.storage.dll                                    379
+chakradiag.dll                                         369
+chakra.dll                                             369
+winload.efi                                            361
+winresume.efi                                          355
+winload.exe                                            355
+hvloader.dll                                           350
+winresume.exe                                          348
+sppsvc.exe                                             348
 gdi32.dll                                              347
 urlmon.dll                                             346
 iertutil.dll                                           341
-tcblaunch.exe                                          337
+tcblaunch.exe                                          338
 wininet.dll                                            325
-user32.dll                                             321
-lsasrv.dll                                             320
-mfps.dll                                               316
-appxupgrademigrationplugin.dll                         313
-appxdeploymentserver.dll                               313
-appxapplicabilityblob.dll                              313
+user32.dll                                             322
+lsasrv.dll                                             321
+mfps.dll                                               317
+appxapplicabilityblob.dll                              314
+appxupgrademigrationplugin.dll                         314
+appxdeploymentserver.dll                               314
 comctl32.dll.mui                                       313
-sxsoa.dll                                              302
+offlinelsa.dll                                         303
 Name: updated, dtype: int64
 </pre></div>
 </div>
@@ -2426,7 +2431,7 @@ all_kbs_df[&#39;bin count&#39;].sort_values(ascending=False).mean()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>413.95417789757414
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>414.64333781965007
 </pre></div>
 </div>
 </div>

@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis/metagen.html">
+   Data Generation Time
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="book/generated.html">
    Generated Data
@@ -165,23 +170,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ack-researcher_cve_map.json.html">
-     ack-researcher_cve_map.json
+    <a class="reference internal" href="book/generated/ack-researcher-cve-map.json.html">
+     ack-researcher-cve-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ack-researcher_cve_quality_map.json.html">
-     ack-researcher_cve_quality_map.json
+    <a class="reference internal" href="book/generated/ack-researcher-cve-quality-map.json.html">
+     ack-researcher-cve-quality-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ack-researcher_names.json.html">
-     ack-researcher_names.json
+    <a class="reference internal" href="book/generated/ack-researcher-names.json.html">
+     ack-researcher-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/ack-researcher_twitter_map.json.html">
-     ack-researcher_twitter_map.json
+    <a class="reference internal" href="book/generated/ack-researcher-twitter-map.json.html">
+     ack-researcher-twitter-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/generated/ack-researcher_names_grouped.json.html">
+     ack-researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -292,11 +302,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="book/generated/msrc-pandas-titles-merged.json.html">
      msrc-pandas-titles-merged.json
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="book/generated/researcher_names_grouped.json.html">
-     researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -880,6 +885,50 @@ msrc_df.sort_values(by=[&#39;Initial Release&#39;],ascending=False).head(25)
   </thead>
   <tbody>
     <tr>
+      <th>CVE-2022-41080</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Elevation of Privilege</td>
+      <td>8.8</td>
+      <td>KB5019758</td>
+      <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
+      <td>&lt;a href="https://twitter.com/rskvp93"&gt;rskvp93&lt;...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41122</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Office SharePoint</td>
+      <td>Microsoft SharePoint Server</td>
+      <td>Spoofing</td>
+      <td>6.5</td>
+      <td>KB5002258 KB5002264 KB5002267 KB5002269 KB5002271</td>
+      <td>15.0.5485.1000 16.0.10390.20000 16.0.15601.200...</td>
+      <td>&lt;a href="https://twitter.com/cursered"&gt;Li Jian...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41123</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019758</td>
+      <td>15.01.2375.037 15.01.2507.016 15.02.0986.036 1...</td>
+      <td>&lt;a href="https://twitter.com/chudypb"&gt;Piotr Ba...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41079</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Spoofing</td>
+      <td>8.0</td>
+      <td>KB5019758</td>
+      <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
+      <td>&lt;a href="https://github.com/zcgonvh"&gt;zcgonvh&lt;/...</td>
+    </tr>
+    <tr>
       <th>CVE-2022-41128</th>
       <td>2022-11-08</td>
       <td>Windows Scripting</td>
@@ -889,226 +938,6 @@ msrc_df.sort_values(by=[&#39;Initial Release&#39;],ascending=False).head(25)
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>Benoît Sevens and Clément Lecigne of Google's ...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41103</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office Word</td>
-      <td>Microsoft Word</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
-      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
-      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
-    </tr>
-    <tr>
-      <th>ADV220003</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Defense in Depth Update</td>
-      <td>Defense in Depth</td>
-      <td>0.0</td>
-      <td>KB3191869 KB3191875</td>
-      <td>15.0.5501.1000 16.0.5369.1000</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41057</th>
-      <td>2022-11-08</td>
-      <td>Windows HTTP.sys</td>
-      <td>Windows HTTP.sys</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>James Forshaw of Google Project Zero</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41099</th>
-      <td>2022-11-08</td>
-      <td>Windows BitLocker</td>
-      <td>BitLocker</td>
-      <td>Security Feature Bypass</td>
-      <td>4.6</td>
-      <td>KB5019959 KB5019961 KB5019964 KB5019966 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>Anonymous</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41056</th>
-      <td>2022-11-08</td>
-      <td>Network Policy Server (NPS)</td>
-      <td>Network Policy Server NPS RADIUS Protocol</td>
-      <td>Denial of Service</td>
-      <td>7.5</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>&lt;a href="https://www.twitter.com/guhe120"&gt;Yuki...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41098</th>
-      <td>2022-11-08</td>
-      <td>Windows Win32K</td>
-      <td>Windows GDI</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>Bing Sun</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41055</th>
-      <td>2022-11-08</td>
-      <td>Windows Devices Human Interface</td>
-      <td>Windows Human Interface Device</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
-      <td>&lt;a href="https://github.com/troy532"&gt;Troy532&lt;/a&gt;</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41097</th>
-      <td>2022-11-08</td>
-      <td>Network Policy Server (NPS)</td>
-      <td>Network Policy Server NPS RADIUS Protocol</td>
-      <td>Information Disclosure</td>
-      <td>6.5</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>&lt;a href="https://www.twitter.com/guhe120"&gt;Yuki...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41054</th>
-      <td>2022-11-08</td>
-      <td>Windows Resilient File System (ReFS)</td>
-      <td>Windows Resilient File System ReFS</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.14393.5501 10.0.17763.3650 10.0.19042.225...</td>
-      <td>&lt;a href="https://twitter.com/keyz3r0"&gt;k0shl&lt;/a...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41096</th>
-      <td>2022-11-08</td>
-      <td>Windows DWM Core Library</td>
-      <td>Microsoft DWM Core Library</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019081 KB5019959 KB5019961 KB5019966 KB5019980</td>
-      <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
-      <td>Keqi Hu</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41053</th>
-      <td>2022-11-08</td>
-      <td>Windows Kerberos</td>
-      <td>Windows Kerberos</td>
-      <td>Denial of Service</td>
-      <td>7.5</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>&lt;a href="https://www.youtube.com/watch?v=0AhPC...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41095</th>
-      <td>2022-11-08</td>
-      <td>Windows Digital Media</td>
-      <td>Windows Digital Media Receiver</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019081 KB5019959 KB5019961 KB5019964 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41052</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Graphics Component</td>
-      <td>Windows Graphics Component</td>
-      <td>Remote Code Execution</td>
-      <td>7.8</td>
-      <td>KB5019081 KB5019959 KB5019961 KB5019964 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>Hossein Lotfi of &lt;a href="https://www.zerodayi...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41051</th>
-      <td>2022-11-08</td>
-      <td>Azure Real Time Operating System</td>
-      <td>Azure RTOS GUIX Studio</td>
-      <td>Remote Code Execution</td>
-      <td>7.8</td>
-      <td></td>
-      <td>6.2.0.0</td>
-      <td>HP of Cyber Kunlun Lab</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41050</th>
-      <td>2022-11-08</td>
-      <td>Windows Extensible File Allocation</td>
-      <td>Windows Extensible File Allocation Table</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>HyungSeok Joo</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41093</th>
-      <td>2022-11-08</td>
-      <td>Windows Advanced Local Procedure Call</td>
-      <td>Windows Advanced Local Procedure Call ALPC</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
-      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>&lt;a href="https://twitter.com/baixia4"&gt;Jarvis_1...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41060</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office Word</td>
-      <td>Microsoft Word</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
-      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
-      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41061</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office Word</td>
-      <td>Microsoft Word</td>
-      <td>Remote Code Execution</td>
-      <td>7.8</td>
-      <td>KB5002217 KB5002223 KB5002235 KB5002261 KB5002...</td>
-      <td>15.0.5501.1000 16.0.10392.20000 16.0.15601.202...</td>
-      <td>&lt;a href="https://twitter.com/tecr0c"&gt;Rocco Cal...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41092</th>
-      <td>2022-11-08</td>
-      <td>Windows Win32K</td>
-      <td>Windows Win32k</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
-      <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
-      <td>namnp working with &lt;a href="https://www.zeroda...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-41104</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office Excel</td>
-      <td>Microsoft Excel</td>
-      <td>Security Feature Bypass</td>
-      <td>5.5</td>
-      <td>KB5002253 KB5002275</td>
-      <td>15.0.5501.1000 16.0.5369.1000</td>
-      <td>&lt;a href="https://twitter.com/jdgregson"&gt;jdgreg...</td>
     </tr>
     <tr>
       <th>CVE-2022-38015</th>
@@ -1122,37 +951,213 @@ msrc_df.sort_values(by=[&#39;Initial Release&#39;],ascending=False).head(25)
       <td>Eran Segal with &lt;a href="https://www.safebreac...</td>
     </tr>
     <tr>
-      <th>CVE-2022-3786</th>
+      <th>CVE-2022-37967</th>
       <td>2022-11-08</td>
-      <td>Open Source Software</td>
-      <td>OpenSSL CVE20223786 X.509 certificate verifica...</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>2022.11.02</td>
+      <td>Windows Kerberos</td>
+      <td>Windows Kerberos</td>
+      <td>Elevation of Privilege</td>
+      <td>7.2</td>
+      <td>KB5019081 KB5019964 KB5019966 KB5020000 KB5020...</td>
+      <td>10.0.14393.5501 10.0.17763.3650 10.0.20348.124...</td>
       <td></td>
     </tr>
     <tr>
-      <th>CVE-2022-41125</th>
+      <th>CVE-2022-38023</th>
       <td>2022-11-08</td>
-      <td>Windows CNG Key Isolation Service</td>
-      <td>Windows CNG Key Isolation Service</td>
+      <td>Windows Netlogon</td>
+      <td>Netlogon RPC</td>
+      <td>Elevation of Privilege</td>
+      <td>8.1</td>
+      <td>KB5019081 KB5019964 KB5019966 KB5020000 KB5020...</td>
+      <td>10.0.14393.5501 10.0.17763.3650 10.0.20348.124...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-37992</th>
+      <td>2022-11-08</td>
+      <td>Windows Group Policy Preference Client</td>
+      <td>Windows Group Policy</td>
       <td>Elevation of Privilege</td>
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>&lt;li&gt;Microsoft Threat Intelligence Center (MSTI...</td>
+      <td>somaro</td>
     </tr>
     <tr>
-      <th>CVE-2022-41119</th>
+      <th>CVE-2022-41039</th>
+      <td>2022-11-08</td>
+      <td>Windows Point-to-Point Tunneling Protocol</td>
+      <td>Windows PointtoPoint Tunneling Protocol</td>
+      <td>Remote Code Execution</td>
+      <td>8.1</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/baixia4"&gt;Jarvis_1...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41086</th>
+      <td>2022-11-08</td>
+      <td>Windows Group Policy Preference Client</td>
+      <td>Windows Group Policy</td>
+      <td>Elevation of Privilege</td>
+      <td>6.4</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Matthieu Buffet</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41044</th>
+      <td>2022-11-08</td>
+      <td>Windows Point-to-Point Tunneling Protocol</td>
+      <td>Windows PointtoPoint Tunneling Protocol</td>
+      <td>Remote Code Execution</td>
+      <td>8.1</td>
+      <td>KB5020000 KB5020005 KB5020013 KB5020019</td>
+      <td>6.0.6003.21768 6.1.7601.26221</td>
+      <td>Microsoft's Windows Servicing and Delivery Gro...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-39253</th>
       <td>2022-11-08</td>
       <td>Visual Studio</td>
-      <td>Visual Studio</td>
-      <td>Remote Code Execution</td>
-      <td>7.8</td>
+      <td>GitHub CVE202239253 Local clone optimization d...</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
       <td></td>
       <td>15.9.51 16.11.21 17.0.16 17.2.10 17.3.7</td>
-      <td>goodbyeselene</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41088</th>
+      <td>2022-11-08</td>
+      <td>Windows Point-to-Point Tunneling Protocol</td>
+      <td>Windows PointtoPoint Tunneling Protocol</td>
+      <td>Remote Code Execution</td>
+      <td>8.1</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/guhe120"&gt;Yuki Che...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41045</th>
+      <td>2022-11-08</td>
+      <td>Windows ALPC</td>
+      <td>Windows Advanced Local Procedure Call ALPC</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/baixia4"&gt;Jarvis_1...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41090</th>
+      <td>2022-11-08</td>
+      <td>Windows Point-to-Point Tunneling Protocol</td>
+      <td>Windows PointtoPoint Tunneling Protocol</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>&lt;a href="https://twitter.com/guhe120"&gt;Yuki Che...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41047</th>
+      <td>2022-11-08</td>
+      <td>Windows ODBC Driver</td>
+      <td>Microsoft ODBC Driver</td>
+      <td>Remote Code Execution</td>
+      <td>8.8</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td>Haifei Li with &lt;a href="https://cyberkl.com/"&gt;...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41078</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Microsoft Exchange Server</td>
+      <td>Spoofing</td>
+      <td>8.0</td>
+      <td>KB5019758</td>
+      <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
+      <td>&lt;a href="https://twitter.com/chudypb"&gt;Piotr Ba...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41120</th>
+      <td>2022-11-08</td>
+      <td>SysInternals</td>
+      <td>Microsoft Windows Sysmon</td>
+      <td>Elevation of Privilege</td>
+      <td>7.8</td>
+      <td></td>
+      <td>14.11</td>
+      <td>&lt;a href="https://twitter.com/filip_dragovic"&gt;F...</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-41091</th>
+      <td>2022-11-08</td>
+      <td>Windows Mark of the Web (MOTW)</td>
+      <td>Windows Mark of the Web</td>
+      <td>Security Feature Bypass</td>
+      <td>5.4</td>
+      <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-39327</th>
+      <td>2022-11-08</td>
+      <td>Azure</td>
+      <td>GitHub CVE202239327 Improper Control of Genera...</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td></td>
+      <td>2.42.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-23824</th>
+      <td>2022-11-08</td>
+      <td>AMD CPU Branch</td>
+      <td>AMD CVE202223824 IBPB and Return Address Predi...</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td>KB5019081 KB5019959 KB5019961 KB5019964 KB5019...</td>
+      <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-3885</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td>Chromium CVE20223885 Use after free in V8</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>107.0.1418.42</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-3886</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td>Chromium CVE20223886 Use after free in Speech ...</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>107.0.1418.42</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2022-3887</th>
+      <td>2022-11-08</td>
+      <td>Microsoft Edge (Chromium-based)</td>
+      <td>Chromium CVE20223887 Use after free in Web Wor...</td>
+      <td></td>
+      <td>0.0</td>
+      <td></td>
+      <td>107.0.1418.42</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -1171,9 +1176,9 @@ str(print_stats())
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
     &quot;nvdcve-1.1-2002.json.gz&quot;: {
         &quot;size&quot;: 1296966,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:21.572617&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:24.763021&quot;,
         &quot;count&quot;: 6769,
-        &quot;gen_time&quot;: 1.2732033729553223,
+        &quot;gen_time&quot;: 1.5850157737731934,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1183,12 +1188,12 @@ str(print_stats())
             &quot;https://nvd.nist.gov/feeds/json/cve/1.1/&quot;
         ]
     },
-    &quot;last_modified&quot;: &quot;2022-11-22T06:40:24.315867&quot;,
+    &quot;last_modified&quot;: &quot;2022-11-29T21:48:30.928322&quot;,
     &quot;nvdcve-1.1-2003.json.gz&quot;: {
         &quot;size&quot;: 381514,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:21.976623&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:25.399045&quot;,
         &quot;count&quot;: 1553,
-        &quot;gen_time&quot;: 0.4047684669494629,
+        &quot;gen_time&quot;: 0.6342034339904785,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1200,9 +1205,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2004.json.gz&quot;: {
         &quot;size&quot;: 745309,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:22.764635&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:26.415083&quot;,
         &quot;count&quot;: 2707,
-        &quot;gen_time&quot;: 0.7857117652893066,
+        &quot;gen_time&quot;: 1.0204665660858154,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1214,9 +1219,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2005.json.gz&quot;: {
         &quot;size&quot;: 1179128,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:23.992653&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:27.859133&quot;,
         &quot;count&quot;: 4765,
-        &quot;gen_time&quot;: 1.2291128635406494,
+        &quot;gen_time&quot;: 1.4427430629730225,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1228,9 +1233,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2006.json.gz&quot;: {
         &quot;size&quot;: 1877058,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:26.148685&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:30.151211&quot;,
         &quot;count&quot;: 7140,
-        &quot;gen_time&quot;: 2.1573057174682617,
+        &quot;gen_time&quot;: 2.2923154830932617,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1242,9 +1247,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2007.json.gz&quot;: {
         &quot;size&quot;: 1856604,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:28.076713&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:32.315284&quot;,
         &quot;count&quot;: 6577,
-        &quot;gen_time&quot;: 1.9259092807769775,
+        &quot;gen_time&quot;: 2.165095567703247,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1256,9 +1261,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2008.json.gz&quot;: {
         &quot;size&quot;: 1885389,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:30.460748&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:34.751367&quot;,
         &quot;count&quot;: 7171,
-        &quot;gen_time&quot;: 2.38291072845459,
+        &quot;gen_time&quot;: 2.4332706928253174,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1269,10 +1274,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2009.json.gz&quot;: {
-        &quot;size&quot;: 1667500,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:32.524776&quot;,
-        &quot;count&quot;: 5023,
-        &quot;gen_time&quot;: 2.0621583461761475,
+        &quot;size&quot;: 1668038,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:37.019436&quot;,
+        &quot;count&quot;: 5025,
+        &quot;gen_time&quot;: 2.26743483543396,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1284,9 +1289,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2010.json.gz&quot;: {
         &quot;size&quot;: 1557052,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:34.536804&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:39.211504&quot;,
         &quot;count&quot;: 5191,
-        &quot;gen_time&quot;: 2.011227607727051,
+        &quot;gen_time&quot;: 2.1917972564697266,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1298,9 +1303,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2011.json.gz&quot;: {
         &quot;size&quot;: 1489652,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:36.696834&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:41.531579&quot;,
         &quot;count&quot;: 4831,
-        &quot;gen_time&quot;: 2.161363124847412,
+        &quot;gen_time&quot;: 2.31899094581604,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1312,9 +1317,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2012.json.gz&quot;: {
         &quot;size&quot;: 1689844,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:39.080867&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:44.083698&quot;,
         &quot;count&quot;: 5838,
-        &quot;gen_time&quot;: 2.3841724395751953,
+        &quot;gen_time&quot;: 2.5500950813293457,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1326,9 +1331,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2013.json.gz&quot;: {
         &quot;size&quot;: 1915610,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:41.572899&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:46.819845&quot;,
         &quot;count&quot;: 6678,
-        &quot;gen_time&quot;: 2.4889683723449707,
+        &quot;gen_time&quot;: 2.73842716217041,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1340,9 +1345,9 @@ str(print_stats())
     },
     &quot;nvdcve-1.1-2014.json.gz&quot;: {
         &quot;size&quot;: 2015414,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:44.208933&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:49.595946&quot;,
         &quot;count&quot;: 8892,
-        &quot;gen_time&quot;: 2.6365771293640137,
+        &quot;gen_time&quot;: 2.77529239654541,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1353,10 +1358,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2015.json.gz&quot;: {
-        &quot;size&quot;: 1875124,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:46.540963&quot;,
+        &quot;size&quot;: 1875227,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:52.104037&quot;,
         &quot;count&quot;: 8599,
-        &quot;gen_time&quot;: 2.333343982696533,
+        &quot;gen_time&quot;: 2.504521131515503,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1367,10 +1372,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2016.json.gz&quot;: {
-        &quot;size&quot;: 2243164,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:49.389000&quot;,
+        &quot;size&quot;: 2243230,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:55.064144&quot;,
         &quot;count&quot;: 10510,
-        &quot;gen_time&quot;: 2.8445491790771484,
+        &quot;gen_time&quot;: 2.9597198963165283,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1381,10 +1386,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2017.json.gz&quot;: {
-        &quot;size&quot;: 3204464,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:53.465052&quot;,
+        &quot;size&quot;: 3204460,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:31:59.384299&quot;,
         &quot;count&quot;: 16678,
-        &quot;gen_time&quot;: 4.077627897262573,
+        &quot;gen_time&quot;: 4.319882392883301,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1395,10 +1400,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2018.json.gz&quot;: {
-        &quot;size&quot;: 3464222,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:11:58.153114&quot;,
+        &quot;size&quot;: 3464127,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:03.940449&quot;,
         &quot;count&quot;: 16742,
-        &quot;gen_time&quot;: 4.6913161277771,
+        &quot;gen_time&quot;: 4.555758476257324,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1409,10 +1414,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2019.json.gz&quot;: {
-        &quot;size&quot;: 3854932,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:12:03.985192&quot;,
+        &quot;size&quot;: 3855159,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:09.544663&quot;,
         &quot;count&quot;: 16667,
-        &quot;gen_time&quot;: 5.830981731414795,
+        &quot;gen_time&quot;: 5.601934432983398,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1423,10 +1428,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2020.json.gz&quot;: {
-        &quot;size&quot;: 4715860,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:12:10.753284&quot;,
-        &quot;count&quot;: 19613,
-        &quot;gen_time&quot;: 6.764105796813965,
+        &quot;size&quot;: 4721538,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:16.020922&quot;,
+        &quot;count&quot;: 19625,
+        &quot;gen_time&quot;: 6.47564697265625,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1437,10 +1442,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2021.json.gz&quot;: {
-        &quot;size&quot;: 5103580,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:12:18.497377&quot;,
-        &quot;count&quot;: 20923,
-        &quot;gen_time&quot;: 7.742632865905762,
+        &quot;size&quot;: 5109139,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:23.433196&quot;,
+        &quot;count&quot;: 20931,
+        &quot;gen_time&quot;: 7.412970781326294,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1451,10 +1456,10 @@ str(print_stats())
         ]
     },
     &quot;nvdcve-1.1-2022.json.gz&quot;: {
-        &quot;size&quot;: 3765415,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:12:22.669433&quot;,
-        &quot;count&quot;: 17357,
-        &quot;gen_time&quot;: 4.175026893615723,
+        &quot;size&quot;: 3855367,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:28.221373&quot;,
+        &quot;count&quot;: 17761,
+        &quot;gen_time&quot;: 4.788076400756836,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: &quot;cves&quot;,
         &quot;swap_axes&quot;: false,
@@ -1466,9 +1471,9 @@ str(print_stats())
     },
     &quot;cwe.json.gz&quot;: {
         &quot;size&quot;: 22733,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:12:23.901449&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:30.121444&quot;,
         &quot;count&quot;: 1402,
-        &quot;gen_time&quot;: 1.1426823139190674,
+        &quot;gen_time&quot;: 1.8236608505249023,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1479,10 +1484,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cvrf-merged.json.gz&quot;: {
-        &quot;size&quot;: 4559162,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:14:01.754751&quot;,
+        &quot;size&quot;: 4559359,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:37.061701&quot;,
         &quot;count&quot;: 80,
-        &quot;gen_time&quot;: 97.98645567893982,
+        &quot;gen_time&quot;: 7.053839921951294,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1493,10 +1498,10 @@ str(print_stats())
         ]
     },
     &quot;ms-kb-feed-updates.json&quot;: {
-        &quot;size&quot;: 312158,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:16:35.644855&quot;,
-        &quot;count&quot;: 466,
-        &quot;gen_time&quot;: 151.54158568382263,
+        &quot;size&quot;: 312857,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:32:50.634233&quot;,
+        &quot;count&quot;: 467,
+        &quot;gen_time&quot;: 11.585511684417725,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1512,9 +1517,9 @@ str(print_stats())
     },
     &quot;ms-kb-feed-to-files-updated.json.gz&quot;: {
         &quot;size&quot;: 4247314,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:29.044202&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:09.668703&quot;,
         &quot;count&quot;: 10,
-        &quot;gen_time&quot;: 833.4153738021851,
+        &quot;gen_time&quot;: 379.04727125167847,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1530,9 +1535,9 @@ str(print_stats())
     },
     &quot;ms-kb-feed-kbs-bins.json.gz&quot;: {
         &quot;size&quot;: 373699,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:31.372234&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:11.856785&quot;,
         &quot;count&quot;: 4,
-        &quot;gen_time&quot;: 1.818305253982544,
+        &quot;gen_time&quot;: 1.7116022109985352,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1547,10 +1552,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-pandas-cvrf-merged.json.gz&quot;: {
-        &quot;size&quot;: 307069,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:33.908268&quot;,
+        &quot;size&quot;: 306005,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:14.600888&quot;,
         &quot;count&quot;: 8,
-        &quot;gen_time&quot;: 5.08787727355957,
+        &quot;gen_time&quot;: 5.32635498046875,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1562,9 +1567,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-tag-title.json&quot;: {
         &quot;size&quot;: 157084,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:40.276355&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.633115&quot;,
         &quot;count&quot;: 3,
-        &quot;gen_time&quot;: 3.74937105178833,
+        &quot;gen_time&quot;: 3.388735294342041,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1576,9 +1581,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-kb-ver.json&quot;: {
         &quot;size&quot;: 38726,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.264612&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.701117&quot;,
         &quot;count&quot;: 2,
-        &quot;gen_time&quot;: 19.164389610290527,
+        &quot;gen_time&quot;: 0.06588459014892578,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1590,9 +1595,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-tags-merged.json&quot;: {
         &quot;size&quot;: 13973,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.488615&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.741119&quot;,
         &quot;count&quot;: 436,
-        &quot;gen_time&quot;: 0.0462651252746582,
+        &quot;gen_time&quot;: 0.04211282730102539,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1604,9 +1609,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-tags-merged-frequency.json&quot;: {
         &quot;size&quot;: 14922,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.488615&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.745119&quot;,
         &quot;count&quot;: 436,
-        &quot;gen_time&quot;: 0.0462651252746582,
+        &quot;gen_time&quot;: 0.04211282730102539,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1618,9 +1623,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-titles-merged.json&quot;: {
         &quot;size&quot;: 76330,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.536616&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.785120&quot;,
         &quot;count&quot;: 436,
-        &quot;gen_time&quot;: 0.0457611083984375,
+        &quot;gen_time&quot;: 0.04217386245727539,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1632,9 +1637,9 @@ str(print_stats())
     },
     &quot;msrc-pandas-titles-merged-frequency.json&quot;: {
         &quot;size&quot;: 79734,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:30:59.536616&quot;,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:39:20.789120&quot;,
         &quot;count&quot;: 436,
-        &quot;gen_time&quot;: 0.0457611083984375,
+        &quot;gen_time&quot;: 0.04217386245727539,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1645,10 +1650,10 @@ str(print_stats())
         ]
     },
     &quot;winbindex-desc-to-bins-map.json&quot;: {
-        &quot;size&quot;: 876904,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.258770&quot;,
-        &quot;count&quot;: 9069,
-        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;size&quot;: 876981,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:41:50.434699&quot;,
+        &quot;count&quot;: 9070,
+        &quot;gen_time&quot;: 150.80958008766174,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1659,10 +1664,10 @@ str(print_stats())
         ]
     },
     &quot;winbindex-kb-to-bins-map.json.gz&quot;: {
-        &quot;size&quot;: 909581,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.758777&quot;,
-        &quot;count&quot;: 669,
-        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;size&quot;: 913889,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:41:50.982719&quot;,
+        &quot;count&quot;: 670,
+        &quot;gen_time&quot;: 150.80958008766174,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1673,10 +1678,10 @@ str(print_stats())
         ]
     },
     &quot;winbindex-versions-to-bins-map.json.gz&quot;: {
-        &quot;size&quot;: 818874,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:33:43.314785&quot;,
-        &quot;count&quot;: 5572,
-        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;size&quot;: 820292,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:41:51.586742&quot;,
+        &quot;count&quot;: 5600,
+        &quot;gen_time&quot;: 150.80958008766174,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1687,10 +1692,10 @@ str(print_stats())
         ]
     },
     &quot;winbindex-winver-to-build-map.json&quot;: {
-        &quot;size&quot;: 14838,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:33:42.222770&quot;,
+        &quot;size&quot;: 14859,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:41:50.402697&quot;,
         &quot;count&quot;: 13,
-        &quot;gen_time&quot;: 163.7973508834839,
+        &quot;gen_time&quot;: 150.80958008766174,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1701,10 +1706,10 @@ str(print_stats())
         ]
     },
     &quot;win-verinfo-system32-full.json.gz&quot;: {
-        &quot;size&quot;: 2902129,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:34:01.795055&quot;,
+        &quot;size&quot;: 2902028,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:42:05.199251&quot;,
         &quot;count&quot;: 24,
-        &quot;gen_time&quot;: 19.429661750793457,
+        &quot;gen_time&quot;: 14.402328491210938,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1718,10 +1723,10 @@ str(print_stats())
         ]
     },
     &quot;win-versioninfo-system32-desc-to-bins.json&quot;: {
-        &quot;size&quot;: 737266,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:34:04.527092&quot;,
+        &quot;size&quot;: 738413,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:42:08.111360&quot;,
         &quot;count&quot;: 24,
-        &quot;gen_time&quot;: 1.3577096462249756,
+        &quot;gen_time&quot;: 1.3272604942321777,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1735,10 +1740,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-combined-desc-to_bins.json&quot;: {
-        &quot;size&quot;: 1142409,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:34:05.403105&quot;,
-        &quot;count&quot;: 13911,
-        &quot;gen_time&quot;: 0.060778141021728516,
+        &quot;size&quot;: 1143802,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:42:08.855388&quot;,
+        &quot;count&quot;: 13917,
+        &quot;gen_time&quot;: 0.05408835411071777,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1750,10 +1755,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-all-bins-list.json&quot;: {
-        &quot;size&quot;: 591378,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:34:05.371104&quot;,
-        &quot;count&quot;: 22050,
-        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;size&quot;: 515308,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:42:08.827387&quot;,
+        &quot;count&quot;: 18963,
+        &quot;gen_time&quot;: 81.68659734725952,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1765,10 +1770,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-tags-combined-file-names.json&quot;: {
-        &quot;size&quot;: 15684,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:34:34.107499&quot;,
+        &quot;size&quot;: 15771,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:42:32.644279&quot;,
         &quot;count&quot;: 436,
-        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;gen_time&quot;: 81.68659734725952,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1780,10 +1785,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-titles-combined-file-names.json&quot;: {
-        &quot;size&quot;: 42442,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:35:42.824431&quot;,
+        &quot;size&quot;: 42762,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:43:30.562451&quot;,
         &quot;count&quot;: 1046,
-        &quot;gen_time&quot;: 96.89868402481079,
+        &quot;gen_time&quot;: 81.68659734725952,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1795,10 +1800,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-tags-combined-file-desc-sims.json&quot;: {
-        &quot;size&quot;: 2603131,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:36:18.084906&quot;,
+        &quot;size&quot;: 2599041,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:44:05.839773&quot;,
         &quot;count&quot;: 7,
-        &quot;gen_time&quot;: 120.21459150314331,
+        &quot;gen_time&quot;: 120.44147968292236,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1810,10 +1815,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-titles-combined-file-desc-sims.json&quot;: {
-        &quot;size&quot;: 5580883,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:37:43.034060&quot;,
+        &quot;size&quot;: 5571638,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:45:31.002956&quot;,
         &quot;count&quot;: 7,
-        &quot;gen_time&quot;: 120.21459150314331,
+        &quot;gen_time&quot;: 120.44147968292236,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1825,10 +1830,10 @@ str(print_stats())
         ]
     },
     &quot;msrc-cve-combined-kbs.json&quot;: {
-        &quot;size&quot;: 6632760,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:37:43.366064&quot;,
+        &quot;size&quot;: 5903739,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:45:31.410971&quot;,
         &quot;count&quot;: 6,
-        &quot;gen_time&quot;: 0.28993773460388184,
+        &quot;gen_time&quot;: 0.3784008026123047,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1837,10 +1842,10 @@ str(print_stats())
         &quot;sources&quot;: null
     },
     &quot;msrc-cve-to-bins.json&quot;: {
-        &quot;size&quot;: 8693406,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:37:55.518231&quot;,
+        &quot;size&quot;: 8688186,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:45:42.931399&quot;,
         &quot;count&quot;: 12,
-        &quot;gen_time&quot;: 12.119824409484863,
+        &quot;gen_time&quot;: 11.500601291656494,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1849,10 +1854,10 @@ str(print_stats())
         &quot;sources&quot;: null
     },
     &quot;chromerelease-raw-cve.json&quot;: {
-        &quot;size&quot;: 412770,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.059443&quot;,
+        &quot;size&quot;: 412820,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:03.792561&quot;,
         &quot;count&quot;: 2321,
-        &quot;gen_time&quot;: 88.43039011955261,
+        &quot;gen_time&quot;: 140.7647602558136,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1863,10 +1868,10 @@ str(print_stats())
         ]
     },
     &quot;chromerelease-cve.json&quot;: {
-        &quot;size&quot;: 809447,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.155445&quot;,
+        &quot;size&quot;: 809543,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:03.892565&quot;,
         &quot;count&quot;: 2321,
-        &quot;gen_time&quot;: 0.09266209602355957,
+        &quot;gen_time&quot;: 0.09898805618286133,
         &quot;key_index&quot;: &quot;cve_id&quot;,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1876,11 +1881,11 @@ str(print_stats())
             &quot;https://chromereleases.googleblog.com&quot;
         ]
     },
-    &quot;ack-researcher_names.json&quot;: {
-        &quot;size&quot;: 971245,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.215446&quot;,
-        &quot;count&quot;: 8433,
-        &quot;gen_time&quot;: 0.05453300476074219,
+    &quot;ack-researcher-names.json&quot;: {
+        &quot;size&quot;: 971343,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:03.948567&quot;,
+        &quot;count&quot;: 8434,
+        &quot;gen_time&quot;: 0.04937601089477539,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,
@@ -1891,11 +1896,11 @@ str(print_stats())
             &quot;https://api.msrc.microsoft.com/&quot;
         ]
     },
-    &quot;researcher_names_grouped.json&quot;: {
-        &quot;size&quot;: 710923,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.327447&quot;,
-        &quot;count&quot;: 1871,
-        &quot;gen_time&quot;: 0.11147546768188477,
+    &quot;ack-researcher_names_grouped.json&quot;: {
+        &quot;size&quot;: 710950,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:04.056571&quot;,
+        &quot;count&quot;: 1870,
+        &quot;gen_time&quot;: 0.10934090614318848,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1906,11 +1911,11 @@ str(print_stats())
             &quot;https://api.msrc.microsoft.com/&quot;
         ]
     },
-    &quot;ack-researcher_cve_map.json&quot;: {
-        &quot;size&quot;: 251729,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.335447&quot;,
-        &quot;count&quot;: 1871,
-        &quot;gen_time&quot;: 0.11147546768188477,
+    &quot;ack-researcher-cve-map.json&quot;: {
+        &quot;size&quot;: 251694,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:04.064571&quot;,
+        &quot;count&quot;: 1870,
+        &quot;gen_time&quot;: 0.10934090614318848,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1921,11 +1926,11 @@ str(print_stats())
             &quot;https://api.msrc.microsoft.com/&quot;
         ]
     },
-    &quot;ack-researcher_twitter_map.json&quot;: {
-        &quot;size&quot;: 83791,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:39:24.387448&quot;,
-        &quot;count&quot;: 1871,
-        &quot;gen_time&quot;: 0.04590797424316406,
+    &quot;ack-researcher-twitter-map.json&quot;: {
+        &quot;size&quot;: 83743,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:04.112573&quot;,
+        &quot;count&quot;: 1870,
+        &quot;gen_time&quot;: 0.04359626770019531,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: true,
@@ -1936,11 +1941,11 @@ str(print_stats())
             &quot;https://api.msrc.microsoft.com/&quot;
         ]
     },
-    &quot;ack-researcher_cve_quality_map.json&quot;: {
-        &quot;size&quot;: 118836,
-        &quot;last_modified&quot;: &quot;2022-11-22T06:40:24.296265&quot;,
+    &quot;ack-researcher-cve-quality-map.json&quot;: {
+        &quot;size&quot;: 118770,
+        &quot;last_modified&quot;: &quot;2022-11-29T21:48:30.901570&quot;,
         &quot;count&quot;: 3,
-        &quot;gen_time&quot;: 59.91763615608215,
+        &quot;gen_time&quot;: 26.803627252578735,
         &quot;key_index&quot;: null,
         &quot;key_data&quot;: null,
         &quot;swap_axes&quot;: false,

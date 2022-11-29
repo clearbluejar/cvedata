@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="metagen.html">
+   Data Generation Time
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../book/generated.html">
    Generated Data
@@ -165,23 +170,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_map.json.html">
-     ack-researcher_cve_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-map.json.html">
+     ack-researcher-cve-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_cve_quality_map.json.html">
-     ack-researcher_cve_quality_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-cve-quality-map.json.html">
+     ack-researcher-cve-quality-map.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_names.json.html">
-     ack-researcher_names.json
+    <a class="reference internal" href="../book/generated/ack-researcher-names.json.html">
+     ack-researcher-names.json
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/ack-researcher_twitter_map.json.html">
-     ack-researcher_twitter_map.json
+    <a class="reference internal" href="../book/generated/ack-researcher-twitter-map.json.html">
+     ack-researcher-twitter-map.json
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/ack-researcher_names_grouped.json.html">
+     ack-researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -292,11 +302,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/msrc-pandas-titles-merged.json.html">
      msrc-pandas-titles-merged.json
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../book/generated/researcher_names_grouped.json.html">
-     researcher_names_grouped.json
     </a>
    </li>
    <li class="toctree-l2">
@@ -1192,7 +1197,7 @@ len(all_bin_names)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22050
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22058
 </pre></div>
 </div>
 </div>
@@ -1245,29 +1250,29 @@ all_bins_df[all_bins_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>4</th>
       <td>Microsoft Edge</td>
       <td>[microsoftedge.exe, microsoftedgesh.exe, micro...</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>18</th>
+      <td>Diagnostics Hub</td>
+      <td>[diagnosticshub_is.dll]</td>
+    </tr>
+    <tr>
+      <th>22</th>
       <td>Microsoft Windows</td>
       <td>[microsoft.windows.ual.dll, microsoft.windows....</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>Windows Secure Kernel Mode</td>
-      <td>[securekernel.exe]</td>
+      <th>44</th>
+      <td>Windows Shell</td>
+      <td>[windowsbase.dll, windows.sets.dll]</td>
     </tr>
     <tr>
-      <th>41</th>
-      <td>Windows AppX Deployment Extensions</td>
-      <td>[appxdeploymentextensions.dll, appxdeploymente...</td>
-    </tr>
-    <tr>
-      <th>62</th>
-      <td>Microsoft PowerShell</td>
-      <td>[microsoft.dtc.powershell.dll, microsoft.dism....</td>
+      <th>51</th>
+      <td>Microsoft OneDrive</td>
+      <td>[microsoftwebdriver.exe]</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1275,29 +1280,29 @@ all_bins_df[all_bins_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>...</td>
     </tr>
     <tr>
-      <th>378</th>
-      <td>Windows Push Notifications</td>
-      <td>[musnotification.exe]</td>
+      <th>388</th>
+      <td>Windows Text Shaping</td>
+      <td>[textshaping.dll]</td>
     </tr>
     <tr>
-      <th>380</th>
-      <td>Windows Tile Data Repository</td>
-      <td>[tiledatarepository.dll]</td>
+      <th>396</th>
+      <td>Windows Task Scheduler</td>
+      <td>[taskscheduler.dll, wptaskscheduler.dll, tasks...</td>
     </tr>
     <tr>
-      <th>382</th>
-      <td>Windows Geolocation Service</td>
-      <td>[geolocation.dll, Geolocation.dll]</td>
+      <th>408</th>
+      <td>Microsoft JScript</td>
+      <td>[microsoft.jscript.tlb, microsoft.jscript.dll,...</td>
     </tr>
     <tr>
-      <th>412</th>
-      <td>Windows Perception Simulation Service</td>
-      <td>[perceptionsimulationrest.dll, perceptionsimul...</td>
+      <th>410</th>
+      <td>Microsoft Drivers</td>
+      <td>[microsoftwebdriver.exe]</td>
     </tr>
     <tr>
-      <th>429</th>
-      <td>ActiveSyncProvider</td>
-      <td>[activesyncprovider.dll, activesyncprovider.dl...</td>
+      <th>433</th>
+      <td>Windows Core Shell</td>
+      <td>[coreshell.dll]</td>
     </tr>
   </tbody>
 </table>
@@ -1352,53 +1357,53 @@ all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
     </tr>
   </tbody>
@@ -1486,23 +1491,23 @@ tags_sim_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>Microsoft Edge</td>
+      <td>ASP .NET</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Microsoft Office</td>
+      <td>.NET Framework</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Windows Kernel-Mode Drivers</td>
+      <td>Microsoft Windows Search Component</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Microsoft Graphics Component</td>
+      <td>Microsoft Scripting Engine</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Windows Kernel</td>
+      <td>Microsoft Edge</td>
     </tr>
   </tbody>
 </table>
@@ -1549,58 +1554,58 @@ tags_sim_verinfo_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>Microsoft Edge</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[cmstp.exe, msprivs.dll.mui, msprivs.dll.mui, ...</td>
-      <td>[elevation_service.exe, learning_tools.dll, ms...</td>
-      <td>[elevation_service.exe, learning_tools.dll, ms...</td>
-      <td>[elevation_service.exe, learning_tools.dll, ms...</td>
+      <td>ASP .NET</td>
+      <td>[system.runtime.remoting.resources.dll, renci....</td>
+      <td>[system.runtime.remoting.resources.dll, msvcr1...</td>
+      <td>[system.runtime.remoting.resources.dll, msvcr1...</td>
+      <td>[system.runtime.remoting.resources.dll, system...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Microsoft Office</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>.NET Framework</td>
+      <td>[system.runtime.remoting.resources.dll, authfw...</td>
+      <td>[system.runtime.remoting.resources.dll, authfw...</td>
+      <td>[system.runtime.remoting.resources.dll, authfw...</td>
+      <td>[system.runtime.remoting.resources.dll, msvcr1...</td>
+      <td>[msvcr100_clr0400.dll, nlslexicons0009.dll, nl...</td>
+      <td>[msvcr100_clr0400.dll, nlslexicons0009.dll, nl...</td>
+      <td>[msvcr100_clr0400.dll, nlslexicons0009.dll, nl...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>[signdrv.dll, usbpmapi.sys, kmddsp.tsp, kmddsp...</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>[msointlimm.dll, xpspushlayer.dll, XpsRasterSe...</td>
+      <td>[msointlimm.dll, cmisetup.dll, searchapp.exe, ...</td>
+      <td>[msointlimm.dll, cmisetup.dll, searchapp.exe, ...</td>
+      <td>[msoadfsb.exe, lyncicon.exe, SpreadsheetIQ.Exc...</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Microsoft Graphics Component</td>
-      <td>[msointlimm.dll, xpspushlayer.dll, xpsrasterse...</td>
-      <td>[msointlimm.dll, cmisetup.dll, Windows.Graphic...</td>
-      <td>[msointlimm.dll, cmisetup.dll, Windows.Graphic...</td>
-      <td>[DATABASECOMPARE.EXE, JitV.dll, Common.MsoInte...</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>[UpdateDeploy.dll, updatedeploy.dll, dbgeng.dl...</td>
+      <td>[duser.dll, duser.dll.mui, dui70.dll.mui, dui7...</td>
+      <td>[duser.dll, duser.dll.mui, dui70.dll.mui, dui7...</td>
+      <td>[]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Windows Kernel</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>Microsoft Edge</td>
+      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
+      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
+      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
+      <td>[cmstp.exe, msprivs.dll.mui, msprivs.dll.mui, ...</td>
+      <td>[microsoft_shell_integration.dll, learning_too...</td>
+      <td>[microsoft_shell_integration.dll, learning_too...</td>
+      <td>[microsoft_shell_integration.dll, learning_too...</td>
     </tr>
   </tbody>
 </table>
@@ -1640,23 +1645,23 @@ titles_sim_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>Microsoft Edge based on Edge HTML</td>
+      <td>ASP.NET Core</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Microsoft SharePoint</td>
+      <td>.NET CORE</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Microsoft Office</td>
+      <td>Windows Search</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Win32k</td>
+      <td>Scripting Engine</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Windows GDI</td>
+      <td>Microsoft Edge based on Edge HTML</td>
     </tr>
   </tbody>
 </table>
@@ -1703,10 +1708,10 @@ titles_sim_verinfo_df.head(25)
   <tbody>
     <tr>
       <th>0</th>
-      <td>Microsoft Edge based on Edge HTML</td>
-      <td>[hhsetup.dll, wdag.dll, msedgewebview2.exe, ev...</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>ASP.NET Core</td>
+      <td>[Windows.StateRepositoryCore.dll, windows.stat...</td>
+      <td>[StateRepository.Core.dll, staterepository.cor...</td>
+      <td>[StateRepository.Core.dll, staterepository.cor...</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
@@ -1714,32 +1719,32 @@ titles_sim_verinfo_df.head(25)
     </tr>
     <tr>
       <th>1</th>
-      <td>Microsoft SharePoint</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[imos.lf.dll, cmstp.exe, msprivs.dll.mui, mspr...</td>
-      <td>[cmstp.exe, msprivs.dll.mui, msprivs.dll.mui, ...</td>
-      <td>[Microsoft.SharePoint.exe, Microsoft.SharePoin...</td>
-      <td>[Microsoft.SharePoint.exe, Microsoft.SharePoin...</td>
-      <td>[Microsoft.SharePoint.exe, Microsoft.SharePoin...</td>
+      <td>.NET CORE</td>
+      <td>[system.runtime.remoting.resources.dll, Window...</td>
+      <td>[system.runtime.remoting.resources.dll, StateR...</td>
+      <td>[system.runtime.remoting.resources.dll, StateR...</td>
+      <td>[system.runtime.remoting.resources.dll, system...</td>
+      <td>[coreclrhost.dll]</td>
+      <td>[]</td>
+      <td>[]</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Microsoft Office</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>Windows Search</td>
+      <td>[wordpadfilter.dll, WordpadFilter.dll, msimsg....</td>
+      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
+      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
+      <td>[msimsg.dll.mui]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Win32k</td>
-      <td>[win32ksgd.sys, win32kns.sys, win32kmin.sys, w...</td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>Scripting Engine</td>
+      <td>[UpdateDeploy.dll, updatedeploy.dll, dbgeng.dl...</td>
+      <td>[duser.dll, duser.dll.mui, dui70.dll.mui, dui7...</td>
+      <td>[duser.dll, duser.dll.mui, dui70.dll.mui, dui7...</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
@@ -1747,11 +1752,11 @@ titles_sim_verinfo_df.head(25)
     </tr>
     <tr>
       <th>4</th>
-      <td>Windows GDI</td>
-      <td>[xpsgdiconverter.dll, XpsGdiConverter.dll, msi...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui]</td>
+      <td>Microsoft Edge based on Edge HTML</td>
+      <td>[hhsetup.dll, wdag.dll, msedgewebview2.exe, ev...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
@@ -1769,55 +1774,55 @@ titles_sim_verinfo_df.head(25)
     </tr>
     <tr>
       <th>20</th>
-      <td>Windows Error Reporting</td>
-      <td>[faultrep.dll, Faultrep.dll, faultrep.dll.mui,...</td>
-      <td>[wermgr.exe, WerFault.exe, werfault.exe, werfa...</td>
-      <td>[wermgr.exe, WerFault.exe, werfault.exe, werfa...</td>
-      <td>[werui.dll, werui.dll.mui, wersvc.dll.mui, wer...</td>
-      <td>[werui.dll, werui.dll.mui, wersvc.dll.mui, wer...</td>
-      <td>[wersvc.dll.mui, wersvc.dll, wer.dll.mui, wer....</td>
-      <td>[wersvc.dll.mui, wersvc.dll, wer.dll.mui, wer....</td>
+      <td>Microsoft Video Control</td>
+      <td>[iscsicpl.dll.mun, iscsicpl.dll.mui, iscsicpl....</td>
+      <td>[control.exe, windows.accountscontrol.dll, Win...</td>
+      <td>[control.exe, windows.accountscontrol.dll, Win...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>HyperV</td>
-      <td>[microsoft.windows.servermanager.hyperv.plugin...</td>
-      <td>[hvsocket.sys, microsoft.virtualization.client...</td>
-      <td>[hvsocket.sys, microsoft.virtualization.client...</td>
-      <td>[microsoft.virtualization.client.wizards.dll, ...</td>
+      <td>Windows Transaction Manager</td>
+      <td>[bootmgr.exe.mui, xblauthmanager.dll, xblauthm...</td>
+      <td>[bootmgr.exe.mui, taskmgr.exe, smss.exe.mui, s...</td>
+      <td>[bootmgr.exe.mui, taskmgr.exe, smss.exe.mui, s...</td>
+      <td>[msdtctm.dll, mqlogmgr.dll, msdtclog.dll, tm.sys]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>Windows HyperV</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui, msiexec.exe, msihnd.dll, msie...</td>
-      <td>[msimsg.dll.mui]</td>
+      <td>Win32k</td>
+      <td>[win32ksgd.sys, win32kns.sys, win32kmin.sys, w...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>Windows System Information Console</td>
-      <td>[wdmaud.drv.mui, wdmaud.drv, Windows.UI.Access...</td>
-      <td>[msinfo32.exe, msinfo32.exe.mui, systeminfo.ex...</td>
-      <td>[msinfo32.exe, msinfo32.exe.mui, systeminfo.ex...</td>
-      <td>[msinfo32.exe, msinfo32.exe.mui, systeminfo.ex...</td>
-      <td>[msinfo32.exe, msinfo32.exe.mui]</td>
+      <td>GDI</td>
+      <td>[xpsgdiconverter.dll, XpsGdiConverter.dll, Gdi...</td>
+      <td>[GdiPlus.dll, gdiplus.dll, gdi32full.dll, gdi3...</td>
+      <td>[GdiPlus.dll, gdiplus.dll, gdi32full.dll, gdi3...</td>
+      <td>[GdiPlus.dll, gdiplus.dll, gdi32full.dll, gdi3...</td>
+      <td>[]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>Remote Desktop Virtual Host</td>
-      <td>[windows.ui.xamlhost.dll, Windows.UI.XamlHost....</td>
-      <td>[wtsapi32.dll, TSMSISrv.dll, tsmsisrv.dll, tsu...</td>
-      <td>[wtsapi32.dll, TSMSISrv.dll, tsmsisrv.dll, tsu...</td>
-      <td>[tssysprep.dll, tsprop.dll, rdms.dll, mstsc.ex...</td>
+      <td>Windows Kernel Local</td>
+      <td>[werkernel.sys, kdusb.dll, kdcom.dll, skci.dll...</td>
+      <td>[localspl.dll.mui, localspl.dll, winverbs.sys,...</td>
+      <td>[localspl.dll.mui, localspl.dll, winverbs.sys,...</td>
+      <td>[]</td>
       <td>[]</td>
       <td>[]</td>
       <td>[]</td>
@@ -1839,11 +1844,11 @@ titles_sim_verinfo_df.head(25)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag         24.032110
-vi-0.25    200.883028
-vi-0.45     38.935780
-vi-0.5      38.846330
-vi-0.55      7.481651
-vi-0.75      1.555046
+vi-0.25    200.667431
+vi-0.45     38.892202
+vi-0.5      38.800459
+vi-0.55      7.497706
+vi-0.75      1.566514
 vi-0.9       0.701835
 vi-1         0.697248
 dtype: float64
@@ -1859,13 +1864,13 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Title       28.571702
-vi-0.25    177.941683
-vi-0.45     31.476099
-vi-0.5      31.389101
-vi-0.55      6.754302
-vi-0.75      1.414914
-vi-0.9       0.542065
-vi-1         0.538241
+vi-0.25    177.733270
+vi-0.45     31.446463
+vi-0.5      31.358509
+vi-0.55      6.773423
+vi-0.75      1.425430
+vi-0.9       0.543021
+vi-1         0.540153
 dtype: float64
 </pre></div>
 </div>
@@ -1882,17 +1887,17 @@ bin_count_tags_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x) if x else 0
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag
-Microsoft Edge                374
-Microsoft Windows             298
-Microsoft JScript             254
-Microsoft XML                 253
-Microsoft PowerShell          250
+Microsoft Edge                373
+Microsoft Windows             297
+Microsoft JScript             253
+Microsoft XML                 252
+Microsoft PowerShell          249
                              ... 
-Graphic Fonts                   0
-None                            0
 Microsoft Edge for Android      0
+HTTP/2                          0
+Chipsets                        0
+Side-Channel                    0
 Netlogon                        0
-Windows Nearby Sharing          0
 Name: vi-0.45, Length: 436, dtype: int64
 </pre></div>
 </div>
@@ -1910,17 +1915,17 @@ bin_count_titles_sim_verinfo_df.apply(lambda s: s.map(lambda x: len(x) if x else
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Title
-Microsoft Edge                                                                  374
-Microsoft Windows                                                               298
-Microsoft Outlook                                                               260
-Microsoft JScript                                                               254
-Microsoft Search                                                                251
-                                                                               ... 
-Microsoft Guidance on Intel Processor MMIO Stale Data Vulnerabilities             0
-Intel CVE202221125 Shared Buffers Data Sampling SBDS                              0
-Intel CVE202221123 Shared Buffers Data Read SBDR                                  0
-Intel CVE202221127 Special Register Buffer Data Sampling Update SRBDS Update      0
-January 2019 Adobe Flash Update                                                   0
+Microsoft Edge                                            373
+Microsoft Windows                                         297
+Microsoft Outlook                                         259
+Microsoft JScript                                         253
+Microsoft Search                                          250
+                                                         ... 
+AV1 Video Extension                                         0
+Arm CVE202223960 Cache Speculation Restriction              0
+Azure Guest Configuration and Azure Arcenabled servers      0
+in Microsoft Office for MAC                                 0
+October 2017 Adobe Flash Security Update                    0
 Name: vi-0.45, Length: 1046, dtype: int64
 </pre></div>
 </div>
@@ -2142,64 +2147,64 @@ bins_all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>[audioeng.dll, reseteng.dll]</td>
+      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>[]</td>
-      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
+      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
     </tr>
   </tbody>
 </table>
@@ -2243,40 +2248,28 @@ bins_all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2020-0787</th>
-      <td>2020-03-10</td>
-      <td>Microsoft Windows</td>
-      <td>Windows Background Intelligent Transfer Service</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB4538461 KB4540670 KB4540673 KB4540681 KB4540...</td>
+      <th>CVE-2018-8566</th>
+      <td>2018-11-13</td>
+      <td>BitLocker</td>
+      <td>BitLocker</td>
+      <td>Security Feature Bypass</td>
+      <td>4.6</td>
+      <td>KB4465659 KB4465660 KB4465661 KB4465663 KB4465664</td>
       <td></td>
-      <td>[mapsbtsvcproxy.dll, msprivs.dll.mui, msimsg.d...</td>
-      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
+      <td>[]</td>
+      <td>[zh-hk_bitlockertogo.exe.mui, ar-sa_bitlockert...</td>
     </tr>
     <tr>
-      <th>CVE-2020-1112</th>
-      <td>2020-05-12</td>
-      <td>Microsoft Windows</td>
-      <td>Windows Background Intelligent Transfer Service</td>
+      <th>CVE-2022-21967</th>
+      <td>2022-03-08</td>
+      <td>XBox</td>
+      <td>Xbox Live Auth Manager for Windows</td>
       <td>Elevation of Privilege</td>
-      <td>8.5</td>
-      <td>KB4551853 KB4556799 KB4556807 KB4556812 KB4556...</td>
-      <td></td>
-      <td>[mapsbtsvc.dll, mapsbtsvcproxy.dll, msprivs.dl...</td>
-      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
-    </tr>
-    <tr>
-      <th>CVE-2020-1255</th>
-      <td>2020-06-09</td>
-      <td>Microsoft Windows</td>
-      <td>Windows Background Intelligent Transfer Service</td>
-      <td>Elevation of Privilege</td>
-      <td>8.5</td>
-      <td>KB4557957 KB4560960 KB4561602 KB4561608 KB4561...</td>
-      <td></td>
-      <td>[mapsbtsvcproxy.dll, msprivs.dll.mui, msimsg.d...</td>
-      <td>[xboxidp.tasks.winmd, microsoft.windows.bcd.dl...</td>
+      <td>7.0</td>
+      <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
+      <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
+      <td>[xboxnetapisvc.dll, XblAuthManager.dll, xblaut...</td>
+      <td>[xbgmsvc.dll.mui, xbgmsvc.dll, xboxnetapisvc.d...</td>
     </tr>
     <tr>
       <th>CVE-2022-33644</th>
@@ -2288,19 +2281,31 @@ bins_all_cvrf_df.head()
       <td>KB5015807</td>
       <td>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826</td>
       <td>[]</td>
-      <td>[xblauthmanager.dll.mui, xbgmsvc.exe, xboxgips...</td>
+      <td>[xbgmsvc.dll.mui, microsoft.xbox.chataudio.dll...</td>
     </tr>
     <tr>
-      <th>CVE-2022-26935</th>
-      <td>2022-05-10</td>
-      <td>Windows WLAN Auto Config Service</td>
-      <td>Windows WLAN AutoConfig Service</td>
+      <th>CVE-2020-1296</th>
+      <td>2020-06-09</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Diagnostics  feedback</td>
       <td>Information Disclosure</td>
+      <td>5.0</td>
+      <td>KB4557957 KB4560960 KB4561608</td>
+      <td></td>
+      <td>[diagtrack.dll, chakradiag.dll, jscript9diag.d...</td>
+      <td>[xamldiagnostics.dll, dispdiag.exe, windows.sy...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-38624</th>
+      <td>2021-09-14</td>
+      <td>Windows Key Storage Provider</td>
+      <td>Windows Key Storage Provider</td>
+      <td>Security Feature Bypass</td>
       <td>6.5</td>
-      <td>KB5013941 KB5013942 KB5013943 KB5013944 KB5013...</td>
-      <td>10.0.10240.19297 10.0.14393.5125 10.0.17763.29...</td>
-      <td>[wlanapi.dll, wlansvcpal.dll, wwansvc.dll, wla...</td>
-      <td>[wwansvc.dll, wlansvc.dll, dot3svc.dll, wwansv...</td>
+      <td>KB5006667 KB5006670 KB5006672 KB5006674 KB5006699</td>
+      <td>10.0.17763.2237 10.0.18363.1854 10.0.19041.128...</td>
+      <td>[ngcksp.dll, dimsroam.dll]</td>
+      <td>[wvrcimprov.dll, wsp_fs.dll, pcpksp.dll, mskey...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2315,50 +2320,38 @@ bins_all_cvrf_df.head()
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2022-3786</th>
-      <td>2022-11-08</td>
-      <td>Open Source Software</td>
-      <td>OpenSSL CVE20223786 X.509 certificate verifica...</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>2022.11.02</td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>ADV220003</th>
-      <td>2022-11-08</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Defense in Depth Update</td>
-      <td>Defense in Depth</td>
-      <td>0.0</td>
-      <td>KB3191869 KB3191875</td>
-      <td>15.0.5501.1000 16.0.5369.1000</td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8468</th>
-      <td>2017-06-13</td>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>Win32k</td>
+      <th>CVE-2022-33652</th>
+      <td>2022-07-12</td>
+      <td>Azure Site Recovery</td>
+      <td>Azure Site Recovery</td>
       <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB4022714 KB4022715 KB4022717 KB4022726 KB4022727</td>
+      <td>4.9</td>
       <td></td>
+      <td>9.49</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2021-41351</th>
-      <td>2021-11-09</td>
-      <td>Microsoft Edge (Chromium-based) in IE Mode</td>
-      <td>Microsoft Edge Chrome based  on IE Mode</td>
-      <td>Spoofing</td>
-      <td>4.3</td>
-      <td>KB5007186 KB5007189 KB5007206 KB5007215</td>
-      <td>10.0.17763.2300 10.0.18363.1916 10.0.19041.134...</td>
+      <th>CVE-2022-33653</th>
+      <td>2022-07-12</td>
+      <td>Azure Site Recovery</td>
+      <td>Azure Site Recovery</td>
+      <td>Elevation of Privilege</td>
+      <td>4.9</td>
+      <td></td>
+      <td>9.49</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-33654</th>
+      <td>2022-07-12</td>
+      <td>Azure Site Recovery</td>
+      <td>Azure Site Recovery</td>
+      <td>Elevation of Privilege</td>
+      <td>4.9</td>
+      <td></td>
+      <td>9.49</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -2371,6 +2364,18 @@ bins_all_cvrf_df.head()
       <td>6.5</td>
       <td></td>
       <td>9.49</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>ADV170018</th>
+      <td>2017-10-10</td>
+      <td>None</td>
+      <td>October 2017 Adobe Flash Security Update</td>
+      <td>Remote Code Execution</td>
+      <td>0.0</td>
+      <td>KB4049179</td>
+      <td></td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -2423,73 +2428,73 @@ bins_all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>116</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>179</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>223</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>[audioeng.dll, reseteng.dll]</td>
+      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>32</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
+      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
       <td>23</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>[]</td>
-      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
-      <td>5</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -2538,74 +2543,74 @@ bins_all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>116</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>179</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>223</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>[audioeng.dll, reseteng.dll]</td>
+      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>32</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
+      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
       <td>23</td>
       <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>[]</td>
-      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
-      <td>5</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8676</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Graphics Component</td>
-      <td>Windows GDI</td>
-      <td>Information Disclosure</td>
-      <td>3.3</td>
-      <td>KB3212225 KB3213638 KB3213641 KB4011040 KB4011...</td>
-      <td></td>
-      <td>[msoeres.dll, gdi32.dll, textentityextractorpr...</td>
-      <td>[SCNPST64C.DLL, outicon.exe, OsfTaskengine.dll...</td>
-      <td>221</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8677</th>
-      <td>2017-09-12</td>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>Windows GDI</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
-      <td></td>
-      <td>[gdi32.dll, msoeres.dll, gdiplus.dll, wuauclt....</td>
-      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
-      <td>60</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8678</th>
-      <td>2017-09-12</td>
-      <td>Windows Kernel-Mode Drivers</td>
-      <td>Windows Kernel</td>
-      <td>Information Disclosure</td>
-      <td>5.5</td>
-      <td>KB4038777 KB4038779 KB4038781 KB4038782 KB4038...</td>
-      <td></td>
-      <td>[msoeres.dll, wuauclt.exe, setup.exe, msoe.dll]</td>
-      <td>[certpdef.dll, kd.exe, netcellcorecellmanagerp...</td>
-      <td>60</td>
-      <td>4</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2622,74 +2627,74 @@ bins_all_cvrf_df.head()
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2021-30553</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130553 Use after free in Networ...</td>
-      <td></td>
-      <td>0.0</td>
-      <td></td>
+      <th>CVE-2017-11819</th>
+      <td>2017-10-10</td>
+      <td>Windows Shell</td>
+      <td>Windows Shell</td>
+      <td>Remote Code Execution</td>
+      <td>7.5</td>
+      <td>KB4041678 KB4041681</td>
       <td></td>
       <td>[]</td>
-      <td>[msedge.dll]</td>
-      <td>1</td>
+      <td>[powershell.exe.mui, rdpshell.exe.mui, Windows...</td>
+      <td>78</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>CVE-2021-30554</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130554 Use after free in WebGL</td>
-      <td></td>
+      <th>CVE-2017-11820</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft SharePoint</td>
+      <td>Elevation of Privilege</td>
       <td>0.0</td>
+      <td>KB4011180 KB4011217</td>
       <td></td>
-      <td>91.0.864.54</td>
       <td>[]</td>
-      <td>[msedge.dll]</td>
-      <td>1</td>
+      <td>[cmstp.exe, msprivs.dll.mui, mscorlib.resource...</td>
+      <td>5</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>CVE-2021-30555</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130555 Use after free in Sharing</td>
+      <th>CVE-2017-11824</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Graphics Component</td>
+      <td>Windows Graphics Component</td>
+      <td>Elevation of Privilege</td>
+      <td>7.0</td>
+      <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td>[]</td>
-      <td>[msedge.dll]</td>
-      <td>1</td>
-      <td>0</td>
+      <td>[office.ui.xaml.core.dll, mso98imm.dll, mso30i...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>198</td>
+      <td>12</td>
     </tr>
     <tr>
-      <th>CVE-2021-30556</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130556 Use after free in WebAudio</td>
+      <th>CVE-2017-13080</th>
+      <td>2017-10-10</td>
+      <td>Microsoft Windows</td>
+      <td>Windows Wireless WPA Group Key Reinstallation</td>
+      <td>Spoofing</td>
+      <td>4.2</td>
+      <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td>[]</td>
-      <td>[msedge.dll]</td>
-      <td>1</td>
-      <td>0</td>
+      <td>[cmstp.exe, mscorlib.resources.dll]</td>
+      <td>[cmstp.exe, msprivs.dll.mui, msimsg.dll.mui, m...</td>
+      <td>9</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>CVE-2021-30557</th>
-      <td>2021-06-08</td>
-      <td>Microsoft Edge (Chromium-based)</td>
-      <td>Chromium CVE202130557 Use after free in TabGroups</td>
+      <th>CVE-2017-11829</th>
+      <td>2017-10-10</td>
+      <td>Windows Update</td>
+      <td>Windows Update Delivery Optimization</td>
+      <td>Elevation of Privilege</td>
+      <td>5.5</td>
+      <td>KB4041676 KB4041691</td>
       <td></td>
-      <td>0.0</td>
-      <td></td>
-      <td>91.0.864.54</td>
-      <td>[]</td>
-      <td>[msedge.dll]</td>
-      <td>1</td>
-      <td>0</td>
+      <td>[updateagent.dll, explorer.exe, wuaueng.dll, m...</td>
+      <td>[msedgeupdateres_fil.dll, powershell.exe.mui, ...</td>
+      <td>187</td>
+      <td>8</td>
     </tr>
   </tbody>
 </table>
@@ -2747,8 +2752,8 @@ bins_all_cvrf_df.head()
       <td>7.8</td>
       <td>KB4598229 KB4598230 KB4598231 KB4598242 KB4598...</td>
       <td></td>
-      <td>[mcrecvsrc.dll, certpdef.dll, mfasfsrcsnk.dll,...</td>
-      <td>[WMASF.DLL, mfasfsrcsnk.dll, calc.exe, mfcaptu...</td>
+      <td>[mfmediaengine.dll, mfsensorgroup.dll, msflace...</td>
+      <td>[mftrace.exe, powershell.exe.mui, msalacdecode...</td>
       <td>147</td>
       <td>56</td>
     </tr>
@@ -2761,8 +2766,8 @@ bins_all_cvrf_df.head()
       <td>7.8</td>
       <td>KB5000802 KB5000808 KB5000822</td>
       <td></td>
-      <td>[appventstreamingmanager.dll, AppVManifest.dll...</td>
-      <td>[appventstreamingmanager.dll, AppVManifest.dll...</td>
+      <td>[AppVEntStreamingManager.dll, appvstreamingux....</td>
+      <td>[AppVSentinel.dll, AppVClientPS.dll, holocamer...</td>
       <td>99</td>
       <td>48</td>
     </tr>
@@ -2775,8 +2780,8 @@ bins_all_cvrf_df.head()
       <td>4.4</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[mcrecvsrc.dll, Windows.Media.dll, mfasfsrcsnk...</td>
-      <td>[WMASF.DLL, mfasfsrcsnk.dll, mfcaptureengine.d...</td>
+      <td>[mfmediaengine.dll, msauddecmft.dll, dolbydecm...</td>
+      <td>[mftrace.exe, msalacdecoder.dll, mfpmp.exe, mc...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2789,8 +2794,8 @@ bins_all_cvrf_df.head()
       <td>3.3</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[mcrecvsrc.dll, Windows.Media.dll, mfasfsrcsnk...</td>
-      <td>[WMASF.DLL, mfasfsrcsnk.dll, mfcaptureengine.d...</td>
+      <td>[mfmediaengine.dll, msauddecmft.dll, dolbydecm...</td>
+      <td>[mftrace.exe, msalacdecoder.dll, mfpmp.exe, mc...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2803,8 +2808,8 @@ bins_all_cvrf_df.head()
       <td>5.0</td>
       <td>KB4598229 KB4598230 KB4598242 KB4598243</td>
       <td></td>
-      <td>[certpdef.dll, calc.exe, devicemetadataretriev...</td>
-      <td>[ntasn1.dll, firewallapi.dll.mui, calc.exe, lo...</td>
+      <td>[msimsg.dll.mui, msoeres.dll, sapi_onecore.dll...</td>
+      <td>[powershell.exe.mui, windows.mirage.dll.mui, i...</td>
       <td>104</td>
       <td>34</td>
     </tr>
@@ -2823,73 +2828,73 @@ bins_all_cvrf_df.head()
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2021-33773</th>
+      <th>CVE-2021-33779</th>
       <td>2021-07-13</td>
-      <td>Windows Remote Access Connection Manager</td>
-      <td>Windows Remote Access Connection Manager</td>
-      <td>Elevation of Privilege</td>
-      <td>7.8</td>
-      <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
-      <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
-      <td>[rasmans.dll]</td>
-      <td>[rasautou.exe, daconn.dll, cmpbk32.dll, rasapi...</td>
-      <td>59</td>
+      <td>Active Directory Federation Services</td>
+      <td>Windows AD FS</td>
+      <td>Security Feature Bypass</td>
+      <td>8.1</td>
+      <td>KB5004237 KB5004238 KB5004244</td>
+      <td>10.0.14393.4530 10.0.17763.2061 10.0.19041.110...</td>
+      <td>[certcli.dll]</td>
+      <td>[dsprop.dll.mui, ipcfile.dll, certenc.dll.mui,...</td>
+      <td>40</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>CVE-2021-34493</th>
+      <th>CVE-2021-33785</th>
       <td>2021-07-13</td>
-      <td>Windows Partition Management Driver</td>
-      <td>Windows Partition Management Driver</td>
-      <td>Elevation of Privilege</td>
-      <td>6.7</td>
-      <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004249</td>
-      <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
-      <td>[partmgr.sys]</td>
-      <td>[CsvNSFlt.sys, windows.management.service.dll....</td>
-      <td>10</td>
+      <td>Windows AF_UNIX Socket Provider</td>
+      <td>Windows AFUNIX Socket Provider</td>
+      <td>Denial of Service</td>
+      <td>7.5</td>
+      <td>KB5004237 KB5004244 KB5004245</td>
+      <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
+      <td>[afunix.sys]</td>
+      <td>[hvsocketcontrol.sys, hvsocket.sys, afunix.sys]</td>
+      <td>3</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>CVE-2021-34445</th>
+      <th>CVE-2021-34438</th>
       <td>2021-07-13</td>
-      <td>Windows Remote Access Connection Manager</td>
-      <td>Windows Remote Access Connection Manager</td>
-      <td>Elevation of Privilege</td>
+      <td>Microsoft Graphics Component</td>
+      <td>Windows Font Driver Host</td>
+      <td>Remote Code Execution</td>
       <td>7.8</td>
       <td>KB5004237 KB5004244 KB5004245</td>
       <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
-      <td>[rasmans.dll]</td>
-      <td>[rasautou.exe, daconn.dll, cmpbk32.dll, rasapi...</td>
-      <td>59</td>
+      <td>[fontdrvhost.exe]</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>164</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>CVE-2021-34446</th>
+      <th>CVE-2021-34504</th>
       <td>2021-07-13</td>
-      <td>Windows HTML Platform</td>
-      <td>Windows HTML Platforms</td>
-      <td>Security Feature Bypass</td>
-      <td>8.0</td>
+      <td>Windows Address Book</td>
+      <td>Windows Address Book</td>
+      <td>Remote Code Execution</td>
+      <td>7.8</td>
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
-      <td>[windlp.dll]</td>
-      <td>[biplatim.dll, entplat.dll, LoggingPlatform.dl...</td>
-      <td>10</td>
+      <td>[wab32.dll]</td>
+      <td>[wab.exe, EMABLT32.DLL, CONTAB32.DLL, dpnaddr....</td>
+      <td>5</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>CVE-2022-30208</th>
-      <td>2022-07-12</td>
-      <td>Windows Security Account Manager</td>
-      <td>Windows Security Account Manager SAM</td>
-      <td>Denial of Service</td>
-      <td>6.5</td>
-      <td>KB5015807 KB5015808 KB5015811 KB5015814 KB5015...</td>
-      <td>10.0.10240.19360 10.0.14393.5246 10.0.17763.31...</td>
-      <td>[samcli.dll]</td>
-      <td>[samcli.dll, acctres.dll.mui, wlidsvc.dll.mui,...</td>
-      <td>6</td>
+      <th>CVE-2018-8445</th>
+      <td>2018-09-11</td>
+      <td>Windows Kernel</td>
+      <td>Windows Kernel</td>
+      <td>Information Disclosure</td>
+      <td>4.7</td>
+      <td>KB4457128</td>
+      <td></td>
+      <td>[ntoskrnl.exe]</td>
+      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
+      <td>61</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -2965,8 +2970,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
-      <td>[fltlib.dll, wof.sys, rtffilt.dll, ieapfltr.dl...</td>
+      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
+      <td>[wof.sys.mui, mimefilt.dll, fltlib.dll, sadrvz...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2979,8 +2984,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
-      <td>[fltlib.dll, wof.sys, rtffilt.dll, ieapfltr.dl...</td>
+      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
+      <td>[wof.sys.mui, mimefilt.dll, fltlib.dll, sadrvz...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2994,8 +2999,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019970 KB5020614 KB5020622 KB5020678 KB5020...</td>
       <td>10.0.04005.02 10.0.04585.02 10.0.09110.12 10.0...</td>
       <td>[uiribbon.dll]</td>
-      <td>[system.xml.linq.resources.dll, system.design....</td>
-      <td>162</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>159</td>
       <td>1</td>
     </tr>
     <tr>
@@ -3007,8 +3012,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>8.8</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
-      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
+      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
+      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3035,8 +3040,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
-      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
+      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
+      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
       <td>56</td>
       <td>7</td>
     </tr>
@@ -3050,7 +3055,7 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
       <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
       <td>[bindflt.sys]</td>
-      <td>[wpcfltr.sys, vwififlt.sys, scfilter.sys.mui, ...</td>
+      <td>[frxdrv.sys, mouhid.sys, bindflt.sys, dfs.sys,...</td>
       <td>50</td>
       <td>1</td>
     </tr>
@@ -3063,8 +3068,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[Windows.Graphics.Printing.Workflow.dll, Print...</td>
-      <td>[winspool.drv.mui, print.exe, windows.graphics...</td>
+      <td>[Print.PrintSupport.Source.dll, winspool.drv, ...</td>
+      <td>[print.exe, print.printsupport.source.dll, pri...</td>
       <td>21</td>
       <td>3</td>
     </tr>
@@ -3077,8 +3082,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.5</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[explorer.exe, msimsg.dll.mui, wuauclt.exe, ww...</td>
-      <td>[certpdef.dll, netcellcorecellmanagerproviderr...</td>
+      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
+      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3091,8 +3096,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[LsaIso.exe, lsaiso.exe, keyiso.dll]</td>
-      <td>[LsaIso.exe, keyiso.dll, keyiso.dll.mui, lsais...</td>
+      <td>[keyiso.dll, LsaIso.exe, lsaiso.exe]</td>
+      <td>[keyiso.dll, LsaIso.exe, keyiso.dll.mui, cngke...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -3161,81 +3166,81 @@ bins_all_cvrf_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>CVE-2017-8597</th>
-      <td>2017-09-12</td>
+      <th>CVE-2017-8700</th>
+      <td>2017-11-14</td>
+      <td>ASP .NET</td>
+      <td>ASP.NET Core</td>
+      <td>Information Disclosure</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>116</td>
+      <td>0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11770</th>
+      <td>2017-11-14</td>
+      <td>.NET Framework</td>
+      <td>.NET CORE</td>
+      <td>Denial of Service</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>[]</td>
+      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>179</td>
+      <td>0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11788</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Windows Search Component</td>
+      <td>Windows Search</td>
+      <td>Denial of Service</td>
+      <td>5.9</td>
+      <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
+      <td></td>
+      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>223</td>
+      <td>5</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11791</th>
+      <td>2017-11-14</td>
+      <td>Microsoft Scripting Engine</td>
+      <td>Scripting Engine</td>
+      <td>Information Disclosure</td>
+      <td>4.3</td>
+      <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
+      <td></td>
+      <td>[audioeng.dll, reseteng.dll]</td>
+      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>32</td>
+      <td>2</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>CVE-2017-11803</th>
+      <td>2017-11-14</td>
       <td>Microsoft Edge</td>
       <td>Microsoft Edge based on Edge HTML</td>
       <td>Information Disclosure</td>
       <td>4.3</td>
-      <td>KB4038788</td>
+      <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[learning_tools.dll, msedge_wer.dll, msedge_pr...</td>
+      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
       <td>23</td>
-      <td>0</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8629</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft SharePoint</td>
-      <td>Elevation of Privilege</td>
-      <td>0.0</td>
-      <td>KB4011113</td>
-      <td></td>
-      <td>[]</td>
-      <td>[msprivs.dll.mui, Microsoft.SharePoint.dll, ms...</td>
-      <td>5</td>
-      <td>0</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8630</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3203474</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
-      <td>0</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8631</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3191831 KB3212225 KB3213562 KB3213658 KB4011...</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
-      <td>0</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>CVE-2017-8632</th>
-      <td>2017-09-12</td>
-      <td>Microsoft Office</td>
-      <td>Microsoft Office</td>
-      <td>Remote Code Execution</td>
-      <td>0.0</td>
-      <td>KB3212225 KB4011050 KB4011061 KB4011064 KB4011108</td>
-      <td></td>
-      <td>[]</td>
-      <td>[]</td>
-      <td>0</td>
       <td>0</td>
       <td>True</td>
       <td>True</td>
@@ -3313,7 +3318,7 @@ bins_all_cvrf_df.head()
       <td>KB5002258 KB5002264 KB5002267 KB5002269 KB5002271</td>
       <td>15.0.5485.1000 16.0.10390.20000 16.0.15601.200...</td>
       <td>[]</td>
-      <td>[Microsoft.SharePoint.HttpSvr.dll, Microsoft.S...</td>
+      <td>[srvsvc.dll, srvsvc.dll.mui, Microsoft.SharePo...</td>
       <td>8</td>
       <td>0</td>
       <td>True</td>
@@ -3329,7 +3334,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
+      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3345,7 +3350,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.01.2375.037 15.01.2507.016 15.02.0986.036 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
+      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3361,7 +3366,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll.mui, staxmem.dll, srvsvc.dll]</td>
+      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3393,7 +3398,7 @@ bins_all_cvrf_df.head()
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[Microsoft.Excel.AdomdClient.dll, excelcnv.exe...</td>
+      <td>[cmstp.exe, XLINTL32.COMMON.DLL, msolap_xl.dll...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3409,7 +3414,7 @@ bins_all_cvrf_df.head()
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[Microsoft.Excel.AdomdClient.dll, excelcnv.exe...</td>
+      <td>[cmstp.exe, XLINTL32.COMMON.DLL, msolap_xl.dll...</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3425,7 +3430,7 @@ bins_all_cvrf_df.head()
       <td>KB5021000 KB5021001 KB5021002 KB5021003 KB5021004</td>
       <td>49345 Application Build 14.42.49347, Platform ...</td>
       <td>[]</td>
-      <td>[cmstp.exe, msprivs.dll.mui, mscorlib.resource...</td>
+      <td>[cmstp.exe, mscorlib.resources.dll, msprivs.dl...</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3441,7 +3446,7 @@ bins_all_cvrf_df.head()
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
       <td>[]</td>
-      <td>[SCNPST64C.DLL, outicon.exe, OsfTaskengine.dll...</td>
+      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
       <td>161</td>
       <td>0</td>
       <td>True</td>
@@ -3711,17 +3716,17 @@ updated_with_without_kbs_df.plot.bar(figsize=(20,5), stacked=True, title=title)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                 160
-Azure Site Recovery                               80
-Win32k                                            39
-Microsoft Defender for IoT                        12
-Microsoft Office Defense in Depth Update           8
-                                                ... 
-Microsoft Lync for Mac Certificate Validation      1
-Windows DLL Loading                                1
-October 2017 Adobe Flash Security Update           1
-NuGetGallery                                       1
-Microsoft Edge Chromiumbased                       1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                                     160
+Azure Site Recovery                                                   80
+Win32k                                                                39
+Microsoft Defender for IoT                                            12
+Microsoft Office Defense in Depth Update                               8
+                                                                    ... 
+Microsoft Defense in Depth Update                                      1
+Windows Extensible File Allocation Table                               1
+Microsoft Dynamics Business Central Crosssite Scripting                1
+OpenSSL CVE20223602 X.509 certificate verification buffer overrun      1
+October 2017 Adobe Flash Security Update                               1
 Name: Title, Length: 93, dtype: int64
 </pre></div>
 </div>
@@ -3737,17 +3742,17 @@ Name: Title, Length: 93, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                                      155
-Microsoft SharePoint                                                  126
-Microsoft Excel                                                       113
-Scripting Engine                                                      102
-Windows                                                                81
-                                                                     ... 
-Http.sys                                                                1
-May 2017 Adobe Flash Security Update                                    1
-Windows DNS Server                                                      1
-Microsoft ActiveX                                                       1
-Microsoft Active Directory Federation Services CrossSite Scripting      1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                              155
+Microsoft SharePoint                          126
+Microsoft Excel                               113
+Scripting Engine                              102
+Windows                                        81
+                                             ... 
+Remote Desktop Services                         1
+December 2017 Flash Security Update             1
+Microsoft Exchange Defense in Depth Update      1
+October 2020 Adobe Flash Security Update        1
+October 2017 Adobe Flash Security Update        1
 Name: Title, Length: 408, dtype: int64
 </pre></div>
 </div>
@@ -3763,17 +3768,17 @@ Name: Title, Length: 408, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                            191
-Azure Site Recovery                          80
-Windows Kernel-Mode Drivers                  40
-Open Source Software                         13
-Microsoft Defender for IoT                   12
-                                           ... 
-Microsoft Azure Kubernetes Service            1
-Microsoft Accessibility Insights for Web      1
-Microsoft Windows IrDA                        1
-Microsoft Dynamics Finance &amp; Operations       1
-Microsoft Edge on Chromium                    1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                      191
+Azure Site Recovery                    80
+Windows Kernel-Mode Drivers            40
+Open Source Software                   13
+Microsoft Defender for IoT             12
+                                     ... 
+SAM and LSAD Remote Protocols           1
+Windows DLL Loading                     1
+Microsoft Azure Kubernetes Service      1
+Windows PFX Encryption                  1
+Microsoft Edge for iOS                  1
 Name: Tag, Length: 50, dtype: int64
 </pre></div>
 </div>
@@ -3789,17 +3794,17 @@ Name: Tag, Length: 50, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                                     167
-Windows Kernel-Mode Drivers                                           40
-Windows LDAP - Lightweight Directory Access Protocol                   8
-Microsoft Edge (HTML-based)                                            7
-Graphic Fonts                                                          5
-                                                                    ... 
-Windows DPAPI (Data Protection Application Programming Interface)      1
-Microsoft Windows IrDA                                                 1
-Jet Red and Access Connectivity                                        1
-Microsoft Defender for Endpoint                                        1
-Windows Digital TV Tuner                                               1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Microsoft Office                                        167
+Windows Kernel-Mode Drivers                              40
+Windows LDAP - Lightweight Directory Access Protocol      8
+Microsoft Edge (HTML-based)                               7
+Graphic Fonts                                             5
+                                                       ... 
+Windows Internet Key Exchange (IKE) Protocol              1
+SAM and LSAD Remote Protocols                             1
+Windows BackupKey Remote Protocol                         1
+Windows DLL Loading                                       1
+Microsoft Defender for Endpoint                           1
 Name: Tag, Length: 32, dtype: int64
 </pre></div>
 </div>
@@ -3820,7 +3825,7 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1830/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1859/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
   tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(lambda x: list(set(x)))
 </pre></div>
 </div>
@@ -3875,12 +3880,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Azure Site Recovery</th>
       <th>Azure Site Recovery</th>
-      <td>[CVE-2022-35814, CVE-2022-33656, CVE-2022-3367...</td>
-      <td>[2022-08-09, 2022-04-12, 2022-03-08, 2022-07-12]</td>
-      <td>[Information Disclosure, Denial of Service, El...</td>
-      <td>[4.9, 4.4, 6.2, 6.5, 8.1, 7.2, 8.3, 7.8]</td>
+      <td>[CVE-2022-26896, CVE-2022-35802, CVE-2022-3578...</td>
+      <td>[2022-07-12, 2022-03-08, 2022-08-09, 2022-04-12]</td>
+      <td>[Elevation of Privilege, Denial of Service, Re...</td>
+      <td>[4.9, 4.4, 6.5, 7.8, 8.3, 7.2, 6.2, 8.1]</td>
       <td>[]</td>
-      <td>[9.48, 9.47, 9.49, 9.50]</td>
+      <td>[9.48, 9.50, 9.47, 9.49]</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False]</td>
@@ -3890,12 +3895,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Microsoft Office</th>
       <th>Microsoft Office</th>
-      <td>[CVE-2022-23252, CVE-2022-34717, CVE-2022-3017...</td>
-      <td>[2022-02-08, 2022-05-10, 2022-01-11, 2022-08-0...</td>
-      <td>[Spoofing, Information Disclosure, Remote Code...</td>
+      <td>[CVE-2022-41043, CVE-2022-38001, CVE-2022-3471...</td>
+      <td>[2022-10-11, 2022-08-09, 2022-05-10, 2022-07-1...</td>
+      <td>[Spoofing, Remote Code Execution, Information ...</td>
       <td>[3.3, 4.7, 5.5, 6.5, 7.8, 8.8]</td>
-      <td>[, KB5002062 KB5002210 KB5002212 KB5002214 KB5...</td>
-      <td>[15.0.5459.1001 16.0.10387.20008 16.0.14931.20...</td>
+      <td>[, KB5002026 KB5002279 KB5002288, KB3118335 KB...</td>
+      <td>[, 15.0.5467.1000 16.0.5344.1000, 15.0.5459.10...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False, True]</td>
@@ -3905,12 +3910,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30146, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[CVE-2022-30143, CVE-2022-30139, CVE-2022-3014...</td>
       <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
-      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
+      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>
@@ -3920,9 +3925,9 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Microsoft Dynamics GP</th>
       <th>Microsoft Dynamics GP</th>
-      <td>[CVE-2022-23272, CVE-2022-23269, CVE-2022-2327...</td>
+      <td>[CVE-2022-23271, CVE-2022-23272, CVE-2022-2326...</td>
       <td>[2022-02-08]</td>
-      <td>[Spoofing, Elevation of Privilege, Remote Code...</td>
+      <td>[Remote Code Execution, Spoofing, Elevation of...</td>
       <td>[5.4, 6.5, 7.1, 8.1, 8.8]</td>
       <td>[]</td>
       <td>[18.4.1434]</td>
@@ -3935,7 +3940,7 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows Mark of the Web (MOTW)</th>
       <th>Windows Mark of the Web</th>
-      <td>[CVE-2022-41049, CVE-2022-41091]</td>
+      <td>[CVE-2022-41091, CVE-2022-41049]</td>
       <td>[2022-11-08]</td>
       <td>[Security Feature Bypass]</td>
       <td>[5.4]</td>
@@ -4103,12 +4108,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30146, CVE-2022-30139, CVE-2022-3014...</td>
+      <td>[CVE-2022-30143, CVE-2022-30139, CVE-2022-3014...</td>
       <td>[2022-06-14, 2022-09-13]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
-      <td>[10.0.10240.19444 10.0.14393.5356 10.0.17763.3...</td>
+      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[True]</td>
@@ -4118,7 +4123,7 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows Mark of the Web (MOTW)</th>
       <th>Windows Mark of the Web</th>
-      <td>[CVE-2022-41049, CVE-2022-41091]</td>
+      <td>[CVE-2022-41091, CVE-2022-41049]</td>
       <td>[2022-11-08]</td>
       <td>[Security Feature Bypass]</td>
       <td>[5.4]</td>
