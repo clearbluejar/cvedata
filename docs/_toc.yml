@@ -15,6 +15,7 @@ parts:
 
 - caption: Generated
   chapters:
+  - file: analysis/metagen
   - file: book/generated 
     sections:
     - glob: book/generated/*
