@@ -785,7 +785,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pathlib
 import pandas
 import json
-data = pathlib.Path(&#39;..&#39;,&#39;..&#39;,&#39;cvedata&#39;,&#39;data&#39;, &#39;ack-researcher_cve_map.json&#39;)
+data = pathlib.Path(&#39;..&#39;,&#39;..&#39;,&#39;cvedata&#39;,&#39;data&#39;, &#39;ack-researcher-cve-map.json&#39;)
 df = pandas.json_normalize(json.loads(data.read_text()))
 df = df.T
 df.head()
@@ -793,33 +793,51 @@ df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;cvedata&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;ack-researcher_cve_map.json&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/pathlib.py:1134,</span> in <span class="ni">Path.read_text</span><span class="nt">(self, encoding, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1130</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1131</span><span class="sd"> Open the file in text mode, read it, and close the file.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1132</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1133</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">text_encoding</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1134</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1135</span>     <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.8/x64/lib/python3.10/pathlib.py:1119,</span> in <span class="ni">Path.open</span><span class="nt">(self, mode, buffering, encoding, errors, newline)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1118</span>     <span class="n">encoding</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">text_encoding</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1119</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">buffering</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1120</span>                            <span class="n">newline</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../cvedata/data/ack-researcher_cve_map.json&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>yuki chen</th>
+      <td>[CVE-2022-26811, CVE-2022-26812, CVE-2022-2681...</td>
+    </tr>
+    <tr>
+      <th>mateusz jurczyk</th>
+      <td>[CVE-2020-17087, CVE-2017-0258, CVE-2017-0259,...</td>
+    </tr>
+    <tr>
+      <th>zhiniang peng</th>
+      <td>[CVE-2022-23290, CVE-2022-21888, CVE-2022-2187...</td>
+    </tr>
+    <tr>
+      <th>james forshaw</th>
+      <td>[CVE-2017-0213, CVE-2016-0070, CVE-2017-0211, ...</td>
+    </tr>
+    <tr>
+      <th>david erceg</th>
+      <td>[CVE-2022-24475, CVE-2022-26891, CVE-2022-2689...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -828,6 +846,89 @@ df
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>yuki chen</th>
+      <td>[CVE-2022-26811, CVE-2022-26812, CVE-2022-2681...</td>
+      <td>366</td>
+    </tr>
+    <tr>
+      <th>mateusz jurczyk</th>
+      <td>[CVE-2020-17087, CVE-2017-0258, CVE-2017-0259,...</td>
+      <td>223</td>
+    </tr>
+    <tr>
+      <th>zhiniang peng</th>
+      <td>[CVE-2022-23290, CVE-2022-21888, CVE-2022-2187...</td>
+      <td>199</td>
+    </tr>
+    <tr>
+      <th>james forshaw</th>
+      <td>[CVE-2017-0213, CVE-2016-0070, CVE-2017-0211, ...</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>david erceg</th>
+      <td>[CVE-2022-24475, CVE-2022-26891, CVE-2022-2689...</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>“efbiaiinzinz”</th>
+      <td>[CVE-2011-3108]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>“psaldorn”</th>
+      <td>[CVE-2011-3085]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>“simonbrown60”</th>
+      <td>[CVE-2012-2821]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>“t3553r”</th>
+      <td>[CVE-2013-0922]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>晏子霜在线征婚 (@yanzishuang)</th>
+      <td>[CVE-2021-34449]</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1869 rows × 2 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="top-25-table">
@@ -838,6 +939,158 @@ df
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>yuki chen</th>
+      <td>[CVE-2022-26811, CVE-2022-26812, CVE-2022-2681...</td>
+      <td>366</td>
+    </tr>
+    <tr>
+      <th>mateusz jurczyk</th>
+      <td>[CVE-2020-17087, CVE-2017-0258, CVE-2017-0259,...</td>
+      <td>223</td>
+    </tr>
+    <tr>
+      <th>zhiniang peng</th>
+      <td>[CVE-2022-23290, CVE-2022-21888, CVE-2022-2187...</td>
+      <td>199</td>
+    </tr>
+    <tr>
+      <th>james forshaw</th>
+      <td>[CVE-2017-0213, CVE-2016-0070, CVE-2017-0211, ...</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>david erceg</th>
+      <td>[CVE-2022-24475, CVE-2022-26891, CVE-2022-2689...</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <th>khalil zhani</th>
+      <td>[CVE-2013-2843, CVE-2013-2914, CVE-2013-6621, ...</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>kdot</th>
+      <td>[CVE-2019-1242, CVE-2019-1358, CVE-2019-1359, ...</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>lokihardt</th>
+      <td>[CVE-2018-8279, CVE-2018-8288, CVE-2018-8291, ...</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>qixun zhao</th>
+      <td>[CVE-2019-0651, CVE-2018-8367, CVE-2018-8145, ...</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>miaubiz</th>
+      <td>[CVE-2011-1436, CVE-2011-1437, CVE-2011-1447, ...</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>k0shl</th>
+      <td>[CVE-2019-0931, CVE-2019-1417, CVE-2022-38003,...</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>jun kokatsu</th>
+      <td>[CVE-2017-0066, CVE-2017-0068, CVE-2017-0069, ...</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>ashar javed</th>
+      <td>[CVE-2018-0911, CVE-2019-0817, CVE-2020-16858,...</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>atte kettunen</th>
+      <td>[CVE-2017-11813, CVE-2011-3915, CVE-2011-3916,...</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>hossein lotfi</th>
+      <td>[CVE-2020-16967, CVE-2022-41052, CVE-2019-1441...</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>dhanesh kizhakkinan</th>
+      <td>[CVE-2020-0997, CVE-2020-1397, CVE-2020-17022,...</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>jarvis_1oop</th>
+      <td>[CVE-2022-30198, CVE-2022-22035, CVE-2022-2450...</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>huynh phuoc</th>
+      <td>[CVE-2019-0830, CVE-2019-0831, CVE-2019-0963, ...</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>steven seeley</th>
+      <td>[CVE-2021-24071, CVE-2020-16951, CVE-2021-2641...</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>abdelhamid naceri</th>
+      <td>[CVE-2019-1253, CVE-2019-1385, CVE-2020-1234, ...</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>ivan fratric</th>
+      <td>[CVE-2016-3288, CVE-2017-0059, CVE-2017-11874,...</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>sergei glazunov</th>
+      <td>[CVE-2019-1019, CVE-2022-22026, CVE-2022-22049...</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>rob wu</th>
+      <td>[CVE-2015-1226, CVE-2015-1298, CVE-2015-1302, ...</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>nicolas joly</th>
+      <td>[CVE-2019-1233, CVE-2020-16857, CVE-2020-0856,...</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>ke liu</th>
+      <td>[CVE-2020-1083, CVE-2019-0759, CVE-2020-0744, ...</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="top-25-chart">
@@ -847,6 +1100,12 @@ df
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[:25].plot(kind=&#39;bar&#39;,y=1,ylabel=&#39;CVE Count&#39;,xlabel=&#39;Researcher&#39;)
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Researcher&#39;, ylabel=&#39;CVE Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/GOAT_researcher_cve_quantity_7_1.png" src="../_images/GOAT_researcher_cve_quantity_7_1.png" />
 </div>
 </div>
 </section>

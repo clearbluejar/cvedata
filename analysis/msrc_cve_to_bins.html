@@ -2156,7 +2156,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[system.windows.forms.ni.dll, system.design.dl...</td>
     </tr>
     <tr>
       <th>CVE-2017-11770</th>
@@ -2168,7 +2168,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[uiribbon.dll.mui, system.windows.forms.ni.dll...</td>
     </tr>
     <tr>
       <th>CVE-2017-11788</th>
@@ -2179,8 +2179,8 @@ bins_all_cvrf_df.head()
       <td>5.9</td>
       <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
       <td></td>
-      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[mssprxy.dll, mssrch.dll, searchindexer.exe, w...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
     </tr>
     <tr>
       <th>CVE-2017-11791</th>
@@ -2192,7 +2192,7 @@ bins_all_cvrf_df.head()
       <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
       <td></td>
       <td>[audioeng.dll, reseteng.dll]</td>
-      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>[msttsengine_onecore.dll, synceng.dll, sdengin...</td>
     </tr>
     <tr>
       <th>CVE-2017-11803</th>
@@ -2204,7 +2204,7 @@ bins_all_cvrf_df.head()
       <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
+      <td>[msedge.dll, msedge_elf.dll, mojo_core.dll, wn...</td>
     </tr>
   </tbody>
 </table>
@@ -2257,19 +2257,7 @@ bins_all_cvrf_df.head()
       <td>KB4465659 KB4465660 KB4465661 KB4465663 KB4465664</td>
       <td></td>
       <td>[]</td>
-      <td>[zh-hk_bitlockertogo.exe.mui, ar-sa_bitlockert...</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-21967</th>
-      <td>2022-03-08</td>
-      <td>XBox</td>
-      <td>Xbox Live Auth Manager for Windows</td>
-      <td>Elevation of Privilege</td>
-      <td>7.0</td>
-      <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
-      <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[xboxnetapisvc.dll, XblAuthManager.dll, xblaut...</td>
-      <td>[xbgmsvc.dll.mui, xbgmsvc.dll, xboxnetapisvc.d...</td>
+      <td>[zh-cn_bitlockertogo.exe.mui, ru-ru_bitlockert...</td>
     </tr>
     <tr>
       <th>CVE-2022-33644</th>
@@ -2281,31 +2269,43 @@ bins_all_cvrf_df.head()
       <td>KB5015807</td>
       <td>10.0.19042.1826 10.0.19043.1826 10.0.19044.1826</td>
       <td>[]</td>
-      <td>[xbgmsvc.dll.mui, microsoft.xbox.chataudio.dll...</td>
+      <td>[xboxgipsvc.dll, xbgmsvc.exe, XblAuthManager.d...</td>
     </tr>
     <tr>
-      <th>CVE-2020-1296</th>
-      <td>2020-06-09</td>
-      <td>Microsoft Windows</td>
-      <td>Windows Diagnostics  feedback</td>
-      <td>Information Disclosure</td>
-      <td>5.0</td>
-      <td>KB4557957 KB4560960 KB4561608</td>
-      <td></td>
-      <td>[diagtrack.dll, chakradiag.dll, jscript9diag.d...</td>
-      <td>[xamldiagnostics.dll, dispdiag.exe, windows.sy...</td>
+      <th>CVE-2022-21967</th>
+      <td>2022-03-08</td>
+      <td>XBox</td>
+      <td>Xbox Live Auth Manager for Windows</td>
+      <td>Elevation of Privilege</td>
+      <td>7.0</td>
+      <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
+      <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
+      <td>[xboxnetapisvc.dll, xblauthmanager.dll, XboxNe...</td>
+      <td>[xboxgipsvc.dll, xbgmsvc.dll.mui, xbgmsvc.dll,...</td>
     </tr>
     <tr>
-      <th>CVE-2021-38624</th>
-      <td>2021-09-14</td>
-      <td>Windows Key Storage Provider</td>
-      <td>Windows Key Storage Provider</td>
+      <th>CVE-2022-21834</th>
+      <td>2022-01-11</td>
+      <td>Windows User-mode Driver Framework</td>
+      <td>Windows Usermode Driver Framework Reflector Dr...</td>
+      <td>Elevation of Privilege</td>
+      <td>7.0</td>
+      <td>KB5009543 KB5009545 KB5009546 KB5009555 KB5009...</td>
+      <td>10.0.10240.19177 10.0.14393.4886 10.0.17763.24...</td>
+      <td>[wudfcompanionhost.exe, wudfhost.exe, WUDFComp...</td>
+      <td>[wudfcompanionhost.exe, WUDFCompanionHost.exe,...</td>
+    </tr>
+    <tr>
+      <th>CVE-2021-27092</th>
+      <td>2021-04-13</td>
+      <td>Azure AD Web Sign-in</td>
+      <td>Azure AD Web Signin</td>
       <td>Security Feature Bypass</td>
-      <td>6.5</td>
-      <td>KB5006667 KB5006670 KB5006672 KB5006674 KB5006699</td>
-      <td>10.0.17763.2237 10.0.18363.1854 10.0.19041.128...</td>
-      <td>[ngcksp.dll, dimsroam.dll]</td>
-      <td>[wvrcimprov.dll, wsp_fs.dll, pcpksp.dll, mskey...</td>
+      <td>6.8</td>
+      <td>KB5001330 KB5001337 KB5001339 KB5001342</td>
+      <td></td>
+      <td>[]</td>
+      <td>[wssg.webapi.azureadmanagement.dll]</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2320,48 +2320,48 @@ bins_all_cvrf_df.head()
       <td>...</td>
     </tr>
     <tr>
-      <th>CVE-2022-33652</th>
+      <th>CVE-2022-33632</th>
       <td>2022-07-12</td>
-      <td>Azure Site Recovery</td>
-      <td>Azure Site Recovery</td>
-      <td>Elevation of Privilege</td>
-      <td>4.9</td>
-      <td></td>
-      <td>9.49</td>
+      <td>Microsoft Office</td>
+      <td>Microsoft Office</td>
+      <td>Security Feature Bypass</td>
+      <td>4.7</td>
+      <td>KB5002112 KB5002121</td>
+      <td>15.0.5467.1000 16.0.5344.1000</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2022-33653</th>
+      <th>CVE-2022-35798</th>
       <td>2022-07-12</td>
-      <td>Azure Site Recovery</td>
-      <td>Azure Site Recovery</td>
-      <td>Elevation of Privilege</td>
-      <td>4.9</td>
+      <td>Azure Arc Jumpstart</td>
+      <td>Azure Arc Jumpstart</td>
+      <td>Information Disclosure</td>
+      <td>3.3</td>
       <td></td>
-      <td>9.49</td>
+      <td></td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>CVE-2022-33654</th>
-      <td>2022-07-12</td>
-      <td>Azure Site Recovery</td>
-      <td>Azure Site Recovery</td>
-      <td>Elevation of Privilege</td>
-      <td>4.9</td>
-      <td></td>
-      <td>9.49</td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>CVE-2022-33655</th>
+      <th>CVE-2022-33643</th>
       <td>2022-07-12</td>
       <td>Azure Site Recovery</td>
       <td>Azure Site Recovery</td>
       <td>Elevation of Privilege</td>
       <td>6.5</td>
+      <td></td>
+      <td>9.49</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>CVE-2022-33642</th>
+      <td>2022-07-12</td>
+      <td>Azure Site Recovery</td>
+      <td>Azure Site Recovery</td>
+      <td>Elevation of Privilege</td>
+      <td>4.9</td>
       <td></td>
       <td>9.49</td>
       <td>[]</td>
@@ -2437,7 +2437,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[system.windows.forms.ni.dll, system.design.dl...</td>
       <td>116</td>
       <td>0</td>
     </tr>
@@ -2451,7 +2451,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[uiribbon.dll.mui, system.windows.forms.ni.dll...</td>
       <td>179</td>
       <td>0</td>
     </tr>
@@ -2464,8 +2464,8 @@ bins_all_cvrf_df.head()
       <td>5.9</td>
       <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
       <td></td>
-      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[mssprxy.dll, mssrch.dll, searchindexer.exe, w...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>223</td>
       <td>5</td>
     </tr>
@@ -2479,7 +2479,7 @@ bins_all_cvrf_df.head()
       <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
       <td></td>
       <td>[audioeng.dll, reseteng.dll]</td>
-      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>[msttsengine_onecore.dll, synceng.dll, sdengin...</td>
       <td>32</td>
       <td>2</td>
     </tr>
@@ -2493,7 +2493,7 @@ bins_all_cvrf_df.head()
       <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
+      <td>[msedge.dll, msedge_elf.dll, mojo_core.dll, wn...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2552,7 +2552,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[system.windows.forms.ni.dll, system.design.dl...</td>
       <td>116</td>
       <td>0</td>
     </tr>
@@ -2566,7 +2566,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[uiribbon.dll.mui, system.windows.forms.ni.dll...</td>
       <td>179</td>
       <td>0</td>
     </tr>
@@ -2579,8 +2579,8 @@ bins_all_cvrf_df.head()
       <td>5.9</td>
       <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
       <td></td>
-      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[mssprxy.dll, mssrch.dll, searchindexer.exe, w...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>223</td>
       <td>5</td>
     </tr>
@@ -2594,7 +2594,7 @@ bins_all_cvrf_df.head()
       <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
       <td></td>
       <td>[audioeng.dll, reseteng.dll]</td>
-      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>[msttsengine_onecore.dll, synceng.dll, sdengin...</td>
       <td>32</td>
       <td>2</td>
     </tr>
@@ -2608,7 +2608,7 @@ bins_all_cvrf_df.head()
       <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
+      <td>[msedge.dll, msedge_elf.dll, mojo_core.dll, wn...</td>
       <td>23</td>
       <td>0</td>
     </tr>
@@ -2636,7 +2636,7 @@ bins_all_cvrf_df.head()
       <td>KB4041678 KB4041681</td>
       <td></td>
       <td>[]</td>
-      <td>[powershell.exe.mui, rdpshell.exe.mui, Windows...</td>
+      <td>[wab.exe, ocsprevp.dll, msiexec.exe, changepk....</td>
       <td>78</td>
       <td>0</td>
     </tr>
@@ -2650,7 +2650,7 @@ bins_all_cvrf_df.head()
       <td>KB4011180 KB4011217</td>
       <td></td>
       <td>[]</td>
-      <td>[cmstp.exe, msprivs.dll.mui, mscorlib.resource...</td>
+      <td>[Microsoft.SharePoint.exe, cmstp.exe, Microsof...</td>
       <td>5</td>
       <td>0</td>
     </tr>
@@ -2663,8 +2663,8 @@ bins_all_cvrf_df.head()
       <td>7.0</td>
       <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
-      <td>[office.ui.xaml.core.dll, mso98imm.dll, mso30i...</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[windows.graphics.dll, mso30imm.dll, mso50imm....</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>198</td>
       <td>12</td>
     </tr>
@@ -2678,7 +2678,7 @@ bins_all_cvrf_df.head()
       <td>KB4041676 KB4041678 KB4041679 KB4041681 KB4041...</td>
       <td></td>
       <td>[cmstp.exe, mscorlib.resources.dll]</td>
-      <td>[cmstp.exe, msprivs.dll.mui, msimsg.dll.mui, m...</td>
+      <td>[microsoft.windows.bcd.dll, msimsg.dll.mui, mi...</td>
       <td>9</td>
       <td>2</td>
     </tr>
@@ -2691,8 +2691,8 @@ bins_all_cvrf_df.head()
       <td>5.5</td>
       <td>KB4041676 KB4041691</td>
       <td></td>
-      <td>[updateagent.dll, explorer.exe, wuaueng.dll, m...</td>
-      <td>[msedgeupdateres_fil.dll, powershell.exe.mui, ...</td>
+      <td>[msoeres.dll, dosvc.dll, msoe.dll, updateagent...</td>
+      <td>[msedgeupdateres_hi.dll, msedgeupdateres_pt-pt...</td>
       <td>187</td>
       <td>8</td>
     </tr>
@@ -2752,8 +2752,8 @@ bins_all_cvrf_df.head()
       <td>7.8</td>
       <td>KB4598229 KB4598230 KB4598231 KB4598242 KB4598...</td>
       <td></td>
-      <td>[mfmediaengine.dll, mfsensorgroup.dll, msflace...</td>
-      <td>[mftrace.exe, powershell.exe.mui, msalacdecode...</td>
+      <td>[mfmp4srcsnk.dll, mfsvr.dll, certxds.dll, wind...</td>
+      <td>[Windows.Media.dll, windows.media.renewal.dll,...</td>
       <td>147</td>
       <td>56</td>
     </tr>
@@ -2766,8 +2766,8 @@ bins_all_cvrf_df.head()
       <td>7.8</td>
       <td>KB5000802 KB5000808 KB5000822</td>
       <td></td>
-      <td>[AppVEntStreamingManager.dll, appvstreamingux....</td>
-      <td>[AppVSentinel.dll, AppVClientPS.dll, holocamer...</td>
+      <td>[AppVCatalog.dll, AppvVemgr.sys, AppVStreamMap...</td>
+      <td>[AppvVemgr.sys, desktopview.exe, AppVLP.exe, A...</td>
       <td>99</td>
       <td>48</td>
     </tr>
@@ -2780,8 +2780,8 @@ bins_all_cvrf_df.head()
       <td>4.4</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[mfmediaengine.dll, msauddecmft.dll, dolbydecm...</td>
-      <td>[mftrace.exe, msalacdecoder.dll, mfpmp.exe, mc...</td>
+      <td>[mfmp4srcsnk.dll, mfsvr.dll, Windows.Media.dll...</td>
+      <td>[Windows.Media.dll, windows.media.renewal.dll,...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2794,8 +2794,8 @@ bins_all_cvrf_df.head()
       <td>3.3</td>
       <td>KB5011485 KB5011487 KB5011491 KB5011493 KB5011...</td>
       <td>10.0.10240.19235 10.0.14393.5006 10.0.17763.26...</td>
-      <td>[mfmediaengine.dll, msauddecmft.dll, dolbydecm...</td>
-      <td>[mftrace.exe, msalacdecoder.dll, mfpmp.exe, mc...</td>
+      <td>[mfmp4srcsnk.dll, mfsvr.dll, Windows.Media.dll...</td>
+      <td>[Windows.Media.dll, windows.media.renewal.dll,...</td>
       <td>98</td>
       <td>39</td>
     </tr>
@@ -2808,8 +2808,8 @@ bins_all_cvrf_df.head()
       <td>5.0</td>
       <td>KB4598229 KB4598230 KB4598242 KB4598243</td>
       <td></td>
-      <td>[msimsg.dll.mui, msoeres.dll, sapi_onecore.dll...</td>
-      <td>[powershell.exe.mui, windows.mirage.dll.mui, i...</td>
+      <td>[certxds.dll, windows.mirage.dll, ocsprevp.dll...</td>
+      <td>[wab.exe, ocsprevp.dll, winmm.dll.mui, sapi.dl...</td>
       <td>104</td>
       <td>34</td>
     </tr>
@@ -2837,7 +2837,7 @@ bins_all_cvrf_df.head()
       <td>KB5004237 KB5004238 KB5004244</td>
       <td>10.0.14393.4530 10.0.17763.2061 10.0.19041.110...</td>
       <td>[certcli.dll]</td>
-      <td>[dsprop.dll.mui, ipcfile.dll, certenc.dll.mui,...</td>
+      <td>[certenc.dll.mui, adamuninstall.exe, adaminsta...</td>
       <td>40</td>
       <td>1</td>
     </tr>
@@ -2851,7 +2851,7 @@ bins_all_cvrf_df.head()
       <td>KB5004237 KB5004244 KB5004245</td>
       <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
       <td>[afunix.sys]</td>
-      <td>[hvsocketcontrol.sys, hvsocket.sys, afunix.sys]</td>
+      <td>[afunix.sys, hvsocketcontrol.sys, hvsocket.sys]</td>
       <td>3</td>
       <td>1</td>
     </tr>
@@ -2865,7 +2865,7 @@ bins_all_cvrf_df.head()
       <td>KB5004237 KB5004244 KB5004245</td>
       <td>10.0.17763.2061 10.0.18363.1679 10.0.19041.110...</td>
       <td>[fontdrvhost.exe]</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>164</td>
       <td>1</td>
     </tr>
@@ -2879,7 +2879,7 @@ bins_all_cvrf_df.head()
       <td>KB5004237 KB5004238 KB5004244 KB5004245 KB5004...</td>
       <td>10.0.10240.19003 10.0.14393.4530 10.0.17763.20...</td>
       <td>[wab32.dll]</td>
-      <td>[wab.exe, EMABLT32.DLL, CONTAB32.DLL, dpnaddr....</td>
+      <td>[wab.exe, wab32.dll, CONTAB32.DLL, dpnaddr.dll...</td>
       <td>5</td>
       <td>1</td>
     </tr>
@@ -2893,7 +2893,7 @@ bins_all_cvrf_df.head()
       <td>KB4457128</td>
       <td></td>
       <td>[ntoskrnl.exe]</td>
-      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
+      <td>[msiexec.exe.mui, changepk.exe.mui, certxds.dl...</td>
       <td>61</td>
       <td>1</td>
     </tr>
@@ -2957,7 +2957,7 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>[ipnat.sys]</td>
-      <td>[ipnat.sys, ipnat.sys.mui]</td>
+      <td>[ipnat.sys.mui, ipnat.sys]</td>
       <td>2</td>
       <td>1</td>
     </tr>
@@ -2970,8 +2970,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
-      <td>[wof.sys.mui, mimefilt.dll, fltlib.dll, sadrvz...</td>
+      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
+      <td>[rtffilt.dll, FLTLDR.EXE, wofadk.sys, applocke...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2984,8 +2984,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[applockerfltr.sys, xmlfilter.dll, wof.sys]</td>
-      <td>[wof.sys.mui, mimefilt.dll, fltlib.dll, sadrvz...</td>
+      <td>[applockerfltr.sys, wof.sys, xmlfilter.dll]</td>
+      <td>[rtffilt.dll, FLTLDR.EXE, wofadk.sys, applocke...</td>
       <td>24</td>
       <td>3</td>
     </tr>
@@ -2999,7 +2999,7 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019970 KB5020614 KB5020622 KB5020678 KB5020...</td>
       <td>10.0.04005.02 10.0.04585.02 10.0.09110.12 10.0...</td>
       <td>[uiribbon.dll]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[uiribbon.dll.mui, system.windows.forms.ni.dll...</td>
       <td>159</td>
       <td>1</td>
     </tr>
@@ -3012,8 +3012,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>8.8</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
-      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
+      <td>[msiexec.exe, wwahost.exe.mui, msimsg.dll.mui,...</td>
+      <td>[msiexec.exe.mui, changepk.exe.mui, certxds.dl...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3040,8 +3040,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
-      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
+      <td>[msiexec.exe, wwahost.exe.mui, msimsg.dll.mui,...</td>
+      <td>[msiexec.exe.mui, changepk.exe.mui, certxds.dl...</td>
       <td>56</td>
       <td>7</td>
     </tr>
@@ -3055,7 +3055,7 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019980</td>
       <td>10.0.19042.2251 10.0.19043.2251 10.0.19044.225...</td>
       <td>[bindflt.sys]</td>
-      <td>[frxdrv.sys, mouhid.sys, bindflt.sys, dfs.sys,...</td>
+      <td>[amdxata.sys, WdDevFlt.sys, bfs.sys.mui, Indir...</td>
       <td>50</td>
       <td>1</td>
     </tr>
@@ -3068,8 +3068,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.8</td>
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[Print.PrintSupport.Source.dll, winspool.drv, ...</td>
-      <td>[print.exe, print.printsupport.source.dll, pri...</td>
+      <td>[winspool.drv, Windows.Graphics.Printing.Workf...</td>
+      <td>[purchasedialog.exe, purchasedialog.exe.mui, s...</td>
       <td>21</td>
       <td>3</td>
     </tr>
@@ -3082,8 +3082,8 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>7.5</td>
       <td>KB5019081 KB5019958 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
-      <td>[msi.dll, msiexec.exe, setup.exe, msimsg.dll.m...</td>
-      <td>[wab.exe, msimsg.dll.mui, powershell.exe.mui, ...</td>
+      <td>[msiexec.exe, wwahost.exe.mui, msimsg.dll.mui,...</td>
+      <td>[msiexec.exe.mui, changepk.exe.mui, certxds.dl...</td>
       <td>60</td>
       <td>7</td>
     </tr>
@@ -3097,7 +3097,7 @@ bins_all_cvrf_df[bins_all_cvrf_df[&#39;Initial Release&#39;].str.contains(f&#39;
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.10240.19567 10.0.14393.5501 10.0.17763.36...</td>
       <td>[keyiso.dll, LsaIso.exe, lsaiso.exe]</td>
-      <td>[keyiso.dll, LsaIso.exe, keyiso.dll.mui, cngke...</td>
+      <td>[keyiso.dll.mui, cngkeyhelper.dll, keyiso.dll,...</td>
       <td>5</td>
       <td>3</td>
     </tr>
@@ -3175,7 +3175,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[system.windows.forms.ni.dll, system.design.dl...</td>
       <td>116</td>
       <td>0</td>
       <td>False</td>
@@ -3191,7 +3191,7 @@ bins_all_cvrf_df.head()
       <td></td>
       <td></td>
       <td>[]</td>
-      <td>[system.directoryservices.dll, system.web.enti...</td>
+      <td>[uiribbon.dll.mui, system.windows.forms.ni.dll...</td>
       <td>179</td>
       <td>0</td>
       <td>False</td>
@@ -3206,8 +3206,8 @@ bins_all_cvrf_df.head()
       <td>5.9</td>
       <td>KB4047211 KB4048952 KB4048953 KB4048954 KB4048...</td>
       <td></td>
-      <td>[msshooks.dll, mssprxy.dll, wuauclt.exe, searc...</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[mssprxy.dll, mssrch.dll, searchindexer.exe, w...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>223</td>
       <td>5</td>
       <td>True</td>
@@ -3223,7 +3223,7 @@ bins_all_cvrf_df.head()
       <td>KB4042895 KB4047206 KB4048952 KB4048953 KB4048...</td>
       <td></td>
       <td>[audioeng.dll, reseteng.dll]</td>
-      <td>[sdengin2.dll, Microsoft.VisualStudio.Setup.dl...</td>
+      <td>[msttsengine_onecore.dll, synceng.dll, sdengin...</td>
       <td>32</td>
       <td>2</td>
       <td>True</td>
@@ -3239,7 +3239,7 @@ bins_all_cvrf_df.head()
       <td>KB4048954 KB4048955</td>
       <td></td>
       <td>[]</td>
-      <td>[microsoftedgecp.exe, microsoft_shell_integrat...</td>
+      <td>[msedge.dll, msedge_elf.dll, mojo_core.dll, wn...</td>
       <td>23</td>
       <td>0</td>
       <td>True</td>
@@ -3318,7 +3318,7 @@ bins_all_cvrf_df.head()
       <td>KB5002258 KB5002264 KB5002267 KB5002269 KB5002271</td>
       <td>15.0.5485.1000 16.0.10390.20000 16.0.15601.200...</td>
       <td>[]</td>
-      <td>[srvsvc.dll, srvsvc.dll.mui, Microsoft.SharePo...</td>
+      <td>[Microsoft.SharePoint.exe, Microsoft.SharePoin...</td>
       <td>8</td>
       <td>0</td>
       <td>True</td>
@@ -3334,7 +3334,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
+      <td>[srvsvc.dll, staxmem.dll, srvsvc.dll.mui]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3350,7 +3350,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.01.2375.037 15.01.2507.016 15.02.0986.036 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
+      <td>[srvsvc.dll, staxmem.dll, srvsvc.dll.mui]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3366,7 +3366,7 @@ bins_all_cvrf_df.head()
       <td>KB5019758</td>
       <td>15.00.1497.044 15.01.2375.037 15.01.2507.016 1...</td>
       <td>[]</td>
-      <td>[srvsvc.dll, srvsvc.dll.mui, staxmem.dll]</td>
+      <td>[srvsvc.dll, staxmem.dll, srvsvc.dll.mui]</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3398,7 +3398,7 @@ bins_all_cvrf_df.head()
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[cmstp.exe, XLINTL32.COMMON.DLL, msolap_xl.dll...</td>
+      <td>[excelcnv.exe, XLINTL32.COMMON.DLL, msolap_xl....</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3414,7 +3414,7 @@ bins_all_cvrf_df.head()
       <td>KB5002253 KB5002261 KB5002275 KB5002276</td>
       <td>15.0.5501.1000 16.0.10392.20000 16.0.5369.1000</td>
       <td>[]</td>
-      <td>[cmstp.exe, XLINTL32.COMMON.DLL, msolap_xl.dll...</td>
+      <td>[excelcnv.exe, XLINTL32.COMMON.DLL, msolap_xl....</td>
       <td>14</td>
       <td>0</td>
       <td>True</td>
@@ -3430,7 +3430,7 @@ bins_all_cvrf_df.head()
       <td>KB5021000 KB5021001 KB5021002 KB5021003 KB5021004</td>
       <td>49345 Application Build 14.42.49347, Platform ...</td>
       <td>[]</td>
-      <td>[cmstp.exe, mscorlib.resources.dll, msprivs.dl...</td>
+      <td>[cmstp.exe, msprivs.dll.mui, mscorlib.resource...</td>
       <td>3</td>
       <td>0</td>
       <td>True</td>
@@ -3446,7 +3446,7 @@ bins_all_cvrf_df.head()
       <td>KB5019080 KB5019081 KB5019959 KB5019961 KB5019...</td>
       <td>10.0.17763.3650 10.0.19042.2251 10.0.19043.225...</td>
       <td>[]</td>
-      <td>[mso98imm.dll, microsoft.office.businessdata.d...</td>
+      <td>[XLLEX.DLL, microsoft.office.businessapplicati...</td>
       <td>161</td>
       <td>0</td>
       <td>True</td>
@@ -3825,7 +3825,7 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1859/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1908/2664769396.py:3: FutureWarning: Dropping invalid columns in DataFrameGroupBy.agg is deprecated. In a future version, a TypeError will be raised. Before calling .agg, select only columns which should be valid for the function.
   tags_title_df = tags_df.reset_index().groupby([&#39;Tag&#39;,&#39;Title&#39;]).aggregate(lambda x: list(set(x)))
 </pre></div>
 </div>
@@ -3880,12 +3880,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Azure Site Recovery</th>
       <th>Azure Site Recovery</th>
-      <td>[CVE-2022-26896, CVE-2022-35802, CVE-2022-3578...</td>
-      <td>[2022-07-12, 2022-03-08, 2022-08-09, 2022-04-12]</td>
-      <td>[Elevation of Privilege, Denial of Service, Re...</td>
+      <td>[CVE-2022-33666, CVE-2022-33642, CVE-2022-3366...</td>
+      <td>[2022-04-12, 2022-08-09, 2022-03-08, 2022-07-12]</td>
+      <td>[Information Disclosure, Remote Code Execution...</td>
       <td>[4.9, 4.4, 6.5, 7.8, 8.3, 7.2, 6.2, 8.1]</td>
       <td>[]</td>
-      <td>[9.48, 9.50, 9.47, 9.49]</td>
+      <td>[9.50, 9.49, 9.48, 9.47]</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False]</td>
@@ -3895,12 +3895,12 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Microsoft Office</th>
       <th>Microsoft Office</th>
-      <td>[CVE-2022-41043, CVE-2022-38001, CVE-2022-3471...</td>
-      <td>[2022-10-11, 2022-08-09, 2022-05-10, 2022-07-1...</td>
-      <td>[Spoofing, Remote Code Execution, Information ...</td>
+      <td>[CVE-2022-30172, CVE-2022-41043, CVE-2022-3017...</td>
+      <td>[2022-01-11, 2022-10-11, 2022-02-08, 2022-08-0...</td>
+      <td>[Information Disclosure, Remote Code Execution...</td>
       <td>[3.3, 4.7, 5.5, 6.5, 7.8, 8.8]</td>
-      <td>[, KB5002026 KB5002279 KB5002288, KB3118335 KB...</td>
-      <td>[, 15.0.5467.1000 16.0.5344.1000, 15.0.5459.10...</td>
+      <td>[, KB3118335 KB3172514, KB5002026 KB5002279 KB...</td>
+      <td>[, 15.0.5459.1001 16.0.10387.20008 16.0.14931....</td>
       <td>[0]</td>
       <td>[0]</td>
       <td>[False, True]</td>
@@ -3910,11 +3910,11 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30143, CVE-2022-30139, CVE-2022-3014...</td>
-      <td>[2022-06-14, 2022-09-13]</td>
+      <td>[CVE-2022-30161, CVE-2022-30143, CVE-2022-3014...</td>
+      <td>[2022-09-13, 2022-06-14]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
       <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
@@ -3925,9 +3925,9 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Microsoft Dynamics GP</th>
       <th>Microsoft Dynamics GP</th>
-      <td>[CVE-2022-23271, CVE-2022-23272, CVE-2022-2326...</td>
+      <td>[CVE-2022-23273, CVE-2022-23274, CVE-2022-2327...</td>
       <td>[2022-02-08]</td>
-      <td>[Remote Code Execution, Spoofing, Elevation of...</td>
+      <td>[Remote Code Execution, Elevation of Privilege...</td>
       <td>[5.4, 6.5, 7.1, 8.1, 8.8]</td>
       <td>[]</td>
       <td>[18.4.1434]</td>
@@ -4108,11 +4108,11 @@ tags_title_df.sort_values(by=[&#39;CVE Count&#39;], ascending=False)
     <tr>
       <th>Windows LDAP - Lightweight Directory Access Protocol</th>
       <th>Windows Lightweight Directory Access Protocol LDAP</th>
-      <td>[CVE-2022-30143, CVE-2022-30139, CVE-2022-3014...</td>
-      <td>[2022-06-14, 2022-09-13]</td>
+      <td>[CVE-2022-30161, CVE-2022-30143, CVE-2022-3014...</td>
+      <td>[2022-09-13, 2022-06-14]</td>
       <td>[Remote Code Execution]</td>
       <td>[8.1, 8.8, 7.5, 7.8]</td>
-      <td>[KB5017305 KB5017308 KB5017315 KB5017316 KB501...</td>
+      <td>[KB5014677 KB5014678 KB5014692 KB5014697 KB501...</td>
       <td>[10.0.10240.19325 10.0.14393.5192 10.0.17763.3...</td>
       <td>[0]</td>
       <td>[0]</td>
