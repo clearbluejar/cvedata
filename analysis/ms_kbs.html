@@ -1051,7 +1051,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
   <tbody>
     <tr>
       <th>KB5012643</th>
-      <td>[accessibilitycpl.dll, consentexperiencecommon...</td>
+      <td>[sendmail.dll, screenclipping.dll, winmgmt.exe...</td>
       <td>[11-21H2]</td>
       <td>2022-04-25</td>
       <td>https://support.microsoft.com/help/5012643</td>
@@ -1060,7 +1060,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598242</th>
-      <td>[peopleband.dll, consentexperiencecommon.dll, ...</td>
+      <td>[sendmail.dll, wscsvc.dll, migstore.dll, senso...</td>
       <td>[2004]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598242</td>
@@ -1069,7 +1069,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598230</th>
-      <td>[peopleband.dll, consentexperiencecommon.dll, ...</td>
+      <td>[sendmail.dll, wscsvc.dll, screenclipping.dll,...</td>
       <td>[1809]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598230</td>
@@ -1078,7 +1078,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB5017389</th>
-      <td>[cloudexperiencehostbroker.hello.winmd, access...</td>
+      <td>[sendmail.dll, wscsvc.dll, wuapicore.dll.mui, ...</td>
       <td>[11-22H2]</td>
       <td>2022-09-30</td>
       <td>https://support.microsoft.com/help/5017389</td>
@@ -1087,7 +1087,7 @@ wb_kbs_df.sort_values(by=[&#39;bin count&#39;], ascending=False)
     </tr>
     <tr>
       <th>KB4598245</th>
-      <td>[peopleband.dll, captureservice.dll, mshwlatin...</td>
+      <td>[sendmail.dll, wscsvc.dll, migstore.dll, senso...</td>
       <td>[1803]</td>
       <td>2021-01-12</td>
       <td>https://support.microsoft.com/help/4598245</td>
@@ -1268,7 +1268,7 @@ ms_kbs_df
     </tr>
   </tbody>
 </table>
-<p>438 rows × 4 columns</p>
+<p>439 rows × 4 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1349,7 +1349,7 @@ file_ext_df
     </tr>
     <tr>
       <th>4</th>
-      <td>exe</td>
+      <td>dll</td>
       <td>dll</td>
     </tr>
     <tr>
@@ -1359,7 +1359,7 @@ file_ext_df
     </tr>
     <tr>
       <th>3863</th>
-      <td>sys</td>
+      <td>mun</td>
       <td>nan</td>
     </tr>
     <tr>
@@ -1374,7 +1374,7 @@ file_ext_df
     </tr>
     <tr>
       <th>3866</th>
-      <td>sys</td>
+      <td>exe</td>
       <td>nan</td>
     </tr>
     <tr>
@@ -1962,9 +1962,9 @@ msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1883/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1898/3439556976.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
-/tmp/ipykernel_1883/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+/tmp/ipykernel_1898/3439556976.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   msrc_df.reset_index().groupby(by=&#39;year&#39;)[&#39;index&#39;,&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum().plot(kind=&#39;bar&#39;,figsize=(20,5), title=&#39;cvedata KB stats by Year&#39;)
 </pre></div>
 </div>
@@ -1986,7 +1986,7 @@ msrc_date_df[msrc_date_df.index.year.isin([2022])].plot(kind=&#39;bar&#39;,figsi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1883/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1898/1465512147.py:2: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
   msrc_date_df = msrc_df.groupby(by=&#39;date&#39;)[&#39;has_ms_kb&#39;,&#39;has_wb_kb&#39;,&#39;no_kb_info&#39;,&#39;missing_all_kbs&#39;].sum()
 </pre></div>
 </div>
@@ -2226,7 +2226,7 @@ all_kbs_df
   <tbody>
     <tr>
       <th>KB3194798</th>
-      <td>[Aadtb.dll, Ncsi.dll, Microsoft.powershell.act...</td>
+      <td>[Dumpsd.sys, Dismapi.dll, Msoe.dll, Wininet.dl...</td>
       <td>[nan]</td>
       <td>[2016-10-11]</td>
       <td>[nan]</td>
@@ -2235,7 +2235,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3197954</th>
-      <td>[Microsoft.wsman.runtime.dll, Storageqos.dll, ...</td>
+      <td>[Acspecfc.dll, Wsmanhttpconfig.exe, Microsoft....</td>
       <td>[nan]</td>
       <td>[2016-10-27]</td>
       <td>[nan]</td>
@@ -2244,7 +2244,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3200970</th>
-      <td>[Imesearchdll.dll, Migstore.dll, Efsext.dll, W...</td>
+      <td>[Imjpclst.dll, Acwinrt.dll, Windows.applicatio...</td>
       <td>[nan]</td>
       <td>[2016-11-08]</td>
       <td>[nan]</td>
@@ -2253,7 +2253,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3201845</th>
-      <td>[Vmcompute.exe, Migstore.dll, Cluswmiext.dll, ...</td>
+      <td>[Rdxtaskfactory.dll, Settingshandlers_storages...</td>
       <td>[nan]</td>
       <td>[2016-12-09]</td>
       <td>[nan]</td>
@@ -2262,7 +2262,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB3206632</th>
-      <td>[Microsoft.powershell.editor.dll, Aadtb.dll, M...</td>
+      <td>[Microsoft.networkcontroller.fnmserviceapi.dll...</td>
       <td>[nan]</td>
       <td>[2016-12-13]</td>
       <td>[nan]</td>
@@ -2280,7 +2280,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5020440</th>
-      <td>[appraiser.dll, wssync.dll, wups2.dll, Windows...</td>
+      <td>[mos.dll, microsoft.msmq.powershell.commands.d...</td>
       <td>[[1507], nan]</td>
       <td>[2022-10-18, 2022-10-18]</td>
       <td>[https://support.microsoft.com/help/5020440, nan]</td>
@@ -2289,7 +2289,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5020953</th>
-      <td>[gdi32full.dll, d3d11.dll, tcbloader.dll, hvix...</td>
+      <td>[opengl32.dll, explorer.exe, termsrv.dll, Inst...</td>
       <td>[nan]</td>
       <td>[2022-10-28]</td>
       <td>[nan]</td>
@@ -2298,7 +2298,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021654</th>
-      <td>[appraiser.dll, windows.ui.xaml.resources.dll,...</td>
+      <td>[tipresx.dll.mui, syncsharesvc.dll, SystemSett...</td>
       <td>[nan, [1607]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021654]</td>
@@ -2307,7 +2307,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021655</th>
-      <td>[d3d11.dll, tcbloader.dll, screenclipping.dll,...</td>
+      <td>[CoreUIComponents.dll, PeoplePane.dll, microso...</td>
       <td>[nan, [1809]]</td>
       <td>[2022-11-17, 2022-11-17]</td>
       <td>[nan, https://support.microsoft.com/help/5021655]</td>
@@ -2316,7 +2316,7 @@ all_kbs_df
     </tr>
     <tr>
       <th>KB5021656</th>
-      <td>[tcbloader.dll, Windows.Media.Protection.PlayR...</td>
+      <td>[ntkrla57.exe, tcbloader.dll, bootres.dll, fcl...</td>
       <td>[nan]</td>
       <td>[2022-11-17]</td>
       <td>[nan]</td>
@@ -2337,8 +2337,8 @@ freq_bins.head(50)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ntoskrnl.exe                                           621
-hvax64.exe                                             585
 hvix64.exe                                             585
+hvax64.exe                                             585
 bootmgr.exe.mui                                        533
 mshtml.dll                                             529
 kdhvcom.dll                                            522
@@ -2354,30 +2354,30 @@ microsoft.msmq.activex.interop.dll                     436
 microsoft.msmq.runtime.interop.dll                     436
 microsoft.virtualization.client.rdpclientaxhost.dll    433
 edgehtml.dll                                           417
-ieframe.dll                                            408
+ieframe.dll                                            409
+comctl32.dll                                           408
 win32kbase.sys                                         407
-comctl32.dll                                           407
 sppobjs.dll                                            401
 bootspaces.dll                                         392
 windows.media.protection.playready.dll                 392
-jscript9.dll                                           388
+jscript9.dll                                           389
 win32u.dll                                             387
 mfcore.dll                                             384
-windows.storage.dll                                    379
 gdiplus.dll                                            379
+windows.storage.dll                                    379
 chakradiag.dll                                         369
 chakra.dll                                             369
 winload.efi                                            361
-winload.exe                                            355
 winresume.efi                                          355
+winload.exe                                            355
 hvloader.dll                                           350
 winresume.exe                                          348
+gdi32.dll                                              348
 sppsvc.exe                                             348
-gdi32.dll                                              347
-urlmon.dll                                             346
-iertutil.dll                                           341
+urlmon.dll                                             347
+iertutil.dll                                           342
 tcblaunch.exe                                          338
-wininet.dll                                            325
+wininet.dll                                            326
 user32.dll                                             322
 lsasrv.dll                                             321
 mfps.dll                                               317
@@ -2431,7 +2431,7 @@ all_kbs_df[&#39;bin count&#39;].sort_values(ascending=False).mean()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>414.64333781965007
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>415.20457604306864
 </pre></div>
 </div>
 </div>
