@@ -207,7 +207,7 @@ def create_combined_name_desc_files():
     for source in sources:
         for desc in source:
             all_desc_to_bin.setdefault(desc,[])
-            all_desc_to_bin[desc].extend(source[desc])
+            all_desc_to_bin[desc].extend([bin.lower() for bin in source[desc]])
 
     # remove space key
     del all_desc_to_bin[' ']
