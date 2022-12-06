@@ -15,6 +15,8 @@ from .util import get_file_json
 
 MSRC_CVRF_PANDAS = Path(DATA_DIR,"msrc-pandas-cvrf-merged.json.gz")
 MSRC_CVRF_PANDAS_FULL = Path(DATA_DIR,"msrc-pandas-cvrf-merged-full.json.gz")
+MSRC_CVRF_PANDAS_PRODUCTS = Path(DATA_DIR,"msrc-pandas-cvrf-products-map.json.gz")
+
 MSRC_CVE_TAGS_TITLE = Path(DATA_DIR,"msrc-pandas-tag-title.json")
 
 MSRC_TAGS_PATH = Path(DATA_DIR,"msrc-pandas-tags-merged.json")
@@ -52,7 +54,8 @@ def get_faqs(notes):
     
     for note in notes:
         if note['Type'] == 4:
-            faqs.append(note['Value'])            
+            faq = note['Value'].replace('\n','') # remove new lines            
+            faqs.append(faq)            
 
     return faqs
 
@@ -210,8 +213,7 @@ def get_cvss_base(scores):
     MSRC CVSS Highest Score
     """
 
-    base_scores = []
-    
+    base_scores = []    
     
     for base in scores:
         if base.get('BaseScore'):
@@ -219,21 +221,35 @@ def get_cvss_base(scores):
 
     return max(base_scores, key=lambda x: float(x),default=0)
 
+def get_products(items, prod_map):
+    """
+    Map Product IDs to Product Names
+    """
 
-# Tag utility functions
+    product_names = []
 
-# def clean_tag(tag):
-#     if not tag:
-#         return ''
-#     import re
-#     tag = tag.lower()
-#     # if len(tag.split()) > 2:
-#     #     tag = re.sub('windows|dll|role:|microsoft|and|service|services|explorer|calc', '', tag)        
+    for item in items:
+        if item.get('ProductID'):
+            for id in item['ProductID']:
+                product_names.append(prod_map[id]['product'])
 
-#     tag = re.sub('[^\. 0-9a-zA-Z]+', '', tag)      
+    return product_names
 
-#     return tag.strip()
+def get_product_types(items, prod_map):
+    """
+    Map Product IDs to Product Names
+    """
 
+    product_types = []
+
+    for item in items:
+        if item.get('ProductID'):
+            for id in item['ProductID']:
+                product_types.append(prod_map[id]['category'])
+
+    return list(set(product_types))
+
+# Utility functions
 def clean_impact(tag):
     if not tag or not isinstance(tag,str):
         return ''
@@ -246,41 +262,51 @@ def clean_impact(tag):
 
     return tag.strip()
 
-# def get_tag_similarity(tag1,tag2):  
-#     ctag1 = clean_tag(tag1).split()
-#     ctag2 = clean_tag(tag2).split()
-#     sim = difflib.SequenceMatcher(None,ctag1,ctag2).ratio()
-#     # if "remote procedure" in ctag1 or "remote procedure" in ctag2:
-#     #     print(f"{ctag1}:{ctag2}: {sim}")
-#     return sim
-
-# def get_sim(x):
-#     sims = []
-#     tag = x.name
-#     for title in x['Title']:
-#         sims.append(get_tag_similarity(tag,title))
-#     return sims
-
 def create_msrc_cvrf_pandas():
 
-    FIELDS = ["Initial Release", "Tag", "Title", "Impact", "CVSS", "KBs", "Versions", "Acks"]
+    FIELDS = ["Initial Release", "Tag", "Title", "Impact", "CVSS", "KBs", "Products", "Versions", "Acks"]
 
-    if should_update(MSRC_CVRF_PANDAS_FULL,1):
+    #if should_update(MSRC_CVRF_PANDAS_FULL,1):
+    if True:
 
         msrc_merged_json = get_msrc_merged_cvrf_json_keyed()
 
         cvrf_dfs = []
+        products_dfs = []
         
         for cvrf_id in msrc_merged_json:
             
             print(f"Processing {cvrf_id}")
             
             df_update = pd.json_normalize(msrc_merged_json[cvrf_id])
+            print(df_update.columns)
             df_vulns = pd.json_normalize(msrc_merged_json[cvrf_id]['Vulnerability'])
             print(df_vulns.columns)
-            
 
-            df_vulns['Tag'] = df_vulns["Notes"].apply(get_tag)
+
+            product_cat = {}
+
+            prods = df_update['ProductTree.Branch'].to_dict()[0][0]
+
+            assert len(prods) == 3
+
+            for item in prods['Items']:
+                category = item['Name']
+                for prod in item['Items']:
+                    product_cat[prod['ProductID']] = { 'product': prod['Value'], 'category': category }
+
+            full_prods = df_update['ProductTree.FullProductName'].to_dict()[0]
+
+            # Ensure full product tree matches branch
+            for fp in full_prods:
+                assert product_cat[fp['ProductID']]['product'] == fp['Value']
+            
+            prods_df = pd.DataFrame().from_dict(product_cat,orient='index')
+            prods_df = prods_df.reset_index(names='id')
+            print(prods_df.head())
+            products_dfs.append(prods_df)
+
+            df_vulns['Tag'] = df_vulns["Notes"].apply(get_tag)            
             df_vulns['FAQs'] = df_vulns["Notes"].apply(get_faqs)
             df_vulns['KBs'] = df_vulns["Remediations"].apply(get_kbs)
             df_vulns['Versions'] = df_vulns["Remediations"].apply(get_versions)
@@ -290,7 +316,8 @@ def create_msrc_cvrf_pandas():
             df_vulns['Current Release'] = datetime.strftime(datetime.fromisoformat(df_update['DocumentTracking.CurrentReleaseDate'].values[0].replace('Z','')),'%Y-%m-%d')
             df_vulns['Acks'] = df_vulns['Acknowledgments'].apply(get_acks)
             df_vulns['CVSS'] = df_vulns['CVSSScoreSets'].apply(get_cvss_base)
-            #df_vulns['Bins'] = df_vulns[['Tag','KBs','Versions']].apply(get_bins,axis=1)
+            df_vulns['Products'] = df_vulns['ProductStatuses'].apply(get_products, args=(product_cat,))
+            df_vulns['Product Types'] = df_vulns['ProductStatuses'].apply(get_product_types, args=(product_cat,))            
             df_vulns['Title'] = df_vulns['Title.Value'].apply(clean_impact)
             
             df_vulns.set_index('CVE',inplace=True,verify_integrity=True)
@@ -308,11 +335,16 @@ def create_msrc_cvrf_pandas():
             cvrf_dfs.append(df_vulns)
 
         all_cvrf_df = pd.concat(cvrf_dfs)
+        all_products_df = pd.concat(products_dfs)
     else:
         all_cvrf_df = pd.read_json(MSRC_CVRF_PANDAS_FULL)
+        all_products_df = pd.read_json(MSRC_CVRF_PANDAS_PRODUCTS)
 
     all_cvrf_df[FIELDS].to_json(MSRC_CVRF_PANDAS)
     all_cvrf_df.to_json(MSRC_CVRF_PANDAS_FULL)
+
+    all_products_df = all_products_df.groupby(by='id').aggregate(lambda x: list(set(x)))
+    all_products_df.to_json(MSRC_CVRF_PANDAS_PRODUCTS)
 
 def create_msrc_tags_titles():
     
@@ -398,6 +430,12 @@ def get_msrc_cvrf_pandas_json():
 def get_msrc_cvrf_pandas_df():
     return get_file_json(MSRC_CVRF_PANDAS,__file__)
 
+def get_msrc_cvrf_pandas_full_json():
+    return get_file_json(MSRC_CVRF_PANDAS_FULL,__file__)
+
+def get_msrc_cvrf_pandas_products_json():
+    return get_file_json(MSRC_CVRF_PANDAS_PRODUCTS,__file__)       
+
 def get_msrc_tags_titles_json():
     return get_file_json(MSRC_CVE_TAGS_TITLE,__file__)
     
@@ -406,16 +444,18 @@ def get_kb_ver_json():
 
 def update():
 
-    print(f"Updating {MSRC_CVRF_PANDAS}...")
+    print(f"Updating {MSRC_CVRF_PANDAS} and {MSRC_CVRF_PANDAS_FULL}...")
     
     start = time.time()   
     create_msrc_cvrf_pandas()
     elapsed = time.time() - start
 
     count = len(get_msrc_cvrf_pandas_json())
-
     update_metadata(MSRC_CVRF_PANDAS,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
-    
+    update_metadata(MSRC_CVRF_PANDAS_FULL,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)
+
+    count = len(get_msrc_cvrf_pandas_products_json())
+    update_metadata(MSRC_CVRF_PANDAS_PRODUCTS,{'sources': [MSRC_API_URL]}, count, elapsed, normalize=False)    
 
     print(f"Updating {MSRC_CVE_TAGS_TITLE}...")
     
