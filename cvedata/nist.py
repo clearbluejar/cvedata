@@ -9,7 +9,7 @@ import io
 from functools import lru_cache
 
 from .config import DATA_DIR
-from .metadata import update_metadata
+from .metadata import update_metadata, should_update
 from .util import get_file_json
 
 NIST_CVE_JSON_PREFIX_PATH = Path(DATA_DIR,'nist')
@@ -51,21 +51,21 @@ def get_all_nist_cve_urls(oldest) -> list:
 # decided to save them individually due to size
 def create_nist_year_cve_jsons():
 
-    all_nist_cves = {}
     nist_cves = {}
 
     # Download NIST CVEs and index them
     for year,url in get_all_nist_cve_urls(NIST_OLDEST_YEAR):
 
-        start = time.time()
+        start = time.time()        
         
         nist_year_path = Path(NIST_CVE_JSON_PREFIX_PATH, get_nist_filename_by_year(year))
 
-        if nist_year_path.exists():
-            print(f"Already created {nist_year_path}, skipping!")
-            with gzip.GzipFile(nist_year_path) as f:
-                nist_cves = json.load(f)
-        else:
+        days_ago = 30        
+        if year == datetime.now().year:
+            # update 2022 each day
+            days_ago = 1
+        
+        if should_update(nist_year_path,days_ago):
             print(f"Downloading {url}")
             data = download_extract_gz(url)
 
@@ -85,6 +85,12 @@ def create_nist_year_cve_jsons():
 
             with gzip.GzipFile(nist_year_path,'w') as f:
                 f.write(json.dumps(nist_cves).encode("utf-8"))
+        else:
+            print(f"Already created {nist_year_path}, skipping!")
+            with gzip.GzipFile(nist_year_path) as f:
+                nist_cves = json.load(f)
+        
+        
 
         count = len(nist_cves['cves'])
         elapsed = time.time() - start
