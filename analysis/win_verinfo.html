@@ -270,8 +270,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-pandas-cvrf-merged-full.json.gz.html">
+     msrc-pandas-cvrf-merged-full.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../book/generated/msrc-pandas-cvrf-merged.json.gz.html">
      msrc-pandas-cvrf-merged.json.gz
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../book/generated/msrc-pandas-cvrf-products-map.json.gz.html">
+     msrc-pandas-cvrf-products-map.json.gz
     </a>
    </li>
    <li class="toctree-l2">
@@ -787,8 +797,8 @@ print(len(wb_ver))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10581
-9081
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10572
+9082
 </pre></div>
 </div>
 </div>
@@ -826,29 +836,29 @@ tags_df.sort_values(by=[&#39;tag count&#39;], ascending=False)
   </thead>
   <tbody>
     <tr>
-      <th>126</th>
+      <th>127</th>
       <td>Microsoft Windows</td>
       <td>694</td>
     </tr>
     <tr>
       <th>89</th>
       <td>Microsoft Edge (Chromium-based)</td>
-      <td>659</td>
+      <td>683</td>
     </tr>
     <tr>
       <th>109</th>
       <td>Microsoft Office</td>
-      <td>464</td>
+      <td>465</td>
     </tr>
     <tr>
-      <th>120</th>
+      <th>121</th>
       <td>Microsoft Scripting Engine</td>
       <td>433</td>
     </tr>
     <tr>
       <th>97</th>
       <td>Microsoft Graphics Component</td>
-      <td>389</td>
+      <td>401</td>
     </tr>
     <tr>
       <th>...</th>
@@ -856,33 +866,33 @@ tags_df.sort_values(by=[&#39;tag count&#39;], ascending=False)
       <td>...</td>
     </tr>
     <tr>
-      <th>151</th>
-      <td>Project Rome</td>
+      <th>216</th>
+      <td>Windows Audio Service</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>296</th>
-      <td>Windows HTTP Protocol Stack</td>
+      <th>219</th>
+      <td>Windows Autopilot</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>150</th>
-      <td>PowerShellGet</td>
+      <th>222</th>
+      <td>Windows BackupKey Remote Protocol</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>147</th>
-      <td>OpenEnclave</td>
+      <th>226</th>
+      <td>Windows Boot Manager</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>434</th>
+      <th>439</th>
       <td>diskusage</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>435 rows × 2 columns</p>
+<p>440 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -910,7 +920,7 @@ tags_df.sort_values(by=[&#39;tag count&#39;], ascending=False)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10581
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10572
 </pre></div>
 </div>
 </div>
@@ -951,13 +961,13 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <th>1</th>
       <td>.NET Core &amp; Visual Studio</td>
       <td>5</td>
-      <td>[Blend.exe, Microsoft.VisualStudio.IntelliCode...</td>
+      <td>[Blend.exe]</td>
     </tr>
     <tr>
       <th>2</th>
       <td>.NET Framework</td>
-      <td>44</td>
-      <td>[System.Observable.dll, System.Runtime.Windows...</td>
+      <td>45</td>
+      <td>[System.Design.dll, System.Observable.dll, Sys...</td>
     </tr>
     <tr>
       <th>3</th>
@@ -984,38 +994,38 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>...</td>
     </tr>
     <tr>
-      <th>427</th>
+      <th>432</th>
       <td>Windows iSCSI</td>
       <td>1</td>
       <td>[wab.exe, write.exe, qwave.dll, WinRtTracing.d...</td>
     </tr>
     <tr>
-      <th>429</th>
+      <th>434</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
     </tr>
     <tr>
-      <th>430</th>
+      <th>435</th>
       <td>Windows schannel</td>
       <td>1</td>
       <td>[wuauclt.exe]</td>
     </tr>
     <tr>
-      <th>432</th>
+      <th>437</th>
       <td>XBox</td>
       <td>2</td>
       <td>[bootux.dll]</td>
     </tr>
     <tr>
-      <th>434</th>
+      <th>439</th>
       <td>diskusage</td>
       <td>1</td>
       <td>[diskusage.exe]</td>
     </tr>
   </tbody>
 </table>
-<p>294 rows × 3 columns</p>
+<p>298 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1055,8 +1065,8 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
     <tr>
       <th>2</th>
       <td>.NET Framework</td>
-      <td>44</td>
-      <td>[System.Observable.dll, System.Runtime.Windows...</td>
+      <td>45</td>
+      <td>[System.Design.dll, System.Observable.dll, Sys...</td>
       <td>[accessibility.dll, accessibility.ni.dll, adon...</td>
     </tr>
     <tr>
@@ -1095,35 +1105,35 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>...</td>
     </tr>
     <tr>
-      <th>429</th>
+      <th>434</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
     </tr>
     <tr>
-      <th>430</th>
+      <th>435</th>
       <td>Windows schannel</td>
       <td>1</td>
       <td>[wuauclt.exe]</td>
       <td>[msoe.dll, msoeres.dll, msoeres.dll.mui, winma...</td>
     </tr>
     <tr>
-      <th>431</th>
+      <th>436</th>
       <td>Windows splwow64</td>
       <td>1</td>
       <td>[]</td>
       <td>[explorer.exe, explorer.exe.mui]</td>
     </tr>
     <tr>
-      <th>432</th>
+      <th>437</th>
       <td>XBox</td>
       <td>2</td>
       <td>[bootux.dll]</td>
       <td>[bootux.dll, bootux.dll.mui]</td>
     </tr>
     <tr>
-      <th>434</th>
+      <th>439</th>
       <td>diskusage</td>
       <td>1</td>
       <td>[diskusage.exe]</td>
@@ -1131,7 +1141,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0)]
     </tr>
   </tbody>
 </table>
-<p>290 rows × 4 columns</p>
+<p>295 rows × 4 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1250,7 +1260,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[microsoft.jscript.tlb, microsoft.jscript.dll,...</td>
     </tr>
     <tr>
-      <th>117</th>
+      <th>118</th>
       <td>Microsoft OneDrive</td>
       <td>5</td>
       <td>[FileSync.LocalizedResources.dll, FileSync.Res...</td>
@@ -1258,7 +1268,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[microsoftwebdriver.exe]</td>
     </tr>
     <tr>
-      <th>118</th>
+      <th>119</th>
       <td>Microsoft PowerShell</td>
       <td>7</td>
       <td>[trie.dll, POWERPNT.EXE, PPCORE.DLL, PPINTL.CO...</td>
@@ -1266,7 +1276,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[microsoft.dtc.powershell.dll, microsoft.dism....</td>
     </tr>
     <tr>
-      <th>126</th>
+      <th>127</th>
       <td>Microsoft Windows</td>
       <td>694</td>
       <td>[MrmCoreR.dll, MrmIndexer.dll, sdclt.exe, ole3...</td>
@@ -1274,7 +1284,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[microsoft.windows.ual.dll, microsoft.windows....</td>
     </tr>
     <tr>
-      <th>139</th>
+      <th>140</th>
       <td>Netlogon</td>
       <td>2</td>
       <td>[]</td>
@@ -1282,7 +1292,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[netlogon.dll]</td>
     </tr>
     <tr>
-      <th>145</th>
+      <th>146</th>
       <td>Online Services</td>
       <td>1</td>
       <td>[BingOnlineServices.dll, msproof7.dll, StorSvc...</td>
@@ -1290,7 +1300,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[onlineservices.dll, bingonlineservices.dll]</td>
     </tr>
     <tr>
-      <th>150</th>
+      <th>151</th>
       <td>PowerShellGet</td>
       <td>1</td>
       <td>[TE.PowerShell.dll]</td>
@@ -1298,7 +1308,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[powershell.exe]</td>
     </tr>
     <tr>
-      <th>183</th>
+      <th>184</th>
       <td>VBScript</td>
       <td>1</td>
       <td>[]</td>
@@ -1306,7 +1316,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[vbscript.dll]</td>
     </tr>
     <tr>
-      <th>200</th>
+      <th>201</th>
       <td>Windows Account Control</td>
       <td>1</td>
       <td>[Windows.AccountsControl.dll, micaut.dll, Micr...</td>
@@ -1314,7 +1324,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[accountscontrolui.dll]</td>
     </tr>
     <tr>
-      <th>210</th>
+      <th>211</th>
       <td>Windows AppX Deployment Extensions</td>
       <td>4</td>
       <td>[AppXDeploymentExtensions.server.dll, AppXDepl...</td>
@@ -1322,7 +1332,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[appxdeploymentextensions.dll, appxdeploymente...</td>
     </tr>
     <tr>
-      <th>214</th>
+      <th>215</th>
       <td>Windows Application Model</td>
       <td>1</td>
       <td>[ApplicationFrame.dll, MDMAppProv.dll, Applica...</td>
@@ -1330,7 +1340,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[applicationframe.dll]</td>
     </tr>
     <tr>
-      <th>216</th>
+      <th>217</th>
       <td>Windows Authentication Methods</td>
       <td>11</td>
       <td>[authentication.dll, storewuauth.dll, AuthExt....</td>
@@ -1338,7 +1348,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[authentication.dll]</td>
     </tr>
     <tr>
-      <th>247</th>
+      <th>249</th>
       <td>Windows Core Shell</td>
       <td>1</td>
       <td>[CoreShell.dll, CoreShellAPI.dll]</td>
@@ -1346,7 +1356,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[coreshell.dll]</td>
     </tr>
     <tr>
-      <th>288</th>
+      <th>290</th>
       <td>Windows File History Service</td>
       <td>2</td>
       <td>[FileHistory.exe, fhuxapi.dll, fhengine.dll, f...</td>
@@ -1354,7 +1364,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[filehistory.exe]</td>
     </tr>
     <tr>
-      <th>292</th>
+      <th>294</th>
       <td>Windows Geolocation Service</td>
       <td>1</td>
       <td>[lfsvc.dll]</td>
@@ -1362,7 +1372,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[geolocation.dll, Geolocation.dll]</td>
     </tr>
     <tr>
-      <th>321</th>
+      <th>324</th>
       <td>Windows Media</td>
       <td>42</td>
       <td>[wuauclt.exe, wmp.dll, wmplayer.exe, VIDRESZR....</td>
@@ -1370,7 +1380,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[windows.media.dll, windows.media.winmd]</td>
     </tr>
     <tr>
-      <th>323</th>
+      <th>326</th>
       <td>Windows Mobile Device Management</td>
       <td>2</td>
       <td>[Microsoft.Xde.DeviceManagement.dll, ramgmtsvc...</td>
@@ -1378,7 +1388,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[mobiledevicemanager.dll]</td>
     </tr>
     <tr>
-      <th>342</th>
+      <th>345</th>
       <td>Windows Perception Simulation Service</td>
       <td>1</td>
       <td>[PerceptionSimulationService.exe, PerceptionSi...</td>
@@ -1386,7 +1396,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[perceptionsimulationrest.dll, perceptionsimul...</td>
     </tr>
     <tr>
-      <th>353</th>
+      <th>356</th>
       <td>Windows Push Notifications</td>
       <td>2</td>
       <td>[CloudNotifications.exe, wpnapps.dll, MusNotif...</td>
@@ -1394,7 +1404,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[musnotification.exe]</td>
     </tr>
     <tr>
-      <th>373</th>
+      <th>376</th>
       <td>Windows Secure Kernel Mode</td>
       <td>6</td>
       <td>[securekernel.exe, securekernella57.exe]</td>
@@ -1402,15 +1412,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[securekernel.exe]</td>
     </tr>
     <tr>
-      <th>382</th>
+      <th>385</th>
       <td>Windows Shell</td>
       <td>34</td>
-      <td>[powershell.exe, WindowsBase.dll, WindowsBase....</td>
+      <td>[WindowsBase.dll, powershell.exe, WindowsBase....</td>
       <td>[windowsbase.dll, windowsbase.ni.dll, windowsb...</td>
       <td>[windowsbase.dll, windows.sets.dll]</td>
     </tr>
     <tr>
-      <th>384</th>
+      <th>388</th>
       <td>Windows Storage</td>
       <td>5</td>
       <td>[Windows.UI.Storage.dll, msi.dll, msiexec.exe,...</td>
@@ -1418,7 +1428,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[windows.storage.dll, windows.storage.winmd, w...</td>
     </tr>
     <tr>
-      <th>389</th>
+      <th>393</th>
       <td>Windows System Launcher</td>
       <td>1</td>
       <td>[SystemUWPLauncher.exe, Windows.System.Launche...</td>
@@ -1426,7 +1436,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[systemuwplauncher.exe]</td>
     </tr>
     <tr>
-      <th>394</th>
+      <th>398</th>
       <td>Windows Task Flow Data Engine</td>
       <td>1</td>
       <td>[TaskFlowDataEngine.dll]</td>
@@ -1434,7 +1444,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[taskflowdataengine.dll]</td>
     </tr>
     <tr>
-      <th>395</th>
+      <th>399</th>
       <td>Windows Task Scheduler</td>
       <td>2</td>
       <td>[WPTaskScheduler.dll, schedsvc.dll, taskschd.d...</td>
@@ -1442,7 +1452,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[taskscheduler.dll, wptaskscheduler.dll, tasks...</td>
     </tr>
     <tr>
-      <th>397</th>
+      <th>401</th>
+      <td>Windows Terminal</td>
+      <td>1</td>
+      <td>[msiexec.exe, msihnd.dll, certpdef.dll, certxd...</td>
+      <td>[windowsterminal.exe, journal.exe, journal.exe...</td>
+      <td>[windowsterminal.exe]</td>
+    </tr>
+    <tr>
+      <th>402</th>
       <td>Windows Text Shaping</td>
       <td>1</td>
       <td>[]</td>
@@ -1450,7 +1468,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[textshaping.dll]</td>
     </tr>
     <tr>
-      <th>398</th>
+      <th>403</th>
       <td>Windows Tile Data Repository</td>
       <td>1</td>
       <td>[TileDataRepository.dll]</td>
@@ -1458,7 +1476,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[tiledatarepository.dll]</td>
     </tr>
     <tr>
-      <th>407</th>
+      <th>412</th>
       <td>Windows Update</td>
       <td>3</td>
       <td>[wuauclt.exe, PSWindowsUpdate.dll, Windows.Upd...</td>
@@ -1466,7 +1484,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[windows.update.dll]</td>
     </tr>
     <tr>
-      <th>423</th>
+      <th>428</th>
       <td>Windows Work Folder Service</td>
       <td>1</td>
       <td>[WorkFolders.exe]</td>
@@ -1474,15 +1492,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0)]
       <td>[workfolders.exe]</td>
     </tr>
     <tr>
-      <th>429</th>
+      <th>434</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
       <td>[kernel32.dll]</td>
     </tr>
     <tr>
-      <th>434</th>
+      <th>439</th>
       <td>diskusage</td>
       <td>1</td>
       <td>[diskusage.exe]</td>
@@ -1531,7 +1549,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <th>1</th>
       <td>.NET Core &amp; Visual Studio</td>
       <td>5</td>
-      <td>[Blend.exe, Microsoft.VisualStudio.IntelliCode...</td>
+      <td>[Blend.exe]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -1547,14 +1565,14 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <th>9</th>
       <td>ASP.NET Core &amp; Visual Studio</td>
       <td>2</td>
-      <td>[Blend.exe, Microsoft.VisualStudio.IntelliCode...</td>
+      <td>[Blend.exe]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>20</th>
       <td>Azure</td>
-      <td>22</td>
+      <td>23</td>
       <td>[azurite.exe]</td>
       <td>[]</td>
       <td>[]</td>
@@ -1584,7 +1602,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>143</th>
+      <th>144</th>
       <td>NuGet Client</td>
       <td>1</td>
       <td>[PrimS.Telnet.NetStandard.dll]</td>
@@ -1592,7 +1610,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>149</th>
+      <th>150</th>
       <td>Power BI</td>
       <td>6</td>
       <td>[Microsoft.WebTools.BrowserLink.dll]</td>
@@ -1600,7 +1618,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>151</th>
+      <th>152</th>
       <td>Project Rome</td>
       <td>1</td>
       <td>[eftproject.dll]</td>
@@ -1608,7 +1626,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>171</th>
+      <th>172</th>
       <td>Service Fabric</td>
       <td>1</td>
       <td>[ServiceFabricExplorer.exe]</td>
@@ -1616,7 +1634,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>185</th>
+      <th>186</th>
       <td>Visual Studio</td>
       <td>65</td>
       <td>[Microsoft.VisualStudio.Setup.Download.resourc...</td>
@@ -1624,7 +1642,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>186</th>
+      <th>187</th>
       <td>Visual Studio Code</td>
       <td>29</td>
       <td>[Microsoft.VisualStudio.Setup.Download.dll, Mi...</td>
@@ -1632,7 +1650,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>187</th>
+      <th>188</th>
       <td>Visual Studio Code - .NET Runtime</td>
       <td>1</td>
       <td>[Microsoft.VisualStudio.CodeAnalysis.Interop.dll]</td>
@@ -1640,7 +1658,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>191</th>
+      <th>192</th>
       <td>Visual Studio Code - Python extension</td>
       <td>1</td>
       <td>[Microsoft.PythonTools.EnvironmentsList.dll, M...</td>
@@ -1648,7 +1666,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>196</th>
+      <th>197</th>
       <td>Windows - Linux</td>
       <td>2</td>
       <td>[liblinux.dll, liblinux.resources.dll, liblinu...</td>
@@ -1656,7 +1674,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>220</th>
+      <th>221</th>
       <td>Windows Backup Engine</td>
       <td>8</td>
       <td>[microsoft.windows.softwarelogo.taskengine.exe...</td>
@@ -1664,15 +1682,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>278</th>
-      <td>Windows Event Tracing</td>
-      <td>21</td>
-      <td>[Microsoft.AnalysisServices.Layout.resources.dll]</td>
-      <td>[]</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>287</th>
+      <th>289</th>
       <td>Windows File Explorer</td>
       <td>1</td>
       <td>[Microsoft.CodeAnalysis.Elfie.dll, office.dll]</td>
@@ -1680,7 +1690,7 @@ tags_df[tags_df[&#39;win10_sys32_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; 
       <td>[]</td>
     </tr>
     <tr>
-      <th>424</th>
+      <th>429</th>
       <td>Windows Workstation Service</td>
       <td>1</td>
       <td>[PresentationUI.dll, PresentationUI.resources....</td>
@@ -1758,7 +1768,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>159</th>
+      <th>160</th>
       <td>Role: DNS Server</td>
       <td>38</td>
       <td>[]</td>
@@ -1766,7 +1776,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>161</th>
+      <th>162</th>
       <td>Role: Windows AD FS Server</td>
       <td>1</td>
       <td>[]</td>
@@ -1774,7 +1784,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>167</th>
+      <th>168</th>
       <td>SQL Server</td>
       <td>22</td>
       <td>[]</td>
@@ -1782,7 +1792,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>224</th>
+      <th>225</th>
       <td>Windows Bluetooth Service</td>
       <td>2</td>
       <td>[]</td>
@@ -1790,7 +1800,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>229</th>
+      <th>230</th>
       <td>Windows COM+ Event System Service</td>
       <td>1</td>
       <td>[]</td>
@@ -1798,7 +1808,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>281</th>
+      <th>283</th>
       <td>Windows Failover Cluster Automation Server</td>
       <td>1</td>
       <td>[]</td>
@@ -1806,7 +1816,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>319</th>
+      <th>322</th>
       <td>Windows MSHTML Platform</td>
       <td>6</td>
       <td>[]</td>
@@ -1814,15 +1824,15 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>349</th>
+      <th>352</th>
       <td>Windows Print Spooler Components</td>
-      <td>57</td>
+      <td>58</td>
       <td>[]</td>
       <td>[cmiaisupport.dll]</td>
       <td>[]</td>
     </tr>
     <tr>
-      <th>368</th>
+      <th>371</th>
       <td>Windows SMB Server</td>
       <td>42</td>
       <td>[]</td>
@@ -1830,7 +1840,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>405</th>
+      <th>410</th>
       <td>Windows Unified Write Filter</td>
       <td>1</td>
       <td>[]</td>
@@ -1838,7 +1848,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>421</th>
+      <th>426</th>
       <td>Windows Win32K</td>
       <td>23</td>
       <td>[]</td>
@@ -1846,7 +1856,7 @@ tags_df[tags_df[&#39;wb_ver&#39;].apply(lambda x: len(x) &gt; 0) &amp; tags_df[&
       <td>[]</td>
     </tr>
     <tr>
-      <th>431</th>
+      <th>436</th>
       <td>Windows splwow64</td>
       <td>1</td>
       <td>[]</td>
@@ -1908,7 +1918,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0) &amp; ta
       <td>[kerberos.dll]</td>
     </tr>
     <tr>
-      <th>139</th>
+      <th>140</th>
       <td>Netlogon</td>
       <td>2</td>
       <td>[]</td>
@@ -1916,7 +1926,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0) &amp; ta
       <td>[netlogon.dll]</td>
     </tr>
     <tr>
-      <th>183</th>
+      <th>184</th>
       <td>VBScript</td>
       <td>1</td>
       <td>[]</td>
@@ -1924,7 +1934,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].apply(lambda x: len(x) &gt; 0) &amp; ta
       <td>[vbscript.dll]</td>
     </tr>
     <tr>
-      <th>397</th>
+      <th>402</th>
       <td>Windows Text Shaping</td>
       <td>1</td>
       <td>[]</td>
@@ -2050,7 +2060,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[microsoft.jscript.tlb, microsoft.jscript.dll,...</td>
     </tr>
     <tr>
-      <th>117</th>
+      <th>118</th>
       <td>Microsoft OneDrive</td>
       <td>5</td>
       <td>[FileSync.LocalizedResources.dll, FileSync.Res...</td>
@@ -2058,7 +2068,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[microsoftwebdriver.exe]</td>
     </tr>
     <tr>
-      <th>118</th>
+      <th>119</th>
       <td>Microsoft PowerShell</td>
       <td>7</td>
       <td>[trie.dll, POWERPNT.EXE, PPCORE.DLL, PPINTL.CO...</td>
@@ -2066,7 +2076,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[microsoft.dtc.powershell.dll, microsoft.dism....</td>
     </tr>
     <tr>
-      <th>126</th>
+      <th>127</th>
       <td>Microsoft Windows</td>
       <td>694</td>
       <td>[MrmCoreR.dll, MrmIndexer.dll, sdclt.exe, ole3...</td>
@@ -2074,7 +2084,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[microsoft.windows.ual.dll, microsoft.windows....</td>
     </tr>
     <tr>
-      <th>139</th>
+      <th>140</th>
       <td>Netlogon</td>
       <td>2</td>
       <td>[]</td>
@@ -2082,7 +2092,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[netlogon.dll]</td>
     </tr>
     <tr>
-      <th>145</th>
+      <th>146</th>
       <td>Online Services</td>
       <td>1</td>
       <td>[BingOnlineServices.dll, msproof7.dll, StorSvc...</td>
@@ -2090,7 +2100,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[onlineservices.dll, bingonlineservices.dll]</td>
     </tr>
     <tr>
-      <th>150</th>
+      <th>151</th>
       <td>PowerShellGet</td>
       <td>1</td>
       <td>[TE.PowerShell.dll]</td>
@@ -2098,7 +2108,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[powershell.exe]</td>
     </tr>
     <tr>
-      <th>183</th>
+      <th>184</th>
       <td>VBScript</td>
       <td>1</td>
       <td>[]</td>
@@ -2106,7 +2116,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[vbscript.dll]</td>
     </tr>
     <tr>
-      <th>200</th>
+      <th>201</th>
       <td>Windows Account Control</td>
       <td>1</td>
       <td>[Windows.AccountsControl.dll, micaut.dll, Micr...</td>
@@ -2114,7 +2124,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[accountscontrolui.dll]</td>
     </tr>
     <tr>
-      <th>210</th>
+      <th>211</th>
       <td>Windows AppX Deployment Extensions</td>
       <td>4</td>
       <td>[AppXDeploymentExtensions.server.dll, AppXDepl...</td>
@@ -2122,7 +2132,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[appxdeploymentextensions.dll, appxdeploymente...</td>
     </tr>
     <tr>
-      <th>214</th>
+      <th>215</th>
       <td>Windows Application Model</td>
       <td>1</td>
       <td>[ApplicationFrame.dll, MDMAppProv.dll, Applica...</td>
@@ -2130,7 +2140,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[applicationframe.dll]</td>
     </tr>
     <tr>
-      <th>216</th>
+      <th>217</th>
       <td>Windows Authentication Methods</td>
       <td>11</td>
       <td>[authentication.dll, storewuauth.dll, AuthExt....</td>
@@ -2138,7 +2148,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[authentication.dll]</td>
     </tr>
     <tr>
-      <th>247</th>
+      <th>249</th>
       <td>Windows Core Shell</td>
       <td>1</td>
       <td>[CoreShell.dll, CoreShellAPI.dll]</td>
@@ -2146,7 +2156,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[coreshell.dll]</td>
     </tr>
     <tr>
-      <th>288</th>
+      <th>290</th>
       <td>Windows File History Service</td>
       <td>2</td>
       <td>[FileHistory.exe, fhuxapi.dll, fhengine.dll, f...</td>
@@ -2154,7 +2164,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[filehistory.exe]</td>
     </tr>
     <tr>
-      <th>292</th>
+      <th>294</th>
       <td>Windows Geolocation Service</td>
       <td>1</td>
       <td>[lfsvc.dll]</td>
@@ -2162,7 +2172,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[geolocation.dll, Geolocation.dll]</td>
     </tr>
     <tr>
-      <th>321</th>
+      <th>324</th>
       <td>Windows Media</td>
       <td>42</td>
       <td>[wuauclt.exe, wmp.dll, wmplayer.exe, VIDRESZR....</td>
@@ -2170,7 +2180,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[windows.media.dll, windows.media.winmd]</td>
     </tr>
     <tr>
-      <th>323</th>
+      <th>326</th>
       <td>Windows Mobile Device Management</td>
       <td>2</td>
       <td>[Microsoft.Xde.DeviceManagement.dll, ramgmtsvc...</td>
@@ -2178,7 +2188,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[mobiledevicemanager.dll]</td>
     </tr>
     <tr>
-      <th>342</th>
+      <th>345</th>
       <td>Windows Perception Simulation Service</td>
       <td>1</td>
       <td>[PerceptionSimulationService.exe, PerceptionSi...</td>
@@ -2186,7 +2196,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[perceptionsimulationrest.dll, perceptionsimul...</td>
     </tr>
     <tr>
-      <th>353</th>
+      <th>356</th>
       <td>Windows Push Notifications</td>
       <td>2</td>
       <td>[CloudNotifications.exe, wpnapps.dll, MusNotif...</td>
@@ -2194,7 +2204,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[musnotification.exe]</td>
     </tr>
     <tr>
-      <th>373</th>
+      <th>376</th>
       <td>Windows Secure Kernel Mode</td>
       <td>6</td>
       <td>[securekernel.exe, securekernella57.exe]</td>
@@ -2202,15 +2212,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[securekernel.exe]</td>
     </tr>
     <tr>
-      <th>382</th>
+      <th>385</th>
       <td>Windows Shell</td>
       <td>34</td>
-      <td>[powershell.exe, WindowsBase.dll, WindowsBase....</td>
+      <td>[WindowsBase.dll, powershell.exe, WindowsBase....</td>
       <td>[windowsbase.dll, windowsbase.ni.dll, windowsb...</td>
       <td>[windowsbase.dll, windows.sets.dll]</td>
     </tr>
     <tr>
-      <th>384</th>
+      <th>388</th>
       <td>Windows Storage</td>
       <td>5</td>
       <td>[Windows.UI.Storage.dll, msi.dll, msiexec.exe,...</td>
@@ -2218,7 +2228,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[windows.storage.dll, windows.storage.winmd, w...</td>
     </tr>
     <tr>
-      <th>389</th>
+      <th>393</th>
       <td>Windows System Launcher</td>
       <td>1</td>
       <td>[SystemUWPLauncher.exe, Windows.System.Launche...</td>
@@ -2226,7 +2236,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[systemuwplauncher.exe]</td>
     </tr>
     <tr>
-      <th>394</th>
+      <th>398</th>
       <td>Windows Task Flow Data Engine</td>
       <td>1</td>
       <td>[TaskFlowDataEngine.dll]</td>
@@ -2234,7 +2244,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[taskflowdataengine.dll]</td>
     </tr>
     <tr>
-      <th>395</th>
+      <th>399</th>
       <td>Windows Task Scheduler</td>
       <td>2</td>
       <td>[WPTaskScheduler.dll, schedsvc.dll, taskschd.d...</td>
@@ -2242,7 +2252,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[taskscheduler.dll, wptaskscheduler.dll, tasks...</td>
     </tr>
     <tr>
-      <th>397</th>
+      <th>401</th>
+      <td>Windows Terminal</td>
+      <td>1</td>
+      <td>[msiexec.exe, msihnd.dll, certpdef.dll, certxd...</td>
+      <td>[windowsterminal.exe, journal.exe, journal.exe...</td>
+      <td>[windowsterminal.exe]</td>
+    </tr>
+    <tr>
+      <th>402</th>
       <td>Windows Text Shaping</td>
       <td>1</td>
       <td>[]</td>
@@ -2250,7 +2268,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[textshaping.dll]</td>
     </tr>
     <tr>
-      <th>398</th>
+      <th>403</th>
       <td>Windows Tile Data Repository</td>
       <td>1</td>
       <td>[TileDataRepository.dll]</td>
@@ -2258,7 +2276,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[tiledatarepository.dll]</td>
     </tr>
     <tr>
-      <th>407</th>
+      <th>412</th>
       <td>Windows Update</td>
       <td>3</td>
       <td>[wuauclt.exe, PSWindowsUpdate.dll, Windows.Upd...</td>
@@ -2266,7 +2284,7 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[windows.update.dll]</td>
     </tr>
     <tr>
-      <th>423</th>
+      <th>428</th>
       <td>Windows Work Folder Service</td>
       <td>1</td>
       <td>[WorkFolders.exe]</td>
@@ -2274,15 +2292,15 @@ tags_df[tags_df[&#39;all_bin_names&#39;].str.len() &gt; 0]
       <td>[workfolders.exe]</td>
     </tr>
     <tr>
-      <th>429</th>
+      <th>434</th>
       <td>Windows kernel32.dll</td>
       <td>3</td>
-      <td>[powershell.exe]</td>
+      <td>[powershell.exe, WindowsBase.dll]</td>
       <td>[windowsterminalshellext.dll, powershell.exe, ...</td>
       <td>[kernel32.dll]</td>
     </tr>
     <tr>
-      <th>434</th>
+      <th>439</th>
       <td>diskusage</td>
       <td>1</td>
       <td>[diskusage.exe]</td>
