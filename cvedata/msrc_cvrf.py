@@ -31,16 +31,19 @@ def get_all_knowledge_base_cvrf():
                 if "Early" in cvrf['DocumentTitle']:
                     print(f"Skipping early update {cvrf['DocumentTitle']}")
                     continue
-                get_knowledge_base_cvrf_json(cvrf['ID'])
+                get_knowledge_base_cvrf_json(cvrf)
 
     return
 
-def get_knowledge_base_cvrf_json(cvrf_id):
-    if cvrf_id == None:
+def get_knowledge_base_cvrf_json(cvrf):
+
+    cvrf_id = cvrf['ID']
+    force_download = False
+
+    if cvrf_id is None:
         return None
 
-    from time import strptime
-    month =  strptime(cvrf_id.split('-')[1],'%b').tm_mon
+    month =  time.strptime(cvrf_id.split('-')[1],'%b').tm_mon
     year = int(cvrf_id.split('-')[0])
     
     # MSRC CVRF is not available before Apr 2016
@@ -49,16 +52,26 @@ def get_knowledge_base_cvrf_json(cvrf_id):
 
     cvrf_json = None
 
-    # if file exists locally, load it
+    # if file exists locally, load it    
     cvrf_file = Path(MSRC_CVRF_CACHE_PATH, cvrf_id + ".json")
 
-    if not os.path.exists(cvrf_file):        
+    if cvrf_file.exists():         
+        last_update = datetime.strptime(cvrf['CurrentReleaseDate'],"%Y-%m-%dT%H:%M:%SZ")
+        try:
+            last_updated = datetime.strptime(json.loads(cvrf_file.read_text())['DocumentTracking']['CurrentReleaseDate'],"%Y-%m-%dT%H:%M:%SZ")
+        except ValueError:
+            # handle odd case missing Z in time format string
+            last_updated = datetime.strptime(json.loads(cvrf_file.read_text())['DocumentTracking']['CurrentReleaseDate'],"%Y-%m-%dT%H:%M:%S")
+        if last_updated < last_update:
+            print(f"{cvrf_file.name} out of date. Last updated: {last_updated} Current version: {last_update}")
+            force_download = True        
+
+    if not os.path.exists(cvrf_file) or force_download:
         url = "{}cvrf/v2.0/cvrf/{}".format(
             MSRC_API_URL, cvrf_id)
         headers = {'Accept': 'application/json'}
         response = requests.get(url, headers=headers)
-
-    
+        
         if response.status_code != 200:
             # try once more
             response = requests.get(url, headers=headers)
