@@ -8,6 +8,7 @@ from io import BytesIO
 from datetime import datetime
 from pathlib import Path
 import time
+import pandas as pd
 
 from .config import DATA_DIR,CACHE_PATH
 from .metadata import update_metadata
@@ -25,6 +26,7 @@ WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH = Path(DATA_DIR,"winbindex-desc-to-bins-ma
 WINDOWS_KBS_TO_BINS_PATH = Path(DATA_DIR,"winbindex-kb-to-bins-map.json.gz")
 WINDOWS_VERSION_TO_BINS_PATH = Path(DATA_DIR,"winbindex-versions-to-bins-map.json.gz")
 WINDOWS_VER_TO_BUILD_PATH = Path(DATA_DIR,"winbindex-winver-to-build-map.json")
+WB_PANDAS_PATH = Path(DATA_DIR,"winbindex-fileinfo-pandas.json.gz")
 
 def open_gz_json(path):    
     
@@ -80,14 +82,15 @@ def create_winbindex_maps():
     total = len(files)
     count = 0
     failed_load = []
+    wb_pandas = {}
 
     print(f"Processing {total} files..")
-    for i,file in enumerate(files):
+    for i,file in enumerate(sorted(files)):
 
         # if count > 1000:
         #     break
         
-        if re.search('exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv',file):
+        if re.search('(exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv)\.json\.gz',file):
             try: 
                 file_json = open_gz_json(os.path.join(WINBINDEX_FILES_DATA_PATH,file))
             except json.JSONDecodeError as e:
@@ -95,11 +98,15 @@ def create_winbindex_maps():
                 continue
             
             count += 1
+            print(f"{int((count / i)*100)}% : {count} : {file}")
             for bin in file_json:
 
                 filename = file.replace('.json.gz','')
-
+                
                 if file_json[bin].get('fileInfo'):
+                    file_json[bin]['fileInfo']['filename'] = filename.lower()
+                    wb_pandas[bin] = file_json[bin]['fileInfo']
+
                     if file_json[bin]['fileInfo'].get('description'):
                         desc_to_bins.setdefault(file_json[bin]['fileInfo']['description'],[])                        
                         if filename not in desc_to_bins[file_json[bin]['fileInfo']['description']]:
@@ -182,6 +189,9 @@ def create_winbindex_maps():
 
     with gzip.open(WINDOWS_VERSION_TO_BINS_PATH, "w") as f:
         f.write(json.dumps(ver_to_bins).encode("utf-8"))
+
+    all_wb_pandas_df = pd.DataFrame.from_dict(wb_pandas,orient='index')
+    all_wb_pandas_df.to_json(WB_PANDAS_PATH)
 
 def get_winbindex_desc_to_bin_map():
     return get_file_json(WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH,__file__)
