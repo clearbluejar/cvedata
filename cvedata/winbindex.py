@@ -98,13 +98,13 @@ def create_winbindex_maps():
                 continue
             
             count += 1
-            print(f"{int((count / i)*100)}% : {count} : {file}")
+            print(f"{int((i / total)*100)}% : {count} : {file}")
             for bin in file_json:
 
-                filename = file.replace('.json.gz','')
+                filename = file.replace('.json.gz','').lower()
                 
                 if file_json[bin].get('fileInfo'):
-                    file_json[bin]['fileInfo']['filename'] = filename.lower()
+                    file_json[bin]['fileInfo']['filename'] = filename
                     wb_pandas[bin] = file_json[bin]['fileInfo']
 
                     if file_json[bin]['fileInfo'].get('description'):
@@ -125,6 +125,9 @@ def create_winbindex_maps():
                             kb_to_bins.setdefault(update,{})
                             kb_to_bins[update].setdefault('updated',set())
                             kb_to_bins[update].setdefault('versions',set()).add(ver)
+                            if wb_pandas.get(bin):
+                                wb_pandas[bin].setdefault('kbs', set())                                
+                                wb_pandas[bin].setdefault('kb_vers', set())                                
                             if file_json[bin]['windowsVersions'][ver][update].get('updateInfo'):
                                 kb_ver = file_json[bin]['windowsVersions'][ver][update]['updateInfo']['releaseVersion']
                                 kb_to_bins[update]['release'] = file_json[bin]['windowsVersions'][ver][update]['updateInfo']['releaseDate']
@@ -141,6 +144,10 @@ def create_winbindex_maps():
                                         #print(kb_ver)
                                         if chopped_assem_ver == kb_ver: # ver # set filename # Build == kb_ver
                                             kb_to_bins[update]['updated'].add(filename)
+                                            if wb_pandas.get(bin):
+                                                wb_pandas[bin]['kbs'].add(update)
+                                                wb_pandas[bin]['kb_vers'].add(kb_ver)
+
                                 #assert len(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo']) == 2
                             else:
                                 #print(file_json[bin]['windowsVersions'][ver][update]['windowsVersionInfo'])
