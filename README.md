@@ -49,3 +49,6 @@ A collection of CVE and related data. This python package is caught somewhere be
 
 - [WinBinDex](https://winbindex.m417z.com/) 
 - [Security-Datasets](https://github.com/OTRF/Security-Datasets)
+
+---
+<sub>Cover Photo by Philipp Katzenberger on Unsplash</sub>
