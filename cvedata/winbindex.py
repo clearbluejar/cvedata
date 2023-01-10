@@ -179,7 +179,7 @@ def create_winbindex_maps():
     # convert sets to lists
     for k in kb_to_bins:
         kb_to_bins[k]['updated'] = list(kb_to_bins[k]['updated'])
-        kb_to_bins[k]['versions'] = list(kb_to_bins[k]['versions'])
+        kb_to_bins[k]['versions'] = list(kb_to_bins[k]['versions'])        
 
     for k in winver_to_build:
         winver_to_build[k] = list(winver_to_build[k])
@@ -197,7 +197,7 @@ def create_winbindex_maps():
     with gzip.open(WINDOWS_VERSION_TO_BINS_PATH, "w") as f:
         f.write(json.dumps(ver_to_bins).encode("utf-8"))
 
-    all_wb_pandas_df = pd.DataFrame.from_dict(wb_pandas,orient='index')
+    all_wb_pandas_df = pd.DataFrame.from_dict(wb_pandas,orient='index').reset_index(drop=True)
     all_wb_pandas_df.to_json(WB_PANDAS_PATH)
 
 def get_winbindex_desc_to_bin_map():
@@ -212,12 +212,15 @@ def get_winbindex_ver_to_bin_map():
 def get_winbindex_ver_to_build_map():
     return get_file_json(WINDOWS_VER_TO_BUILD_PATH,__file__)
     
+def get_winbindex_pandas_map():
+    return get_file_json(WB_PANDAS_PATH,__file__)
 
 def update():
 
     print(f"Updating {WINDOWS_FILE_DESCRIPTION_TO_BINS_PATH}...")
     print(f"Updating {WINDOWS_KBS_TO_BINS_PATH}...")
     print(f"Updating {WINDOWS_VERSION_TO_BINS_PATH}...")
+    print(f"Updating {WB_PANDAS_PATH}...")
     
     start = time.time()
     create_winbindex_maps()
@@ -235,7 +238,9 @@ def update():
     count = len(get_winbindex_ver_to_build_map())
     update_metadata(WINDOWS_VER_TO_BUILD_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=False,normalize=True)
 
-    
+    count = len(get_winbindex_pandas_map())
+    update_metadata(WB_PANDAS_PATH,{'sources': [WINBINDEX_GITHUB_URL]},count,elapsed,swap_axes=False,normalize=True)
+
 
 if __name__ == "__main__":
     update()
